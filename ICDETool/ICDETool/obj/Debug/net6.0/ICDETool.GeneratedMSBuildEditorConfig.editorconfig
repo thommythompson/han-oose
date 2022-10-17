@@ -15,12 +15,20 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/thomashofman/_git/han-oose/ICDETool/ICDETool
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/thomashofman/_git/han-oose/ICDETool/ICDETool/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+[/Users/thomashofman/_git/han-oose/ICDETool/ICDETool/Views/Course/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ291cnNlL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/thomashofman/_git/han-oose/ICDETool/ICDETool/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
+[/Users/thomashofman/_git/han-oose/ICDETool/ICDETool/Views/Klas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvS2xhcy9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/thomashofman/_git/han-oose/ICDETool/ICDETool/Views/Les/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTGVzL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/thomashofman/_git/han-oose/ICDETool/ICDETool/Views/Locatie/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTG9jYXRpZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/thomashofman/_git/han-oose/ICDETool/ICDETool/Views/Shared/Error.cshtml]
@@ -29,6 +37,38 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Users/thomashofman/_git/han-oose/ICDETool/ICDETool/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/thomashofman/_git/han-oose/ICDETool/ICDETool/Views/Template/Concept.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVtcGxhdGUvQ29uY2VwdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/thomashofman/_git/han-oose/ICDETool/ICDETool/Views/Template/ConceptPlanning.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVtcGxhdGUvQ29uY2VwdFBsYW5uaW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/thomashofman/_git/han-oose/ICDETool/ICDETool/Views/Template/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVtcGxhdGUvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/thomashofman/_git/han-oose/ICDETool/ICDETool/Views/Template/Template.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVtcGxhdGUvVGVtcGxhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/thomashofman/_git/han-oose/ICDETool/ICDETool/Views/Template/TemplatePlanning.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVtcGxhdGUvVGVtcGxhdGVQbGFubmluZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/thomashofman/_git/han-oose/ICDETool/ICDETool/Views/Tentamen/BeroepsProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVudGFtZW4vQmVyb2Vwc1Byb2R1Y3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/thomashofman/_git/han-oose/ICDETool/ICDETool/Views/Tentamen/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVudGFtZW4vSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/thomashofman/_git/han-oose/ICDETool/ICDETool/Views/Tentamen/SchriftelijkeToets.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVudGFtZW4vU2NocmlmdGVsaWprZVRvZXRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/thomashofman/_git/han-oose/ICDETool/ICDETool/Views/_ViewImports.cshtml]

@@ -1,4 +1,50 @@
 ﻿<Properties StartupConfiguration="{1DB76503-D203-42D9-B618-D433D5280165}|Default">
-  <MonoDevelop.Ide.ItemProperties.ICDETool FirstBuild="True" />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.ICDETool PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ICDETool/Views/Template/Template.html">
+    <Files>
+      <File FileName="ICDETool/Program.cs" Line="31" Column="44" />
+      <File FileName="ICDETool/Views/Shared/_Layout.cshtml" Line="23" Column="129" />
+      <File FileName="ICDETool/Controllers/HomeController.cs" Line="19" Column="6" />
+      <File FileName="ICDETool/Views/Home/Index.cshtml" Line="15" Column="18" />
+      <File FileName="ICDETool/Views/Home/CourseUitvoering.html" Line="1" Column="1" />
+      <File FileName="ICDETool/Views/Home/CourseUitvoeringen.html" Line="1" Column="1" />
+      <File FileName="ICDETool/BeoordelingsCriteria.html" Line="10" Column="8" />
+      <File FileName="ICDETool/Controllers/InstancesController.cs" Line="1" Column="1" />
+      <File FileName="ICDETool/Controllers/ClassController.cs" Line="1" Column="1" />
+      <File FileName="ICDETool/Controllers/LocationController.cs" Line="18" Column="6" />
+      <File FileName="ICDETool/Views/Class/Index.html" Line="6" Column="39" />
+      <File FileName="ICDETool/Views/Instance/Index.html" Line="10" Column="1" />
+      <File FileName="ICDETool/Views/Location/Index.html" Line="10" Column="1" />
+      <File FileName="ICDETool/Views/Template/Template.html" Line="10" Column="1" />
+      <File FileName="ICDETool/Views/Template/Concept.html" Line="10" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ICDETool" expanded="True">
+            <Node name="ICDETool" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Class" expanded="True" />
+                <Node name="Instance" expanded="True" />
+                <Node name="Location" expanded="True" />
+                <Node name="Shared" expanded="True" />
+                <Node name="Template" expanded="True" />
+              </Node>
+              <Node name="wwwroot" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
 </Properties>

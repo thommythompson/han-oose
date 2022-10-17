@@ -1,0 +1,119 @@
+﻿@{
+    ViewData["Title"] = "Councept Planning";
+}
+
+<div class="">
+    <div class="row">
+        <div class="col-md-8">
+            <h3 class="">Weekplanning</h3>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-primary margin-10px">Les Toevoegen</button>
+        </div><div class="col-md-2">
+            <button type="button" class="btn btn-primary margin-10px">Tentamen Toevoegen</button>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Naam</th>
+                <th scope="col">Type</th>
+                <th scope="col">Week</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>UML Domein Model</td>
+                <td>Les</td>
+                <td>
+                    <select class="form-select" aria-label="Select week">
+                        <option selected value="1">Week 1</option>
+                        <option value="2">Week 2</option>
+                        <option value="3">Week 3</option>
+                    </select>
+                </td>
+                <td>
+                    <a asp-area="" asp-controller="Les" asp-action="Index">Bekijk</a>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>UML Use Case Diagram</td>
+                <td>Les</td>
+                <td>
+                    <select class="form-select" aria-label="Select week">
+                        <option selected value="1">Week 1</option>
+                        <option value="2">Week 2</option>
+                        <option value="3">Week 3</option>
+                    </select>
+                </td>
+                <td>
+                    <a asp-area="" asp-controller="Les" asp-action="Index">Bekijk</a>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>UML Sequence Diagram</td>
+                <td>Les</td>
+                <td>
+                    <select class="form-select" aria-label="Select week">
+                        <option value="1">Week 1</option>
+                        <option selected value="2">Week 2</option>
+                        <option value="3">Week 3</option>
+                    </select>
+                </td>
+                <td>
+                    <a asp-area="" asp-controller="Les" asp-action="Index">Bekijk</a>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">4</th>
+                <td>Oefentoets</td>
+                <td>Les</td>
+                <td>
+                    <select class="form-select" aria-label="Select week">
+                        <option value="1">Week 1</option>
+                        <option selected value="2">Week 2</option>
+                        <option value="3">Week 3</option>
+                    </select>
+                </td>
+                <td>
+                    <a asp-area="" asp-controller="Les" asp-action="Index">Bekijk</a>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">5</th>
+                <td>Toets UML</td>
+                <td>Schriftelijke Toets</td>
+                <td>
+                    <select class="form-select" aria-label="Select week">
+                        <option value="1">Week 1</option>
+                        <option value="2">Week 2</option>
+                        <option selected value="3">Week 3</option>
+                    </select>
+                </td>
+                <td>
+                    <a asp-area="" asp-controller="Tentamen" asp-action="SchriftelijkeToets">Bekijk</a>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">6</th>
+                <td>Functioneel Ontwerp Casus</td>
+                <td>BeroepsProduct</td>
+                <td>
+                    <select class="form-select" aria-label="Select week">
+                        <option value="1">Week 1</option>
+                        <option value="2">Week 2</option>
+                        <option selected value="3">Week 3</option>
+                    </select>
+                </td>
+                <td>
+                    <a asp-area="" asp-controller="Tentamen" asp-action="BeroepsProduct">Bekijk</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
