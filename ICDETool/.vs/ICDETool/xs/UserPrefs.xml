@@ -1,28 +1,24 @@
 ﻿<Properties StartupConfiguration="{1DB76503-D203-42D9-B618-D433D5280165}|Default">
-  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.ICDETool PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.ICDETool PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ICDETool/Views/Template/Template.html">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ICDETool/Program.cs">
     <Files>
-      <File FileName="ICDETool/Program.cs" Line="31" Column="44" />
-      <File FileName="ICDETool/Views/Shared/_Layout.cshtml" Line="23" Column="129" />
-      <File FileName="ICDETool/Controllers/HomeController.cs" Line="19" Column="6" />
-      <File FileName="ICDETool/Views/Home/Index.cshtml" Line="15" Column="18" />
-      <File FileName="ICDETool/Views/Home/CourseUitvoering.html" Line="1" Column="1" />
-      <File FileName="ICDETool/Views/Home/CourseUitvoeringen.html" Line="1" Column="1" />
+      <File FileName="ICDETool/Program.cs" Line="15" Column="46" />
+      <File FileName="ICDETool/Views/Shared/_Layout.cshtml" Line="34" Column="46" />
       <File FileName="ICDETool/BeoordelingsCriteria.html" Line="10" Column="8" />
-      <File FileName="ICDETool/Controllers/InstancesController.cs" Line="1" Column="1" />
-      <File FileName="ICDETool/Controllers/ClassController.cs" Line="1" Column="1" />
-      <File FileName="ICDETool/Controllers/LocationController.cs" Line="18" Column="6" />
-      <File FileName="ICDETool/Views/Class/Index.html" Line="6" Column="39" />
-      <File FileName="ICDETool/Views/Instance/Index.html" Line="10" Column="1" />
-      <File FileName="ICDETool/Views/Location/Index.html" Line="10" Column="1" />
-      <File FileName="ICDETool/Views/Template/Template.html" Line="10" Column="1" />
-      <File FileName="ICDETool/Views/Template/Concept.html" Line="10" Column="1" />
+      <File FileName="ICDETool/Controllers/TemplateController.cs" Line="30" Column="10" />
+      <File FileName="ICDETool/Views/Template/Index.cshtml" Line="47" Column="100" />
+      <File FileName="ICDETool/Views/Template/ConceptPlanning.cshtml" Line="120" Column="1" />
+      <File FileName="ICDETool/Views/Template/TemplatePlanning.cshtml" Line="7" Column="1" />
+      <File FileName="ICDETool/Views/Template/Concept.cshtml" Line="20" Column="14" />
+      <File FileName="ICDETool/Views/Template/Template.cshtml" Line="1" Column="1" />
+      <File FileName="ICDETool/wwwroot/css/site.css" Line="26" Column="2" />
+      <File FileName="ICDETool/Controllers/LesController.cs" Line="1" Column="1" />
+      <File FileName="ICDETool/Views/Tentamen/SchriftelijkeToets.cshtml" Line="11" Column="65" />
+      <File FileName="ICDETool/Views/Tentamen/BeroepsProduct.cshtml" Line="27" Column="18" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -31,13 +27,17 @@
             <Node name="ICDETool" expanded="True">
               <Node name="Controllers" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Class" expanded="True" />
-                <Node name="Instance" expanded="True" />
-                <Node name="Location" expanded="True" />
+                <Node name="Course" expanded="True" />
+                <Node name="Klas" expanded="True" />
+                <Node name="Les" expanded="True" />
+                <Node name="Locatie" expanded="True" />
                 <Node name="Shared" expanded="True" />
                 <Node name="Template" expanded="True" />
+                <Node name="Tentamen" expanded="True" />
               </Node>
-              <Node name="wwwroot" expanded="True" />
+              <Node name="wwwroot" expanded="True">
+                <Node name="css" expanded="True" />
+              </Node>
             </Node>
           </Node>
         </State>
@@ -47,4 +47,6 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
 </Properties>
