@@ -1,21 +1,3 @@
-<style>
-/* Use case table sytles */
-
-.main {
-    color: black;
-    background-color: #95c9bb;
-}
-
-.secondary {
-    color: white;
-    background-color: #6c7875; 
-}
-
-.key {
-    font-weight: bold;
-}
-</style>
-
 [Terug](/README.md)
 
 ---
@@ -294,69 +276,27 @@ Nog valideren tegen over use case model dat in onderwijs online staat.
     </tr>
 </table>
 
-### 3.2.4 UC-## - Update
-<table>
-    <tr>
-        <td class="main" colspan="2">UC-## - Delete</td>
-    </tr>
-    <tr>
-        <td class="key" >ID</td> <td>UC-##</td>
-    </tr>
-    <tr>
-        <td class="key">Naam</td> <td>Delete</td>
-    </tr>
-    <tr>
-        <td class="key">Omschrijving</td> <td>Standaard "Delete" use case</td>
-    </tr>
-    <tr>
-        <td class="key">Pre-Conditities</td> <td>De gebruiker heeft de "Read" use case doorlopen.</td>
-    </tr>
-    <tr>
-        <td class="key">Succes definitie</td> <td>De data van het desbetreffende object is verwijderd.</td>
-    </tr>
-    <tr>
-        <td class="main" colspan="2">Main Success Scenario</td>
-    </tr>
-    <tr>
-        <td class="secondary">Actor</td> <td class="secondary">System</td>
-    </tr>
-    <tr>
-        <td>1. De gebruiker besluit het desbetreffende object te verwijderen. </td> <td></td>
-    </tr>
-    <tr>
-        <td></td> <td>2. Het systeem vraagt om een bevestiging. </td>
-    </tr>
-    <tr>
-        <td>3. De gebruiker bevestigd het object te willen verwijderen.</td> <td></td>
-    </tr>
-    <tr>
-        <td></td> <td>4. Het systeem voert validaties uit.</td>
-    </tr>
-    <tr>
-        <td></td> <td>5. Het systeem verwijdert het object.</td>
-    </tr>
-    <tr>
-        <td></td> <td>6. Het systeem attendeert de gebruiker op het feit dat het object succesvol verwijderd is.</td>
-    </tr>
-    <tr>
-        <td style="font-style: italic">De gebruiker herhaalt de stappen 1 t/m 6 totdat alle gewenste verwijderingen zijn uitgevoerd.</td> <td></td>
-    </tr>
-    <tr>
-        <td class="main" colspan="2">Alternative Flow A</td>
-    </tr>
-    <tr>
-        <td colspan="2">
-        4a [Het object blijkt (nog) niet verwijderd te kunnen worden.] <br>
-            1.	1.	Het systeem attendeert de gebruiker op de reden waarom het object niet verwijderd kon worden.
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2">
-        5a. [De persistentie tier blijkt is niet beschikbaar] <br>
-            1.	1.	Het systeem geeft aan dat het object niet succesvol verwijderd is.
-        </td>
-    </tr>
-</table>
+### 3.2.4 UC-## - Delete
+| | |
+|-|-|
+| ID | UC-## |
+| Naam | Delete |
+| Omschrijving | Standaard "Delete" use case |
+| Pre-Conditities | De gebruiker heeft de "Read" use case doorlopen. |
+| Succes definitie | De data van het desbetreffende object is verwijderd. |
+| <font size="4"> **Main Success Scenario** </font>
+| **Actor** | **System** |
+| 1. De gebruiker besluit het desbetreffende object te verwijderen.| |
+| |2. Het systeem vraagt om een bevestiging. |
+| 3. De gebruiker bevestigd het object te willen verwijderen.| |
+| | 4. Het systeem voert validaties uit.|
+| | 5. Het systeem verwijdert het object.|
+| | 6. Het systeem attendeert de gebruiker op het feit dat het object succesvol verwijderd is.|
+| *De gebruiker herhaalt de stappen 1 t/m 6 totdat alle gewenste verwijderingen zijn uitgevoerd.* | |
+| <font size="4"> **Alternative Flow A** </font>
+|4a [Het object blijkt (nog) niet verwijderd te kunnen worden.] <br> 1.	Het systeem attendeert de gebruiker op de reden waarom het object niet verwijderd kon worden. </td>
+|5a. [De persistentie tier blijkt is niet beschikbaar] <br> 1.	Het systeem geeft aan dat het object niet succesvol verwijderd is.
+
 
 ## 3.3. Use Cases
 In het voorafgaande hoofdstuk hebben wij middels verschillende use case identificatie technieken belangrijke entiteiten, actoren en hun doelen weten te identificeren. Uit deze informatie hebben wij een aantal use cases weten te extraheren (2.2.3), waar nodig worden deze in onderstaande toegelicht middels een “fully dressed” formaat. Het fully dressed use case model is gebasseerd op het meest wijd geadoppteerde template van Alistair Cockburn (Larman 2004, 6.8).
