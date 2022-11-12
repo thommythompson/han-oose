@@ -23,24 +23,24 @@
 |v0.9|Converteren van docx naar markdown|Thomas Hofman|12-11-2022|
 
 # Inhoudsopgave
-1. [Inleiding](#1-inleiding) </br>
+1. [Inleiding](#1-inleiding-👆-inhoudsopgave) </br>
     1.1. [Doelstelling](#11-doelstelling) </br>
     1.2. [Doelgroep](#12-doelgroep) </br>
-2. [Vragen iteratie 1](#2-vragen-iteratie-1) </br>
+2. [Vragen iteratie 1](#2-vragen-iteratie-1-👆-inhoudsopgave) </br>
     2.1. [Vragen aan de stakeholders](#21-vragen-aan-de-stakeholders) </br>
     2.2. [Vragen aan de opleidings coordinatoren](#22-vragen-aan-de-opleidings-coordinatoren) </br>
-3. [Vragen iteratie 2](#3-vragen-iteratie-2) </br>
+3. [Vragen iteratie 2](#3-vragen-iteratie-2-👆-inhoudsopgave) </br>
     3.1. [Vragen aan de stakeholders](#31-vragen-aan-de-stakeholders) </br>
     3.2. [Vragen aan de opleidings coordinatoren](#32-vragen-aan-de-opleidings-coordinatoren) </br>
-4. [Vragen iteratie 3](#4-vragen-iteratie-3) </br>
+4. [Vragen iteratie 3](#4-vragen-iteratie-3-👆-inhoudsopgave) </br>
     4.1. [Vragen aan de stakeholders](#41-vragen-aan-de-stakeholders) </br>
     4.2. [Vragen aan de opleidings coordinatoren](#42-vragen-aan-de-opleidings-coordinatoren) </br>
-5. [Vragen iteratie 3](#5-vragen-iteratie-4) </br>
+5. [Vragen iteratie 3](#5-vragen-iteratie-4-👆-inhoudsopgave) </br>
     5.1. [Vragen aan de stakeholders](#51-vragen-aan-de-stakeholders) </br>
     5.2. [Vragen aan de opleidings coordinatoren](#52-vragen-aan-de-opleidings-coordinatoren) </br>
-6. [Bronnen](#6-bronnen)
+6. [Bronnen](#6-bronnen-👆-inhoudsopgave)
 
-# 1. Inleiding <font size="2">[:point_up_2: [Inhoudsopgave](#1-inleiding)]</font>
+# 1. Inleiding <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 Binnen dit document zijn de vragen en antwoorden vastgelegd die gesteld zijn aan de stakeholder van de casus ICDE of de coördinatoren van het vak I-OOSE.
 
 Het is mogelijk om naar de vragen de refereren middels de nummering, Q (Question) representeert een vraag, A (Assumption) representeert een aanname. 
@@ -53,7 +53,7 @@ Het doel van het document is om de vragen die gesteld worden tijdens de analyse 
 ## 1.2. Doelgroep
 Stakeholders vanuit de HAN betrokken bij de casus ICDE en degene die de casus uitvoeren.
 
-# 2. Vragen Iteratie 1 <font size="2">[:point_up_2: [Inhoudsopgave](#1-inleiding)]</font>
+# 2. Vragen Iteratie 1 <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
 ## 2.1. Vragen aan de stakeholders
 
@@ -118,7 +118,7 @@ Stakeholders vanuit de HAN betrokken bij de casus ICDE en degene die de casus ui
 *John: Dit wordt getoetst gedurende het proces, indien wij geen duidelijk beeld hebben van de samenwerking dan zullen wij hier extra naar vragen tijdens het assesment. Ook zul je het onderdeel samenwerking zelf moeten beoordelen in je zelfbeoordeling die je individueel invult.*
 
 
-# 3. Vragen Iteratie 2 <font size="2">[:point_up_2: [Inhoudsopgave](#1-inleiding)]</font>
+# 3. Vragen Iteratie 2 <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
 ## 3.1. Vragen aan de stakeholders
 
@@ -167,7 +167,7 @@ Stakeholders vanuit de HAN betrokken bij de casus ICDE en degene die de casus ui
 **QC2-1 – Worden er wireframes verwacht binnen het Technisch Ontwerp?** </br>
 *John: Wellicht vereenvoudigt dit wel de communicatie met de stakeholder, het is zeker toegestaan maar niet vereist. In de realiteit wordt dit eigenlijk altijd verwacht door de stakeholder.*
 
-# 4. Vragen Iteratie 3 <font size="2">[:point_up_2: [Inhoudsopgave](#1-inleiding)]</font>
+# 4. Vragen Iteratie 3 <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
 ## 4.1. Vragen aan de stakeholders
 
@@ -187,7 +187,7 @@ Stakeholders vanuit de HAN betrokken bij de casus ICDE en degene die de casus ui
 
 *John: Zelf realistische aannamens doen*
 
-# 5. Vragen Iteratie 4 <font size="2">[:point_up_2: [Inhoudsopgave](#1-inleiding)]</font>
+# 5. Vragen Iteratie 4 <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
 ## 5.1. Vragen aan de stakeholders
 Ons huidige domein model en de geinventariseerde functionele eisen zijn al zo omvangrijk dat wij onderstaande vragen niet gesteld hebben aan de stakeholder maar zelf aannamen gedaan hebben zodat wij voorkomen dat het domein en applicatie funtionaliteit ver buiten de grenzen treed van een MVP (Minimum Viable Product).
@@ -213,7 +213,7 @@ Ons huidige domein model en de geinventariseerde functionele eisen zijn al zo om
 **Q4-7 – Aan lessen en tentamen zijn zowel zelfstudie als contacturen verbonden, moeten wij hier een wekelijks limiet aan contact/zelfstudie uren toepassen?** </br>
 *Aanname: Nee, eventueel later mogelijk*
 
-# 6. Bronnen <font size="2">[:point_up_2: [Inhoudsopgave](#1-inleiding)]</font>
+# 6. Bronnen <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 {interview Ronald}
 {interview John 1}
 {interview John 2}

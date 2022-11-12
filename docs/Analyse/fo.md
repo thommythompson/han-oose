@@ -6,7 +6,7 @@ Voor het hele document geldt: het FO moet net zo gedetailleerd als het TO, daarn
 
 ---
 
-# Het Functioneel Ontwerp
+# Functioneel Ontwerp
 **Opdrachtgever:** De HAN - Hoge School Arnhem Nijmegen</br>
 **Datum**: 12-11-2022 </br>
 **Studenten**: Thomas Hofman (622438), Ricardo de Wijs ({studentnr})</br>
@@ -23,23 +23,23 @@ Voor het hele document geldt: het FO moet net zo gedetailleerd als het TO, daarn
 |v0.3|Converteren van docx naar markdown|Thomas Hofman|12-11-2022|
 
 # Inhoudsopgave
-1. [Inleiding](#1-inleiding) </br>
+1. [Inleiding](#1-inleiding-👆-inhoudsopgave) </br>
     1.1. [Aanleiding](#11-aanleiding) </br>
     1.2. [Doelstelling](#12-doelstelling) </br>
     1.3. [Doelgroep](#13-doelgroep) </br>
-2. [Functionele omschrijving](#2-functionele-omschrijving) </br>
+2. [Functionele omschrijving](#2-functionele-omschrijving-👆-inhoudsopgave) </br>
     2.1. [Systeemfunctie](#21-systeemfunctie) </br>
-3. [Use Cases](#3-use-cases) </br>
+3. [Use Cases](#3-use-cases-👆-inhoudsopgave) </br>
     3.1. [Scope](#31-scope) </br>
     3.2. [Use Case Identificatie](#32-use-case-indentificatie) </br>
     3.3. [Crud Use Cases](#33-crud-use-cases) </br>
     3.4. [Use Cases](#34-use-cases) </br>
     3.5. [Use Case Diagram](#35-use-case-diagram) </br>
-4. [Domein Model](#4-domain-model)) </br>
+4. [Domein Model](#4-domain-model-👆-inhoudsopgave)) </br>
     4.1. [Concept Identificatie](#41-concept-identificatie) </br>
     4.2. [Het model](#42-het-model) </br>
-5. [Prioritering (MoSCoW)](#5-prioritering-moscow) </br>
-6. [Bronnen](#6-bronnen)
+5. [Prioritering (MoSCoW)](#5-prioritering-moscow-👆-inhoudsopgave) </br>
+6. [Bronnen](#6-bronnen-👆-inhoudsopgave)
 
 # 1. Inleiding <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
@@ -52,7 +52,7 @@ Het doel van het document is het in detail vastleggen van een functionele omschr
 ## 1.3. Doelgroep
 Stakeholders vanuit de HAN betrokken bij de casus ICDE en degene die de casus uitvoeren.
 
-# 2. Functionele Omschrijving
+# 2. Functionele Omschrijving <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 Om goed te begrijpen wat het te ontwikkelen systeem(SUD) moet gaan doen, zijn er op basis van de initiële casus beschrijving: “Intergrated Course Design Environment” en op basis van een domein onderzoek vragen gesteld aan de stakeholders. De uitkomsten resulteren in een functioneel eisenpakket. Als toevoeging van dit eisenpakket is er in de volgende paragraaf een beknopte functionele beschrijving opgenomen om te toetsen of de interpretatie van de klantvraag juist is.
 
 ## 2.1. Systeemfunctie
@@ -114,7 +114,7 @@ Use case diagram maken, om verband tussen use cases inzichtelijk te maken. Hier 
 
 ---
 
-# 4. Domain Model
+# 4. Domain Model <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 Binnen het domein model richten wij ons op het verstaan van de business taal, hetgeen dat van belang is de vastlegging van concepten, hun attributen en de relatie tussen deze concepten. Het domein model zelf is een visuele representatie van het business domein al zullen wij ons eerst richten op de identificatie van de concepten. De vastlegging hiervan is tekstueel, de reden voor de vastleggen is dat oorsprong van alle concepten zo te herleiden valt.
 
 ---
@@ -124,7 +124,7 @@ alle relevante domein-concepten volledig beschreven dmv. correct toegepaste stan
 ---
 
 
-# 5. Prioritering (MoSCoW)
+# 5. Prioritering (MoSCoW) <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 In onderstaande is een opsomming weergegeven van alle use cases gekoppeld aan de importantie op basis van de MoSCoW methode (Nicole de Zwart, Prioriteringstechnieken).
 
 |#|Use Case|Prioriteit|Toelichting|
@@ -132,7 +132,7 @@ In onderstaande is een opsomming weergegeven van alle use cases gekoppeld aan de
 |1|{Titel}|{M, S, C, W}|{Toelichting}|
 
 
-# 6. Bronnen
+# 6. Bronnen <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 {Larman}
 {Handboek Requirements, Nicole de Zwart}
 

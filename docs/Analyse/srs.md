@@ -20,17 +20,17 @@
 |v0.6|Converteren van docx naar markdown|Thomas Hofman|12-11-2022|
 
 # Inhoudsopgave
-1. [Inleiding](#1-inleiding) </br>
+1. [Inleiding](#1-inleiding-👆-inhoudsopgave) </br>
     1.1. [Doelstelling](#11-doelstelling) </br>
     1.2. [Doelgroep](#12-doelgroep) </br>
-2. [Functional Requirements (SMART)](#2-functional-requirements-smart) </br>
-3. [Non-Functional Requirements (SMART)](#3-doelgroep) </br>
+2. [Functional Requirements (SMART)](#2-functional-requirements-smart-👆-inhoudsopgave) </br>
+3. [Non-Functional Requirements (SMART)](#3-non-functional-requirements-smart-👆-inhoudsopgave) </br>
     3.1. [Usability](#31-usability) </br>
     3.2. [Reliability](#32-reliability) </br>
     3.3. [Performance](#33-performance) </br>
     3.4. [Supportability](#34-supportability) </br>
     3.5. [Plus](#35-plus) </br>
-4. [Bronnen](#4-bronnen)
+4. [Bronnen](#4-bronnen-👆-inhoudsopgave)
 
 
 # 1. Inleiding <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
