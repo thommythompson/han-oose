@@ -26,9 +26,24 @@ Bij de aanvang van het project is duidelijk dat wij onderstaande gaan gebruiken,
 - Markdown documentatie
 - Mermaid voor UML diagrams
 
-## op te leveren documentatie
+## Documentatie werkwijze
+Tijdens de analyse fase stellen wij in eerste instantie vragen aan de stakeholder op basis van de aangeleverde casus documenten. Deze vragen in combinatie met antwoord leggen wij vast in een vragen document, alle vragen in dit document zijn genummerd zodat wij hier eventueel later naar kunnen referen. Antwoorden roepen waarschijnlijk meer vragen op, wij zullen daarom meerdere malen een meeting plannen met de stakeholder en vervolgens weer de feedback/verkregen antwoorden verwerken, dit doen wij interatief, ieder vragen moment staat voor iteratie.
+
+Op basis van de verkregen antwoorden stellen wij een document met requirements op, op basis van de requirements zullen wij vervolgens een functioneel ontwerpen opstellen. Niet functionele requirements in combinatie met het functionele ontwerp zullen het technisch ontwerp vervolgens voeden.
+
+Belangrijk is dat de oorsprong van verschillende design keuzes te herlijden is, in onderstaande diagram word inzichtelijk gemaakt hoe deze documenten zicht tot elkaar verhouden..
+
+```mermaid
+flowchart LR
+    Q&A -->|Vragen| SRS 
+    SRS -->|Functionele Requirements| FO 
+    SRS -->|Niet Functionele Requirements| TO
+    FO --> TO 
+
 ```
-# Vanzelfsprekend dient alle vastlegging waar mogelijk ook onderbouwt te worden.
+
+Dan onderstaande een overzicht van alle documentatie die wij plannen op te leveren. Vanzelfsprekend dient alle vastlegging waar mogelijk ook onderbouwt te worden.
+```
 .
 ├── Question & Answers (Q&A)
 ├── Software Requirement Sepcification (SRS)
@@ -39,9 +54,9 @@ Bij de aanvang van het project is duidelijk dat wij onderstaande gaan gebruiken,
 ├── Development onboarding
 ├── Technisch Ontwerp
 |   ├── Class Diagram
+|   ├── Toegepaste patterns
 |   ├── Sequence Diagrams (SD)
 |   ├── Frameworks & Libraries
-|   ├── Applicatie Architectuur
 |   ├── Applicatie Architectuur
 ```
 

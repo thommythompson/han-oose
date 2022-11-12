@@ -10,7 +10,7 @@ Voor het hele document geldt: het FO moet net zo gedetailleerd als het TO, daarn
 **Opdrachtgever:** De HAN - Hoge School Arnhem Nijmegen</br>
 **Datum**: 12-11-2022 </br>
 **Studenten**: Thomas Hofman (622438), Ricardo de Wijs ({studentnr})</br>
-**Versie**: v0.2 </br>
+**Versie**: v0.3 </br>
 **Klas**: {klascode} </br>
 **Locatie**: Arnhem
 **Docent**: John Gorter 
@@ -41,8 +41,7 @@ Voor het hele document geldt: het FO moet net zo gedetailleerd als het TO, daarn
 5. [Prioritering (MoSCoW)](#5-prioritering-moscow) </br>
 6. [Bronnen](#6-bronnen)
 
-# 1. Inleiding
-
+# 1. Inleiding <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
 ## 1.1. Aanleiding
 De aanleiding voor het schrijven van dit functioneel ontwerp is de wens vanuit de organisatie de HAN namens semester ontwikkelaars om een systeem te kunnen gebruiken dat hun assisteert bij het ontwikkelen van een course.
@@ -69,7 +68,7 @@ Om kwaliteit van het ontwikkelde semester of het semester in ontwikkeling te waa
 **Externe ondersteuning** </br>
 Bij ontwikkelen van een semester wordt ook informatie verzameld over studiebelasting, beoordelingscriteria per vak of onderdeel en de samenstelling van een semester. Al deze informatie is nuttig voor studenten, roostermakers of voor marketing. Daarom zal het systeem voorbereid worden om deze informatie te distribueren naar andere systemen.
 
-# 3. Use Cases
+# 3. Use Cases <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 Binnen het hoofdstuk use cases zullen wij ons richten op het identificeren en vastleggen van use cases. Het in kaart brengen doen wij volgens de Larman methode, deze begint met het het vaststellen van de scope. Vervolgens zullen wij over gaan tot de daadwerkelijke use case identificatie, dit doen wij middels de “User-Goal” en “Event Analysis” methoden. Het vastleggen van dit proces doen wij zodat de oorsprong van de use cases systematisch te herleiden valt.
 
 De in kaart gebrachte use cases worden waar nodig uitgewerkt tot een daadwerkelijke tekstuele use case, ofte wijl een use case in fully dressed format. Vervolgens sluiten wij dit hoofdstuk af met een use case diagram, een visuele weergave van hoe de use cases zich tot elkaar verhouden. 
@@ -88,6 +87,11 @@ Kort toelichten wat externe en interne functionaliteit is.
 ## 3.3. Use Cases
 In het voorafgaande hoofdstuk hebben wij middels verschillende use case identificatie technieken belangrijke entiteiten, actoren en hun doelen weten te identificeren. Uit deze informatie hebben wij een aantal use cases weten te extraheren (2.2.3), waar nodig worden deze in onderstaande toegelicht middels een “fully dressed” formaat. Het fully dressed use case model is gebasseerd op het meest wijd geadoppteerde template van Alistair Cockburn (Larman 2004, 6.8).
 
+### Use Case Overview
+- [UC-1 - {Titel}](#331-uc-1-titel-👆-overview)
+
+
+### 3.3.1 UC-1 {Titel} <font size="2">[:point_up_2: [Overview](#use-case-overview)]</font>
 ---
 :warning: **_CRITERIA:_**
 alle functionele requirements volledig, eenduidig, begrijpelijk en testbaar beschreven
