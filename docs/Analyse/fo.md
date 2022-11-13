@@ -91,190 +91,66 @@ Nog valideren tegen over use case model dat in onderwijs online staat.
 ---
 
 ### 3.2.1 UC-## - Create
-<table>
-    <tr>
-        <td class="main" colspan="2">UC-## - Create</td>
-    </tr>
-    <tr>
-        <td class="key" >ID</td> <td>UC-##</td>
-    </tr>
-    <tr>
-        <td class="key">Naam</td> <td>Create</td>
-    </tr>
-    <tr>
-        <td class="key">Omschrijving</td> <td>Standaard "Create" use case</td>
-    </tr>
-    <tr>
-        <td class="key">Pre-Conditities</td> <td>null</td>
-    </tr>
-    <tr>
-        <td class="key">Succes definitie</td> <td>De data voor het desbetreffende object is persistent opgeslagen.</td>
-    </tr>
-    <tr>
-        <td class="main" colspan="2">Main Success Scenario</td>
-    </tr>
-    <tr>
-        <td class="secondary">Actor</td> <td class="secondary">System</td>
-    </tr>
-    <tr>
-        <td>1. De gebruiker besluit data voor een gegeven object vast te leggen. </td> <td></td>
-    </tr>
-    <tr>
-        <td></td> <td>2. Het systeem vraagt de gebruiker om de benodigde data in te vullen.</td>
-    </tr>
-    <tr>
-        <td>3. De gebruiker voorziet het systeem van de benodigde data.</td> <td></td>
-    </tr>
-    <tr>
-        <td>4. De gebruiker besluit de data persistent te willen maken.</td> <td></td>
-    </tr>
-    <tr>
-        <td></td> <td>5. Het systeem voert validaties uit.</td>
-    </tr>
-    <tr>
-        <td></td> <td>6. Het systeem persisteert de opgegeven data.</td>
-    </tr>
-    <tr>
-        <td></td> <td>7. Het systeem attendeert de gebruiker op het feit dat de data succesvol is opgeslagen.</td>
-    </tr>
-    <tr>
-        <td style="font-style: italic">De gebruiker herhaalt de stappen 1 t/m 7 totdat alle gewenste data is vastgelegd.</td> <td></td>
-    </tr>
-    <tr>
-        <td class="main" colspan="2">Alternative Flow A</td>
-    </tr>
-    <tr>
-        <td colspan="2">
-        5a. [De gegevens blijken niet valide te zijn] <br>
-            1.	Het systeem attendeert de gebruiker op het  feit dat de invoer niet valide is en de reden daarvoor.
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2">
-        6a. [De persistentie tier blijkt is niet beschikbaar] <br>
-            1.	Het systeem geeft aan dat het object niet succesvol opgeslagen is.
-        </td>
-    </tr>
-</table>
+| | |
+|-|-|
+| ID | UC-## |
+| Naam | Create |
+| Omschrijving | Standaard "Craete" use case |
+| Pre-Conditities | null |
+| Succes definitie | De data voor het desbetreffende object is persistent opgeslagen. |
+| <font size="4"> **Main Success Scenario** </font>
+| **Actor** | **System** |
+| 1. De gebruiker besluit data voor een gegeven object vast te leggen. | |
+| | 2. Het systeem vraagt de gebruiker om de benodigde data in te vullen. |
+| 3. De gebruiker voorziet het systeem van de benodigde data. | |
+| 4. De gebruiker besluit de data persistent te willen maken. | |
+| | 5. Het systeem voert validaties uit.|
+| | 6. Het systeem persisteert de opgegeven data. |
+| | 7. Het systeem attendeert de gebruiker op het feit dat de data succesvol is opgeslagen. |
+| *De gebruiker herhaalt de stappen 1 t/m 7 totdat alle gewenste data is vastgelegd.* | |
+| <font size="4"> **Alternative Flow A** </font>
+| 5a. [De gegevens blijken niet valide te zijn] <br> 1.	Het systeem attendeert de gebruiker op het  feit dat de invoer niet valide is en de reden daarvoor.
+| 6a. [De persistentie tier blijkt is niet beschikbaar] <br> 1.	Het systeem geeft aan dat het object niet succesvol opgeslagen is.
 
 ### 3.2.2 UC-## - Read
-<table>
-    <tr>
-        <td class="main" colspan="2">UC-## - Read</td>
-    </tr>
-    <tr>
-        <td class="key" >ID</td> <td>UC-##</td>
-    </tr>
-    <tr>
-        <td class="key">Naam</td> <td>Read</td>
-    </tr>
-    <tr>
-        <td class="key">Omschrijving</td> <td>Standaard "Read" use case</td>
-    </tr>
-    <tr>
-        <td class="key">Pre-Conditities</td> <td>De create use case is doorlopen voor de objecten dat men wilt tonen.</td>
-    </tr>
-    <tr>
-        <td class="key">Succes definitie</td> <td>Alle data van het desbetreffende object is aan de eindgebruiker getoont.</td>
-    </tr>
-    <tr>
-        <td class="main" colspan="2">Main Success Scenario</td>
-    </tr>
-    <tr>
-        <td class="secondary">Actor</td> <td class="secondary">System</td>
-    </tr>
-    <tr>
-        <td>1. De gebruiker vraagt een overzicht van de gewenste objecten op. </td> <td></td>
-    </tr>
-    <tr>
-        <td></td> <td>2. Het systeem toont een lijst van de opgevraagde informatie.</td>
-    </tr>
-    <tr>
-        <td>3. De gebruiker kiest een object uit de lijst waar men gedetailleerde informatie van wilt zien.</td> <td></td>
-    </tr>
-    <tr>
-        <td></td> <td>4. Het systeem toont alle beschikbare informatie voor het desbetreffende object.</td>
-    </tr>
-    <tr>
-        <td style="font-style: italic">De gebruiker herhaalt de stappen 1 t/m 4 totdat alle gewenste data is gewijzigd.</td> <td></td>
-    </tr>
-    <tr>
-        <td class="main" colspan="2">Alternative Flow A</td>
-    </tr>
-    <tr>
-        <td colspan="2">
-        2a/4a. [De persistentie tier blijkt is niet beschikbaar] <br>
-            1.	Het systeem geeft aan dat de benodigde data niet opgehaald kon worden.
-        </td>
-    </tr>
-</table>
+| | |
+|-|-|
+| ID | UC-## |
+| Naam | Read |
+| Omschrijving | Standaard "Read" use case |
+| Pre-Conditities | De create use case is doorlopen voor de objecten dat men wilt tonen. |
+| Succes definitie | Alle data van het desbetreffende object is aan de eindgebruiker getoont. |
+| <font size="4"> **Main Success Scenario** </font>
+| **Actor** | **System** |
+| 1. De gebruiker vraagt een overzicht van de gewenste objecten op.| |
+| | 2. Het systeem toont een lijst van de opgevraagde informatie. |
+| 3. De gebruiker kiest een object uit de lijst waar men gedetailleerde informatie van wilt zien. | |
+| | 4. Het systeem toont alle beschikbare informatie voor het desbetreffende object. |
+| *De gebruiker herhaalt de stappen 1 t/m 4 totdat alle gewenste data is gewijzigd.* | |
+| <font size="4"> **Alternative Flow A** </font>
+| 2a/4a. [De persistentie tier blijkt is niet beschikbaar] <br> 1.Het systeem geeft aan dat de benodigde data niet opgehaald kon worden.
 
 ### 3.2.3 UC-## - Update
-<table>
-    <tr>
-        <td class="main" colspan="2">UC-## - Update</td>
-    </tr>
-    <tr>
-        <td class="key" >ID</td> <td>UC-##</td>
-    </tr>
-    <tr>
-        <td class="key">Naam</td> <td>Update</td>
-    </tr>
-    <tr>
-        <td class="key">Omschrijving</td> <td>Standaard "Update" use case</td>
-    </tr>
-    <tr>
-        <td class="key">Pre-Conditities</td> <td>De gebruiker heeft de read use case doorlopen.</td>
-    </tr>
-    <tr>
-        <td class="key">Succes definitie</td> <td>De wijzigingen zijn persistent opgeslagen.</td>
-    </tr>
-    <tr>
-        <td class="main" colspan="2">Main Success Scenario</td>
-    </tr>
-    <tr>
-        <td class="secondary">Actor</td> <td class="secondary">System</td>
-    </tr>
-    <tr>
-        <td>1. De gebruiker besluit het desbetreffende object te wijzigen. </td> <td></td>
-    </tr>
-    <tr>
-        <td></td> <td>2. Het toont een formulier waarin men data kan wijzigen, het formulier is alvast ingevuld met de al aanwezige data. </td>
-    </tr>
-    <tr>
-        <td>3. De gebruiker past de data naar wens aan.</td> <td></td>
-    </tr>
-    <tr>
-        <td>4. De gebruiker besluit de data persistent te willen maken.</td> <td></td>
-    </tr>
-    <tr>
-        <td></td> <td>5. Het systeem voert validaties uit.</td>
-    </tr>
-    <tr>
-        <td></td> <td>6. Het systeem persisteert de opgegeven data.</td>
-    </tr>
-    <tr>
-        <td></td> <td>7. Het systeem attendeert de gebruiker op het feit dat de data succesvol is opgeslagen.</td>
-    </tr>
-    <tr>
-        <td style="font-style: italic">De gebruiker herhaalt de stappen 1 t/m 7 totdat alle gewenste data is gewijzigd.</td> <td></td>
-    </tr>
-    <tr>
-        <td class="main" colspan="2">Alternative Flow A</td>
-    </tr>
-    <tr>
-        <td colspan="2">
-        5a [De gegevens blijken niet valide te zijn] <br>
-            1.	Het systeem attendeert de gebruiker op het  feit dat de invoer niet valide is en de reden daarvoor.
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2">
-        6a. [De persistentie tier blijkt is niet beschikbaar] <br>
-            1.	Het systeem geeft aan dat het object niet succesvol opgeslagen is.
-        </td>
-    </tr>
-</table>
+| | |
+|-|-|
+| ID | UC-## |
+| Naam | Update |
+| Omschrijving | Standaard "Update" use case |
+| Pre-Conditities | De gebruiker heeft de "Read" use case doorlopen. |
+| Succes definitie | De wijzigingen zijn persistent opgeslagen. |
+| <font size="4"> **Main Success Scenario** </font>
+| **Actor** | **System** |
+| 1. De gebruiker besluit het desbetreffende object te wijzigen.| |
+| |2. Het toont een formulier waarin men data kan wijzigen, het formulier is alvast ingevuld met de al aanwezige data. |
+| 3. De gebruiker past de data naar wens aan.| |
+| 4. De gebruiker besluit de data persistent te willen maken. | |
+| | 5. Het systeem voert validaties uit.|
+| | 6. Het systeem persisteert de opgegeven data.|
+| | 7. Het systeem attendeert de gebruiker op het feit dat de data succesvol is opgeslagen.|
+| *De gebruiker herhaalt de stappen 1 t/m 7 totdat alle gewenste data is gewijzigd.* | |
+| <font size="4"> **Alternative Flow A** </font>
+|5a [De gegevens blijken niet valide te zijn] <br> 1.	Het systeem attendeert de gebruiker op het  feit dat de invoer niet valide is en de reden daarvoor. </td>
+|6a. [De persistentie tier blijkt is niet beschikbaar] <br> 1.	Het systeem geeft aan dat het object niet succesvol opgeslagen is.
 
 ### 3.2.4 UC-## - Delete
 | | |
