@@ -4,7 +4,14 @@
 
 ## Tooling
 Tooling die gebruikt word binnen het team.
-- Visual Studio Code (met meraid extension): voor het opstellen van de markdown documentatie.
+- Visual Studio Code: voor het opstellen van de markdown documentatie.
+- Mermaid extension voor VS Code
+- PlantUML extension voor VS Code
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install --cask temurin
+brew install graphviz
+```
 - Azure Data Studio: voor database beheer.
 - Rider: Als IDE.
 - Fork: als visuele git client.
