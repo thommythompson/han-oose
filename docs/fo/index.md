@@ -163,6 +163,126 @@ s --> UC2
 
 Binnen het domein model richten wij ons op het verstaan van de business taal, hetgeen dat van belang is de vastlegging van concepten, hun attributen en de relatie tussen deze concepten. Het domein model zelf is een visuele representatie van het business domein al zullen wij ons eerst richten op de identificatie van de concepten. De vastlegging hiervan is tekstueel, de reden voor de vastleggen is dat oorsprong van alle concepten zo te herleiden valt.
 
+```plantuml
+object CourseBibliotheek 
+object CourseInrichting {
+    Titel
+    AantalStudiePunten
+    DuurInWeken
+}
+object CourseWeekInrichting {
+    WeekNr
+}
+object SchriftelijkeToets {
+    Type
+}
+object EenheidVanLeeruitkomsten {
+    Titel
+    Omschrijving
+}
+object Leeruitkomst {
+    Titel
+    Omschrijving
+}
+object Leerdoel {
+    Titel
+    Omschrijving
+}
+object LesInrichting {
+    ContactUren
+}
+object LesMateriaal
+object Rubrics {
+    Titel
+    Weging
+    AantalCriteria
+    VoldoendeThreshold
+    KnockoutThreshold
+}
+object BeroepsProduct {
+    Type
+}
+object BeoordelingsCriteria {
+    Omschrijving
+}
+object TentamenInrichting {
+    Titel
+    TypeBeoordeling
+    Weging
+    HaalbareStudiePunten
+}
+object Persoon {
+    naam
+}
+object Docent
+object Student
+object CourseUitvoering
+object Klas {
+    Code
+}
+object Opleiding {
+    Naam
+}
+object Opleidingsprofiel {
+    Naam
+}
+object Beoordeling {
+    BehaaldAantalPunten
+}
+object TentamenUitvoering {
+    Datum
+}
+object CourseWeekUitvoering {
+    SchoolWeekNr
+    DatumMaandag
+}
+object LesUitvoering {
+    Datum
+}
+object Locatie {
+    Naam
+    Adres
+    IsOnline
+}
+
+CourseBibliotheek "1" -- "0..*" CourseInrichting : Staat in
+EenheidVanLeeruitkomsten "1..*" -- "1" CourseInrichting : Is gericht op
+EenheidVanLeeruitkomsten "1" -- "1..*" Leeruitkomst : Bevat
+Leeruitkomst "1" -- "1..*" Leerdoel : Word behaald door
+Leerdoel "0..*" -- "1..*" SchriftelijkeToets 
+Leerdoel "1..*" -- "1..*" Rubrics 
+Leerdoel "1..*" -- "1..*" LesInrichting
+Rubrics "1" -- "1..*" BeoordelingsCriteria : Bestaat uit
+Rubrics "1..*" -- "1" BeroepsProduct : Word beoordeeld middels
+SchriftelijkeToets --|> TentamenInrichting : Is
+BeroepsProduct --|> TentamenInrichting : Is
+LesInrichting "1" -- "1..*" LesMateriaal : Bevat
+LesInrichting "1" -- "0..*" LesUitvoering : Representeert
+LesInrichting "1" -- "0..*" CourseWeekInrichting
+CourseWeekInrichting "1" -- "0..*" TentamenInrichting : bevat
+CourseWeekInrichting "1..*" -- "1" CourseInrichting : bevat
+CourseWeekInrichting "1" -- "0..*" CourseWeekUitvoering : valt in
+CourseInrichting "0..*" -- "1..*" Docent : maakt
+CourseInrichting "1" -- "0..*" CourseUitvoering : Representeert
+Docent  --|> Persoon : Is
+Student  --|> Persoon : Is
+TentamenInrichting "1" -- "0..*" TentamenUitvoering : Representeert
+Docent "1" -- "0..*" LesUitvoering : Geeft
+Docent "1" -- "0..*" TentamenUitvoering : Examineert
+Docent "1" -- "0..*" Beoordeling : Geeft
+Beoordeling "1..*" -- "1" TentamenUitvoering : Voor
+Beoordeling "1" -- "0..*" Student : Krijgt
+Klas "1..*" -- "1" Student : Zit in
+Klas "1" -- "1..*" CourseUitvoering : Volgt
+Klas "1" -- "0..*" Opleidingsprofiel : Volgt
+Opleiding "1" -- "1..*" Opleidingsprofiel : Bevat
+CourseWeekUitvoering "1..*" -- "1" CourseUitvoering : Bevat
+CourseWeekUitvoering "1" -- "0..*" TentamenUitvoering : Valt in
+CourseWeekUitvoering "1" -- "0..*" LesUitvoering : Valt in
+Locatie "1" -- "1..*" LesUitvoering 
+Locatie "1" -- "1..*" TentamenUitvoering
+```
+
 ---
 :warning: **_CRITERIA:_**
 alle relevante domein-concepten volledig beschreven dmv. correct toegepaste standaard-notatie, implementatie-onafhankelijk, correctheid/compleetheid aantoonbaar onderbouwd voor een 10
