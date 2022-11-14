@@ -121,7 +121,7 @@ Stakeholders vanuit de HAN betrokken bij de casus ICDE en degene die de casus ui
 ## 2.2. Vragen aan de opleidings coordinatoren
 
 **QC1-1 – Binnen het beoordelingen formulier wordt gevraagd om teamwork, in welke form dienen wij dit aan te tonen, commentaar in Word? Github versie beheer? Github project kanban? Way of work document?** </br>
-*John: Dit wordt getoetst gedurende het proces, indien wij geen duidelijk beeld hebben van de samenwerking dan zullen wij hier extra naar vragen tijdens het assesment. Ook zul je het onderdeel samenwerking zelf moeten beoordelen in je zelfbeoordeling die je individueel invult.*
+*John: Dit wordt getoetst gedurende het proces, indien wij geen duidelijk beeld hebben van de samenwerking dan zullen wij hier extra naar vragen tijdens het assessment. Ook zul je het onderdeel samenwerking zelf moeten beoordelen in je zelfbeoordeling die je individueel invult.*
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
@@ -159,7 +159,7 @@ Stakeholders vanuit de HAN betrokken bij de casus ICDE en degene die de casus ui
 ***“Inconsistenties (tussen wat?) kunnen geautomatiseerd gedetecteerd worden, bijv. of er voldoende onderwijs voor alle beoordelingsdimensies wordt gegeven of dat er lessen zijn die niet bijdragen aan de leerdoelen;”*** </br>
 *John: Aan een leerdoel moet altijd een tentamen zitten en minimaal een les. Er moet voorkomen worden dat er iets getoetst wordt op een leerdoel dat buiten de course valt of dat men toets op een leerdoel waar geen les in gegeven is. Daarnaast dient ieder leerdoel afgetoetst te worden. Valideren of de tentaminering afgenomen word nadat alle lessen voor het bijhorende lesdoel gegeven wordt valt buiten de scope.*
 
-**Q2-10 – Moet het systeem ook de lesinhoud bevatten of puur aangeven welke/wat van soort lessgen er gegeven moeten worden?** </br>
+**Q2-10 – Moet het systeem ook de lesinhoud bevatten of puur aangeven welke/wat van soort lessen er gegeven moeten worden?** </br>
 *John: Lesinhoud is wel relevant voor de inrichting van een course, wellicht een beschrijving van de les en optioneel lesmateriaal zoals bijvoorbeeld binnen onderwijsonline.*
 
 **Q2-11 – Zijn studiepunten ook onderdeel van het systeem? Een semester (20 weken ofte wijl 2 onderwijsperioden) betreft vrijwel altijd 30 studiepunten bepaalt de duur ook het aantal studiepunten?** </br>
@@ -223,7 +223,7 @@ Ons huidige domein model en de geinventariseerde functionele eisen zijn al zo om
 *Aanname: Alleen de laatste versie.*
 
 **Q4-5 – In de casus wordt een ontwikkelaar beschreven als iemand die een semester ontwikkelt, betekent dit dat een course altijd een semester duurt? Of terwijl 30 studiepunten en 20 weken per course?** </br>
-*Aanname: Dit kan zowel een semester zijn (2 prioden/een half jaar) als een enkele periode (kwart jaar)*
+*Aanname: Dit kan zowel een semester zijn (2 perioden/een half jaar) als een enkele periode (kwart jaar)*
 
 **Q4-6 – Moet er rekening gehouden worden met herkansingen?** </br>
 *Aanname: Niet voor het MVP.*
@@ -233,7 +233,8 @@ Ons huidige domein model en de geinventariseerde functionele eisen zijn al zo om
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
-# 6. Bronnen 
+# 6. Bronnen
+
 |APA Bronvermelding|
 |------------------|
 {interview Ronald}

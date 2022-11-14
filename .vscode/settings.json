@@ -5,4 +5,5 @@
     "plantuml.server": "https://www.plantuml.com/plantuml",
     "plantuml.exportFormat": "png",
     "plantuml.render": "PlantUMLServer",
+    "cSpell.language": "en,nl",
 }

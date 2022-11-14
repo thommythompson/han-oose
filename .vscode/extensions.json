@@ -5,6 +5,7 @@
         "bierner.markdown-mermaid",
         "donjayamanne.githistory",
         "vscode-icons-team.vscode-icons",
-        "davidanson.vscode-markdownlint"
+        "davidanson.vscode-markdownlint",
+        "streetsidesoftware.code-spell-checker-dutch"
     ]
 }

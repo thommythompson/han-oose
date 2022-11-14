@@ -218,6 +218,31 @@ sequenceDiagram
 
 # **UC-20 Aanmelden**
 
+<table>
+    <tr><td><strong>ID</strong></td><td>UC-20</td></tr>
+    <tr><td><strong>Naam</strong></td><td>Aanmelden</td></tr>
+    <tr><td><strong>Omschrijving</strong></td><td>Deze use case is verantwoordelijk voor het autoriseren en eventueel registreren van systeem gebruikers. Authenticatie valt buiten de scope van deze use case.</td></tr>
+    <tr><td><strong>Scope</strong></td><td>ICDE-Tool</td></tr>
+    <tr><td><strong>Trigger</strong></td><td>Authenticatie service</td></tr>
+    <tr><td><strong>Level</strong></td><td>User-Goal</td></tr>
+    <tr><td><strong>Primary Actor</strong></td><td>Student / Docent</td></tr>
+    <tr><td><strong>Belangen & belanghebbenden</strong></td><td>- Student / Docent: Wil kunnen inloggen en de acties waar tot zij bevoegd is kunnen uitvoeren </br> - Docent: Wil studenten kunnen toevoegen aan een klas en docenten kunnen verbinden aan een les en of tentamen.</td></tr>
+    <tr><td><strong>Pre-Condities</strong></td><td>- Authenticatie is afgehandeld; gebruiker is bevoegd om op het systeem in te loggen.</td></tr>
+    <tr><td><strong>Succes definitie</strong></td><td>- Een representatie van de desbetreffende gebruiker is persistent opgeslagen. </br> - Er is een bevoegdheid toegekend aan de gebruiker voor de resterende duur van het bezoek.</td></tr>
+    <tr><td colspan="2"><strong>Main Success Scenario</strong></td></tr>
+    <tr><td><strong>Actor</strong></td><td><strong>System</strong></td></tr>
+    <tr><td><em>[Bezoeker is doorverwezen door extern authenticatie systeem en heeft een claim verkregen]</em> </br> 1. Verzend authenticatie claim naar systeem.</td><td></td></tr>
+    <tr><td></td><td>2. Het systeem bekijkt op basis van de van het authenticatie systeem verkregen gegevens wat van type gebruiker het betreft; docent of student.</td></tr>
+    <tr><td></td><td>3. Het systeem bekijkt of de gebruiker al bestaat binnen het systeem op basis van het email adres. </br><em>[De gebruiker bestaat nog niet]</em></td></tr>
+    <tr><td></td><td>4. Het systeem registreert de gebruiker</td></tr>
+    <tr><td></td><td>5. Het systeem verleent de gebruiker toegang voor de duur van het bezoek.</td></tr>
+    <tr><td></td><td>6. De gebruiker wordt verwezen naar de plek die men initieel bezocht.</td></tr>
+    <tr><td colspan="2"><strong>Alternative flow A</strong></td></tr>
+    <tr><td colspan="2">3a. <em>[De gebruiker bestaat al]</em> </br> 1. Het systeem controleert of het gebruikerstype gewijzigd is. </br> <em>[Het gebruiker type is gewijzigd]</em></br>2. Het systeem overschrijft het huidige gebruikerstype met het nieuwe gebruikerstype. </br><em>Ga verder bij stap 5.</em></td></tr>
+    <tr><td colspan="2"><strong>Alternative flow B</strong></td></tr>
+    <tr><td colspan="2">3a. <em>[De gebruiker bestaat al]</em> </br> 1. Het systeem controleert of het gebruikerstype gewijzigd is. </br> <em>[Het gebruiker type is niet gewijzigd]</em></br><em>Ga verder bij stap 5.</em></td></tr>
+</table>
+
 | | |
 |-|-|
 | ID | UC-20 |
