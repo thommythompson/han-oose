@@ -7,10 +7,10 @@ Informatie omtrend werkwijze staat vastgelegd in de onderstaande twee documenten
 2. In het ["How to get started?" document](./docs/htgs.md) staat vastgelegd hoe je het project lokaal zo kan inrichten zodat je bezig kan gaan met het ontwikkelen.
 
 ## Analyse & Design
-- [Requirement Gathering (Ookwel bekend als vragen document)](./docs/Analyse/q&a.md)
-- [Requirements Specification](./docs/Analyse/srs.md)
-- [Functioneel Ontwerp](./docs/Analyse/fo.md)
-- [Technisch Ontwerp](./docs/Design/to.md)
+- [Requirement Gathering (Ookwel bekend als vragen document)](./docs/invetarisatie/q&a.md)
+- [Requirements Specification](./docs/invetarisatie/srs.md)
+- [Functioneel Ontwerp](./docs/fo/index.md)
+- [Technisch Ontwerp](./docs/to/index.md)
 
 ## Priority
 1. Eerst de inrichting kant van de domein laag uitwerken

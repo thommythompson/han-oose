@@ -1,0 +1,8 @@
+{
+    "workbench.colorTheme": "Default Dark+",
+    "git.autofetch": true,
+    "plantuml.commandArgs": [],
+    "plantuml.server": "https://www.plantuml.com/plantuml",
+    "plantuml.exportFormat": "png",
+    "plantuml.render": "PlantUMLServer",
+}

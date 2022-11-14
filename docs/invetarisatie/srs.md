@@ -1,5 +1,11 @@
 [Terug](/README.md)
 
+---
+:warning: **_CRITERIA:_**
+alle functionele requirements volledig, eenduidig, begrijpelijk en testbaar beschreven
+
+---
+
 # Software Requirement Specification
 **Opdrachtgever:** De HAN - Hoge School Arnhem Nijmegen</br>
 **Datum**: 12-11-2022 </br>

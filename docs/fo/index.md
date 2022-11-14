@@ -39,8 +39,7 @@ Voor het hele document geldt: het FO moet net zo gedetailleerd als het TO, daarn
 4. [Domein Model](#4-domain-model-👆-inhoudsopgave)) </br>
     4.1. [Concept Identificatie](#41-concept-identificatie) </br>
     4.2. [Het model](#42-het-model) </br>
-5. [Prioritering (MoSCoW)](#5-prioritering-moscow-👆-inhoudsopgave) </br>
-6. [Bronnen](#6-bronnen-👆-inhoudsopgave)
+5. [Bronnen](#5-bronnen-👆-inhoudsopgave)
 
 # 1. Inleiding <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
@@ -179,9 +178,122 @@ In het voorafgaande hoofdstuk hebben wij middels verschillende use case identifi
 
 Bevat ook gedrag wat betreft de werking van het domein.
 
-### Use Case Overview
-- [UC-1 - {Titel}](#331-uc-1-titel-👆-overview)
+---
+:warning: **_NOTE:_**
+- Use case nummeren maar ook binnen de use case. 
+- alleen de compleze use cases 
+- Bij complexe use cases een sequence diagram opnemen.
 
+---
+
+### Use Case Overview
+- [UC-2 - Bekijken beoordelingen](#332-uc-2---bekijken-beoordelingen-👆-overview)
+- [UC-3 - Beheer Gebruikers](#333-uc-3---beheer-gebruikers-👆-overview)
+- [UC-4 - Beheer Klassen](#334-uc-4---beheer-klassen👆-overview)
+- [UC-7 - Beheer Opleidingen](#337-uc-7---beheer-opleidingen-👆-overview)
+- [UC-9 - Beheer Opleidingsprofielen](#339-uc-9---beheer-opleidingsprofielen-👆-overview)
+- [UC-12 - Ontwikkel Leerdoelen](#3312-uc-12---ontwikkel-leerdoelen-👆-overview)
+- [UC-17 - Maak Weekplanning](#3317-uc-17---maak-weekplanning-👆-overview)
+- [UC-20 - Aanmelden](#3320-uc-20---aanmelden-👆-overview)
+
+
+### 3.3.2 UC-2 - Bekijken beoordelingen <font size="2">[:point_up_2: [Overview](#use-case-overview)]</font>
+| | |
+|-|-|
+| ID | UC-2 |
+| Naam | Bekijken beoordelingen |
+| Omschrijving | Deze use case is verantwoordelijk voor het inzichtelijk maken van beoordelingen voor studenten. |
+| Scope | ICDE-Tool |
+| Trigger | Gebruikers Interactie |
+| Level | User-Goal |
+| Primary Actor | Student |
+| Belangen & belanghebbenden | - Student: Wil zijn/haar voorgang en behaalde resultaten kunnen bekijken. |
+| Pre-Condities | -	Authenticatie is afgehandeld; gebruiker is bevoegd om op het systeem in te loggen. |
+| Succes definitie| -	Er word een overzicht getoond van de course voortang in de vorm van een lijst van behaalde resultaten en het aantal behaalde studiepunten ten opzichte van het totaal haalbare aantal studiepunten.  |
+| Requirement| FR-38 |
+| <font size="4"> **Main Success Scenario** </font>
+| **Actor** | **System** |
+| 1. De student vraagt aan het systeem om een overzicht van alle beoordelingen. | |
+| | 2. Het systeem haalt alle tentamineringen van de student op (ook die waarvoor nog geen beoordeling behaald is). |
+| | 3. Het systeem categoriseert de beoordelingen per course uitvoering. |
+| | 4. Het systeem berekent per course uitvoering het behaalde aantal studiepunten en de eindbeoordeling voor de course. (Een optelsom van de voorgeschreven studiepunten van de tentamineringen die onderdeel zijn van de desbetreffende course en voldoende afgerond zijn door de student) |
+| | 5. Het systeem toont een overzicht van alle beoordelingen. |
+| <font size="4"> **Alternative Flow A** </font>
+| 2. *[De student heeft nog geen enkele course gevolgd]* </br> 1. Het systeem toont dat er geen resultaten gevonden zijn.
+
+### 3.3.3 UC-3 - Beheer Gebruikers <font size="2">[:point_up_2: [Overview](#use-case-overview)]</font>
+| | |
+|-|-|
+| ID | UC-3 |
+| Naam | Beheer Gebruikers  |
+| Omschrijving | Deze use case is gebaseerd op het CRUD-template, binnen deze use case worden alleen uitzonderingen of specificiteit belicht. |
+| Scope | ICDE-Tool |
+| Trigger | Gebruikers Interactie |
+| Level | User-Goal |
+| Primary Actor | Docent |
+| Belangen & belanghebbenden | -	Docent: Wil een klas indeling kunnen bijhouden zodat studenten toegang krijgen tot het bijhorende course materiaal. </br> -	Student: Wil onderdeel zijn van een klas zodat men toegang krijgt tot het bijhorende course materiaal. |
+| Pre-Condities | -	De docent is geauthentiseerd. (UC-20) </br>-	De desbetreffende klas waarvan de student lid moet worden bestaat al. (UC-4) |
+| Requirement| FR-4 |
+| <font size="4"> **Afwijkende specificiteiten** </font>
+| **Create/Update:** De benodigde data zijn een naam, email adres en in het geval van een student ook een klas, het systeem valideert of in deze databehoefte voorzien is.
+| **Delete:** In het geval van een student verwijdert het systeem de student en alle persoons informatie zoals eventuele beoordelingen voor tentamens die hij/zij behaalt heeft. In het geval van een docent wordt er gekeken of de docent gerelateerd is aan een entiteit binnen het systeem, zoals een beoordeling, les of tentaminering, als dit een geval is kan de docent niet verwijderd worden.
+
+### 3.3.4 UC-4 - Beheer Klassen<font size="2">[:point_up_2: [Overview](#use-case-overview)]</font>
+| | |
+|-|-|
+| ID | UC-4 |
+| Naam | Beheer Klassen  |
+| Omschrijving | Deze use case is gebaseerd op het CRUD template, binnen deze use case worden alleen uitzonderingen of specificiteit belicht. |
+| Scope | ICDE-Tool |
+| Trigger | Gebruikers Interactie |
+| Level | User-Goal |
+| Primary Actor | Docent |
+| Belangen & belanghebbenden | -	Docent: Wil een klas registratie kunnen bijhouden zodat deze klas een course kan volgen. </br> -	Student: Wil onderdeel kunnen zijn van een klas registratie zodat hij/zij de course informatie van de courses die de klas volgt kan inzien. |
+| Pre-Condities | -	De docent is geauthentiseerd. (UC-20) </br> -	Het benodigde opleidingsprofiel is al aangemaakt. (UC-9) |
+| Requirement| FR-29 |
+| <font size="4"> **Afwijkende specificiteiten** </font>
+| **Create/Update:** De benodigde data zijn een klas-id een naam voor de klas en een opleidingsprofiel dat de klas volgt, het systeem valideert of in deze databehoefte voorzien is.
+| **Delete:** Het systeem controleer of er nog student onderdeel zijn van de klas en als deze gekoppeld is aan een course, een klas kan alleen verwijderd worden indien dit niet het geval is.
+
+---
+:warning: **_NOTE:_**
+Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen van de klas aan de course iedere student individueel aan de course verbonden een student kan namelijk wisselen van klas en of blijven zitten. --> verwerken in UC-15 “Start Uitvoering”
+
+---
+
+### 3.3.7 UC-7 - Beheer Opleidingen <font size="2">[:point_up_2: [Overview](#use-case-overview)]</font>
+| | |
+|-|-|
+| ID | UC-7 |
+| Naam | Beheer Opleidingen  |
+| Omschrijving | Deze use case is gebaseerd op het CRUD template, binnen deze use case worden alleen uitzonderingen of specificiteit belicht. |
+| Scope | ICDE-Tool |
+| Trigger | Gebruikers Interactie |
+| Level | User-Goal |
+| Primary Actor | Docent |
+| Belangen & belanghebbenden | - Docent: Wil beschikbare opleidingen kunnen bijhouden zodat … |
+| Pre-Condities | - De docent is geauthentiseerd. (UC-20) |
+| Requirement| FR-29 |
+| <font size="4"> **Afwijkende specificiteiten** </font>
+| **Create/Update:** De benodigde data zijn een id en een naam, het systeem valideert of in deze databehoefte voorzien is.
+| **Delete:** Het systeem controleert of er nog opleidingsprofielen gekoppeld zijn, een opleiding kan alleen verwijderd worden indien dit niet het geval is.
+
+### 3.3.9 UC-9 - Beheer Opleidingsprofielen <font size="2">[:point_up_2: [Overview](#use-case-overview)]</font>
+| | |
+|-|-|
+| ID | UC-9 |
+| Naam | Beheer Opleidingsprofielen  |
+| Omschrijving | Deze use case is gebaseerd of het CRUD-template, binnen deze use case worden alleen uitzonderingen of specificiteit belicht.|
+| Scope | ICDE-Tool |
+| Trigger | Gebruikers Interactie |
+| Level | User-Goal |
+| Primary Actor | Docent |
+| Belangen & belanghebbenden | - Docent: Wil beschikbare opleidingsprofielen kunnen bijhouden zodat … |
+| Pre-Condities | -	De docent is geauthentiseerd. (UC-20) </br>- De desbetreffende opleiding waarvan onderdeel moet zijn bestaat al. (UC-7) |
+| Requirement | FR-29 |
+| <font size="4"> **Afwijkende specificiteiten** </font>
+| **Create/Update:** De benodigde data zijn een id en een naam, het systeem valideert of in deze databehoefte voorzien is.
+| **Delete:** Het systeem controleert of er nog klassen gekoppeld zijn aan het huidige profiel, een opleidingsprofiel kan alleen verwijderd worden indien dit niet het geval is.
 
 ### 3.3.10 UC-10 - Ontwikkel Leeruitkomst <font size="2">[:point_up_2: [Overview](#use-case-overview)]</font>
 | | |
@@ -220,131 +332,6 @@ Bevat ook gedrag wat betreft de werking van het domein.
 | **Create/Update:** De benodigde data zijn een titel, omschrijving & leeruitkomst waaraan het leerdoel gerelateerd is, het systeem valideert of in deze databehoefte voorzien is.
 | **Delete:** Het systeem controleer of er nog lessen of tentamens verbonden zijn aan het leerdoel, een leerdoel kan alleen verwijderd worden indien dit niet het geval is.
 
-### 3.3.4 UC-4 - Beheer Klassen<font size="2">[:point_up_2: [Overview](#use-case-overview)]</font>
-| | |
-|-|-|
-| ID | UC-4 |
-| Naam | Beheer Klassen  |
-| Omschrijving | Deze use case is gebaseerd op het CRUD template, binnen deze use case worden alleen uitzonderingen of specificiteit belicht. |
-| Scope | ICDE-Tool |
-| Trigger | Gebruikers Interactie |
-| Level | User-Goal |
-| Primary Actor | Docent |
-| Belangen & belanghebbenden | -	Docent: Wil een klas registratie kunnen bijhouden zodat deze klas een course kan volgen. </br> -	Student: Wil onderdeel kunnen zijn van een klas registratie zodat hij/zij de course informatie van de courses die de klas volgt kan inzien. |
-| Pre-Condities | -	De docent is geauthentiseerd. (UC-20) </br> -	Het benodigde opleidingsprofiel is al aangemaakt. (UC-9) |
-| Requirement| FR-29 |
-| <font size="4"> **Afwijkende specificiteiten** </font>
-| **Create/Update:** De benodigde data zijn een klas-id een naam voor de klas en een opleidingsprofiel dat de klas volgt, het systeem valideert of in deze databehoefte voorzien is.
-| **Delete:** Het systeem controleer of er nog student onderdeel zijn van de klas en als deze gekoppeld is aan een course, een klas kan alleen verwijderd worden indien dit niet het geval is.
-
----
-:warning: **_NOTE:_**
-Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen van de klas aan de course iedere student individueel aan de course verbonden een student kan namelijk wisselen van klas en of blijven zitten. --> verwerken in UC-15 “Start Uitvoering”
-
----
-
-### 3.3.3 UC-3 - Beheer Gebruikers <font size="2">[:point_up_2: [Overview](#use-case-overview)]</font>
-| | |
-|-|-|
-| ID | UC-3 |
-| Naam | Beheer Gebruikers  |
-| Omschrijving | Deze use case is gebaseerd op het CRUD-template, binnen deze use case worden alleen uitzonderingen of specificiteit belicht. |
-| Scope | ICDE-Tool |
-| Trigger | Gebruikers Interactie |
-| Level | User-Goal |
-| Primary Actor | Docent |
-| Belangen & belanghebbenden | -	Docent: Wil een klas indeling kunnen bijhouden zodat studenten toegang krijgen tot het bijhorende course materiaal. </br> -	Student: Wil onderdeel zijn van een klas zodat men toegang krijgt tot het bijhorende course materiaal. |
-| Pre-Condities | -	De docent is geauthentiseerd. (UC-20) </br>-	De desbetreffende klas waarvan de student lid moet worden bestaat al. (UC-4) |
-| Requirement| FR-4 |
-| <font size="4"> **Afwijkende specificiteiten** </font>
-| **Create/Update:** De benodigde data zijn een naam, email adres en in het geval van een student ook een klas, het systeem valideert of in deze databehoefte voorzien is.
-| **Delete:** In het geval van een student verwijdert het systeem de student en alle persoons informatie zoals eventuele beoordelingen voor tentamens die hij/zij behaalt heeft. In het geval van een docent wordt er gekeken of de docent gerelateerd is aan een entiteit binnen het systeem, zoals een beoordeling, les of tentaminering, als dit een geval is kan de docent niet verwijderd worden.
-
-### 3.3.7 UC-7 - Beheer Opleidingen <font size="2">[:point_up_2: [Overview](#use-case-overview)]</font>
-| | |
-|-|-|
-| ID | UC-7 |
-| Naam | Beheer Opleidingen  |
-| Omschrijving | Deze use case is gebaseerd op het CRUD template, binnen deze use case worden alleen uitzonderingen of specificiteit belicht. |
-| Scope | ICDE-Tool |
-| Trigger | Gebruikers Interactie |
-| Level | User-Goal |
-| Primary Actor | Docent |
-| Belangen & belanghebbenden | - Docent: Wil beschikbare opleidingen kunnen bijhouden zodat … |
-| Pre-Condities | - De docent is geauthentiseerd. (UC-20) |
-| Requirement| FR-29 |
-| <font size="4"> **Afwijkende specificiteiten** </font>
-| **Create/Update:** De benodigde data zijn een id en een naam, het systeem valideert of in deze databehoefte voorzien is.
-| **Delete:** Het systeem controleert of er nog opleidingsprofielen gekoppeld zijn, een opleiding kan alleen verwijderd worden indien dit niet het geval is.
-
-### 3.3.9 UC-9 - Beheer Opleidingsprofielen <font size="2">[:point_up_2: [Overview](#use-case-overview)]</font>
-| | |
-|-|-|
-| ID | UC-9 |
-| Naam | Beheer Opleidingsprofielen  |
-| Omschrijving | Deze use case is gebaseerd of het CRUD-template, binnen deze use case worden alleen uitzonderingen of specificiteit belicht.|
-| Scope | ICDE-Tool |
-| Trigger | Gebruikers Interactie |
-| Level | User-Goal |
-| Primary Actor | Docent |
-| Belangen & belanghebbenden | - Docent: Wil beschikbare opleidingsprofielen kunnen bijhouden zodat … |
-| Pre-Condities | -	De docent is geauthentiseerd. (UC-20) </br>- De desbetreffende opleiding waarvan onderdeel moet zijn bestaat al. (UC-7) |
-| Requirement | FR-29 |
-| <font size="4"> **Afwijkende specificiteiten** </font>
-| **Create/Update:** De benodigde data zijn een id en een naam, het systeem valideert of in deze databehoefte voorzien is.
-| **Delete:** Het systeem controleert of er nog klassen gekoppeld zijn aan het huidige profiel, een opleidingsprofiel kan alleen verwijderd worden indien dit niet het geval is.
-
-### 3.3.20 UC-20 - Aanmelden <font size="2">[:point_up_2: [Overview](#use-case-overview)]</font>
-| | |
-|-|-|
-| ID | UC-20 |
-| Naam | Aanmelden |
-| Omschrijving | Deze use case is verantwoordelijk voor het autoriseren en eventueel registreren van systeem gebruikers. Authenticatie valt buiten de scope van deze use case. |
-| Scope | ICDE-Tool |
-| Trigger | Authenticatie service |
-| Level | User-Goal |
-| Primary Actor | Student / Docent |
-| Belangen & belanghebbenden | -	Student / Docent: Wil kunnen inloggen en de acties waar tot zij bevoegd is kunnen uitvoeren. </br> - Docent: Wil studenten kunnen toevoegen aan een klas en docenten kunnen verbinden aan een les en of tentamen. |
-| Pre-Condities | -	Authenticatie is afgehandeld; gebruiker is bevoegd om op het systeem in te loggen. |
-| Succes definitie| -	Een representatie van de desbetreffende gebruiker is persistent opgeslagen. </br> -	Er is een bevoegdheid toegekend aan de gebruiker voor de resterende duur van het bezoek. |
-| Requirement| Van toepassing op vrijwel alle requirements |
-| <font size="4"> **Main Success Scenario** </font>
-| **Actor** | **System** |
-| *[Bezoeker is doorverwezen door extern authenticatie systeem en heeft een claim verkregen]* </br> 1. Verzend authenticatie claim naar systeem. | |
-| | 2. Het systeem bekijkt op basis van de van het authenticatie systeem verkregen gegevens wat van type gebruiker het betreft; docent of student. |
-| | 3. Het systeem bekijkt of de gebruiker al bestaat binnen het systeem op basis van het email adres. </br> *[De gebruiker bestaat nog niet]* |
-| | 4. Het systeem registreert de gebruiker|
-| | 5. Het systeem verleent de gebruiker toegang voor de duur van het bezoek. |
-| | 6. De gebruiker wordt verwezen naar de plek die men initieel bezocht. |
-| *x* 
-| <font size="4"> **Alternative Flow A** </font>
-| 3a. *[De gebruiker bestaat al]* </br> 1.	Het systeem controleert of het gebruikerstype gewijzigd is. </br> *[Het gebruiker type is gewijzigd]* </br> 2.	Het systeem overschrijft het huidige gebruikerstype met het nieuwe gebruikerstype. </br> *Ga verder bij stap 5.*
-| 3b. *[De gebruiker bestaat al]* </br> 1.	Het systeem controleert of het gebruikerstype gewijzigd is. </br> *[Het gebruiker type is niet gewijzigd]* </br> *Ga verder bij stap 5*
-
-### 3.3.2 UC-2 - Bekijken beoordelingen <font size="2">[:point_up_2: [Overview](#use-case-overview)]</font>
-| | |
-|-|-|
-| ID | UC-2 |
-| Naam | Bekijken beoordelingen |
-| Omschrijving | Deze use case is verantwoordelijk voor het inzichtelijk maken van beoordelingen voor studenten. |
-| Scope | ICDE-Tool |
-| Trigger | Gebruikers Interactie |
-| Level | User-Goal |
-| Primary Actor | Student |
-| Belangen & belanghebbenden | - Student: Wil zijn/haar voorgang en behaalde resultaten kunnen bekijken. |
-| Pre-Condities | -	Authenticatie is afgehandeld; gebruiker is bevoegd om op het systeem in te loggen. |
-| Succes definitie| -	Er word een overzicht getoond van de course voortang in de vorm van een lijst van behaalde resultaten en het aantal behaalde studiepunten ten opzichte van het totaal haalbare aantal studiepunten.  |
-| Requirement| FR-38 |
-| <font size="4"> **Main Success Scenario** </font>
-| **Actor** | **System** |
-| 1. De student vraagt aan het systeem om een overzicht van alle beoordelingen. | |
-| | 2. Het systeem haalt alle tentamineringen van de student op (ook die waarvoor nog geen beoordeling behaald is). |
-| | 3. Het systeem categoriseert de beoordelingen per course uitvoering. |
-| | 4. Het systeem berekent per course uitvoering het behaalde aantal studiepunten en de eindbeoordeling voor de course. (Een optelsom van de voorgeschreven studiepunten van de tentamineringen die onderdeel zijn van de desbetreffende course en voldoende afgerond zijn door de student) |
-| | 5. Het systeem toont een overzicht van alle beoordelingen. |
-| <font size="4"> **Alternative Flow A** </font>
-| 2. *[De student heeft nog geen enkele course gevolgd]* </br> 1. Het systeem toont dat er geen resultaten gevonden zijn.
-
 ### 3.3.17 UC-17 - Maak Weekplanning <font size="2">[:point_up_2: [Overview](#use-case-overview)]</font>
 | | |
 |-|-|
@@ -372,34 +359,84 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
 | 5a. *[Niet alle lessen of tentamens zijn toegewezen]* </br> 1. Het systeem attendeert de gebruiker op het feit dat niet alle tentamens en of lessen toegewezen zijn.
 | 6a. *[een of meerdere tentamens zijn ingepland voor dat alle bijhorende lessen zijn ingepland]* </br> 1. Het systeem attendeert de gebruiker op het feit dat tentamens alleen ingepland kunnen worden nadat alle lessen voor de aan het tentamen verbonden leerdoelen gegeven zijn. 
 
----
-:warning: **_CRITERIA:_**
-alle functionele requirements volledig, eenduidig, begrijpelijk en testbaar beschreven
-
----
-
----
-:warning: **_NOTE:_**
-- Use case nummeren maar ook binnen de use case. 
-- alleen de compleze use cases 
-- Bij complexe use cases een sequence diagram opnemen.
-
----
+### 3.3.20 UC-20 - Aanmelden <font size="2">[:point_up_2: [Overview](#use-case-overview)]</font>
+| | |
+|-|-|
+| ID | UC-20 |
+| Naam | Aanmelden |
+| Omschrijving | Deze use case is verantwoordelijk voor het autoriseren en eventueel registreren van systeem gebruikers. Authenticatie valt buiten de scope van deze use case. |
+| Scope | ICDE-Tool |
+| Trigger | Authenticatie service |
+| Level | User-Goal |
+| Primary Actor | Student / Docent |
+| Belangen & belanghebbenden | -	Student / Docent: Wil kunnen inloggen en de acties waar tot zij bevoegd is kunnen uitvoeren. </br> - Docent: Wil studenten kunnen toevoegen aan een klas en docenten kunnen verbinden aan een les en of tentamen. |
+| Pre-Condities | -	Authenticatie is afgehandeld; gebruiker is bevoegd om op het systeem in te loggen. |
+| Succes definitie| -	Een representatie van de desbetreffende gebruiker is persistent opgeslagen. </br> -	Er is een bevoegdheid toegekend aan de gebruiker voor de resterende duur van het bezoek. |
+| Requirement| Van toepassing op vrijwel alle requirements |
+| <font size="4"> **Main Success Scenario** </font>
+| **Actor** | **System** |
+| *[Bezoeker is doorverwezen door extern authenticatie systeem en heeft een claim verkregen]* </br> 1. Verzend authenticatie claim naar systeem. | |
+| | 2. Het systeem bekijkt op basis van de van het authenticatie systeem verkregen gegevens wat van type gebruiker het betreft; docent of student. |
+| | 3. Het systeem bekijkt of de gebruiker al bestaat binnen het systeem op basis van het email adres. </br> *[De gebruiker bestaat nog niet]* |
+| | 4. Het systeem registreert de gebruiker|
+| | 5. Het systeem verleent de gebruiker toegang voor de duur van het bezoek. |
+| | 6. De gebruiker wordt verwezen naar de plek die men initieel bezocht. |
+| <font size="4"> **Alternative Flow A** </font>
+| 3a. *[De gebruiker bestaat al]* </br> 1.	Het systeem controleert of het gebruikerstype gewijzigd is. </br> *[Het gebruiker type is gewijzigd]* </br> 2.	Het systeem overschrijft het huidige gebruikerstype met het nieuwe gebruikerstype. </br> *Ga verder bij stap 5.*
+| 3b. *[De gebruiker bestaat al]* </br> 1.	Het systeem controleert of het gebruikerstype gewijzigd is. </br> *[Het gebruiker type is niet gewijzigd]* </br> *Ga verder bij stap 5*
 
 ## 3.4. Use Case Diagram
-@startuml
+```plantuml
 left to right direction
-actor "Food Critic" as fc
-rectangle Restaurant {
-  usecase "Eat Food" as UC1
-  usecase "Pay for Food" as UC2
-  usecase "Drink" as UC3
+actor "Docent" as d
+actor "Student" as s
+rectangle ICDE-Tool {
+    usecase "UC-11 Ontwikkel EVL" as UC11
+    usecase "UC-10 Ontwikkel leeruitkomst" as UC10
+    usecase "UC-12 Ontwikkel leerdoel" as UC12
+    usecase "UC-13 Ontwikkel toets" as UC13
+    usecase "UC-21 Ontwikkel beroepsproduct" as UC21
+    usecase "UC-14 Maak rubriek" as UC14
+    usecase "UC-22 Ontwikkel les" as UC22
+    usecase "UC-1 Ontwikkel Course" as UC1
+    usecase "UC-17 Maak weekplanning" as UC17
+    usecase "UC-16 Maak course defintief" as UC16
+    usecase "UC-15 Start uitvoering" as UC15
+    usecase "UC-19 Beheer locaties" as UC19
+    usecase "UC-4 Beheer klas" as UC4
+    usecase "UC-8 Geef Beoordeling" as UC8
+    usecase "UC-3 Voeg student aan toe aan klas" as UC3
+    usecase "UC-7 Beheer Opleidingen" as UC7
+    usecase "UC-9 Beheer Opleidingsprofielen" as UC9
+    usecase "UC-5 Vraag course info op" as UC5
+    usecase "UC-18 Exporteer informatie" as UC18
+    usecase "UC-6 Vraag course planning op" as UC6
+    usecase "UC-2 Bekijk Beoordelingen" as UC2
+    usecase "UC-20 Aanmelden" as UC20
 }
-fc --> UC1
-fc --> UC2
-fc --> UC3
-@enduml
-
+d --> UC11
+d --> UC10
+d --> UC12
+d --> UC13
+d --> UC21
+UC21 <.. UC14 : extends
+d --> UC22
+d --> UC1
+UC1 <.. UC17 : extends
+UC1 <.. UC16 : extends
+d --> UC15
+d --> UC19
+d --> UC4
+UC4 <.. UC3 : extends
+d --> UC8
+d --> UC7
+d --> UC9
+d --> UC5
+s --> UC5
+UC5 <.. UC18
+UC5 <.. UC6
+s --> UC2
+```
 
 ---
 :warning: **_NOTE:_**
@@ -417,15 +454,7 @@ alle relevante domein-concepten volledig beschreven dmv. correct toegepaste stan
 ---
 
 
-# 5. Prioritering (MoSCoW) <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
-In onderstaande is een opsomming weergegeven van alle use cases gekoppeld aan de importantie op basis van de MoSCoW methode (Nicole de Zwart, Prioriteringstechnieken).
-
-|#|Use Case|Prioriteit|Toelichting|
-|-|--------|----------|-----------|
-|1|{Titel}|{M, S, C, W}|{Toelichting}|
-
-
-# 6. Bronnen <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+# 5. Bronnen <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 {Larman}
 {Handboek Requirements, Nicole de Zwart}
 

@@ -5,16 +5,17 @@
 ## Tooling
 Tooling die gebruikt word binnen het team.
 - Visual Studio Code: voor het opstellen van de markdown documentatie.
-- Mermaid extension voor VS Code
-- PlantUML extension voor VS Code
-```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew install --cask temurin
-brew install graphviz
-```
+    - Required extensions: `.vscode/extensions.json`
+    - Settings: `.vscode/settings.json`
 - Azure Data Studio: voor database beheer.
 - Rider: Als IDE.
 - Fork: als visuele git client.
+
+
+```bash
+# to run plantuml server locally:
+docker run -d -p 8888:8080 plantuml/plantuml-server
+```
 
 ## Database
 De applicatie heeft een database nodig, deze kan je starten via docker, dit vereist wel dat je Docker desktop geinstalleerd hebt. Onderstaande het commando voor het starten van deze SQL container.
