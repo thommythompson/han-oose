@@ -13,9 +13,10 @@ alle functionele requirements volledig, eenduidig, begrijpelijk en testbaar besc
 **Versie**: v0.6 </br>
 **Klas**: {klascode} </br>
 **Locatie**: Arnhem
-**Docent**: John Gorter 
+**Docent**: John Gorter
 
-# Versiebeheer 
+# Versiebeheer
+
 |Versie|Beschrijving|Auteur|Datum|
 |------|------------|------|-----|
 |v0.1|Document opzet & inleidingen|Thomas Hofman|16-09-2022|
@@ -26,29 +27,34 @@ alle functionele requirements volledig, eenduidig, begrijpelijk en testbaar besc
 |v0.6|Converteren van docx naar markdown|Thomas Hofman|12-11-2022|
 
 # Inhoudsopgave
-1. [Inleiding](#1-inleiding-👆-inhoudsopgave) </br>
+
+1. [Inleiding](#1-inleiding) </br>
     1.1. [Doelstelling](#11-doelstelling) </br>
     1.2. [Doelgroep](#12-doelgroep) </br>
-2. [Functional Requirements (SMART)](#2-functional-requirements-smart-👆-inhoudsopgave) </br>
-3. [Non-Functional Requirements (SMART)](#3-non-functional-requirements-smart-👆-inhoudsopgave) </br>
+2. [Functional Requirements (SMART)](#2-functional-requirements-smart) </br>
+3. [Non-Functional Requirements (SMART)](#3-non-functional-requirements-smart) </br>
     3.1. [Usability](#31-usability) </br>
     3.2. [Reliability](#32-reliability) </br>
     3.3. [Performance](#33-performance) </br>
     3.4. [Supportability](#34-supportability) </br>
     3.5. [Plus](#35-plus) </br>
-4. [Bronnen](#4-bronnen-👆-inhoudsopgave)
+4. [Bronnen](#4-bronnen)
 
+# 1. Inleiding
 
-# 1. Inleiding <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 Dit document betreft het software requirements specification document en voorziet in de vastlegging van de functionele en niet functionele eisen, dit is gedaan middels de SMART- methode (Specifiek, Meetbaar, Acceptabel, Realistisch, Tijdgebonden). Het SRS-document is een bijlage van zowel het technisch- als het functioneel- ontwerp. De functionele eisen voeden het functioneel ontwerp, het functioneel ontwerp en de non-functional requirements fungeren gezamenlijk als fundering voor het technisch ontwerp.
 
-## 1.1. Doelstelling 
+## 1.1. Doelstelling
+
 Het doel van het document is de vastlegging van de met de stakeholder overeengekomen functionele en niet functionele eisen. De eisen zijn genummerde met FR, Functional Requirement en NFR, Non-Functional Requirement, met het gebruik van deze nummering kan vanuit andere documenten gerefereerd worden naar de desbetreffende requirement.
 
-## 1.2. Doelgroep 
+## 1.2. Doelgroep
+
 Stakeholders vanuit de HAN betrokken bij de casus ICDE en degene die de casus uitvoeren.
 
-# 2. Functional Requirements (SMART) <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+<font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+
+# 2. Functional Requirements (SMART)
 In onderstaande zijn de systeem features ofte wijl functional requirements omschreven.
 
 ---
@@ -99,9 +105,13 @@ alle functionele requirements volledig, eenduidig, begrijpelijk en testbaar besc
 |38|Als student mag ik alleen mijn eigen courses, en beoordelingen inzien zodat ik niet onnodig geïnformeerd word en mijn informatie niet ongewild gedeeld word met mede studenten. |Must|1-4|2, 5, 20|
 |39|Als docent wil ik beroepsproducten kunnen beoordelen op basis van de rubrieken met bijhorende beoordelingscriteria zodat ik niet handmatig de eindbeoordeling hoef te berekenen.|Should|1-12|8|
 |40|Als student wil ik zien hoeveel studiepunten ik tot nu toe behaald heb zodat ik mijn course progressie kan bijhouden.|Should|2-11|2|
+
 \* *geld voor het gehele systeem.*
 
-# 3. Non-Functional Requirements (SMART) <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+<font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+
+# 3. Non-Functional Requirements (SMART)
+
 In onderstaande zijn de non-functional requirements omschreven, deze requirements zijn onderverdeeld in de categorieën volgens het FURPS+ model (Larman 2005, 5.4) Functional, Usability, Reliability, Performance en Supportability. 
 
 ---
@@ -110,12 +120,8 @@ alle non-functionele requirements volledig, eenduidig, begrijpelijk en testbaar 
 
 ---
 
-
-
-
-
-
 ## 3.1. Usability
+
 |NFR-#|Requirement|Prio|Question|
 |-----|-----------|----|--------|
 |1|De tool moet han breed inzetbaar zijn.|||
@@ -123,12 +129,14 @@ alle non-functionele requirements volledig, eenduidig, begrijpelijk en testbaar 
 |3|De tool moet het voor een elke docent en docent mogelijk zijn om binnen x-tijd alle courses in te zien. |||
 
 ## 3.2. Reliability
+
 |NFR-#|Requirement|Prio|Question|
 |-----|-----------|----|--------|
 |4|Het systeem moet zonder fouten zijn taak uitvoeren in x-procent van de use cases.|||
 |5|Het systeem moet x-procent van de tijd beschikbaar zijn per maand gedurende werktijden (9-17).|||
 
 ## 3.3. Performance
+
 |NFR-#|Requirement|Prio|Question|
 |-----|-----------|----|--------|
 |6|De reponse tijd voor de start pagina moet tot … users een reponse tijd hebben van … voor x browser/client. (Inclusief rendering)|||
@@ -136,17 +144,26 @@ alle non-functionele requirements volledig, eenduidig, begrijpelijk en testbaar 
 |8|De applicatie heeft minimaal x-cpu en x-memory nodig om x-aantal-users te kunnen afhandelen|||
 
 ## 3.4. Supportability
+
 |NFR-#|Requirement|Prio|Question|
 |-----|-----------|----|--------|
 |9|De applicatie moet volledig werken in x-client/x-browser vanaf x-versie.|||
 |10|Het systeem moet van logging voorzien zijn zodat fouten getraceert kunnen worden.|||
 
 ## 3.5 Plus
+
 |NFR-#|Requirement|Prio|Question|
 |-----|-----------|----|--------|
 |11|Het gebruik van unit-tests is een vereiste, alle kern functionaliteit dient te voorzien zijn unit-tests.|||
 |12|Het systeem moet een interface beschikbaar stellen zodat andere software de mogelijkheid heeft met het systeem te integreren.|||
 |13|Het systeem moet kunnen draaien op een AMD64 processor architectuur.|||
 
-# 4. Bronnen <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+<font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+
+
+# 4. Bronnen
+|APA Bronvermelding|
+|------------------|
 {larman}
+
+<font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>

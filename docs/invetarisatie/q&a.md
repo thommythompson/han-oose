@@ -1,15 +1,17 @@
 [Terug](/README.md)
 
 # Questions & Answers
+
 **Opdrachtgever:** De HAN - Hoge School Arnhem Nijmegen</br>
 **Datum**: 12-11-2022 </br>
 **Studenten**: Thomas Hofman (622438), Ricardo de Wijs ({studentnr})</br>
 **Versie**: v0.9 </br>
 **Klas**: {klascode} </br>
 **Locatie**: Arnhem
-**Docent**: John Gorter 
+**Docent**: John Gorter
 
-# Versiebeheer 
+# Versiebeheer
+
 |Versie|Beschrijving|Auteur|Datum|
 |------|------------|------|-----|
 |v0.1|Document opzet & inleidingen|Thomas Hofman|16-09-2022|
@@ -23,24 +25,24 @@
 |v0.9|Converteren van docx naar markdown|Thomas Hofman|12-11-2022|
 
 # Inhoudsopgave
-1. [Inleiding](#1-inleiding-👆-inhoudsopgave) </br>
+
+1. [Inleiding](#1-inleiding) </br>
     1.1. [Doelstelling](#11-doelstelling) </br>
     1.2. [Doelgroep](#12-doelgroep) </br>
-2. [Vragen iteratie 1](#2-vragen-iteratie-1-👆-inhoudsopgave) </br>
+2. [Vragen iteratie 1](#2-vragen-iteratie-1) </br>
     2.1. [Vragen aan de stakeholders](#21-vragen-aan-de-stakeholders) </br>
     2.2. [Vragen aan de opleidings coordinatoren](#22-vragen-aan-de-opleidings-coordinatoren) </br>
-3. [Vragen iteratie 2](#3-vragen-iteratie-2-👆-inhoudsopgave) </br>
+3. [Vragen iteratie 2](#3-vragen-iteratie-2) </br>
     3.1. [Vragen aan de stakeholders](#31-vragen-aan-de-stakeholders) </br>
     3.2. [Vragen aan de opleidings coordinatoren](#32-vragen-aan-de-opleidings-coordinatoren) </br>
-4. [Vragen iteratie 3](#4-vragen-iteratie-3-👆-inhoudsopgave) </br>
+4. [Vragen iteratie 3](#4-vragen-iteratie-3) </br>
     4.1. [Vragen aan de stakeholders](#41-vragen-aan-de-stakeholders) </br>
-    4.2. [Vragen aan de opleidings coordinatoren](#42-vragen-aan-de-opleidings-coordinatoren) </br>
-5. [Vragen iteratie 3](#5-vragen-iteratie-4-👆-inhoudsopgave) </br>
+5. [Vragen iteratie 3](#5-vragen-iteratie-4) </br>
     5.1. [Vragen aan de stakeholders](#51-vragen-aan-de-stakeholders) </br>
-    5.2. [Vragen aan de opleidings coordinatoren](#52-vragen-aan-de-opleidings-coordinatoren) </br>
-6. [Bronnen](#6-bronnen-👆-inhoudsopgave)
+6. [Bronnen](#6-bronnen)
 
-# 1. Inleiding <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+# 1. Inleiding
+
 Binnen dit document zijn de vragen en antwoorden vastgelegd die gesteld zijn aan de stakeholder van de casus ICDE of de coördinatoren van het vak I-OOSE.
 
 Het is mogelijk om naar de vragen de refereren middels de nummering, Q (Question) representeert een vraag, A (Assumption) representeert een aanname. 
@@ -48,12 +50,16 @@ Het is mogelijk om naar de vragen de refereren middels de nummering, Q (Question
 Er zijn hier en daar ook vragen gesteld aan de coördinatoren van het vak I-OOSE, deze vragen zijn aangeduid met QC.
 
 ## 1.1. Doelstelling
+
 Het doel van het document is om de vragen die gesteld worden tijdens de analyse vast te leggen. De vragen en aannamen zullen dienen als fundering voor zowel het SRS- als het FO- document en zijn daarmee van groot belang, dit document maakt het mogelijk om te verwijzen naar een set van vraag en antwoord als onderbouwing binnen deze documenten.
 
 ## 1.2. Doelgroep
+
 Stakeholders vanuit de HAN betrokken bij de casus ICDE en degene die de casus uitvoeren.
 
-# 2. Vragen Iteratie 1 <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+<font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+
+# 2. Vragen Iteratie 1
 
 ## 2.1. Vragen aan de stakeholders
 
@@ -117,8 +123,9 @@ Stakeholders vanuit de HAN betrokken bij de casus ICDE en degene die de casus ui
 **QC1-1 – Binnen het beoordelingen formulier wordt gevraagd om teamwork, in welke form dienen wij dit aan te tonen, commentaar in Word? Github versie beheer? Github project kanban? Way of work document?** </br>
 *John: Dit wordt getoetst gedurende het proces, indien wij geen duidelijk beeld hebben van de samenwerking dan zullen wij hier extra naar vragen tijdens het assesment. Ook zul je het onderdeel samenwerking zelf moeten beoordelen in je zelfbeoordeling die je individueel invult.*
 
+<font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
-# 3. Vragen Iteratie 2 <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+# 3. Vragen Iteratie 2
 
 ## 3.1. Vragen aan de stakeholders
 
@@ -162,35 +169,46 @@ Stakeholders vanuit de HAN betrokken bij de casus ICDE en degene die de casus ui
 ***“Inhoud (wat is de inhoud?) en vorm (wat is de vorm?) zijn gescheiden, wijzigingen in formaten (bijv. OWE-beschrijvingen, beoordelingsformulieren etc.) zijn zo veel makkelijker te realiseren omdat deze gegenereerd worden;”*** </br>
 *John: De inhoud en vorm vertaal ik in jullie geval naar de inrichting van een course en de uitvoering daarvan.*
 
-
 ## 3.2. Vragen aan de opleidings coordinatoren
+
 **QC2-1 – Worden er wireframes verwacht binnen het Technisch Ontwerp?** </br>
 *John: Wellicht vereenvoudigt dit wel de communicatie met de stakeholder, het is zeker toegestaan maar niet vereist. In de realiteit wordt dit eigenlijk altijd verwacht door de stakeholder.*
 
-# 4. Vragen Iteratie 3 <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+<font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+
+# 4. Vragen Iteratie 3
 
 ## 4.1. Vragen aan de stakeholders
 
 **Q3-1 – Gegeven onderstaande, zijn er momenteel al wensen voor koppelingen? Moeten wij een API beschikbaar stellen?** </br>
-***“Gegevens uit het systeem zouden op lange termijn ook gekoppeld kunnen worden aan andere gebruikte systemen zoals onderwijsonline (bijv. automatisch genereren en plaatsen van OWE-beschrijvingen) of Alluris (eindbeoordelingen volgens de rubrics geautomatiseerd overnemen incl. onderbouwing). (Alleen integratie geïnitieerd vanuit het te maken systeem of zijn er ook externe systemen die onze data moeten kunnen consumeren?)”*** </br>
+“Gegevens uit het systeem zouden op lange termijn ook gekoppeld kunnen worden aan andere gebruikte systemen zoals onderwijsonline (bijv. automatisch genereren en plaatsen van OWE-beschrijvingen) of Alluris (eindbeoordelingen volgens de rubrics geautomatiseerd overnemen incl. onderbouwing). (Alleen integratie geïnitieerd vanuit het te maken systeem of zijn er ook externe systemen die onze data moeten kunnen consumeren?)” </br>
 *John: Api Service aanbieden voor andere systemen en zelf consumeren.*
 
 **Q3-2 – Hoeveel mensen zullen gebruik maken van het systeem en met welke frequentie? Zijn er verdere uitspraken te doen over de niet functionele eisen van het systeem:**
--	Prestatie
--	Bruikbaarheid
--	Hosting/hardware requirements
--	Browser/OS support
--	Onder Houdbaarheid (Bijvoorbeeld logging)
--	Unit test dekking
--	API-standaarden
--	Uptime
+
+- Prestatie
+- Bruikbaarheid
+- Hosting/hardware requirements
+- Browser/OS support
+- Onder Houdbaarheid (Bijvoorbeeld logging)
+- Unit test dekking
+- API-standaarden
+- Uptime
 
 *John: Zelf realistische aannamens doen*
 
-# 5. Vragen Iteratie 4 <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+**O3-3 - Hebben wij genoeg complexe use cases aangezien wij met drie man zijn?**
+*John: Wellicht kun je een extra validatie toevoegen: lessen voor een lesdoel moeten eerder ingepland worden dan de tentaminering voor het lesdoel, anders krijgen we boze leerlingen.*
+
+# 5. Vragen Iteratie 4
 
 ## 5.1. Vragen aan de stakeholders
+
+---
+:warning: **_NOTE:_**
 Ons huidige domein model en de geinventariseerde functionele eisen zijn al zo omvangrijk dat wij onderstaande vragen niet gesteld hebben aan de stakeholder maar zelf aannamen gedaan hebben zodat wij voorkomen dat het domein en applicatie funtionaliteit ver buiten de grenzen treed van een MVP (Minimum Viable Product).
+
+---
 
 **Q4-1 - Kan een docent zelf een type beroepsproduct of schriftelijke toets toevoegen of staat dit statisch gedefinieerd in het systeem?** </br>
 *Aanname: statisch gedefineerd binnen het systeem.*
@@ -213,10 +231,16 @@ Ons huidige domein model en de geinventariseerde functionele eisen zijn al zo om
 **Q4-7 – Aan lessen en tentamen zijn zowel zelfstudie als contacturen verbonden, moeten wij hier een wekelijks limiet aan contact/zelfstudie uren toepassen?** </br>
 *Aanname: Nee, eventueel later mogelijk*
 
-# 6. Bronnen <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+<font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+
+# 6. Bronnen 
+|APA Bronvermelding|
+|------------------|
 {interview Ronald}
 {interview John 1}
 {interview John 2}
 {interview John 3}
 {interview John 4}
 {feedback klas 13-10-2022}
+
+<font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
