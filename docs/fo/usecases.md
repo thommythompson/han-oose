@@ -1,14 +1,8 @@
 [Terug](./index.md)
 
----
-:warning: **_NOTE:_**
-
-- Complexe use cases onderscheiden.
-- Sequence diagrammen toevoegen.
-
----
-
 # Use Case Overview
+
+## CRUD Specificatie
 
 - [UC-2 - Bekijken beoordelingen](#uc-2-bekijken-beoordelingen)
 - [UC-3 - Beheer Gebruikers](#uc-3-beheer-gebruikers)
@@ -16,6 +10,9 @@
 - [UC-7 - Beheer Opleidingen](#uc-7-beheer-opleidingen)
 - [UC-9 - Beheer Opleidingsprofielen](#uc-9-beheer-opleidingsprofielen)
 - [UC-12 - Ontwikkel Leerdoelen](#uc-12-ontwikkel-leerdoelen)
+
+## Fully Dressed
+
 - [UC-17 - Maak Weekplanning](#uc-17---maak-weekplanning)
 - [UC-20 - Aanmelden](#uc-20-aanmelden)
 
@@ -199,6 +196,24 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
 | 5a. *[Niet alle lessen of tentamens zijn toegewezen]* </br> 1. Het systeem attendeert de gebruiker op het feit dat niet alle tentamens en of lessen toegewezen zijn.
 | 6a. *[een of meerdere tentamens zijn ingepland voor dat alle bijhorende lessen zijn ingepland]* </br> 1. Het systeem attendeert de gebruiker op het feit dat tentamens alleen ingepland kunnen worden nadat alle lessen voor de aan het tentamen verbonden leerdoelen gegeven zijn. 
 
+## System Sequence Diagram (SSD)
+
+```mermaid
+sequenceDiagram
+    actor Gebruiker
+    participant Systeem
+    Gebruiker->>+Systeem: 1. MaakPlanning
+    Systeem-->>-Gebruiker: 2. ToonPlanning(weken, items)
+    loop item : items
+        Gebruiker->>Systeem: 3. WijsItemToeAanWeek(week, item)
+    end
+    Gebruiker->>+Systeem: 4. SlaPlanningOp
+    Systeem->Systeem: 5. AlleItemZijnToegewezen
+    Systeem->Systeem: 6. ControleerVolgorde
+    Systeem->Systeem: 7. MaakPersistent
+    Systeem-->>-Gebruiker: 8. Success Message
+```
+
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
 
 # **UC-20 Aanmelden**
@@ -229,3 +244,28 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
 | 3b. *[De gebruiker bestaat al]* </br> 1. Het systeem controleert of het gebruikerstype gewijzigd is. </br> *[Het gebruiker type is niet gewijzigd]* </br> *Ga verder bij stap 5*
 
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
+
+## System Sequence Diagram (SSD)
+
+```mermaid
+sequenceDiagram
+    actor Gebruiker
+    participant Systeem
+    Gebruiker->>+Systeem: 1. VerzendClaim(claim)
+    
+    loop groep : groeplidmaatschappen
+        Gebruiker->>Systeem: 2. IsDocent(claim)
+    end
+    
+    Systeem->Systeem: 3. bestaat = IsBestaandeGebruiker
+    
+    alt bestaat = false
+        Systeem->Systeem: 4. RegistreerGebruiker
+    else
+        Systeem->Systeem: 4. UpdateGebruiker
+    end
+
+    Systeem->Systeem: 5. VerleenToegang
+    
+    Systeem-->>-Gebruiker: 6. Doorverwijzen
+```
