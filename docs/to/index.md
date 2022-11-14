@@ -98,21 +98,191 @@ must-have functionaliteit volledig zoals gespecificeerd voor een 8 een paar shou
 
 ```mermaid
 classDiagram
-Class01 <|-- AveryLongClass : Cool
-<<Interface>> Class01
-Class09 --> C2 : Where am I?
-Class09 --* C3
-Class09 --|> Class07
-Class07 : equals()
-Class07 : Object[] elementData
-Class01 : size()
-Class01 : int chimp
-Class01 : int gorilla
-class Class10 {
-  <<service>>
-  int id
-  size()
+class CourseBibliotheek {
+    - IList<CourseInrichting> courses
+    + CreateCourseInrichting()
 }
+
+class CourseInrichting {
+    - String titel
+    - int aantalHaalbareStudiePunten
+    - CourseWeekInrichting planning
+    - EenheidVanLeeruitkomsten evl
+    - bool definitief
+    + AddEenheidVanLeeruikomsten()
+    + CreateCourseWeekPlanning(duurInWeken)
+    + MaakInrichtingDefintief()
+}
+
+class CourseWeekPlanning {
+    - int duurInweken
+    - IList<CourseWeekInrichting> weken
+    + CreateCourseWeken()
+    + GetCourseWeken()
+    + GetCourseWeek(nr)
+    + planItem(PlanBaarItem item, weekNr)
+}
+
+class CourseWeekInrichting {
+    - int ContactUren
+    - IList<LesMateriaal> materiaal
+    + SetContactUren()
+    + AddLesMateriaal(file)
+    + GetLesMateriaal()
+}
+
+class LesMateriaal {
+    - String fileName
+}
+
+class Leerdoel {
+    - String titel
+    - String Omschrijving
+}
+
+class TentamenInrichting:::abstract {
+    - Titel String
+    - BeoordelingsType BeoordelingsType
+    - int Weging
+    - int Studiepunten
+}
+
+class LesInrichting {
+    - int contactUren
+    - IList<LesMateriaal> lesMateriaal
+    + SetContactUren(int uren)
+    + AddLesMateriaal(file)
+    + GetLesMateriaal()
+}
+
+class EenheidVanLeeruitkomsten {
+    - String Titel
+    - String Omschrijving
+    - IList<LesInrichting> lessen
+    - IList<TentamenInrichting> tentamens
+    + AddLeeruitkomst()
+    + AddLes()
+    + GetLessen()
+    + GetLes()
+}
+
+class Leeruitkomst {
+    - String Titel
+    - String Omschrijving
+    + AddLeerdoel()
+}
+
+class BeroepsProduct {
+    - TentamenType type
+}
+
+class SchriftelijkeToets {
+    - TentamenType type
+}
+
+class Rubrics {
+    - String titel
+    - int Weging
+    - int VoldoendeThreshold
+    - BeoordelingsCriteria KnockOutCriteria
+}
+
+class BeoordelingsCriteria {
+    - String Omschrijving
+}
+
+class Persoon:::Abstract {
+    - String naam
+}
+
+class Klas {
+    - String code
+}
+
+class Opleiding {
+    - String code
+    - String naam
+}
+
+class OpleidingsProfiel {
+    - String code
+    - String naam
+}
+
+class Beoordeling {
+    - int AantalBehaaldePunten
+    - double score
+    - int AantalBehaaldeStudiePunten 
+    + BerekenScore() 
+}
+
+class LesUitvoering {
+    - DateTime datum
+}
+
+class Locatie {
+    - String Naam
+    - Adres Adres
+}
+
+class Adres {
+    - String Straat
+    - String Postcode
+    - String Huisnummer
+    - String Toevoeging
+    - String Plaatsnaam
+}
+
+class CourseWeekUitvoering
+
+class PlanbaarItem
+
+class CourseUitvoering
+
+class Student 
+
+class Docent
+
+
+CourseBibliotheek -- CourseInrichting
+CourseInrichting -- EenheidVanLeeruitkomsten
+CourseInrichting -- CourseWeekPlanning
+CourseInrichting -- Docent
+CourseInrichting -- CourseUitvoering
+LesInrichting -- EenheidVanLeeruitkomsten
+LesInrichting -- LesMateriaal
+LesInrichting -- CourseWeekInrichting
+LesInrichting -- LesUitvoering
+LesInrichting --|> PlanbaarItem
+TentamenInrichting --|> PlanbaarItem
+BeroepsProduct --|> TentamenInrichting 
+BeroepsProduct -- Rubrics
+Rubrics -- BeoordelingsCriteria
+Rubrics -- Leerdoel
+SchriftelijkeToets -- Leerdoel
+SchriftelijkeToets --|> TentamenInrichting 
+TentamenInrichting -- TentamenUitvoering
+TentamenUitvoering -- Locatie
+TentamenUitvoering -- CourseWeekUitvoering
+TentamenUitvoering -- Beoordeling
+TentamenUitvoering -- Docent
+LesUitvoering -- Locatie
+LesUitvoering -- Docent
+LesUitvoering -- LesInrichting
+LesUitvoering -- CourseWeekUitvoering
+CourseUitvoering -- CourseWeekUitvoering
+CourseUitvoering -- Klas
+CourseUitvoering -- CourseInrichting
+Beoordeling -- Docent
+Beoordeling -- TentamenUitvoering
+Beoordeling -- Student
+Klas -- OpleidingsProfiel
+OpleidingsProfiel -- Opleiding
+Locatie -- Adres
+Student --|> Persoon : is
+Docent --|> Persoon : is
+
+
 ```
 
 ---
