@@ -3,21 +3,24 @@
 ---
 :warning: **_NOTE:_**
 Belangrijk voor het gehele document:
--	Moet consistent zijn met FO!
--	Indien binnen code afwekend wordt van TO moet dit grondig onderbouwd zijn.
+
+- Moet consistent zijn met FO!
+- Indien binnen code afwekend wordt van TO moet dit grondig onderbouwd zijn.
 
 ---
 
 # Technisch Ontwerp
+
 **Opdrachtgever:** De HAN - Hoge School Arnhem Nijmegen</br>
 **Datum**: 12-11-2022 </br>
 **Studenten**: Thomas Hofman (622438), Ricardo de Wijs ({studentnr})</br>
 **Versie**: v0.2 </br>
 **Klas**: {klascode} </br>
 **Locatie**: Arnhem
-**Docent**: John Gorter 
+**Docent**: John Gorter
 
-# Versiebeheer 
+# Versiebeheer
+
 |Versie|Beschrijving|Auteur|Datum|
 |------|------------|------|-----|
 |v0.1|Document opzet & inleidingen|Thomas Hofman|16-09-2022|
@@ -25,36 +28,43 @@ Belangrijk voor het gehele document:
 |v0.3|Concept H4, H5|Thomas Hofman|12-11-2022|
 
 # Inhoudsopgave
-1. [Inleiding](#1-inleiding-👆-inhoudsopgave) </br>
-    1.1. [Doelstelling](#11-aanleiding) </br>
-    1.2. [Doelgroep](#12-doelgroep) </br>
-2. [Aanpak & Prioritering](#2-aanpak--prioritering-👆-inhoudsopgave) </br>
-3. [Design](#3-design-👆-inhoudsopgave) </br>
+
+1. [Inleiding](#1-inleiding) </br>
+    1.1. [Aanleiding](#11-aanleiding) </br>
+    1.2. [Doelstelling](#12-doelstelling) </br>
+    1.3. [Doelgroep](#13-doelgroep) </br>
+2. [Aanpak & Prioritering](#2-aanpak--prioritering) </br>
+3. [Design](#3-design) </br>
     3.1. [Class Diagram](#31-class-diagram) </br>
         3.1.1. [Toelichting](#311-toelichting) </br>
     3.2. [Ontwerp keuzes](#32-onderbouwing-ontwerp-keuzes) </br>
         3.2.1. [GoF Patterns](#321-gof-patterns) </br>
         3.2.2. [GRASP Principes](#322-graspsolid-principes) </br>
     3.3. [Relatie tot domein model](#33-relatie-tot-domein-model) </br>
-4. [Architectuur](#4-architectuur-👆-inhoudsopgave) </br>
+4. [Architectuur](#4-architectuur) </br>
     4.1. [Layering](#41-layering) </br>
     4.2. [Distribution](#42-distribution) </br>
     4.3. [Architectuur Patterns](#43-architectuur-patterns) </br>
-5. [Overige](#5-technische-keuzes-👆-inhoudsopgave) </br>
+5. [Overige](#5-technische-keuzes) </br>
     5.1. [Frameworks & Libraries](#51-framworks--libraries) </br>
     5.2. [Versiebeheer](#52-versiebeheer) </br>
     5.3. [Build Management (CI/CD)](#53-build-management-cicd) </br>
     5.4. [Unit-, Integratie- Tests](#54-unit--integratie--tests) </br>
-6. [Bronnen](#6-bronnen-👆-inhoudsopgave)
+6. [Bronnen](#6-bronnen)
 
-
-# 1. Inleiding <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+# 1. Inleiding
 
 ## 1.1. Aanleiding
 
 ## 1.2. Doelstelling
 
-# 2. Aanpak & Prioritering <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+## 1.3. Doelgroep
+
+- Technische mensen
+
+<font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+
+# 2. Aanpak & Prioritering
 
 ---
 :warning: **_NOTE:_**
@@ -80,13 +90,34 @@ must-have functionaliteit volledig zoals gespecificeerd voor een 8 een paar shou
     1. overige crud use cases uitwerken
     2. Authenticatie implementeren via AzureAD
 
-# 3. Design <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+<font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+
+# 3. Design
 
 ## 3.1. Class Diagram
 
+```mermaid
+classDiagram
+Class01 <|-- AveryLongClass : Cool
+<<Interface>> Class01
+Class09 --> C2 : Where am I?
+Class09 --* C3
+Class09 --|> Class07
+Class07 : equals()
+Class07 : Object[] elementData
+Class01 : size()
+Class01 : int chimp
+Class01 : int gorilla
+class Class10 {
+  <<service>>
+  int id
+  size()
+}
+```
+
 ---
 :warning: **_CRITERIA:_**
-Correct toepassen standaard notatie en volledig requirements afdekken.
+Correct toepassen standaard notatie en het diagram moet de volledig requirements afdekken.
 
 ---
 
@@ -122,8 +153,8 @@ een variatie aan principes en patterns op correcte en onderbouwde manier toegepa
 
 ---
 
-
 ## 3.3. Relatie tot domein model
+
 Wijzigingen ten opzichte van domein model
 
 ---
@@ -132,10 +163,13 @@ Zowel inconsistenties als consistenties benoemd, inconsistenties volledig van re
 
 ---
 
-# 4. Architectuur <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+<font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+
+# 4. Architectuur
+
 Domain-centric architecture: Clean Architecture
 
-```
+```raw
 .
 ├── _HICT.ICDETool.Application --> Application > Stuurt het domein aan
 |   └── _Interfaces
@@ -162,7 +196,8 @@ Infrastructure *..> Application : IRepository
 ## 4.1. Layering
 
 ## 4.2. Distribution
--	Geen microservices
+
+- Geen microservices
 
 ## 4.3. Architectuur Patterns
 
@@ -172,7 +207,10 @@ een variatie aan principes en patterns op correcte en onderbouwde manier toegepa
 
 ---
 
-# 5. Technische keuzes <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+<font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+
+# 5. Technische keuzes
+
 - .NET 6 / C#10
 - ORM framwork: EF Core 6
 - Presentatie framwork: MVC
@@ -185,8 +223,10 @@ een variatie aan principes en patterns op correcte en onderbouwde manier toegepa
 - Database: MSSQL
 
 Eventueel:
+
 - Angular
 
+<font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
 ## 5.1. Framworks & Libraries
 
@@ -196,8 +236,8 @@ alle frameworks, frameworkonderdelen en libraries correct gebruikt en volledig g
 
 ---
 
-
 ## 5.2. Versiebeheer
+
 - Version management: github repos
 
 ---
@@ -207,6 +247,7 @@ versiebeheer en buildmanagement toegepast voor een 10
 ---
 
 ## 5.3. Build Management (CI/CD)
+
 - Build management: github actions
 - CI --> build artifacts
 - Runs tests
@@ -219,6 +260,7 @@ versiebeheer en buildmanagement toegepast voor een 10
 ---
 
 ## 5.4. Unit-, Integratie- Tests
+
 - Test Framework: xUnit
 
 ---
@@ -227,12 +269,15 @@ unit- en integratietests dekken werking grotendeels af, werking gedemonstreerd v
 
 ---
 
-# 6. Bronnen <font size="2">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+<font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
+# 6. Bronnen
 
-## Tech stack/Frameworks
+|APA Bronvermelding|
+|------------------|
+|{clean architecture}
+|{DDD}
+|{pluralsight courses}
+|{refactoring guru}
 
-
-## Hosting environment
-- SqlServer
-- Docker
+<font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
