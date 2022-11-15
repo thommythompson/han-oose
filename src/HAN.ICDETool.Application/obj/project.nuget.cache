@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZYvXNwruUWMIY/9dQMbF6P+MlO9NNRkD8qSSlwTk+iBu0fDQx7PeOW3gfxsIFJ76Lm9C96s4B1ZkjsJzlrxfAA==",
+  "dgSpecHash": "Dk7Zzeo7m8IRVevN5T+tuY0vYYydNa8sbaDyGoFWkPWcUnBd/nXjlzbcUDYBy83Py0zFBt2qrLGLJwLwhx5HrA==",
   "success": true,
-  "projectFilePath": "/Users/thomashofman/_git/han-oose/src/HAN.ICDETool.Application/HAN.ICDETool.Application.csproj",
+  "projectFilePath": "/Users/ricardodewijs/WorkspaceHan/han-oose/src/HAN.ICDETool.Application/HAN.ICDETool.Application.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

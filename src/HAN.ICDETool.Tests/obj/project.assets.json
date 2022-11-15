@@ -3896,19 +3896,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/thomashofman/.nuget/packages/": {}
+    "/Users/ricardodewijs/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/thomashofman/_git/han-oose/src/HAN.ICDETool.Tests/HAN.ICDETool.Tests.csproj",
+      "projectUniqueName": "/Users/ricardodewijs/WorkspaceHan/han-oose/src/HAN.ICDETool.Tests/HAN.ICDETool.Tests.csproj",
       "projectName": "HAN.ICDETool.Tests",
-      "projectPath": "/Users/thomashofman/_git/han-oose/src/HAN.ICDETool.Tests/HAN.ICDETool.Tests.csproj",
-      "packagesPath": "/Users/thomashofman/.nuget/packages/",
-      "outputPath": "/Users/thomashofman/_git/han-oose/src/HAN.ICDETool.Tests/obj/",
+      "projectPath": "/Users/ricardodewijs/WorkspaceHan/han-oose/src/HAN.ICDETool.Tests/HAN.ICDETool.Tests.csproj",
+      "packagesPath": "/Users/ricardodewijs/.nuget/packages/",
+      "outputPath": "/Users/ricardodewijs/WorkspaceHan/han-oose/src/HAN.ICDETool.Tests/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/thomashofman/.nuget/NuGet/NuGet.Config"
+        "/Users/ricardodewijs/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -3920,8 +3920,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "/Users/thomashofman/_git/han-oose/src/HAN.ICDETool.Domain/HAN.ICDETool.Domain.csproj": {
-              "projectPath": "/Users/thomashofman/_git/han-oose/src/HAN.ICDETool.Domain/HAN.ICDETool.Domain.csproj"
+            "/Users/ricardodewijs/WorkspaceHan/han-oose/src/HAN.ICDETool.Domain/HAN.ICDETool.Domain.csproj": {
+              "projectPath": "/Users/ricardodewijs/WorkspaceHan/han-oose/src/HAN.ICDETool.Domain/HAN.ICDETool.Domain.csproj"
             }
           }
         }
@@ -3973,7 +3973,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.402/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
       }
     }
   }
