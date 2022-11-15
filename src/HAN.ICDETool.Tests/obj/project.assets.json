@@ -885,6 +885,16 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
+      },
+      "HAN.ICDETool.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/HAN.ICDETool.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/HAN.ICDETool.Domain.dll": {}
+        }
       }
     }
   },
@@ -3868,10 +3878,16 @@
         "system.xml.xdocument.4.0.11.nupkg.sha512",
         "system.xml.xdocument.nuspec"
       ]
+    },
+    "HAN.ICDETool.Domain/1.0.0": {
+      "type": "project",
+      "path": "../HAN.ICDETool.Domain/HAN.ICDETool.Domain.csproj",
+      "msbuildProject": "../HAN.ICDETool.Domain/HAN.ICDETool.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "HAN.ICDETool.Domain >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 17.1.0",
       "NUnit >= 3.13.3",
       "NUnit.Analyzers >= 3.3.0",
@@ -3885,11 +3901,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/thomashofman/_git/han-oose/ICDETool/src/HAN.ICDETool.Tests/HAN.ICDETool.Tests.csproj",
+      "projectUniqueName": "/Users/thomashofman/_git/han-oose/src/HAN.ICDETool.Tests/HAN.ICDETool.Tests.csproj",
       "projectName": "HAN.ICDETool.Tests",
-      "projectPath": "/Users/thomashofman/_git/han-oose/ICDETool/src/HAN.ICDETool.Tests/HAN.ICDETool.Tests.csproj",
+      "projectPath": "/Users/thomashofman/_git/han-oose/src/HAN.ICDETool.Tests/HAN.ICDETool.Tests.csproj",
       "packagesPath": "/Users/thomashofman/.nuget/packages/",
-      "outputPath": "/Users/thomashofman/_git/han-oose/ICDETool/src/HAN.ICDETool.Tests/obj/",
+      "outputPath": "/Users/thomashofman/_git/han-oose/src/HAN.ICDETool.Tests/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/thomashofman/.nuget/NuGet/NuGet.Config"
@@ -3903,7 +3919,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/thomashofman/_git/han-oose/src/HAN.ICDETool.Domain/HAN.ICDETool.Domain.csproj": {
+              "projectPath": "/Users/thomashofman/_git/han-oose/src/HAN.ICDETool.Domain/HAN.ICDETool.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

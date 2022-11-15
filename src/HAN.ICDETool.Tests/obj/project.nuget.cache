@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JMgXi7IlPto1SduWvuy1u/pQ11TbkV2497a97iPW6QmQbUJmB5ngzcQ4rR38XBujnl1hdFi567+dhVr2vi+U0g==",
+  "dgSpecHash": "qyUMYkvf/J8c+gu/Y373QPFBwcLIRcUFxFVN6XY2OtOwQSIKwMxufVSh2gyd3eyAiOu7qs+idqOrR4F4yUbwUw==",
   "success": true,
-  "projectFilePath": "/Users/thomashofman/_git/han-oose/ICDETool/src/HAN.ICDETool.Tests/HAN.ICDETool.Tests.csproj",
+  "projectFilePath": "/Users/thomashofman/_git/han-oose/src/HAN.ICDETool.Tests/HAN.ICDETool.Tests.csproj",
   "expectedPackageFiles": [
     "/Users/thomashofman/.nuget/packages/coverlet.collector/3.1.2/coverlet.collector.3.1.2.nupkg.sha512",
     "/Users/thomashofman/.nuget/packages/microsoft.codecoverage/17.1.0/microsoft.codecoverage.17.1.0.nupkg.sha512",

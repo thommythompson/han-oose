@@ -1,18 +1,20 @@
 # ICDE-Tool
 
-
 ## Getting started
+
 Informatie omtrend werkwijze staat vastgelegd in de onderstaande twee documenten. 
 1. Allereerst dien je het ["Way of work" document](./docs/wow.md) door te nemen zodat je op de hoogte ben van onze werkwijze.
 2. In het ["How to get started?" document](./docs/htgs.md) staat vastgelegd hoe je het project lokaal zo kan inrichten zodat je bezig kan gaan met het ontwikkelen.
 
 ## Analyse & Design
-- [Requirement Gathering (Ookwel bekend als vragen document)](./docs/Analyse/q&a.md)
-- [Requirements Specification](./docs/Analyse/srs.md)
-- [Functioneel Ontwerp](./docs/Analyse/fo.md)
-- [Technisch Ontwerp](./docs/Design/to.md)
+
+- [Requirement Gathering (Ookwel bekend als vragen document)](./docs/invetarisatie/q&a.md)
+- [Requirements Specification](./docs/invetarisatie/srs.md)
+- [Functioneel Ontwerp](./docs/fo/index.md)
+- [Technisch Ontwerp](./docs/to/index.md)
 
 ## Priority
+
 1. Eerst de inrichting kant van de domein laag uitwerken
     - Voor iedere methode ook direct de test schrijven in test project
 2. De uitwerking kant van de domein laag uitwerken

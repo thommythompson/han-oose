@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/thomashofman/_git/han-oose/ICDETool/src/HAN.ICDETool.SharedKernel/HAN.ICDETool.SharedKernel.csproj",
+      "projectUniqueName": "/Users/thomashofman/_git/han-oose/src/HAN.ICDETool.SharedKernel/HAN.ICDETool.SharedKernel.csproj",
       "projectName": "HAN.ICDETool.SharedKernel",
-      "projectPath": "/Users/thomashofman/_git/han-oose/ICDETool/src/HAN.ICDETool.SharedKernel/HAN.ICDETool.SharedKernel.csproj",
+      "projectPath": "/Users/thomashofman/_git/han-oose/src/HAN.ICDETool.SharedKernel/HAN.ICDETool.SharedKernel.csproj",
       "packagesPath": "/Users/thomashofman/.nuget/packages/",
-      "outputPath": "/Users/thomashofman/_git/han-oose/ICDETool/src/HAN.ICDETool.SharedKernel/obj/",
+      "outputPath": "/Users/thomashofman/_git/han-oose/src/HAN.ICDETool.SharedKernel/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/thomashofman/.nuget/NuGet/NuGet.Config"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PHHAIoi9P9nKuRklVmPlPDRYfkuX5SFAV0QC+3iXSKazOuu/w4FCrmh8aCeFP7QQgD9/7PPXAHReywGLKJS0Qg==",
+  "dgSpecHash": "8ILbd41z9Nl1JR/Ap6KmwWJhmTHbZiwLcrNGhtPvoXJdGLsinldpEx4pQJq2frvu6QR5MhLwaWlms0ykbnqvzA==",
   "success": true,
-  "projectFilePath": "/Users/thomashofman/_git/han-oose/ICDETool/src/HAN.ICDETool.SharedKernel/HAN.ICDETool.SharedKernel.csproj",
+  "projectFilePath": "/Users/thomashofman/_git/han-oose/src/HAN.ICDETool.SharedKernel/HAN.ICDETool.SharedKernel.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
