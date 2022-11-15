@@ -3,12 +3,13 @@
 # Use Case Overview
 
 ## CRUD Specificatie
-- [ ] [UC-1 - Ontwikkel Course]()
+
+- [ ] [UC-1 - Ontwikkel Course](#uc-1-ontwikkel-course)
 - [x] [UC-3 - Beheer Gebruikers](#uc-3-beheer-gebruikers)
 - [x] [UC-4 - Beheer Klassen](#uc-4-beheer-klassen)
 - [x] [UC-7 - Beheer Opleidingen](#uc-7-beheer-opleidingen)
 - [x] [UC-9 - Beheer Opleidingsprofielen](#uc-9-beheer-opleidingsprofielen)
-- [x] [UC-10 - Ontwikkel Leeruikomst](#uc-10-ontwikkel-leeruitkomst)
+- [x] [UC-10 - Ontwikkel Leeruitkomst](#uc-10-ontwikkel-leeruitkomst)
 - [x] [UC-12 - Ontwikkel Leerdoelen](#uc-12-ontwikkel-leerdoelen)
 - [ ] [UC-19 - Beheer Locaties](#uc-19-beheer-locaties)
 

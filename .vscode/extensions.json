@@ -6,6 +6,7 @@
         "donjayamanne.githistory",
         "vscode-icons-team.vscode-icons",
         "davidanson.vscode-markdownlint",
-        "streetsidesoftware.code-spell-checker-dutch"
+        "streetsidesoftware.code-spell-checker-dutch",
+        "yzhang.markdown-all-in-one"
     ]
 }

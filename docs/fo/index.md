@@ -119,7 +119,7 @@ rectangle ICDE-Tool {
     usecase "UC-22 Ontwikkel les" as UC22
     usecase "UC-1 Ontwikkel Course" as UC1
     usecase "UC-17 Maak weekplanning" as UC17
-    usecase "UC-16 Maak course defintief" as UC16
+    usecase "UC-16 Maak course definitief" as UC16
     usecase "UC-15 Start uitvoering" as UC15
     usecase "UC-19 Beheer locaties" as UC19
     usecase "UC-4 Beheer klas" as UC4
@@ -141,7 +141,7 @@ d --> UC21
 UC21 <.. UC14 : extends
 d --> UC22
 d --> UC1
-UC1 <.. UC17 : extends
+UC1 <.. UC17 : <<extends>>
 UC1 <.. UC16 : extends
 d --> UC15
 d --> UC19

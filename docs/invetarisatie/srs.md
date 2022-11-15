@@ -7,6 +7,7 @@ alle functionele requirements volledig, eenduidig, begrijpelijk en testbaar besc
 ---
 
 # Software Requirement Specification
+
 **Opdrachtgever:** De HAN - Hoge School Arnhem Nijmegen</br>
 **Datum**: 12-11-2022 </br>
 **Studenten**: Thomas Hofman (622438), Ricardo de Wijs ({studentnr})</br>
@@ -55,6 +56,7 @@ Stakeholders vanuit de HAN betrokken bij de casus ICDE en degene die de casus ui
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
 # 2. Functional Requirements (SMART)
+
 In onderstaande zijn de systeem features ofte wijl functional requirements omschreven.
 
 ---
@@ -162,6 +164,7 @@ alle non-functionele requirements volledig, eenduidig, begrijpelijk en testbaar 
 
 
 # 4. Bronnen
+
 |APA Bronvermelding|
 |------------------|
 {larman}

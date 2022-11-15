@@ -223,6 +223,7 @@ class LesUitvoering {
 class Locatie {
     - String Naam
     - Adres Adres
+    - bool IsOnline
 }
 
 class Adres {
@@ -382,13 +383,13 @@ een variatie aan principes en patterns op correcte en onderbouwde manier toegepa
 # 5. Technische keuzes
 
 - .NET 6 / C#10
-- ORM framwork: EF Core 6
-- Presentatie framwork: MVC
+- ORM framework: EF Core 6
+- Presentatie framework: MVC
 - Ardalis https://github.com/ardalis/Specification
 - Swagger
-- Frontend: Javascript/Ajax/Jquery/Boostrap 5
+- Frontend: Javascript/Ajax/Jquery/Bootstrap 5
 - Project management: github projects
-- Dependency Injection via hostbuilder
+- Dependency Injection via host builder
 - Configuration Management (IConfiguration)
 - Database: MSSQL
 
@@ -402,7 +403,7 @@ Eventueel:
 
 ---
 :warning: **_CRITERIA:_**
-alle frameworks, frameworkonderdelen en libraries correct gebruikt en volledig geïntegreerd, keuze voor deze onderbouwd voor een 10
+alle frameworks, framework onderdelen en libraries correct gebruikt en volledig geïntegreerd, keuze voor deze onderbouwd voor een 10
 
 ---
 
@@ -412,7 +413,7 @@ alle frameworks, frameworkonderdelen en libraries correct gebruikt en volledig g
 
 ---
 :warning: **_CRITERIA:_**
-versiebeheer en buildmanagement toegepast voor een 10
+versiebeheer en build management toegepast voor een 10
 
 ---
 
@@ -425,7 +426,7 @@ versiebeheer en buildmanagement toegepast voor een 10
 
 ---
 :warning: **_CRITERIA:_**
-versiebeheer en buildmanagement toegepast voor een 10
+versiebeheer en build management toegepast voor een 10
 
 ---
 
@@ -447,7 +448,7 @@ unit- en integratietests dekken werking grotendeels af, werking gedemonstreerd v
 |------------------|
 |{clean architecture}
 |{DDD}
-|{pluralsight courses}
+|{Pluralsight courses}
 |{refactoring guru}
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
