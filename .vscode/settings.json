@@ -6,4 +6,5 @@
     "plantuml.exportFormat": "png",
     "plantuml.render": "PlantUMLServer",
     "cSpell.language": "en,nl",
+    "plantuml.diagramsRoot": ".\\docs\\diagrams\\",
 }

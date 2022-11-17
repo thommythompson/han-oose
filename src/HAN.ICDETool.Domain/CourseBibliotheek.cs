@@ -1,32 +1,17 @@
-using HAN.ICDETool.Domain.Constanten;
-
 namespace HAN.ICDETool.Domain;
 
 public class CourseBibliotheek
 {
-    private static CourseBibliotheek _instance;
-    private IList<CourseInrichting> _courses = new List<CourseInrichting>();
+    public IList<CourseInrichting>? courses { get; private set; }
 
-    private CourseBibliotheek()
+    public CourseBibliotheek()
     {
+        courses = new List<CourseInrichting>();
     }
-
-    public static CourseBibliotheek CreateInstance()
+    public void CreerCourse(String titel)
     {
-        if (_instance == null)
-            _instance = new CourseBibliotheek();
-
-        return _instance;
-    }
-
-    public void AddCourse(String titel, TijdsEenheid duur)
-    {
-        CourseInrichting newCourse = new CourseInrichting(titel, duur);
-        _courses.Add(newCourse);
-    }
-
-    public IList<CourseInrichting> GetCourses()
-    {
-        return _courses;
+        courses.Add(
+            new CourseInrichting(titel)
+            );
     }
 }

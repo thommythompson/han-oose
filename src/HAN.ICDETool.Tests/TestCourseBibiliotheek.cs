@@ -2,21 +2,19 @@ namespace HAN.ICDETool.Tests;
 
 public class TestCourseBibiliotheek
 {
-    private CourseBibliotheek? _courseBibliotheek;
+    private CourseBibliotheek _courseBibliotheek;
     
     [SetUp]
     public void Setup()
     {
-        _courseBibliotheek = CourseBibliotheek.CreateInstance();
+        _courseBibliotheek = new CourseBibliotheek();
     }
 
     [Test]
     public void TestCourseCreation()
     {
-        _courseBibliotheek.AddCourse("test", OnderwijsTijdsEenheden.Jaar);
-
-        IList<CourseInrichting> courses = _courseBibliotheek.GetCourses();
+        _courseBibliotheek.CreerCourse("naam");
         
-        Assert.That(courses[0].GetTitel(), Is.EqualTo("test"));
+        Assert.That(_courseBibliotheek.courses[0].titel, Is.EqualTo("naam"));
     }
 }

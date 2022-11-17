@@ -1,39 +1,16 @@
-using HAN.ICDETool.Domain.Constanten;
-
 namespace HAN.ICDETool.Domain;
 
 public class CourseInrichting
 {
-    private String _titel;
-    private int _aantalHaalbareStudiePunten;
-    private CourseWeekPlanning _planning;
-    private IList<EenheidVanLeeruitkomsten> _evls = new List<EenheidVanLeeruitkomsten>();
-    private bool _isDefinitief = false;
+    public String? titel { get; private set; }
+    private String? omschrijving { get; set; }
+    private ITijdDefinitie? duur { get; set; }
+    private CourseWeekPlanning? planning { get; set; }
+    private EenheidVanLeeruitkomsten evls { get; set; }
+    private bool? isDefintief { get; set; }
 
-    public CourseInrichting(String titel, TijdsEenheid duur)
+    public CourseInrichting(String titel)
     {
-        _titel = titel;
-        _aantalHaalbareStudiePunten = duur.getHaalbareStudiePunten();
-        _planning = new CourseWeekPlanning(duur);
-    }
-
-    public void AddEenheidVanLeeruikomsten(string titel, string omschrijving)
-    {
-        _evls.Add(new EenheidVanLeeruitkomsten(titel, omschrijving));
-    }
-
-    public void MaakDefintief()
-    {
-        _isDefinitief = true;
-    }
-
-    public bool IsDefintief()
-    {
-        return _isDefinitief;
-    }
-
-    public string GetTitel()
-    {
-        return _titel;
+        this.titel = titel;
     }
 }

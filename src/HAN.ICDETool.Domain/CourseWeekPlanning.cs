@@ -1,26 +1,20 @@
-using System.Collections.Immutable;
-
 namespace HAN.ICDETool.Domain;
-
-using HAN.ICDETool.Domain.Constanten;
 
 public class CourseWeekPlanning
 {
-    private TijdsEenheid _courseDuur;
-    private IList<CourseWeekInrichting> _weekPlanning = new List<CourseWeekInrichting>();
+    public IList<CourseWeekInrichting> weken { get; private set;  }
 
-    public CourseWeekPlanning(TijdsEenheid courseDuur)
+    public CourseWeekPlanning(ITijdDefinitie duur)
     {
-        _courseDuur = courseDuur;
-
-        VulWeekPlanning(courseDuur.getDuurInWeken());
+        weken = new List<CourseWeekInrichting>();
+        vulPlanningMetWeken(duur);
     }
 
-    private void VulWeekPlanning(int aantalWeken)
+    private void vulPlanningMetWeken(ITijdDefinitie duur)
     {
-        for(int i = 0; i < aantalWeken; i++)
+        for (int i = 0; i < duur.duurInWeken; i++)
         {
-            _weekPlanning.Add(new CourseWeekInrichting());
+            weken.Add(new CourseWeekInrichting());
         }
     }
 }
