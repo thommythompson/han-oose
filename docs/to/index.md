@@ -34,23 +34,23 @@ Belangrijk voor het gehele document:
     1.2. [Doelstelling](#12-doelstelling) </br>
     1.3. [Doelgroep](#13-doelgroep) </br>
 2. [Aanpak & Prioritering](#2-aanpak--prioritering) </br>
-3. [Design](#3-design) </br>
-    3.1. [Class Diagram](#31-class-diagram) </br>
-        3.1.1. [Toelichting](#311-toelichting) </br>
-    3.2. [Ontwerp keuzes](#32-onderbouwing-ontwerp-keuzes) </br>
-        3.2.1. [GoF Patterns](#321-gof-patterns) </br>
-        3.2.2. [GRASP Principes](#322-graspsolid-principes) </br>
-    3.3. [Relatie tot domein model](#33-relatie-tot-domein-model) </br>
-4. [Architectuur](#4-architectuur) </br>
-    4.1. [Layering](#41-layering) </br>
-    4.2. [Distribution](#42-distribution) </br>
-    4.3. [Architectuur Patterns](#43-architectuur-patterns) </br>
-5. [Overige](#5-technische-keuzes) </br>
-    5.1. [Frameworks & Libraries](#51-framworks--libraries) </br>
-    5.2. [Versiebeheer](#52-versiebeheer) </br>
-    5.3. [Build Management (CI/CD)](#53-build-management-cicd) </br>
-    5.4. [Unit-, Integratie- Tests](#54-unit--integratie--tests) </br>
-6. [Bronnen](#6-bronnen)
+3. [Architectuur](#3-architectuur) </br>
+    3.1. [Layering](#31-layering) </br>
+    3.2. [Distribution](#32-distribution) </br>
+    3.3. [Architectuur Patterns](#33-architectuur-patterns) </br>
+4. [Technische keuzes](#4-technische-keuzes)
+5. [Design](#5-design) </br>
+    5.1. [Class Diagram](#51-class-diagram) </br>
+        5.1.1. [Toelichting](#511-toelichting) </br>
+        5.1.2. [Domein consistentie/inconsistentie](#512-domein-consistentieinconsistentie) </br>
+    5.2. [UC15 - Start uitvoering](#52-uc-15-start-uitvoering) </br>
+        5.2.1. [Design](#521-design) </br>
+        5.2.2. [Toelichting](#522-toelichting) </br>
+6. [Overige](#6-overige) </br>
+    6.1. [Versiebeheer](#61-versiebeheer) </br>
+    6.2. [Build Management (CI/CD)](#62-build-management-cicd) </br>
+    6.3. [Unit-, Integratie- Tests](#63-unit--integratie--tests) </br>
+7. [Bronnen](#7-bronnen)
 
 # 1. Inleiding
 
@@ -84,7 +84,7 @@ must-have functionaliteit volledig zoals gespecificeerd voor een 8 een paar shou
     - of met EF CORE?
 6. Api zo uitwerken dat je de complexe use cases via de swagger gui kan testen
 7. Tijd over, een los web project maken met eigen user interface
-    - of plain javascript, ajax, bootstrap
+    - of plain Javascript, Ajax, Bootstrap
     - of angular met material UI.
 8. Heel veel tijd over?
     1. overige crud use cases uitwerken
@@ -92,9 +92,77 @@ must-have functionaliteit volledig zoals gespecificeerd voor een 8 een paar shou
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
-# 3. Design
+# 3. Architectuur
 
-## 3.1. Class Diagram
+Domain-centric architecture: Clean Architecture
+
+```raw
+.
+├── _HICT.ICDETool.Application --> Application > Stuurt het domein aan
+|   └── _Interfaces
+|       ├── Repositories > Interfaces voor persistentie
+|       └── Services > Interfaces voor andere infrastructurele benodigdheden
+├── HICT.ICDETool.SharedKernel --> Shared kernel > gebruikt in meerdere projecten, zoals value objects
+├── HICT.ICDETool.Domain --> Domain logic > Domein werkt op zichzelf, en beheert eigen consistentie.
+├── HICT.ICDETool.Infrastructure --> Implementatie van applicatie interfaces voor persistentie en services (onder andere EF CORE)
+├── HICT.ICDETool.Api (entrypoint) --> Presentatie logica only, aanbieden van een rest api en deze aansturen middels swagger 
+├── HICT.ICDETool.Tests (entrypoint voor tests)
+
+.
+└── HICT.ICDETool.Web --> (minste prioriteit) Losse MVC app: het aanbieden van een javascript webapp die de swagger api consumeert.
+```
+
+```mermaid
+classDiagram
+Api --> Application
+Web --> Api
+Application --> Domain
+Infrastructure *..> Application : IRepository
+```
+
+## 3.1. Layering
+
+## 3.2. Distribution
+
+- Geen microservices
+
+## 3.3. Architectuur Patterns
+
+---
+:warning: **_CRITERIA:_**
+een variatie aan principes en patterns op correcte en onderbouwde manier toegepast voor een 10
+
+---
+
+<font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+
+## 4. Technische keuzes
+
+- .NET 6 / C#10
+- ORM framework: EF Core 6
+- Presentatie framework: MVC
+- Swagger
+- Frontend: Javascript/Ajax/Jquery/Bootstrap 5
+- Project management: github projects
+- Dependency Injection via host builder
+- Configuration Management (IConfiguration)
+- Database: MSSQL
+
+Eventueel:
+
+- Angular
+
+---
+:warning: **_CRITERIA:_**
+alle frameworks, framework onderdelen en libraries correct gebruikt en volledig geïntegreerd, keuze voor deze onderbouwd voor een 10
+
+---
+
+<font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+
+# 5. Design
+
+## 5.1. Class Diagram
 
 ```mermaid
 classDiagram
@@ -288,7 +356,7 @@ Correct toepassen standaard notatie en het diagram moet de volledig requirements
 
 ---
 
-### 3.1.1 Toelichting
+### 5.1.1 Toelichting
 
 ---
 :warning: **_CRITERIA:_**
@@ -296,33 +364,7 @@ Minimaal 1 extra diagram (geen class diagram) opnemen, diverse modellen vereist 
 
 ---
 
-## 3.2 Onderbouwing ontwerp keuzes
-
----
-:warning: **_CRITERIA:_**
-Ontwerp problemen identificeren en ontwerp keuzes onderbouwen met relevant alternatieven en overwegingen voor een 10
-
----
-
-### 3.2.1. GoF Patterns
-
----
-:warning: **_CRITERIA:_**
-een variatie aan principes en patterns op correcte en onderbouwde manier toegepast voor een 10
-
----
-
-### 3.2.2. GRASP/SOLID Principes
-
----
-:warning: **_CRITERIA:_**
-een variatie aan principes en patterns op correcte en onderbouwde manier toegepast voor een 10
-
----
-
-## 3.3. Relatie tot domein model
-
-Wijzigingen ten opzichte van domein model
+### 5.1.2. Domein consistentie/inconsistentie
 
 ---
 :warning: **_CRITERIA:_**
@@ -330,80 +372,114 @@ Zowel inconsistenties als consistenties benoemd, inconsistenties volledig van re
 
 ---
 
-<font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
-
-# 4. Architectuur
-
-Domain-centric architecture: Clean Architecture
-
-```raw
-.
-├── _HICT.ICDETool.Application --> Application > Stuurt het domein aan
-|   └── _Interfaces
-|       ├── Repositiries > Interfaces voor persisitentie
-|       └── Services > Interfaces voor andere infrastructurele benodigdheden
-├── HICT.ICDETool.SharedKernel --> Shared kernel > gebruikt in meerdere projecten, zoals value objects
-├── HICT.ICDETool.Domain --> Domain logic > Domein werkt op zichzelf, en beheert eigen consistentie.
-├── HICT.ICDETool.Infrastructure --> Implementatie van applicatie interfaces voor persistentie en services (onder andere EF CORE)
-├── HICT.ICDETool.Api (entrypoint) --> Presentatie logica only, aanbieden van een rest api en deze aansturen middels swagger 
-├── HICT.ICDETool.Tests (entrypoint voor tests)
-
-.
-└── HICT.ICDETool.Web --> (minste prio) Losse MVC app: het aanbieden van een javascript webapp die de swagger api consumeert.
-```
-
-```mermaid
-classDiagram
-Api --> Application
-Web --> Api
-Application --> Domain
-Infrastructure *..> Application : IRepository
-```
-
-## 4.1. Layering
-
-## 4.2. Distribution
-
-- Geen microservices
-
-## 4.3. Architectuur Patterns
+## 5.2 UC-15 Start Uitvoering
 
 ---
 :warning: **_CRITERIA:_**
+Ontwerp problemen identificeren en ontwerp keuzes onderbouwen met relevant alternatieven en overwegingen voor een 10
+
+---
+
+---
+:warning: **_NOTE:_**
 een variatie aan principes en patterns op correcte en onderbouwde manier toegepast voor een 10
 
 ---
 
-<font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+### 5.2.1. Design
 
-# 5. Technische keuzes
+```mermaid
+sequenceDiagram
+    autonumber
+    Client->>CourseInrichting: startUitvoering()
+    activate CourseInrichting
+    CourseInrichting->>CourseUitvoering: CourseUitvoering(this, date)
+    deactivate CourseInrichting
+    activate CourseUitvoering
+    CourseUitvoering->>CourseUitvoering: creeerWeekUitvoeringen
+    
+    loop weken in planning
+        CourseUitvoering->>CourseUitvoering: Weken.Add()
+        CourseUitvoering->>CourseWeekUitvoering: CourseWeekUitvoering(week, date)
+        deactivate CourseUitvoering
+        activate CourseWeekUitvoering
+        CourseWeekUitvoering->>DateOnly: StartOfWeek()
+        
+        CourseWeekUitvoering->>CourseWeekUitvoering: creeerTentamen()
+        loop tentamen in week
+            CourseWeekUitvoering->>CourseWeekUitvoering: _tentamen.Add()
+            CourseWeekUitvoering ->> TentamenUitvoering: TentamenUitvoering(tentamen)
+        end
+        CourseWeekUitvoering->>CourseWeekUitvoering: creeerLessen()
+        loop les in week
+            CourseWeekUitvoering->>CourseWeekUitvoering: _les.Add()
+            CourseWeekUitvoering ->> LesUitvoering: LesUitvoering(les)
+        end
+    end
+    deactivate CourseWeekUitvoering
+    
+```
 
-- .NET 6 / C#10
-- ORM framework: EF Core 6
-- Presentatie framework: MVC
-- Ardalis https://github.com/ardalis/Specification
-- Swagger
-- Frontend: Javascript/Ajax/Jquery/Bootstrap 5
-- Project management: github projects
-- Dependency Injection via host builder
-- Configuration Management (IConfiguration)
-- Database: MSSQL
+```mermaid
+classDiagram
 
-Eventueel:
+    class CourseInrichting {
+        + CourseWeekPlanning Planning
+        + StartCourseUitvoering(DateOnly date)
+    }
 
-- Angular
+    class CourseUitvoering {
+        + CourseUitvoering(CourseInrichting inrichting, DateOnly date)
+        - creeerWeekUitvoeringen(date)
+    }
 
-<font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+    class CourseWeekUitvoering {
+        + CourseWeekUitvoering(CourseWeekInrichting inrichting, DateOnly date)
+        - creeerTentamen()
+        - creeerLessen()
+    }
 
-## 5.1. Framworks & Libraries
+    class TentamenUitvoering {
+        - TentamenInrichting _inrichting
+        + TentamenUitvoering(TentamenInrichting inrichting)
+    }
+
+    class LesUitvoering {
+        - LesInrichting _inrichting
+        + LesUitvoering(LesInrichting inrichting)
+    }
+
+    class DateOnly {
+        + StartOfWeek()
+    }
+
+    CourseInrichting "1" o--> "0..*" CourseUitvoering 
+    CourseWeekUitvoering "1..*" o--> "1" CourseUitvoering 
+    LesUitvoering "1..*" o--> "1" CourseWeekUitvoering
+    TentamenUitvoering "1..*" o--> "1" CourseWeekUitvoering
+```
 
 ---
-:warning: **_CRITERIA:_**
-alle frameworks, framework onderdelen en libraries correct gebruikt en volledig geïntegreerd, keuze voor deze onderbouwd voor een 10
+:warning: **_NOTE:_**
+Class Diagram en/of sequence diagram toegespitst op de use case.
 
 ---
 
-## 5.2. Versiebeheer
+Class Diagram en/of sequence diagram toegespitst op de use case.
+
+### 5.2.2. Toelichting
+
+---
+:warning: **_NOTE:_**
+Toelichten van gebruikte GoF patterns, SOLID principes & GRASP principes.
+
+---
+
+<font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+
+# 6. Overige
+
+## 6.1. Versiebeheer
 
 - Version management: github repos
 
@@ -413,7 +489,7 @@ versiebeheer en build management toegepast voor een 10
 
 ---
 
-## 5.3. Build Management (CI/CD)
+## 6.2. Build Management (CI/CD)
 
 - Build management: github actions
 - CI --> build artifacts
@@ -426,7 +502,7 @@ versiebeheer en build management toegepast voor een 10
 
 ---
 
-## 5.4. Unit-, Integratie- Tests
+## 6.3. Unit-, Integratie- Tests
 
 - Test Framework: xUnit
 
@@ -438,7 +514,7 @@ unit- en integratietests dekken werking grotendeels af, werking gedemonstreerd v
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
-# 6. Bronnen
+# 7. Bronnen
 
 |APA Bronvermelding|
 |------------------|

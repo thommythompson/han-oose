@@ -105,6 +105,19 @@ Het document moet aan x voldoen zodat x.
 
 ## Git werkwijze
 
+```mermaid
+  gitGraph
+    commit id: "init main"
+    branch develop
+    commit id: "init develop"
+    branch feat/uc15-start-uitvoering
+    commit id: "changes for new feature"
+    checkout develop
+    merge feat/uc15-start-uitvoering
+    checkout main
+    merge develop
+```
+
 - main --> bevat altijd een werkende versie
 - develop --> is de versie waaraan gewerkt word , wanneer alle gewenste feature & bug branches gemerged zijn en deze volledig werkend is zetten we deze door naar de main branch middels een PR.
 - feature/bug branches --> de onderscheiding tussen feature en bug spreken voor zich, feature & bugs representeren een work item uit het KanBan bord. Merge de branch niet lokaal maar maak een pull request aan binnen github naar de develop branch, iemand anders zal dan PR dan moeten goedkeuren.

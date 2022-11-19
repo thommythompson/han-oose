@@ -8,10 +8,10 @@ public class CourseBibliotheek
     {
         Courses = new List<CourseInrichting>();
     }
-    public void CreerCourse(String titel)
+    public void CreerCourse(String titel, ITijdDefinitie duur)
     {
         Courses.Add(
-            new CourseInrichting(titel)
+            new CourseInrichting(titel, duur)
             );
     }
 }

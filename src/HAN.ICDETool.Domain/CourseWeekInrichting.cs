@@ -2,6 +2,16 @@ namespace HAN.ICDETool.Domain;
 
 public class CourseWeekInrichting
 {
-    private IList<TentamenUitvoering>? _tentamen { get; set; }
-    private IList<LesUitvoering>? _lessen { get; set; }
+    public IList<TentamenInrichting>? Tentamen { get; private set; } = new List<TentamenInrichting>();
+    public IList<LesInrichting>? Lessen { get; private set; } = new List<LesInrichting>();
+
+    public void VoegTentamenToe(TentamenInrichting tentamen)
+    {
+        Tentamen.Add(tentamen);
+    }
+
+    public void voegLesToe(LesInrichting les)
+    {
+        Lessen.Add(les);
+    }
 }
