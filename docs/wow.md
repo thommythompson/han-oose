@@ -26,6 +26,21 @@ Voorheen werd er gebruik gemaakt van word documenten en StarUML voor het maken v
 
 - We prefereren een iterative werkwijze ten opzichte van een waterfall werkwijze, dat houd in dat wij geen eenmalige documentatie en modulering effort doen en vervolgens de documentatie links laten liggen. Wij stellen documentatie op die voldoende is om van start te gaan, bij nieuwe inzichten stellen wij ons ontwerp bij, voegen wij hier aan toe of schakelen wij de stakeholder bij om verdere details uit te vragen.
 
+## Programmeer afspraken
+
+- Clean Code principes aanhouden
+- attributes/properties middels c# [auto properties](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/auto-implemented-properties), geen get methods maken.
+- https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/how-to-declare-and-use-read-write-properties
+- setter zijn vrijwel altijd private.
+- wat betreft variabele benaming:
+  - private variable: _privateVariable
+  - public variable: PublicVariable
+
+```csharp
+private String _privateVariable { get; set; }
+public String PublicVariable { get; private set; }
+```
+
 ## Tooling
 
 Bij de aanvang van het project is duidelijk dat wij onderstaande gaan gebruiken, verdere technische keuzes zullen later in het traject gemaakt worden wanneer de benodigde requirements in kaart gebruikt zijn.

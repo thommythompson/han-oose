@@ -98,20 +98,18 @@ must-have functionaliteit volledig zoals gespecificeerd voor een 8 een paar shou
 
 ```mermaid
 classDiagram
+
 class CourseBibliotheek {
     - IList<CourseInrichting> courses
-    + CreateCourseInrichting()
 }
 
 class CourseInrichting {
     - String titel
+    - String omschrijving
     - int aantalHaalbareStudiePunten
-    - CourseWeekInrichting planning
+    - CourseWeekPlanning planning
     - EenheidVanLeeruitkomsten evl
     - bool definitief
-    + AddEenheidVanLeeruikomsten()
-    + CreateCourseWeekPlanning(duurInWeken)
-    + MaakInrichtingDefintief()
 }
 
 class CourseWeekPlanning {
@@ -222,8 +220,8 @@ class LesUitvoering {
 
 class Locatie {
     - String Naam
+    - LocatieType
     - Adres Adres
-    - bool IsOnline
 }
 
 class Adres {
@@ -236,8 +234,6 @@ class Adres {
 
 class CourseWeekUitvoering
 
-class PlanbaarItem
-
 class CourseUitvoering
 
 class Student 
@@ -245,44 +241,44 @@ class Student
 class Docent
 
 
-CourseBibliotheek -- CourseInrichting
-CourseInrichting -- EenheidVanLeeruitkomsten
-CourseInrichting -- CourseWeekPlanning
-CourseInrichting -- Docent
-CourseInrichting -- CourseUitvoering
-LesInrichting -- EenheidVanLeeruitkomsten
-LesInrichting -- LesMateriaal
-LesInrichting -- CourseWeekInrichting
-LesInrichting -- LesUitvoering
-LesInrichting --|> PlanbaarItem
-TentamenInrichting --|> PlanbaarItem
-BeroepsProduct --|> TentamenInrichting 
-BeroepsProduct -- Rubrics
-Rubrics -- BeoordelingsCriteria
-Rubrics -- Leerdoel
-SchriftelijkeToets -- Leerdoel
-SchriftelijkeToets --|> TentamenInrichting 
-TentamenInrichting -- TentamenUitvoering
-TentamenUitvoering -- Locatie
-TentamenUitvoering -- CourseWeekUitvoering
-TentamenUitvoering -- Beoordeling
-TentamenUitvoering -- Docent
-LesUitvoering -- Locatie
-LesUitvoering -- Docent
-LesUitvoering -- LesInrichting
-LesUitvoering -- CourseWeekUitvoering
-CourseUitvoering -- CourseWeekUitvoering
-CourseUitvoering -- Klas
-CourseUitvoering -- CourseInrichting
-Beoordeling -- Docent
-Beoordeling -- TentamenUitvoering
-Beoordeling -- Student
-Klas -- OpleidingsProfiel
-OpleidingsProfiel -- Opleiding
-Locatie -- Adres
-Student --|> Persoon : is
-Docent --|> Persoon : is
-
+CourseBibliotheek "1" -- "0..*" CourseInrichting : Staat in
+EenheidVanLeeruitkomsten "1..*" -- "1" CourseInrichting : Is gericht op
+EenheidVanLeeruitkomsten "1" -- "1..*" Leeruitkomst : Bevat
+Leeruitkomst "1" -- "1..*" Leerdoel : Word behaald door
+Leerdoel "0..*" -- "1..*" SchriftelijkeToets 
+Leerdoel "1..*" -- "1..*" Rubrics 
+Leerdoel "1..*" -- "1..*" LesInrichting
+Rubrics "1" -- "1..*" BeoordelingsCriteria : Bestaat uit
+Rubrics "1..*" -- "1" BeroepsProduct : Word beoordeeld middels
+SchriftelijkeToets --|> TentamenInrichting : Is
+BeroepsProduct --|> TentamenInrichting : Is
+LesInrichting "1" -- "1..*" LesMateriaal : Bevat
+LesInrichting "1" -- "0..*" LesUitvoering : Representeert
+LesInrichting "1" -- "0..*" CourseWeekInrichting
+CourseWeekInrichting "1" -- "0..*" TentamenInrichting : bevat
+CourseWeekInrichting "1..*" -- "1" CourseWeekPlanning : bevat
+CourseWeekPlanning "1" -- "1" CourseInrichting : bevat
+CourseWeekInrichting "1" -- "0..*" CourseWeekUitvoering : valt in
+CourseInrichting "0..*" -- "1..*" Docent : maakt
+CourseInrichting "1" -- "0..*" CourseUitvoering : Representeert
+Docent  --|> Persoon : Is
+Student  --|> Persoon : Is
+TentamenInrichting "1" -- "0..*" TentamenUitvoering : Representeert
+Docent "1" -- "0..*" LesUitvoering : Geeft
+Docent "1" -- "0..*" TentamenUitvoering : Examineert
+Docent "1" -- "0..*" Beoordeling : Geeft
+Beoordeling "1..*" -- "1" TentamenUitvoering : Voor
+Beoordeling "1" -- "0..*" Student : Krijgt
+Klas "1..*" -- "1" Student : Zit in
+Student "1" -- "1..*" CourseUitvoering : Volgt
+Student "1" -- "0..*" OpleidingsProfiel : Volgt
+Opleiding "1" -- "1..*" OpleidingsProfiel : Bevat
+CourseWeekUitvoering "1..*" -- "1" CourseUitvoering : Bevat
+CourseWeekUitvoering "1" -- "0..*" TentamenUitvoering : Valt in
+CourseWeekUitvoering "1" -- "0..*" LesUitvoering : Valt in
+Locatie "1" -- "1..*" LesUitvoering 
+Locatie "1" -- "1..*" TentamenUitvoering
+Locatie "1" -- "0..1" Adres
 
 ```
 

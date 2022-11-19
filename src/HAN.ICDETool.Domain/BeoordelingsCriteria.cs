@@ -2,5 +2,5 @@ namespace HAN.ICDETool.Domain;
 
 public class BeoordelingsCriteria
 {
-    private String? omschrijving { get; set; }
+    private String? _omschrijving { get; set; }
 }
