@@ -8,7 +8,10 @@
 
     <ItemGroup>
       <Folder Include="Interfaces\Repositories" />
-      <Folder Include="Interfaces\Services" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\HAN.ICDETool.Domain\HAN.ICDETool.Domain.csproj" />
     </ItemGroup>
 
 </Project>

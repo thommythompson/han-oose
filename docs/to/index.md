@@ -453,7 +453,7 @@ classDiagram
         + StartOfWeek()
     }
 
-    CourseInrichting "1" o--> "0..*" CourseUitvoering 
+    CourseInrichting "1" <--o "0..*" CourseUitvoering 
     CourseWeekUitvoering "1..*" o--> "1" CourseUitvoering 
     LesUitvoering "1..*" o--> "1" CourseWeekUitvoering
     TentamenUitvoering "1..*" o--> "1" CourseWeekUitvoering
@@ -464,8 +464,6 @@ classDiagram
 Class Diagram en/of sequence diagram toegespitst op de use case.
 
 ---
-
-Class Diagram en/of sequence diagram toegespitst op de use case.
 
 ### 5.2.2. Toelichting
 
