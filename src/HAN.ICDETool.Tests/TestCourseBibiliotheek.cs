@@ -15,6 +15,6 @@ public class TestCourseBibiliotheek
     {
         _courseBibliotheek.CreerCourse("naam");
         
-        Assert.That(_courseBibliotheek.courses[0].titel, Is.EqualTo("naam"));
+        Assert.That(_courseBibliotheek.Courses[0].Titel, Is.EqualTo("naam"));
     }
 }

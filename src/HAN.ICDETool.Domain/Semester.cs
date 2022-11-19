@@ -2,6 +2,6 @@ namespace HAN.ICDETool.Domain;
 
 public class Semester : ITijdDefinitie
 {
-    public int duurInWeken { get => 20; }
-    public int teBehalenStudiepunten { get => 30;  }
+    public int DuurInWeken { get => 20; }
+    public int TeBehalenStudiepunten { get => 30;  }
 }

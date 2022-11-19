@@ -2,6 +2,6 @@ namespace HAN.ICDETool.Domain;
 
 public interface ITijdDefinitie
 {
-    public int duurInWeken { get; }
-    public int teBehalenStudiepunten { get; }
+    public int DuurInWeken { get; }
+    public int TeBehalenStudiepunten { get; }
 }
