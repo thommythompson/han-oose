@@ -13,7 +13,7 @@ public class TestCourseBibiliotheek
     [Test]
     public void TestCourseCreation()
     {
-        _courseBibliotheek.CreerCourse("naam");
+        _courseBibliotheek.CreerCourse("naam", new Semester());
         
         Assert.That(_courseBibliotheek.Courses[0].Titel, Is.EqualTo("naam"));
     }
