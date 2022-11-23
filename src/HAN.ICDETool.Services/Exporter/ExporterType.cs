@@ -1,4 +1,4 @@
-namespace HAN.ICDETool.Services;
+namespace HAN.ICDETool.Services.Exporter;
 
 public enum ExporterType
 {

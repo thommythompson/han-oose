@@ -1,5 +1,4 @@
-namespace HAN.ICDETool.Services;
-
+namespace HAN.ICDETool.Services.Exporter;
 public class ExporterFactory
 {
     public IExporterService createExporter(ExporterType type)

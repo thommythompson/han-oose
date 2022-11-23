@@ -1,8 +1,8 @@
 using HAN.ICDETool.Application;
-using HAN.ICDETool.Application.Interfaces.Services;
+using HAN.ICDETool.Application.Services.Interfaces;
 using HAN.ICDETool.Domain;
 
-namespace HAN.ICDETool.Services;
+namespace HAN.ICDETool.Services.Exporter;
 
 public class LesMateriaalExporter : ILesMateriaalExporter
 {

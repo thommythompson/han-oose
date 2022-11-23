@@ -1,6 +1,6 @@
 using HAN.ICDETool.Domain;
 
-namespace HAN.ICDETool.Application.Interfaces.Services;
+namespace HAN.ICDETool.Application.Services.Interfaces;
 
 public interface ILesMateriaalExporter
 {
