@@ -1,7 +1,7 @@
 using HAN.ICDETool.Services.HtmlConverter;
 using IronPdf;
 
-namespace HAN.ICDETool.Services;
+namespace HAN.ICDETool.Services.Exporter;
 
 public class PdfExporterStrategy : IExporterService
 {

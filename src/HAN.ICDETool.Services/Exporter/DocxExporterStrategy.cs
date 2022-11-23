@@ -1,7 +1,7 @@
 using HAN.ICDETool.Services.HtmlConverter;
 using Xceed.Words.NET;
 
-namespace HAN.ICDETool.Services;
+namespace HAN.ICDETool.Services.Exporter;
 
 public class DocxExporterStrategy : IExporterService
 {

@@ -6,4 +6,16 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\HAN.ICDETool.Application\HAN.ICDETool.Application.csproj" />
+      <ProjectReference Include="..\HAN.ICDETool.Infrastructure\HAN.ICDETool.Infrastructure.csproj" />
+      <ProjectReference Include="..\HAN.ICDETool.Services\HAN.ICDETool.Services.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.2-beta3" />
+      <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.4.0" />
+      <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.4.0" />
+    </ItemGroup>
+
 </Project>

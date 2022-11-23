@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace HAN.ICDETool.Services;
+namespace HAN.ICDETool.Services.Exporter;
 
 public interface IExporterService
 {
