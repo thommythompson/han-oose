@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\HAN.ICDETool.Application\HAN.ICDETool.Application.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="DocX" Version="2.3.0" />
+      <PackageReference Include="IronPdf" Version="2022.11.10347" />
+      <PackageReference Include="IronPdf.MacOs.ARM" Version="2022.11.10347" />
+    </ItemGroup>
+
+</Project>
