@@ -2,7 +2,13 @@ namespace HAN.ICDETool.Domain;
 
 public class Leeruitkomst
 {
-    private String? _titel { get; set; }
-    private String? _omschrijving { get; set; }
-    private Leerdoel? _leerdoelen { get; set; }
+    public int Id { get; set; }
+    public string Titel { get; init; }
+    public string Omschrijving { get; init; }
+    public IList<Leerdoel> Leerdoelen { get; } = new List<Leerdoel>();
+
+    public void KoppelLeerdoel(Leerdoel leerdoel)
+    {
+        Leerdoelen.Add(leerdoel);
+    }
 }

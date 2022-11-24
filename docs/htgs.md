@@ -13,6 +13,11 @@ Tooling die gebruikt word binnen het team.
 
 - Azure Data Studio: voor database beheer.
 - Rider: Als IDE.
+
+```bash
+dotnet tool install --global dotnet-ef
+```
+
 - Fork: als visuele git client.
 
 ```bash
@@ -36,6 +41,14 @@ Gebruik onderstaande AppSettings om je `appsettings.development.json` te vullen 
 
 ```json
 {
-    ...
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "ConnectionStrings": {
+    "Default": "Server=localhost; Database=IcdeTool; User Id=sa; Password=P@ssw0rd; MultipleActiveResultSets=true;"
+  }
 }
 ```

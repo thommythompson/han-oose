@@ -2,15 +2,9 @@ namespace HAN.ICDETool.Domain;
 
 public class SchriftelijkeToets : TentamenInrichting
 {
-    public string? Titel { get; private set; }
-    public TentamenType? Type { get; private set; }
-    public int? Weging { get; private set; }
-    public int? TeBehalenStudiepunten { get; private set; }
-    private IList<Leerdoel> Leerdoels { get; set; }
-
-    public SchriftelijkeToets(String titel, CourseWeekInrichting week)
-    {
-        Titel = titel;
-        week.VoegTentamenToe(this);
-    }
+    public int Id { get; set; }
+    public string Titel { get; init; }
+    public TentamenType Type { get; init; }
+    public int Weging { get; init; }
+    public int TeBehalenStudiepunten { get; init; }
 }

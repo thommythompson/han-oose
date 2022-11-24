@@ -1,8 +1,8 @@
 namespace HAN.ICDETool.SharedKernel;
 
-public static class DateOnlyExtensions
+public static class DateTimeOffsetExtensions
 {
-    public static DateOnly StartOfWeek(this DateOnly date)
+    public static DateTimeOffset GetMondayOfThisWeek(this DateTimeOffset date)
     {
         DayOfWeek startOfWeek = DayOfWeek.Monday;
         int diff = (7 + (date.DayOfWeek - startOfWeek)) % 7;

@@ -1,18 +1,30 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace HAN.ICDETool.Domain;
 
 public class CourseWeekPlanning
 {
-    public IList<CourseWeekInrichting> Weken { get; private set;  }
-
-    public CourseWeekPlanning(ITijdDefinitie duur)
+    public int Id { get; set; }
+    private ITijdDefinitie _duur { get; set; }
+    [NotMapped]
+    public ITijdDefinitie Duur
     {
-        Weken = new List<CourseWeekInrichting>();
-        vulPlanningMetWeken(duur);
+        get
+        {
+            return this._duur;
+        }
+        init
+        {
+            this._duur = value;
+            vulPlanningMetWeken();   
+        }
     }
 
-    private void vulPlanningMetWeken(ITijdDefinitie duur)
+    public IList<CourseWeekInrichting> Weken { get; } = new List<CourseWeekInrichting>();
+
+    private void vulPlanningMetWeken()
     {
-        for (int i = 0; i < duur.DuurInWeken; i++)
+        for (int i = 0; i < _duur.DuurInWeken; i++)
         {
             Weken.Add(new CourseWeekInrichting());
         }

@@ -1,6 +1,7 @@
 using HAN.ICDETool.Api.Configuration;
 using HAN.ICDETool.Infrastructure.Data;
 using System.Text.Json.Serialization;
+using Microsoft.EntityFrameworkCore;
 
 namespace  HAN.ICDETool.Api;
 
@@ -42,6 +43,8 @@ public class Program
     {
         var app = builder.Build();
         
+        RunSeeding(app);
+        
         app.UseSwagger();
         app.UseSwaggerUI();
         
@@ -58,4 +61,17 @@ public class Program
         
         app.Run();
     }
+    
+    static void RunSeeding(WebApplication app)
+    {
+        var scopeFactory = app.Services.GetService<IServiceScopeFactory>();
+
+        using (var scope = scopeFactory.CreateScope())
+        {
+            var seeder = scope.ServiceProvider.GetService<IDbActions>();
+
+            seeder.CreateAndSeed().Wait();
+        }
+    }
+    
 }

@@ -2,23 +2,20 @@ namespace HAN.ICDETool.Domain;
 
 public class Rubric
 {
-    private String? _titel { get; set; }
-    private int? _weging { get; set; }
-    private int? _voldoendeThreshold { get; set; }
-    private int? _knockoutThreshold { get; set; }
-    private IList<Leerdoel>? _leerdoelen { get; set; }
-    private IList<BeoordelingsCriteria>? _criteria { get; set; }
+    public int Id { get; set; }
+    public string Titel { get; init; }
+    public int Weging { get; init; }
+    public int VoldoendeThreshold { get; set; }
+    public int KnockoutThreshold { get; set; }
+    public IList<BeoordelingsCriteria>? BeoordelingsCriteria { get; } = new List<BeoordelingsCriteria>();
 
-    public Rubric(int aantalCriteria)
+    public void AddBeoordelingsCriteria(BeoordelingsCriteria beoordelingsCriteria)
     {
-        vulCriteria(aantalCriteria);
+        BeoordelingsCriteria.Add(beoordelingsCriteria);
     }
 
-    private void vulCriteria(int aantal)
+    public void RemoveBeoordelingsCriteria(BeoordelingsCriteria beoordelingsCriteria)
     {
-        for (int i = 0; i < aantal; i++)
-        {
-            _criteria.Add(new BeoordelingsCriteria());
-        }
+        BeoordelingsCriteria.Remove(beoordelingsCriteria);
     }
 }

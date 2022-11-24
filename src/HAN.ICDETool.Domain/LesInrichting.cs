@@ -2,20 +2,17 @@ namespace HAN.ICDETool.Domain;
 
 public class LesInrichting
 {
-    
     public int Id { get; set; }
-    private String? _titel { get; set; }
-    public IList<LesMateriaal>? LesMateriaal { get; set; }
-    private IList<Leerdoel>? _leerdoelen { get; set; }
+    public string Titel { get; init; }
+    public IList<LesMateriaal> LesMateriaal { get; } = new List<LesMateriaal>();
 
-    public LesInrichting(String titel, CourseWeekInrichting week)
+    public void AddLesMateriaal(LesMateriaal lesMateriaal)
     {
-        _titel = titel;
-        week.voegLesToe(this);
+        LesMateriaal.Add(lesMateriaal);
     }
 
-    public void VoegMateriaalToe(string titel, string inhoud)
+    public void RemoveLesMateriaal(LesMateriaal lesMateriaal)
     {
-        LesMateriaal.Add(new LesMateriaal(titel, inhoud));
+        LesMateriaal.Remove(lesMateriaal);
     }
 }

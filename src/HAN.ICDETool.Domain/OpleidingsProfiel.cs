@@ -2,6 +2,7 @@ namespace HAN.ICDETool.Domain;
 
 public class OpleidingsProfiel
 {
-    private String? _naam { get; set; }
-    private String? _code { get; set; }
+    public int Id { get; set; }
+    public string Naam { get; init; }
+    public string Code { get; init; }
 }
