@@ -2,16 +2,10 @@ namespace HAN.ICDETool.Domain;
 
 public class CourseBibliotheek
 {
-    public IList<CourseInrichting>? Courses { get; private set; }
-
-    public CourseBibliotheek()
+    public IList<CourseInrichting> Courses { get; private set; } = new List<CourseInrichting>();
+    
+    public void AddCourse(CourseInrichting courseInrichting)
     {
-        Courses = new List<CourseInrichting>();
-    }
-    public void CreerCourse(String titel, ITijdDefinitie duur)
-    {
-        Courses.Add(
-            new CourseInrichting(titel, duur)
-            );
+        Courses.Add(courseInrichting);
     }
 }

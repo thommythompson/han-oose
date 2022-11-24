@@ -5,31 +5,37 @@ namespace HAN.ICDETool.Tests;
 
 public class TestWeekplanning
 {
-    private CourseUitvoering _courseUitvoering;
+    private CourseInrichting _courseInrichting;
     
     [SetUp]
     public void Setup()
     {
-        
+        _courseInrichting = new CourseInrichting
+        {
+            Titel = "Titel",
+            Duur = new Semester()
+        };
     }
 
     [Test]
     public void TestAantalPlanningWekenSemester()
     {
-        ITijdDefinitie semester = new Semester();
+        CourseWeekPlanning courseWeekPlanning = new CourseWeekPlanning
+        {
+            Duur = new Semester()
+        };
         
-        CourseWeekPlanning _planning = new CourseWeekPlanning(semester);
-        
-        Assert.That(_planning.Weken.Count, Is.EqualTo(semester.DuurInWeken));
+        Assert.That(courseWeekPlanning.Weken.Count, Is.EqualTo(new Semester().DuurInWeken));
     }
     
     [Test]
     public void TestAantalPlanningWekenPeriode()
     {
-        ITijdDefinitie periode = new Periode();
-        
-        CourseWeekPlanning _planning = new CourseWeekPlanning(periode);
-        
-        Assert.That(_planning.Weken.Count, Is.EqualTo(periode.DuurInWeken));
+        CourseWeekPlanning courseWeekPlanning = new CourseWeekPlanning
+        {
+            Duur = new Periode()
+        };
+
+        Assert.That(courseWeekPlanning.Weken.Count, Is.EqualTo(new Periode().DuurInWeken));
     }
 }

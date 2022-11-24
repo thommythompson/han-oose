@@ -4,7 +4,7 @@ namespace HAN.ICDETool.Domain;
 
 public interface Persoon
 {
-    public String? Voornaam { get; }
-    public String? Achternaam { get; }
-    public String? Email { get; }
+    public string Voornaam { get; init; }
+    public string Achternaam { get; init; }
+    public string Email { get; init; }
 }

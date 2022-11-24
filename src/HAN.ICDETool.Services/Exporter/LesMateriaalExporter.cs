@@ -26,7 +26,13 @@ public class LesMateriaalExporter : ILesMateriaalExporter
                 exporter = null;
                 break;
         }
+
+        IList<String> lesMateriaalLines = new List<string>();
+        foreach(LesMateriaalLine line in lesMateriaal.Inhoud)
+        {
+            lesMateriaalLines.Add(line.Line);
+        }
         
-        return exporter.Export(lesMateriaal.lesInhoud);
+        return exporter.Export(lesMateriaalLines);
     }
 }

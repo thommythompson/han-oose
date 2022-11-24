@@ -10,18 +10,27 @@ public class TestCourseInrichting
     [SetUp]
     public void Setup()
     {
-        _courseInrichting = new CourseInrichting("Test Course Inrichting", new Semester());
-
-        CourseWeekInrichting week = _courseInrichting.Planning.Weken[0];
+        _courseInrichting = new CourseInrichting
+        {
+            Titel = "Titel",
+            Duur = new Semester()
+        };
         
-        _courseInrichting.VoegLesToe("les 1", week);
-        _courseInrichting.VoegTentamenToe("tentamen 1", week);
+        _courseInrichting.AddLes(new LesInrichting
+        {
+            Titel = "Les1"
+        });
+        
+        _courseInrichting.AddTentamen(new SchriftelijkeToets
+        {
+            Titel = "Toets1"
+        });
     }
 
     [Test]
     public void TestStartCourseUitvoeringVanInrichtingDieNietDefintiefIs()
     {
-        DateOnly date = DateTime.Now.ToDateOnly();
+        DateTimeOffset date = DateTime.Now;
 
         Assert.Throws<Exception>(() => _courseInrichting.StartCourseUitvoering(date));
     }
@@ -29,9 +38,9 @@ public class TestCourseInrichting
     [Test]
     public void TestStartCourseUitvoering()
     {
-        DateOnly date = DateTime.Now.ToDateOnly();
+        DateTimeOffset date = DateTime.Now;
 
-        _courseInrichting.maakDefintief();
+        _courseInrichting.MaakDefintief();
 
         CourseUitvoering _courseUitvoering = _courseInrichting.StartCourseUitvoering(date);
         

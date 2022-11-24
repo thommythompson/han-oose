@@ -2,15 +2,21 @@ namespace HAN.ICDETool.Domain;
 
 public class BeroepsProduct : TentamenInrichting
 {
-    public string? Titel { get; private set; }
-    public TentamenType? Type { get; private set; }
-    public int? Weging { get; private set; }
-    public int? TeBehalenStudiepunten { get; private set; }
-    private IList<Rubric>? _rubrics { get; set; }
-
-    public BeroepsProduct(String titel, CourseWeekInrichting week)
+    public int Id { get; set; }
+    public string Titel { get; init; }
+    public TentamenType Type { get; init; }
+    public int Weging { get; init; }
+    public int TeBehalenStudiepunten { get; init; }
+    public IList<Rubric> Rubrics { get; private set; } = new List<Rubric>();
+    public CourseWeekInrichting? CourseWeekInrichting { get; private set; }
+    
+    public void AddRubric(Rubric rubric)
     {
-        Titel = titel;
-        week.VoegTentamenToe(this);
+        Rubrics.Add(rubric);
+    }
+
+    public void WijsToeAanWeek(CourseWeekInrichting courseWeekInrichting)
+    {
+        courseWeekInrichting.AddTentamen(this);
     }
 }

@@ -1,45 +1,71 @@
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.CompilerServices;
+
 namespace HAN.ICDETool.Domain;
 
 public class CourseInrichting
 {
-    public String? Titel { get; private set; }
-    private String? _omschrijving { get; set; }
-    public CourseWeekPlanning? Planning { get; private set; }
-
-    private IList<EenheidVanLeeruitkomsten> _evls { get; set; } = new List<EenheidVanLeeruitkomsten>();
-    private IList<TentamenInrichting> _tentamen { get; set; } = new List<TentamenInrichting>();
-    private IList<LesInrichting> _lessen { get; set; } = new List<LesInrichting>();
-    private bool _isDefintief { get; set; } = false;
-    private Persoon? _gemaaktDoor { get; set; }
-
-    public CourseInrichting(String titel, ITijdDefinitie duur)
+    public int Id { get; set; }
+    public String Titel { get; init; }
+    public String Omschrijving { get; init; }
+    public Docent AangemaaktDoor { get; init; }
+    [NotMapped]
+    public ITijdDefinitie Duur
     {
-        Titel = titel;
-        
-        Planning = new CourseWeekPlanning(duur);
+        get
+        {
+            return this.Planning.Duur;
+        }
+        init
+        {
+            this.Planning = new CourseWeekPlanning
+            {
+                Duur = value
+            };
+        }
+    }
+    private DateTimeOffset _aanmaakDatum { get; set; }
+    [NotMapped]
+    public DateTimeOffset AanmaakDatum
+    {
+        get => this._aanmaakDatum;
+        init => this._aanmaakDatum = DateTimeOffset.Now;
+    }
+    public CourseWeekPlanning Planning { get; private set; }
+    public bool IsDefintief { get; private set; } = false;
+    public IList<EenheidVanLeeruitkomsten> Evls { get; } = new List<EenheidVanLeeruitkomsten>();
+    public IList<TentamenInrichting> Tentamen { get; } = new List<TentamenInrichting>();
+    public IList<LesInrichting> Lessen { get; } = new List<LesInrichting>();
+    
+    public void MaakDefintief()
+    {
+        IsDefintief = true;
     }
 
-    public void maakDefintief()
+    public void AddEenheidVanLeeruitkomsten(EenheidVanLeeruitkomsten eenheidVanLeeruitkomsten)
     {
-        _isDefintief = true;
+        Evls.Add(eenheidVanLeeruitkomsten);
     }
     
-    public void VoegTentamenToe(String titel, CourseWeekInrichting week)
+    public void AddTentamen(TentamenInrichting tentamenInrichting)
     {
-        _tentamen.Add(new BeroepsProduct(titel, week));
-        _tentamen.Add(new SchriftelijkeToets(titel, week));
+        Tentamen.Add(tentamenInrichting);
     }
 
-    public void VoegLesToe(String titel, CourseWeekInrichting week)
+    public void AddLes(LesInrichting lesInrichting)
     {
-        _lessen.Add(new LesInrichting(titel, week));
+        Lessen.Add(lesInrichting);
     }
-    
-    public CourseUitvoering StartCourseUitvoering(DateOnly date)
+
+    public CourseUitvoering StartCourseUitvoering(DateTimeOffset date)
     {
-        if (!_isDefintief)
+        if (!IsDefintief)
             throw new Exception("Kan geen uitvoering starten van een course inrichting die niet defintief is.");
-        
-        return new CourseUitvoering(this, date);
+
+        return new CourseUitvoering
+        {
+            CourseInrichting = this,
+            StartDatum = date
+        };
     }
 }

@@ -1,36 +1,49 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using HAN.ICDETool.SharedKernel;
 
 namespace HAN.ICDETool.Domain;
 
 public class CourseWeekUitvoering
 {
-    public DateOnly? Monday { get; private set; }
-    private CourseWeekInrichting _inrichting { get; set; }
-    private IList<TentamenUitvoering> _tentamen { get; set; } = new List<TentamenUitvoering>();
-    private IList<LesUitvoering> _lessen { get; set; } = new List<LesUitvoering>();
-
-    public CourseWeekUitvoering(CourseWeekInrichting inrichting, DateOnly date)
+    public int Id { get; set; }
+    public DateTimeOffset Monday { get; init; }
+    private CourseWeekInrichting _courseWeekInrichting { get; set; }
+    [NotMapped]
+    public CourseWeekInrichting CourseWeekInrichting
     {
-        _inrichting = inrichting;
-        Monday = date.StartOfWeek();
-        
-        creeerTentamen();
-        creeerLessen();
+        get
+        {
+            return this._courseWeekInrichting;
+        }
+        init
+        {
+            this._courseWeekInrichting = value;
+            creeerTentamen();
+            creeerLessen();
+        }
     }
-
+    public IList<TentamenUitvoering> Tentamen { get; } = new List<TentamenUitvoering>();
+    public IList<LesUitvoering> Lessen { get; } = new List<LesUitvoering>();
+    
     private void creeerTentamen()
     {
-        foreach (TentamenInrichting tentamen in _inrichting.Tentamen)
+        foreach (TentamenInrichting tentamen in _courseWeekInrichting.Tentamen)
         {
-            _tentamen.Add(new TentamenUitvoering(tentamen));
+            Tentamen.Add(new TentamenUitvoering
+            {
+                TentamenInrichting = tentamen
+            });
         }
     }
 
     private void creeerLessen()
     {
-        foreach (LesInrichting les in _inrichting.Lessen)
+        foreach (LesInrichting les in _courseWeekInrichting.Lessen)
         {
-            _lessen.Add(new LesUitvoering(les));
+            Lessen.Add(new LesUitvoering
+            {
+                    LesInrichting = les
+            });
         }
     }
 }

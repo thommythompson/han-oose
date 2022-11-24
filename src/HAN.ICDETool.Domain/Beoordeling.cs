@@ -2,7 +2,8 @@ namespace HAN.ICDETool.Domain;
 
 public class Beoordeling
 {
-    private TentamenUitvoering? _tentamen { get; set; }
-    private Persoon? _beoordelingVoor { get; set; }
-    private Persoon? _beoordeeldDoor { get; set; }
+    public int Id { get; set; }
+    public TentamenUitvoering Tentamen { get; init; }
+    public Student BeoordelingVoor { get; init; }
+    public Docent BeoordeeldDoor { get; init; }
 }

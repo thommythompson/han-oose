@@ -2,9 +2,10 @@ namespace HAN.ICDETool.Domain;
 
 public class Adres
 {
-    private String? _straat { get; set; }
-    private String? _huisnummer { get; set; }
-    private String? _toevoeging { get; set; }
-    private String? _postcode { get; set; }
-    private String? _plaatsnaam { get; set; }
+    public int Id { get; set; }
+    public String Straat { get; init; }
+    public String Huisnummer { get; init; }
+    public String? _Toevoeging { get; init; }
+    public String Postcode { get; init; }
+    public String Plaatsnaam { get; init; }
 }

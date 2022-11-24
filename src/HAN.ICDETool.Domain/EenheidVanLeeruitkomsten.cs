@@ -2,7 +2,13 @@ namespace HAN.ICDETool.Domain;
 
 public class EenheidVanLeeruitkomsten
 {
-    private String? _titel { get; set; }
-    private String? _omschrijving { get; set; }
-    private IList<Leeruitkomst>? _leeruitkomsten { get; set; }
+    public int Id { get; set; }
+    public String Titel { get; init; }
+    public String Omschrijving { get; init; }
+    public IList<Leeruitkomst> Leeruitkomsten { get; } = new List<Leeruitkomst>();
+
+    public void AddLeeruitkomst(Leeruitkomst leeruitkomst)
+    {
+        Leeruitkomsten.Add(leeruitkomst);
+    }
 }

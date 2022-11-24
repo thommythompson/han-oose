@@ -19,10 +19,12 @@ public class DbActions : IDbActions
     {
         _logger.LogInformation("Start seeding database");
         
-        CourseWeekInrichting courseWeekInrichting = new CourseWeekInrichting();
-        LesInrichting lesInrichting = new LesInrichting("titel", courseWeekInrichting);
+        LesInrichting lesInrichting = new LesInrichting
+        {
+            Titel = "Titel"
+        };
         
-        lesInrichting.VoegMateriaalToe("titel", "inhoud");
+        lesInrichting.AddLesMateriaal(new LesMateriaal());
 
         // TODO: hoe run je async?
         await _dbContext.LesInrichting.AddAsync(lesInrichting);
@@ -36,5 +38,11 @@ public class DbActions : IDbActions
         
         _dbContext.Database.EnsureCreated();
         _dbContext.Database.Migrate();
+    }
+
+    public async Task CreateAndSeed()
+    {
+        Create();
+        Seed();
     }
 }

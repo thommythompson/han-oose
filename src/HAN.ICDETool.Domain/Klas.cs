@@ -2,7 +2,13 @@ namespace HAN.ICDETool.Domain;
 
 public class Klas
 {
-    private String? _code { get; set; }
-    private Persoon _mentor { get; set; }
-    private IList<Persoon> _studenten { get; set; }
+    public int Id { get; set; }
+    public String Code { get; init; }
+    public Docent Mentor { get; init; }
+    public IList<Student> Studenten { get; } = new List<Student>();
+
+    public void AddStudent(Student student)
+    {
+        Studenten.Add(student);
+    }
 }
