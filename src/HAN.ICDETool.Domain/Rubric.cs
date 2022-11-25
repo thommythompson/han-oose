@@ -5,15 +5,18 @@ namespace HAN.ICDETool.Domain;
 public class Rubric
 {
     public int Id { get; set; }
-    public string Titel { get; init; }
-    public int Weging { get; init; }
-    public int VoldoendeThreshold { get; set; }
-    public int KnockoutThreshold { get; set; }
-   
-    [NotMapped]
+    public string Titel { get; }
+    public int Weging { get; set; } = 0;
+    public int VoldoendeThreshold { get; set; } = 0;
+    public int KnockoutThreshold { get; set; } = 0;
     public IEnumerable<BeoordelingsCriteria> BeoordelingsCriteria { get => _beoordelingsCriteria; } 
     private IList<BeoordelingsCriteria> _beoordelingsCriteria { get; } = new List<BeoordelingsCriteria>();
 
+    public Rubric(string titel)
+    {
+        this.Titel = titel;
+    }
+    
     public void AddBeoordelingsCriteria(BeoordelingsCriteria beoordelingsCriteria)
     {
         _beoordelingsCriteria.Add(beoordelingsCriteria);

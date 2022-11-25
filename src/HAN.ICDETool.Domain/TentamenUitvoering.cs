@@ -9,4 +9,14 @@ public class TentamenUitvoering
     public BeroepsProduct? BeroepsProduct { get; init; }
     public Locatie? Locatie { get; set; }
     public Docent? Docent { get; set; }
+
+    public TentamenUitvoering(SchriftelijkeToets schriftelijkeToets)
+    {
+        this.SchriftelijkeToets = schriftelijkeToets;
+    }
+    
+    public TentamenUitvoering(BeroepsProduct beroepsProduct)
+    {
+        this.BeroepsProduct = beroepsProduct;
+    }
 }

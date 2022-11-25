@@ -12,13 +12,7 @@ public class TestAdres
     [Test]
     public void TestInitAttributes()
     {
-        Adres adres = new Adres
-        {
-            Straat = "Straat",
-            Huisnummer = "4b",
-            Plaatsnaam = "Groenlo",
-            Postcode = "7141NP"
-        };
+        Adres adres = new Adres("Straat","4b","7141NP","Groenlo");
         
         Assert.That(adres.Straat, Is.EqualTo("Straat"));
         Assert.That(adres.Huisnummer, Is.EqualTo("4b"));

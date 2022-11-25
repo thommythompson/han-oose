@@ -10,21 +10,15 @@ public class TestCourseUitvoering
     [SetUp]
     public void Setup()
     {
-        _courseInrichting = new CourseInrichting
-        {
-            Titel = "Titel",
-            Duur = new Semester()
-        };
-
-        _courseInrichting.AddLes(new LesInrichting
-        {
-            Titel = "Les1"
-        });
+        Docent docent = new Docent("Voornaam", "Achternaam", "v.achternaam@email.com");
         
-        _courseInrichting.AddTentamen(new SchriftelijkeToets
-        {
-            Titel = "Toets1"
-        });
+        CourseInrichting courseInrichting = new CourseInrichting("Titel", "Omschrijving", docent);
+        
+        courseInrichting.CreatePlanning(new Semester());
+
+        _courseInrichting.AddLes(new LesInrichting("Titel"));
+        
+        _courseInrichting.AddTentamen(new SchriftelijkeToets("Titel"));
     }
 
     [Test]
@@ -36,6 +30,6 @@ public class TestCourseUitvoering
 
         CourseUitvoering _courseUitvoering = _courseInrichting.StartCourseUitvoering(date);
         
-        Assert.That(_courseUitvoering.Weken.First().Monday, Is.EqualTo((DateTimeOffset)new DateTime(2022, 11, 14)));
+        Assert.That(_courseUitvoering.Weken.First().Maandag, Is.EqualTo((DateTimeOffset)new DateTime(2022, 11, 14)));
     }
 }

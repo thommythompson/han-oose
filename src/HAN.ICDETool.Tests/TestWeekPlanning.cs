@@ -10,32 +10,27 @@ public class TestWeekplanning
     [SetUp]
     public void Setup()
     {
-        _courseInrichting = new CourseInrichting
-        {
-            Titel = "Titel",
-            Duur = new Semester()
-        };
+        Docent docent = new Docent("Voornaam", "Achternaam", "v.achternaam@email.com");
+        
+        CourseInrichting courseInrichting = new CourseInrichting("Titel", "Omschrijving", docent);
+        
+        courseInrichting.CreatePlanning(new Semester());
+        
     }
 
     [Test]
     public void TestAantalPlanningWekenSemester()
     {
-        CourseWeekPlanning courseWeekPlanning = new CourseWeekPlanning
-        {
-            Duur = new Semester()
-        };
+        _courseInrichting.CreatePlanning(new Semester());
         
-        Assert.That(courseWeekPlanning.Weken.Count, Is.EqualTo(new Semester().DuurInWeken));
+        Assert.That(_courseInrichting.Planning.Weken.Count, Is.EqualTo(new Semester().DuurInWeken));
     }
     
     [Test]
     public void TestAantalPlanningWekenPeriode()
     {
-        CourseWeekPlanning courseWeekPlanning = new CourseWeekPlanning
-        {
-            Duur = new Periode()
-        };
+        _courseInrichting.CreatePlanning(new Periode());
 
-        Assert.That(courseWeekPlanning.Weken.Count, Is.EqualTo(new Periode().DuurInWeken));
+        Assert.That(_courseInrichting.Planning.Weken.Count, Is.EqualTo(new Periode().DuurInWeken));
     }
 }

@@ -9,6 +9,7 @@ public class ICDEContext : DbContext
 {
     private readonly IConfiguration _configuration;
 
+    public DbSet<CourseBibliotheek> CourseBibliotheek { get; set; }
     public DbSet<LesInrichting> LesInrichting { get; set; }
     public DbSet<LesMateriaal> LesMateriaal { get; set; }
     public DbSet<CourseWeekInrichting> CourseWeekInrichting { get; set; }
@@ -40,5 +41,27 @@ public class ICDEContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlServer(_configuration.GetConnectionString("Default"));
+    }
+    
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<Beoordeling>()
+            .HasOne( e => e.TentamenUitvoering)
+            .WithMany()
+            .OnDelete(DeleteBehavior.NoAction);
+
+        modelBuilder.Entity<Beoordeling>()
+            .HasOne(e => e.BeoordeeldDoor)
+            .WithMany()
+            .OnDelete(DeleteBehavior.NoAction);
+
+        modelBuilder.Entity<Beoordeling>()
+            .HasOne(e => e.BeoordelingVoor)
+            .WithMany()
+            .OnDelete(DeleteBehavior.NoAction);
+        
+
     }
 }

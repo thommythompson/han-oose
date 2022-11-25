@@ -6,39 +6,26 @@ namespace HAN.ICDETool.Domain;
 public class CourseUitvoering
 {
     public int Id { get; set; }
-    public CourseInrichting CourseInrichting { get; init; }
-    
-    [NotMapped]
+    public CourseInrichting CourseInrichting { get; }
+    public DateTimeOffset StartDatum { get;  }
     public IEnumerable<CourseWeekUitvoering> Weken { get => _weken;}
     private IList<CourseWeekUitvoering> _weken { get; } = new List<CourseWeekUitvoering>();
     
-    [NotMapped]
-    public DateTimeOffset StartDatum
+    public CourseUitvoering(CourseInrichting courseInrichting, DateTimeOffset startDatum)
     {
-        get
-        {
-            return this._startDatum;
-        }
-        init
-        {
-            _startDatum = value.GetMondayOfThisWeek();
-            creeerWeekUitvoeringen();
-        }
+        this.CourseInrichting = courseInrichting;
+        this.StartDatum = startDatum.GetMondayOfThisWeek();
+        creeerWeekUitvoeringen();
     }
-    private DateTimeOffset _startDatum { get; set; }
     
     private void creeerWeekUitvoeringen()
     {
         int i = 0;
         foreach (CourseWeekInrichting week in CourseInrichting.Planning.Weken)
         {
-            DateTimeOffset date = _startDatum.AddDays(7 * i);
+            DateTimeOffset date = StartDatum.AddDays(7 * i);
             
-            _weken.Add(new CourseWeekUitvoering
-            {
-                Monday = date,
-                CourseWeekInrichting = week
-            });
+            _weken.Add(new CourseWeekUitvoering(date, week));
             
             i++;
         }

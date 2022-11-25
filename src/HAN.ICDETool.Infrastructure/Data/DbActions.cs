@@ -19,10 +19,7 @@ public class DbActions : IDbActions
     {
         _logger.LogInformation("Start seeding database");
         
-        LesInrichting lesInrichting = new LesInrichting
-        {
-            Titel = "Titel"
-        };
+        LesInrichting lesInrichting = new LesInrichting("Titel");
         
         lesInrichting.AddLesMateriaal(new LesMateriaal());
 

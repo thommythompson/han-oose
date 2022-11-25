@@ -5,12 +5,15 @@ namespace HAN.ICDETool.Domain;
 public class Klas
 {
     public int Id { get; set; }
-    public String Code { get; init; }
-    public Docent Mentor { get; init; }
-    
-    [NotMapped]
+    public String Code { get; set; }
+    public Docent Mentor { get; set; }
     public IEnumerable<Student> Studenten { get => _studenten; }
     private IList<Student> _studenten { get; } = new List<Student>();
+
+    public Klas(string code)
+    {
+        this.Code = code;
+    }
     
     public void AddStudent(Student student)
     {

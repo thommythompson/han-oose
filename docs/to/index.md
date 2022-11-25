@@ -310,6 +310,8 @@ class ITijdDefinitie{
     + int DuurInWeken
     + int TeBehalenStudiepunten
 }
+Periode --|> ITijdDefinitie
+Semester --|> ITijdDefinitie
 
 class Klas{
     + int Id
@@ -412,8 +414,7 @@ class OpleidingsProfiel{
     + string Code
 }
 
-Periode --|> ITijdDefinitie
-Semester --|> ITijdDefinitie
+
 
 class Persoon {
     + string Voornaam
