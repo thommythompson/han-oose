@@ -5,7 +5,7 @@ namespace HAN.ICDETool.Domain;
 public class CourseWeekPlanning
 {
     public int Id { get; set; }
-    private ITijdDefinitie _duur { get; set; }
+    
     [NotMapped]
     public ITijdDefinitie Duur
     {
@@ -19,14 +19,17 @@ public class CourseWeekPlanning
             vulPlanningMetWeken();   
         }
     }
-
-    public IList<CourseWeekInrichting> Weken { get; } = new List<CourseWeekInrichting>();
+    private ITijdDefinitie _duur { get; set; }
+    
+    [NotMapped]
+    public IEnumerable<CourseWeekInrichting> Weken { get => _weken; }
+    private IList<CourseWeekInrichting> _weken { get; } = new List<CourseWeekInrichting>();
 
     private void vulPlanningMetWeken()
     {
         for (int i = 0; i < _duur.DuurInWeken; i++)
         {
-            Weken.Add(new CourseWeekInrichting());
+            _weken.Add(new CourseWeekInrichting());
         }
     }
 }

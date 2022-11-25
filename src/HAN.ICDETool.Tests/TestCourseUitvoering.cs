@@ -36,6 +36,6 @@ public class TestCourseUitvoering
 
         CourseUitvoering _courseUitvoering = _courseInrichting.StartCourseUitvoering(date);
         
-        Assert.That(_courseUitvoering.Weken[0].Monday, Is.EqualTo((DateTimeOffset)new DateTime(2022, 11, 14)));
+        Assert.That(_courseUitvoering.Weken.First().Monday, Is.EqualTo((DateTimeOffset)new DateTime(2022, 11, 14)));
     }
 }

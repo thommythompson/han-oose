@@ -167,186 +167,291 @@ alle frameworks, framework onderdelen en libraries correct gebruikt en volledig 
 ```mermaid
 classDiagram
 
-class CourseBibliotheek {
-    - IList<CourseInrichting> courses
+class Adres{
+    + int Id
+    + string Straat
+    + string Huisnummer
+    + string Toevoeging
+    + string Postcode
+    + string Plaatsnaam
 }
+
+class Beoordeling{
+    + int Id
+    + Student BeoordelingVoor
+    + Docent BeoordeeldDoor
+}
+Beoordeling *--> TentamenUitvoering
+Beoordeling --> Student
+Beoordeling --> Docent
+
+class BeoordelingsCriteria{
+    + int Id
+    + string Omschrijving
+}
+
+class BeroepsProduct{
+    + int Id
+    + string Titel
+    + TentamenType Type
+    + int Weging
+    + int TeBehalenStudiepunten
+    + IEnumberable<Rubric> Rubrics
+    - IList<Rubrics> _rubrics
+    + void AddRubrics(Rubrics)
+}
+BeroepsProduct --|> TentamenInrichting 
+BeroepsProduct -- TentamenType
+BeroepsProduct *--> Rubrics
+
+class CourseBibliotheek{
+    + IEnumberable<CourseInrichting> Courses
+    - IList<CourseInrichting> _courses
+    + void AddCourse(CourseInrichting)
+}
+CourseBibliotheek *--> CourseInrichting
 
 class CourseInrichting {
-    - String titel
-    - String omschrijving
-    - int aantalHaalbareStudiePunten
-    - CourseWeekPlanning planning
-    - EenheidVanLeeruitkomsten evl
-    - bool definitief
+    + int Id
+    + string Titel
+    + string Omschrijving
+    + Docent AangemaaktDoor
+    + CourseWeekPlanning Planning
+    + bool IsDefinitief = false
+    + ITijdDefinitie Duur
+    + DateTimeOffset AanmaakDatum
+    - DateTimeOffset _aanmaakDatum
+    + IEnumerable<EenheidVanLeeruitkomsten> Evls
+    - IList<EenheidVanLeeruitkomsten> _evls
+    + IEnumerable<TentamenInrichting> Tentamen
+    - IList<TentamenInrichting> _tentamen
+    + IEnumerable<LesInrichting> Lessen
+    - IList<LesInrichting> _lessen
+    + void MaakDefinitief()
+    + void AddEenheidVanLeeruitkomsten(EenheidVanLeeruitkomsten)
+    + void AddTentamen(TentamenInrichting)
+    + void AddLes(LesInrichting)
+    + CourseUitvoering StartCourseUitvoering(DateTimeOffset)
+}
+CourseInrichting <--* CourseWeekPlanning
+CourseInrichting -- ITijdDefinitie
+CourseInrichting <--* EenheidVanLeeruitkomsten
+CourseInrichting <--* TentamenInrichting
+CourseInrichting <--* LesInrichting
+
+class CourseUitvoering {
+    + int Id
+    + CourseInrichting CourseInrichting
+    + IEnumerable<CourseWeekUitvoering> Weken
+    - IList<CourseWeekUitvoering>
+    + DateTimeOffset StartDatum
+    - DateTimeOffset _startDatum
+    - void creeerWeekUitvoeringen()
+}
+CourseUitvoering *--> CourseInrichting
+CourseUitvoering <--* CourseWeekUitvoering
+
+class CourseWeekInrichting{
+    + int Id
+    + IEnumerable<SchriftelijkeToets> SchriftelijkeToets 
+    - IList<SchriftelijkeToets> _schriftelijkeToets
+    + IEnumerable<BeroepsProduct> BeroepsProduct
+    - IList<BeroepsProduct> _beroepsProduct 
+    + IEnumerable<LesInrichting> Lessen
+    - IList<LesInrichting> _lessen
+    + void AddSchriftelijkeToets(SchriftelijkeToets)
+    + void AddBeroepsProduct(BeroepsProduct)
+    + void AddLes(LesInrichting)
+}
+CourseWeekInrichting <--* SchriftelijkeToets
+CourseWeekInrichting <--* BeroepsProduct
+CourseWeekInrichting <--* LesInrichting
+
+class CourseWeekPlanning{
+    + int Id
+    + ITijdDefinitie Duur
+    - ITijdDefinitie _duur
+    + IEnumerable<CourseWeekInrichting> Weken
+    - IList<CourseWeekInrichting> _weken 
+    - void vulPlanningMetWeken()
+}
+CourseWeekPlanning -- ITijdDefinitie
+CourseWeekPlanning <--* CourseWeekInrichting
+
+class CourseWeekUitvoering{
+    + int Id
+    + DateTimeOffset Monday
+    + CourseWeekInrichting CourseWeekInrichting
+    - CourseWeekInrichting _courseWeekInrichting
+    + IEnumerable<TentamenUitvoering> Tentamen
+    - IList<TentamenUitvoering> _tentamen
+    + IEnumerable<LesUitvoering> Lessen
+    - IList<LesUitvoering> _lessen
+    - void creeerTentamenUitvoeringen()
+    - void creeerLesUitvoeringen()
+}
+CourseWeekUitvoering *--> CourseWeekInrichting
+CourseWeekUitvoering --> TentamenUitvoering
+CourseWeekUitvoering --> LesUitvoering
+
+
+class EenheidVanLeeruitkomsten{
+    + int Id
+    + string Titel
+    + string Omschrijving
+    + IEnumerable<Leeruitkomst> Leeruitkomsten
+    - IList<Leeruitkomst> _leeruitkomsten
+    + void AddLeeruitkomst(Leeruitkomst)
+}
+EenheidVanLeeruitkomsten <--* Leeruitkomst
+
+<<Interface>> ITijdDefinitie
+class ITijdDefinitie{
+    + int DuurInWeken
+    + int TeBehalenStudiepunten
 }
 
-class CourseWeekPlanning {
-    - int duurInweken
-    - IList<CourseWeekInrichting> weken
-    + CreateCourseWeken()
-    + GetCourseWeken()
-    + GetCourseWeek(nr)
-    + planItem(PlanBaarItem item, weekNr)
+class Klas{
+    + int Id
+    + string Code
+    + Docent mentor
+    + IEnumerable<Student> Studenten
+    - IList<Student> _studenten
+    + void AddStudent(Student)
+}
+Klas --> Docent
+Klas --> Student
+
+class Leerdoel{
+    + int Id
+    + string Titel
+    + string Omschrijving
+    + IEnumerable<Rubric> GekoppeldeRubrics
+    - IList<Rubric> _gekoppeldeRubrics
+    + IEnumerable<LesInrichting> GekoppeldeLessen
+    - IList<LesInrichting> _gekoppeldeLessen
+    + IEnumerable<SchriftelijkeToets> GekoppeldeToetsen
+    - IList<SchriftelijkeToets> _gekoppeldeToetsen
+    + void KoppelRubrics(Rubric)
+    + void OntkoppelRubric(Rubric)
+    + void KoppelLes(LesInrichting)
+    + void OntkoppelLes(LesInrichting)
+    + void KoppelToets(SchriftelijkeToets)
+    + void OntkoppelToets(SchriftelijkeToets)
+}
+Leerdoel --> Rubric
+Leerdoel --> LesInrichting
+leerdoel --> SchriftelijkeToets
+
+class Leeruitkomst{
+    + int Id
+    + string Titel
+    + string Omschrijving
+    + public IEnumerable<Leerdoel> Leerdoelen
+    - private IList<Leerdoel> _leerdoelen
+    + void KoppelLeerdoel(Leerdoel)
+}
+Leeruitkomst --> Leerdoel
+
+class LesInrichting{
+    + int Id
+    + string Titel
+    + IEnumerable<LesMateriaal> LesMateriaal
+    - IList<LesMateriaal> _lesMateriaal 
+    + void AddLesMateriaal(LesMateriaal)
+    + void RemoveLesMateriaal(LesMateriaal)
+}
+LesInrichting --> LesMateriaal
+
+class LesMateriaal{
+    + int Id
+    + IEnumerable<LesMateriaalLine> Inhoud
+    - IList<LesMateriaalLine> _inhoud
+    - IList<LesMateriaalLine> genereerInhoud()
+}
+LesMateriaal --> LesMateriaalLine
+
+class LesMateriaalLine{
+    + int Id
+    + string Line
 }
 
-class CourseWeekInrichting {
-    - int ContactUren
-    - IList<LesMateriaal> materiaal
-    + SetContactUren()
-    + AddLesMateriaal(file)
-    + GetLesMateriaal()
+class LesUitvoering{
+    + int Id
+    + LesInrichting LesInrichting
+    + Docent Docent
+    + Locatie Locatie
+}
+LesUitvoering *--> LesInrichting
+LesUitvoering --> Docent
+LesUitvoering --> Locatie
+
+class Locatie{
+    + int Id
+    + string Naam
+    + LocatieType Type
+    + Adres Adres
+}
+Locatie -- LocatieType
+Locatie --> Adres
+
+class Opleiding{
+    + int Id
+    + string Naam
+    + string Code
+    + IEnumerable<OpleidingsProfiel> OpleidingsProfielen
+    - IList<OpleidingsProfiel> _opleidingsProfielen
+    + void AddOpleidingsProfiel(OpleidingsProfiel)
+    + void RemoveOpleidingsProfiel(OpleidingsProfiel)
+}
+Opleiding <--* OpleidingsProfiel
+
+class OpleidingsProfiel{
+    + int Id
+    + string Naam
+    + string Code
 }
 
-class LesMateriaal {
-    - String fileName
+Periode --|> ITijdDefinitie
+Semester --|> ITijdDefinitie
+
+class Persoon {
+    + string Voornaam
+    + string Achternaam
+    + string Email
 }
 
-class Leerdoel {
-    - String titel
-    - String Omschrijving
+Docent --|> Persoon
+Student --|> Persoon
+
+class Rubric {
+    + int Id
+    + string Titel
+    + int Weging
+    + int VoldoendeThreshold
+    + int KnockoutThreshold
+    + IEnumerable<BeoordelingsCriteria> BeoordelingsCriteria
+    - IList<BeoordelingsCriteria> _beoordelingsCriteria 
+    + void AddBeoordelingsCriteria(BeoordelingsCriteria)
+    + void RemoveBeoordelingsCriteria(BeoordelingsCriteria)
+}
+Rubrics <--* BeoordelingsCriteria
+
+<<interface>> TentamenInrichting
+class TentamenInrichting{
+    + int Id
+    + string Titel
+    + TentamenType Type
+    + int Weging
+    + int TeBehalenStudiepunten
 }
 
-class TentamenInrichting:::abstract {
-    - Titel String
-    - BeoordelingsType BeoordelingsType
-    - int Weging
-    - int Studiepunten
-}
-
-class LesInrichting {
-    - int contactUren
-    - IList<LesMateriaal> lesMateriaal
-    + SetContactUren(int uren)
-    + AddLesMateriaal(file)
-    + GetLesMateriaal()
-}
-
-class EenheidVanLeeruitkomsten {
-    - String Titel
-    - String Omschrijving
-    - IList<LesInrichting> lessen
-    - IList<TentamenInrichting> tentamens
-    + AddLeeruitkomst()
-    + AddLes()
-    + GetLessen()
-    + GetLes()
-}
-
-class Leeruitkomst {
-    - String Titel
-    - String Omschrijving
-    + AddLeerdoel()
-}
-
-class BeroepsProduct {
-    - TentamenType type
-}
-
-class SchriftelijkeToets {
-    - TentamenType type
-}
-
-class Rubrics {
-    - String titel
-    - int Weging
-    - int VoldoendeThreshold
-    - BeoordelingsCriteria KnockOutCriteria
-}
-
-class BeoordelingsCriteria {
-    - String Omschrijving
-}
-
-class Persoon:::Abstract {
-    - String naam
-}
-
-class Klas {
-    - String code
-}
-
-class Opleiding {
-    - String code
-    - String naam
-}
-
-class OpleidingsProfiel {
-    - String code
-    - String naam
-}
-
-class Beoordeling {
-    - int AantalBehaaldePunten
-    - double score
-    - int AantalBehaaldeStudiePunten 
-    + BerekenScore() 
-}
-
-class LesUitvoering {
-    - DateTime datum
-}
-
-class Locatie {
-    - String Naam
-    - LocatieType
-    - Adres Adres
-}
-
-class Adres {
-    - String Straat
-    - String Postcode
-    - String Huisnummer
-    - String Toevoeging
-    - String Plaatsnaam
-}
-
-class CourseWeekUitvoering
-
-class CourseUitvoering
-
-class Student 
-
-class Docent
+SchriftelijkeToets --|> TentamenInrichting
 
 
-CourseBibliotheek "1" -- "0..*" CourseInrichting : Staat in
-EenheidVanLeeruitkomsten "1..*" -- "1" CourseInrichting : Is gericht op
-EenheidVanLeeruitkomsten "1" -- "1..*" Leeruitkomst : Bevat
-Leeruitkomst "1" -- "1..*" Leerdoel : Word behaald door
-Leerdoel "0..*" -- "1..*" SchriftelijkeToets 
-Leerdoel "1..*" -- "1..*" Rubrics 
-Leerdoel "1..*" -- "1..*" LesInrichting
-Rubrics "1" -- "1..*" BeoordelingsCriteria : Bestaat uit
-Rubrics "1..*" -- "1" BeroepsProduct : Word beoordeeld middels
-SchriftelijkeToets --|> TentamenInrichting : Is
-BeroepsProduct --|> TentamenInrichting : Is
-LesInrichting "1" -- "1..*" LesMateriaal : Bevat
-LesInrichting "1" -- "0..*" LesUitvoering : Representeert
-LesInrichting "1" -- "0..*" CourseWeekInrichting
-CourseWeekInrichting "1" -- "0..*" TentamenInrichting : bevat
-CourseWeekInrichting "1..*" -- "1" CourseWeekPlanning : bevat
-CourseWeekPlanning "1" -- "1" CourseInrichting : bevat
-CourseWeekInrichting "1" -- "0..*" CourseWeekUitvoering : valt in
-CourseInrichting "0..*" -- "1..*" Docent : maakt
-CourseInrichting "1" -- "0..*" CourseUitvoering : Representeert
-Docent  --|> Persoon : Is
-Student  --|> Persoon : Is
-TentamenInrichting "1" -- "0..*" TentamenUitvoering : Representeert
-Docent "1" -- "0..*" LesUitvoering : Geeft
-Docent "1" -- "0..*" TentamenUitvoering : Examineert
-Docent "1" -- "0..*" Beoordeling : Geeft
-Beoordeling "1..*" -- "1" TentamenUitvoering : Voor
-Beoordeling "1" -- "0..*" Student : Krijgt
-Klas "1..*" -- "1" Student : Zit in
-Student "1" -- "1..*" CourseUitvoering : Volgt
-Student "1" -- "0..*" OpleidingsProfiel : Volgt
-Opleiding "1" -- "1..*" OpleidingsProfiel : Bevat
-CourseWeekUitvoering "1..*" -- "1" CourseUitvoering : Bevat
-CourseWeekUitvoering "1" -- "0..*" TentamenUitvoering : Valt in
-CourseWeekUitvoering "1" -- "0..*" LesUitvoering : Valt in
-Locatie "1" -- "1..*" LesUitvoering 
-Locatie "1" -- "1..*" TentamenUitvoering
-Locatie "1" -- "0..1" Adres
+<<Enumeration>> TentamenType
+<<Enumeration>> LocatieType
+
 
 ```
 

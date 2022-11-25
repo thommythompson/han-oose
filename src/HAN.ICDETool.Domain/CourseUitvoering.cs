@@ -7,8 +7,11 @@ public class CourseUitvoering
 {
     public int Id { get; set; }
     public CourseInrichting CourseInrichting { get; init; }
-    public IList<CourseWeekUitvoering> Weken { get; } = new List<CourseWeekUitvoering>();
-    private DateTimeOffset _startDatum { get; set; }
+    
+    [NotMapped]
+    public IEnumerable<CourseWeekUitvoering> Weken { get => _weken;}
+    private IList<CourseWeekUitvoering> _weken { get; } = new List<CourseWeekUitvoering>();
+    
     [NotMapped]
     public DateTimeOffset StartDatum
     {
@@ -22,6 +25,7 @@ public class CourseUitvoering
             creeerWeekUitvoeringen();
         }
     }
+    private DateTimeOffset _startDatum { get; set; }
     
     private void creeerWeekUitvoeringen()
     {
@@ -30,7 +34,7 @@ public class CourseUitvoering
         {
             DateTimeOffset date = _startDatum.AddDays(7 * i);
             
-            Weken.Add(new CourseWeekUitvoering
+            _weken.Add(new CourseWeekUitvoering
             {
                 Monday = date,
                 CourseWeekInrichting = week

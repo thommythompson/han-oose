@@ -2,9 +2,9 @@ using HAN.ICDETool.Domain;
 
 namespace HAN.ICDETool.Application.Repositories.Interfaces;
 
-public interface ILesMateriaalRepository
+public interface ILesMateriaalRepository : IRepository<LesMateriaal>
 {
-    public IList<LesMateriaal> Get();
+    public IEnumerable<LesMateriaal> Get();
     public LesMateriaal GetById(int Id);
-    public IList<LesMateriaal> GetByLesId(int Id);
+    public IEnumerable<LesMateriaal> GetByLesId(int Id);
 }

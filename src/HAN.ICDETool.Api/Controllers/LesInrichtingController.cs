@@ -18,7 +18,7 @@ public class LesInrichtingController : IApiController<LesInrichting>
     
     [HttpGet]
     [Route("")]
-    public IList<LesInrichting> Get()
+    public IEnumerable<LesInrichting> Get()
     {
         return _lesService.Get();
     }

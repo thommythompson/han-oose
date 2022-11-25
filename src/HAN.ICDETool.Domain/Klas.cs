@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace HAN.ICDETool.Domain;
 
 public class Klas
@@ -5,10 +7,13 @@ public class Klas
     public int Id { get; set; }
     public String Code { get; init; }
     public Docent Mentor { get; init; }
-    public IList<Student> Studenten { get; } = new List<Student>();
-
+    
+    [NotMapped]
+    public IEnumerable<Student> Studenten { get => _studenten; }
+    private IList<Student> _studenten { get; } = new List<Student>();
+    
     public void AddStudent(Student student)
     {
-        Studenten.Add(student);
+        _studenten.Add(student);
     }
 }

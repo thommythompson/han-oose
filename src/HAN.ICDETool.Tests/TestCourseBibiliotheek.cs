@@ -19,6 +19,6 @@ public class TestCourseBibiliotheek
         };
         _courseBibliotheek.AddCourse(courseInrichting);
         
-        Assert.That(_courseBibliotheek.Courses[0].Titel, Is.EqualTo("Titel"));
+        Assert.That(_courseBibliotheek.Courses.First().Titel, Is.EqualTo("Titel"));
     }
 }

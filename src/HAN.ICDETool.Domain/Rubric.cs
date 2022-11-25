@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace HAN.ICDETool.Domain;
 
 public class Rubric
@@ -7,15 +9,18 @@ public class Rubric
     public int Weging { get; init; }
     public int VoldoendeThreshold { get; set; }
     public int KnockoutThreshold { get; set; }
-    public IList<BeoordelingsCriteria>? BeoordelingsCriteria { get; } = new List<BeoordelingsCriteria>();
+   
+    [NotMapped]
+    public IEnumerable<BeoordelingsCriteria> BeoordelingsCriteria { get => _beoordelingsCriteria; } 
+    private IList<BeoordelingsCriteria> _beoordelingsCriteria { get; } = new List<BeoordelingsCriteria>();
 
     public void AddBeoordelingsCriteria(BeoordelingsCriteria beoordelingsCriteria)
     {
-        BeoordelingsCriteria.Add(beoordelingsCriteria);
+        _beoordelingsCriteria.Add(beoordelingsCriteria);
     }
 
     public void RemoveBeoordelingsCriteria(BeoordelingsCriteria beoordelingsCriteria)
     {
-        BeoordelingsCriteria.Remove(beoordelingsCriteria);
+        _beoordelingsCriteria.Remove(beoordelingsCriteria);
     }
 }

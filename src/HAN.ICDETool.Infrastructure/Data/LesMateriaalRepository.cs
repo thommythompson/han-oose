@@ -13,9 +13,9 @@ public class LesMateriaalRepository : ILesMateriaalRepository
         _icdeContext = icdeContext;
     }
 
-    public IList<LesMateriaal> Get()
+    public IEnumerable<LesMateriaal> Get()
     {
-        return _icdeContext.LesMateriaal.ToList();
+        return _icdeContext.LesMateriaal;
     }
 
     public LesMateriaal GetById(int Id)
@@ -23,8 +23,8 @@ public class LesMateriaalRepository : ILesMateriaalRepository
         return _icdeContext.LesMateriaal.Where(t => t.Id == Id).First();
     }
 
-    public IList<LesMateriaal> GetByLesId(int lesId)
+    public IEnumerable<LesMateriaal> GetByLesId(int lesId)
     {
-        return _icdeContext.LesInrichting.Where(t => t.Id == lesId).Select(t => t.LesMateriaal).ToList()[0];
+        return _icdeContext.LesInrichting.Where(t => t.Id == lesId).Select(t => t.LesMateriaal).ToList().First();
     }
 }

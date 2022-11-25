@@ -9,6 +9,9 @@ public class CourseInrichting
     public String Titel { get; init; }
     public String Omschrijving { get; init; }
     public Docent AangemaaktDoor { get; init; }
+    public CourseWeekPlanning Planning { get; private set; }
+    public bool IsDefintief { get; private set; } = false;
+    
     [NotMapped]
     public ITijdDefinitie Duur
     {
@@ -24,18 +27,26 @@ public class CourseInrichting
             };
         }
     }
-    private DateTimeOffset _aanmaakDatum { get; set; }
+
     [NotMapped]
     public DateTimeOffset AanmaakDatum
     {
         get => this._aanmaakDatum;
         init => this._aanmaakDatum = DateTimeOffset.Now;
     }
-    public CourseWeekPlanning Planning { get; private set; }
-    public bool IsDefintief { get; private set; } = false;
-    public IList<EenheidVanLeeruitkomsten> Evls { get; } = new List<EenheidVanLeeruitkomsten>();
-    public IList<TentamenInrichting> Tentamen { get; } = new List<TentamenInrichting>();
-    public IList<LesInrichting> Lessen { get; } = new List<LesInrichting>();
+    private DateTimeOffset _aanmaakDatum { get; set; }
+    
+    [NotMapped]
+    public IEnumerable<EenheidVanLeeruitkomsten> Evls { get => _evls; }
+    private IList<EenheidVanLeeruitkomsten> _evls { get; } = new List<EenheidVanLeeruitkomsten>();
+    
+    [NotMapped]
+    public IEnumerable<TentamenInrichting> Tentamen { get => _tentamen; }
+    private IList<TentamenInrichting> _tentamen { get; } = new List<TentamenInrichting>();
+    
+    [NotMapped]
+    public IEnumerable<LesInrichting> Lessen { get => _lessen; } 
+    private IList<LesInrichting> _lessen { get; } = new List<LesInrichting>();
     
     public void MaakDefintief()
     {
@@ -44,17 +55,17 @@ public class CourseInrichting
 
     public void AddEenheidVanLeeruitkomsten(EenheidVanLeeruitkomsten eenheidVanLeeruitkomsten)
     {
-        Evls.Add(eenheidVanLeeruitkomsten);
+        _evls.Add(eenheidVanLeeruitkomsten);
     }
     
     public void AddTentamen(TentamenInrichting tentamenInrichting)
     {
-        Tentamen.Add(tentamenInrichting);
+        _tentamen.Add(tentamenInrichting);
     }
 
     public void AddLes(LesInrichting lesInrichting)
     {
-        Lessen.Add(lesInrichting);
+        _lessen.Add(lesInrichting);
     }
 
     public CourseUitvoering StartCourseUitvoering(DateTimeOffset date)

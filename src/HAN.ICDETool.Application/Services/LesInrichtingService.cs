@@ -13,7 +13,7 @@ public class LesInrichtingService : ILesInrichtingService
         _repository = repository;
     }
     
-    public IList<LesInrichting> Get()
+    public IEnumerable<LesInrichting> Get()
     {
         return _repository.Get();
     }

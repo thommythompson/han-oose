@@ -18,7 +18,7 @@ public class LesMateriaalController : IApiController<LesMateriaal>
     
     [HttpGet]
     [Route("")]
-    public IList<LesMateriaal> Get()
+    public IEnumerable<LesMateriaal> Get()
     {
         return _service.Get();
     }
