@@ -7,7 +7,7 @@ public class CourseWeekUitvoering
 {
     public int Id { get; set; }
     public DateTimeOffset Monday { get; init; }
-    private CourseWeekInrichting _courseWeekInrichting { get; set; }
+    
     [NotMapped]
     public CourseWeekInrichting CourseWeekInrichting
     {
@@ -18,29 +18,44 @@ public class CourseWeekUitvoering
         init
         {
             this._courseWeekInrichting = value;
-            creeerTentamen();
-            creeerLessen();
+            creeerTentamenUitvoeringen();
+            creeerLesUitvoeringen();
         }
     }
-    public IList<TentamenUitvoering> Tentamen { get; } = new List<TentamenUitvoering>();
-    public IList<LesUitvoering> Lessen { get; } = new List<LesUitvoering>();
+    private CourseWeekInrichting _courseWeekInrichting { get; set; }
     
-    private void creeerTentamen()
+    [NotMapped]
+    public IEnumerable<TentamenUitvoering> Tentamen { get => _tentamen; }
+    private IList<TentamenUitvoering> _tentamen { get; } = new List<TentamenUitvoering>();
+    
+    [NotMapped]
+    public IEnumerable<LesUitvoering> Lessen { get => _lessen; }
+    private IList<LesUitvoering> _lessen { get; } = new List<LesUitvoering>();
+
+    private void creeerTentamenUitvoeringen()
     {
-        foreach (TentamenInrichting tentamen in _courseWeekInrichting.Tentamen)
+        foreach (SchriftelijkeToets schriftelijkeToets in _courseWeekInrichting.SchriftelijkeToets)
         {
-            Tentamen.Add(new TentamenUitvoering
+            _tentamen.Add(new TentamenUitvoering
             {
-                TentamenInrichting = tentamen
+                SchriftelijkeToets = schriftelijkeToets
+            });
+        }
+
+        foreach (BeroepsProduct beroepsProduct in _courseWeekInrichting.BeroepsProduct)
+        {
+            _tentamen.Add(new TentamenUitvoering
+            {
+                BeroepsProduct = beroepsProduct
             });
         }
     }
 
-    private void creeerLessen()
+    private void creeerLesUitvoeringen()
     {
         foreach (LesInrichting les in _courseWeekInrichting.Lessen)
         {
-            Lessen.Add(new LesUitvoering
+            _lessen.Add(new LesUitvoering
             {
                     LesInrichting = les
             });

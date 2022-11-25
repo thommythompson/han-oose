@@ -2,8 +2,8 @@ using HAN.ICDETool.Domain;
 
 namespace HAN.ICDETool.Application.Repositories.Interfaces;
 
-public interface ILesInrichtingRepository
+public interface ILesInrichtingRepository : IRepository<LesInrichting>
 {
-    public IList<LesInrichting> Get();
+    public IEnumerable<LesInrichting> Get();
     public LesInrichting GetById(int Id);
 }

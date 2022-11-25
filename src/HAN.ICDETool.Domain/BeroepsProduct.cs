@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace HAN.ICDETool.Domain;
 
 public class BeroepsProduct : TentamenInrichting
@@ -7,16 +9,14 @@ public class BeroepsProduct : TentamenInrichting
     public TentamenType Type { get; init; }
     public int Weging { get; init; }
     public int TeBehalenStudiepunten { get; init; }
-    public IList<Rubric> Rubrics { get; private set; } = new List<Rubric>();
-    public CourseWeekInrichting? CourseWeekInrichting { get; private set; }
+    // public CourseWeekInrichting? CourseWeekInrichting { get; private set; }
+    
+    [NotMapped]
+    public IEnumerable<Rubric> Rubrics { get => _rubrics; }
+    private IList<Rubric> _rubrics { get; } = new List<Rubric>();
     
     public void AddRubric(Rubric rubric)
     {
-        Rubrics.Add(rubric);
-    }
-
-    public void WijsToeAanWeek(CourseWeekInrichting courseWeekInrichting)
-    {
-        courseWeekInrichting.AddTentamen(this);
+        _rubrics.Add(rubric);
     }
 }

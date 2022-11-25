@@ -1,13 +1,18 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace HAN.ICDETool.Domain;
 
 public class LesMateriaal
 {
     public int Id { get; set; }
-    public IList<LesMateriaalLine> Inhoud { get; private set; }
+    
+    [NotMapped]
+    public IEnumerable<LesMateriaalLine> Inhoud { get => _inhoud; }
+    private IList<LesMateriaalLine> _inhoud { get; }
 
     public LesMateriaal()
     {
-        Inhoud = genereerInhoud();
+        _inhoud = genereerInhoud();
     }
 
     private IList<LesMateriaalLine> genereerInhoud()

@@ -13,9 +13,9 @@ public class LesInrichtingRepository : ILesInrichtingRepository
         _icdeContext = icdeContext;
     }
     
-    public IList<LesInrichting> Get()
+    public IEnumerable<LesInrichting> Get()
     {
-        return _icdeContext.LesInrichting.ToList();
+        return _icdeContext.LesInrichting;
     }
 
     public LesInrichting GetById(int Id)

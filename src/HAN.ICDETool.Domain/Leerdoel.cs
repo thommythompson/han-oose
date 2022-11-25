@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace HAN.ICDETool.Domain;
 
 public class Leerdoel
@@ -5,37 +7,46 @@ public class Leerdoel
     public int Id { get; set; }
     public string Titel { get; init; }
     public string Omschrijving { get; init; }
-    public IList<Rubric> GekoppeldeRubrics { get; } = new List<Rubric>();
-    public IList<LesInrichting> GekoppeldeLessen { get; } = new List<LesInrichting>();
-    public IList<SchriftelijkeToets> GekoppeldeToetsen { get; } = new List<SchriftelijkeToets>();
+    
+    [NotMapped]
+    public IEnumerable<Rubric> GekoppeldeRubrics { get => _gekoppeldeRubrics; }
+    private IList<Rubric> _gekoppeldeRubrics { get; } = new List<Rubric>();
+    
+    [NotMapped]
+    public IEnumerable<LesInrichting> GekoppeldeLessen { get => _gekoppeldeLessen; }
+    private IList<LesInrichting> _gekoppeldeLessen { get; } = new List<LesInrichting>();
+    
+    [NotMapped]
+    public IEnumerable<SchriftelijkeToets> GekoppeldeToetsen { get => _gekoppeldeToetsen; }
+    private IList<SchriftelijkeToets> _gekoppeldeToetsen { get; } = new List<SchriftelijkeToets>();
 
     public void KoppelRubrics(Rubric rubric)
     {
-        GekoppeldeRubrics.Add(rubric);
+        _gekoppeldeRubrics.Add(rubric);
     }
 
     public void OntkoppelRubric(Rubric rubric)
     {
-        GekoppeldeRubrics.Remove(rubric);
+        _gekoppeldeRubrics.Remove(rubric);
     }
 
     public void KoppelLes(LesInrichting lesInrichting)
     {
-        GekoppeldeLessen.Add(lesInrichting);
+        _gekoppeldeLessen.Add(lesInrichting);
     }
 
     public void OntkoppelLes(LesInrichting lesInrichting)
     {
-        GekoppeldeLessen.Remove(lesInrichting);
+        _gekoppeldeLessen.Remove(lesInrichting);
     }
 
     public void KoppelToets(SchriftelijkeToets schriftelijkeToets)
     {
-        GekoppeldeToetsen.Add(schriftelijkeToets);
+        _gekoppeldeToetsen.Add(schriftelijkeToets);
     }
 
     public void OntkoppelToets(SchriftelijkeToets schriftelijkeToets)
     {
-        GekoppeldeToetsen.Remove(schriftelijkeToets);
+        _gekoppeldeToetsen.Remove(schriftelijkeToets);
     }
 }

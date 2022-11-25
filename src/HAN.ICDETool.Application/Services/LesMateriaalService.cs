@@ -15,7 +15,7 @@ public class LesMateriaalService : ILesMateriaalService
         _exporter = exporter;
     }
 
-    public IList<LesMateriaal> Get()
+    public IEnumerable<LesMateriaal> Get()
     {
         return _repository.Get();
     }
@@ -25,7 +25,7 @@ public class LesMateriaalService : ILesMateriaalService
         return _repository.GetById(id);
     }
     
-    public IList<LesMateriaal> GetByLesId(int lesId)
+    public IEnumerable<LesMateriaal> GetByLesId(int lesId)
     {
         return _repository.GetByLesId(lesId);
     }

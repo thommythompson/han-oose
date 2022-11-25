@@ -1,17 +1,35 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace HAN.ICDETool.Domain;
 
 public class CourseWeekInrichting
 {
     public int Id { get; set; }
-    public IList<TentamenInrichting> Tentamen { get; } = new List<TentamenInrichting>();
-    public IList<LesInrichting> Lessen { get; } = new List<LesInrichting>();
+    
+    [NotMapped]
+    public IEnumerable<SchriftelijkeToets> SchriftelijkeToets { get => _schriftelijkeToets; }
+    private IList<SchriftelijkeToets> _schriftelijkeToets { get; } = new List<SchriftelijkeToets>();
+    
+    [NotMapped]
+    public IEnumerable<BeroepsProduct> BeroepsProduct { get => _beroepsProduct; }
+    private IList<BeroepsProduct> _beroepsProduct { get; } = new List<BeroepsProduct>();
+    
+    [NotMapped]
+    public IEnumerable<LesInrichting> Lessen { get => _lessen; }
+    private IList<LesInrichting> _lessen { get; } = new List<LesInrichting>();
 
-    public void AddTentamen(TentamenInrichting tentamen)
+    public void AddSchriftelijkeToets(SchriftelijkeToets schriftelijkeToets)
     {
-        Tentamen.Add(tentamen);
+        _schriftelijkeToets.Add(schriftelijkeToets);
     }
+
+    public void AddBeroepsProduct(BeroepsProduct beroepsProduct)
+    {
+        _beroepsProduct.Add(beroepsProduct);
+    }
+    
     public void AddLes(LesInrichting les)
     {
-        Lessen.Add(les);
+        _lessen.Add(les);
     }
 }
