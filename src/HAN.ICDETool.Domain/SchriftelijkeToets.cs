@@ -1,6 +1,6 @@
 namespace HAN.ICDETool.Domain;
 
-public class SchriftelijkeToets : TentamenInrichting
+public class SchriftelijkeToets : TentamenInrichting, Validator
 {
     public int Id { get; set; }
     public string Titel { get; set; }
@@ -11,5 +11,10 @@ public class SchriftelijkeToets : TentamenInrichting
     public SchriftelijkeToets(string titel)
     {
         this.Titel = titel;
+    }
+
+    public void validate()
+    {
+        throw new NotImplementedException();
     }
 }

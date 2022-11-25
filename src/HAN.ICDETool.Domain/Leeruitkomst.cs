@@ -20,4 +20,9 @@ public class Leeruitkomst
     {
         _leerdoelen.Add(leerdoel);
     }
+    
+    public void OntkoppelLeerdoel(Leerdoel leerdoel)
+    {
+        _leerdoelen.Remove(leerdoel);
+    }
 }

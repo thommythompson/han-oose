@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HAN.ICDETool.Domain;
 
-public class LesInrichting
+public class LesInrichting : Validator
 {
     public int Id { get; set; }
     public string Titel { get; set;  }
@@ -22,5 +22,10 @@ public class LesInrichting
     public void RemoveLesMateriaal(LesMateriaal lesMateriaal)
     {
         _lesMateriaal.Remove(lesMateriaal);
+    }
+
+    public void validate()
+    {
+        throw new NotImplementedException();
     }
 }

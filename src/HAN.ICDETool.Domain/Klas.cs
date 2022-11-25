@@ -19,4 +19,9 @@ public class Klas
     {
         _studenten.Add(student);
     }
+    
+    public void Removetudent(Student student)
+    {
+        _studenten.Remove(student);
+    }
 }

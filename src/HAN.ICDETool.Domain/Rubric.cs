@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HAN.ICDETool.Domain;
 
-public class Rubric
+public class Rubric : Validator
 {
     public int Id { get; set; }
     public string Titel { get; }
@@ -25,5 +25,10 @@ public class Rubric
     public void RemoveBeoordelingsCriteria(BeoordelingsCriteria beoordelingsCriteria)
     {
         _beoordelingsCriteria.Remove(beoordelingsCriteria);
+    }
+
+    public void validate()
+    {
+        throw new NotImplementedException();
     }
 }
