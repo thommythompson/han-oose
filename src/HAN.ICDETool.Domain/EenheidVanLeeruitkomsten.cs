@@ -10,6 +10,7 @@ public class EenheidVanLeeruitkomsten
     public String Omschrijving { get; set; }
     public IEnumerable<Leeruitkomst> Leeruitkomsten { get => _leeruitkomsten; }
     private IList<Leeruitkomst> _leeruitkomsten { get; } = new List<Leeruitkomst>();
+    public int CourseInrichtingId { get; set; }
 
     public EenheidVanLeeruitkomsten(string titel, string omschrijving)
     {

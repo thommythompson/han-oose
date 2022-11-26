@@ -19,6 +19,7 @@ public class CourseInrichting
     private IList<TentamenInrichting> _tentamen { get; } = new List<TentamenInrichting>();
     public IEnumerable<LesInrichting> Lessen { get => _lessen; } 
     private IList<LesInrichting> _lessen { get; } = new List<LesInrichting>();
+    public int CourseBibliotheekId { get; set; }
 
 
     // EF Core constructor: EF Core does not support navigation types in the constructor

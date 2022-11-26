@@ -8,6 +8,7 @@ public class Adres
     public String? Toevoeging { get; set; }
     public String Postcode { get; set; }
     public String Plaatsnaam { get; set; }
+    public int LocatieId { get; set; }
 
     public Adres(string straat, string huisnummer, string postcode, string plaatsnaam, string toevoeging = null)
     {

@@ -9,6 +9,7 @@ public class CourseWeekPlanning
 
     public IEnumerable<CourseWeekInrichting> Weken { get => _weken; }
     private IList<CourseWeekInrichting> _weken { get; } = new List<CourseWeekInrichting>();
+    public int CourseInrichtingId { get; set; }
 
     // EF Core constructor: EF Core does not support navigation types in the constructor
     private CourseWeekPlanning() { }

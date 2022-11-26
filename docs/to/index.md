@@ -450,6 +450,7 @@ TentamenInrichting -- TentamenType : Type
 class TentamenUitvoering{
     + Id : int
     + TentamenUitvoering(schriftelijkeToets : SchriftelijkeToets)
+    + TentamenUitvoering(beroepsProduct : BeroepsProduct)
 }
 TentamenUitvoering --> SchriftelijkeToets
 TentamenUitvoering --> BeroepsProduct

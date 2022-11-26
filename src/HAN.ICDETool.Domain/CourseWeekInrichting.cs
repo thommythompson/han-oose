@@ -5,13 +5,29 @@ namespace HAN.ICDETool.Domain;
 public class CourseWeekInrichting
 {
     public int Id { get; set; }
-    
-    public IEnumerable<SchriftelijkeToets> SchriftelijkeToets { get => _schriftelijkeToets; }
+
+    public IEnumerable<SchriftelijkeToets> SchriftelijkeToets
+    {
+        get => _schriftelijkeToets;
+    }
+
     private IList<SchriftelijkeToets> _schriftelijkeToets { get; } = new List<SchriftelijkeToets>();
-    public IEnumerable<BeroepsProduct> BeroepsProduct { get => _beroepsProduct; }
+
+    public IEnumerable<BeroepsProduct> BeroepsProduct
+    {
+        get => _beroepsProduct;
+    }
+
     private IList<BeroepsProduct> _beroepsProduct { get; } = new List<BeroepsProduct>();
-    public IEnumerable<LesInrichting> Lessen { get => _lessen; }
+
+    public IEnumerable<LesInrichting> Lessen
+    {
+        get => _lessen;
+    }
+
     private IList<LesInrichting> _lessen { get; } = new List<LesInrichting>();
+
+    public int CourseWeekPlanningId { get; set; }
 
     public void AddSchriftelijkeToets(SchriftelijkeToets schriftelijkeToets)
     {

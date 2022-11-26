@@ -7,6 +7,7 @@ public class Klas
     public int Id { get; set; }
     public String Code { get; set; }
     public Docent Mentor { get; set; }
+    public int DocentId { get; set; }
     public IEnumerable<Student> Studenten { get => _studenten; }
     private IList<Student> _studenten { get; } = new List<Student>();
 

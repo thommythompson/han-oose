@@ -8,6 +8,8 @@ public class LesInrichting : Validator
     public string Titel { get; set;  }
     public IEnumerable<LesMateriaal> LesMateriaal { get => _lesMateriaal; }
     private IList<LesMateriaal> _lesMateriaal { get; } = new List<LesMateriaal>();
+    public int CourseWeekInrichtingId { get; set; }
+    public int LeerdoelId { get; set; }
 
     public LesInrichting(string titel)
     {

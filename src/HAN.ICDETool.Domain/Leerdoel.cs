@@ -14,6 +14,7 @@ public class Leerdoel
     private IList<LesInrichting> _gekoppeldeLessen { get; } = new List<LesInrichting>();
     public IEnumerable<SchriftelijkeToets> GekoppeldeToetsen { get => _gekoppeldeToetsen; }
     private IList<SchriftelijkeToets> _gekoppeldeToetsen { get; } = new List<SchriftelijkeToets>();
+    public int LeeruitkomstId { get; set; }
     
     public Leerdoel(string titel, string omschrijving)
     {

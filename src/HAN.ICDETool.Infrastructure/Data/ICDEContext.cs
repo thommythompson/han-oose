@@ -46,22 +46,6 @@ public class ICDEContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-
-        modelBuilder.Entity<Beoordeling>()
-            .HasOne( e => e.TentamenUitvoering)
-            .WithMany()
-            .OnDelete(DeleteBehavior.NoAction);
-
-        modelBuilder.Entity<Beoordeling>()
-            .HasOne(e => e.BeoordeeldDoor)
-            .WithMany()
-            .OnDelete(DeleteBehavior.NoAction);
-
-        modelBuilder.Entity<Beoordeling>()
-            .HasOne(e => e.BeoordelingVoor)
-            .WithMany()
-            .OnDelete(DeleteBehavior.NoAction);
         
-
     }
 }

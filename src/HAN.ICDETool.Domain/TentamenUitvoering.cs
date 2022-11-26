@@ -6,9 +6,15 @@ public class TentamenUitvoering
 {
     public int Id { get; set; }
     public SchriftelijkeToets? SchriftelijkeToets { get; init; }
+    public int? SchriftelijkeToetsId { get; init; }
     public BeroepsProduct? BeroepsProduct { get; init; }
+    public int? BeroepsProductId { get; init; }
     public Locatie? Locatie { get; set; }
+    public int? LocatieId { get; set; }
     public Docent? Docent { get; set; }
+    public int? DocentId { get; set; }
+    public IEnumerable<Beoordeling> Beoordelingen { get => _beoordelingen ;}
+    private IList<Beoordeling> _beoordelingen { get; set; }
 
     // EF Core constructor: EF Core does not support navigation types in the constructor
     private TentamenUitvoering() { }

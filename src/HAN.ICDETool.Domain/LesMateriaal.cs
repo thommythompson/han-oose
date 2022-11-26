@@ -7,7 +7,8 @@ public class LesMateriaal
     public int Id { get; set; }
     public IEnumerable<LesMateriaalLine> Inhoud { get => _inhoud; }
     private IList<LesMateriaalLine> _inhoud { get; }
-
+    public int LesInrichtingId { get; set; }
+    
     public LesMateriaal()
     {
         _inhoud = genereerInhoud();

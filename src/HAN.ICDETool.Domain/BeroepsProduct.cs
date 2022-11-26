@@ -11,6 +11,10 @@ public class BeroepsProduct : TentamenInrichting
     public int TeBehalenStudiepunten { get; set; }
     public IEnumerable<Rubric> Rubrics { get => _rubrics; }
     private IList<Rubric> _rubrics { get; } = new List<Rubric>();
+    public int CourseInrichtingId { get; set; }
+    public int CourseWeekInrichtingId { get; set; }
+    public IEnumerable<TentamenUitvoering> TentamenUitvoeringen { get => _tentamenUitvoeringen; }
+    private IList<TentamenUitvoering> _tentamenUitvoeringen { get; set; }
 
     public BeroepsProduct(string titel)
     {

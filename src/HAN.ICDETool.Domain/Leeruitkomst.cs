@@ -9,6 +9,7 @@ public class Leeruitkomst
     public string Omschrijving { get; set; }
     public IEnumerable<Leerdoel> Leerdoelen { get => _leerdoelen; }
     private IList<Leerdoel> _leerdoelen { get; } = new List<Leerdoel>();
+    public int EenheidVanLeeruitkomstenId { get; set; }
 
     public Leeruitkomst(string titel, string omschrijving)
     {

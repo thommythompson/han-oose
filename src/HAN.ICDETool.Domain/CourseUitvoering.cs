@@ -7,6 +7,7 @@ public class CourseUitvoering
 {
     public int Id { get; set; }
     public CourseInrichting CourseInrichting { get; init; }
+    public int COurseInrichtingId { get; init; }
     public DateTimeOffset StartDatum { get; init; }
     public IEnumerable<CourseWeekUitvoering> Weken { get => _weken;}
     private IList<CourseWeekUitvoering> _weken { get; } = new List<CourseWeekUitvoering>();
