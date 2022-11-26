@@ -13,10 +13,10 @@ public class TestCourseBibiliotheek
     [Test]
     public void TestCourseCreation()
     {
-        CourseInrichting courseInrichting = new CourseInrichting
-        {
-            Titel = "Titel"
-        };
+        Docent docent = new Docent("Voornaam", "Achternaam", "v.achternaam@email.com");
+        
+        CourseInrichting courseInrichting = new CourseInrichting("Titel", "Omschrijving", docent);
+        
         _courseBibliotheek.AddCourse(courseInrichting);
         
         Assert.That(_courseBibliotheek.Courses.First().Titel, Is.EqualTo("Titel"));
