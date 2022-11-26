@@ -13,7 +13,10 @@ public class CourseWeekUitvoering
     public IEnumerable<LesUitvoering> Lessen { get => _lessen; }
     private IList<LesUitvoering> _lessen { get; } = new List<LesUitvoering>();
 
-    public CourseWeekUitvoering(DateTimeOffset maandag, CourseWeekInrichting courseWeekInrichting)
+    // EF Core constructor: EF Core does not support navigation types in the constructor
+    private CourseWeekUitvoering() { }
+
+    public CourseWeekUitvoering(DateTimeOffset maandag, CourseWeekInrichting courseWeekInrichting) : this()
     {
         this.Maandag = maandag;
         this.CourseWeekInrichting = courseWeekInrichting;

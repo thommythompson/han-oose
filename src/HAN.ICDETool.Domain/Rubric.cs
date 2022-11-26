@@ -5,7 +5,7 @@ namespace HAN.ICDETool.Domain;
 public class Rubric : Validator
 {
     public int Id { get; set; }
-    public string Titel { get; }
+    public string Titel { get; set; }
     public int Weging { get; set; } = 0;
     public int VoldoendeThreshold { get; set; } = 0;
     public int KnockoutThreshold { get; set; } = 0;

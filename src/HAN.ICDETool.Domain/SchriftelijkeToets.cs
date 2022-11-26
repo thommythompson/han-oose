@@ -8,6 +8,7 @@ public class SchriftelijkeToets : TentamenInrichting, Validator
     public int Weging { get; set; }
     public int TeBehalenStudiepunten { get; set; }
 
+
     public SchriftelijkeToets(string titel)
     {
         this.Titel = titel;

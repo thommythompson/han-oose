@@ -7,7 +7,10 @@ public class LesUitvoering
     public Docent? Docent { get; set; }
     public Locatie? Locatie { get; set; }
 
-    public LesUitvoering(LesInrichting lesInrichting)
+    // EF Core constructor: EF Core does not support navigation types in the constructor
+    private LesUitvoering() { }
+
+    public LesUitvoering(LesInrichting lesInrichting) : this()
     {
         this.LesInrichting = lesInrichting;
     }
