@@ -45,7 +45,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Naam = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LocatieType = table.Column<int>(type: "int", nullable: false)
+                    LocatieType = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -296,7 +296,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Titel = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Type = table.Column<int>(type: "int", nullable: false),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Weging = table.Column<int>(type: "int", nullable: false),
                     TeBehalenStudiepunten = table.Column<int>(type: "int", nullable: false),
                     CourseInrichtingId = table.Column<int>(type: "int", nullable: false),

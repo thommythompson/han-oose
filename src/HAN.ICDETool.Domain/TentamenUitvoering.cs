@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace HAN.ICDETool.Domain;
 
@@ -13,6 +14,7 @@ public class TentamenUitvoering
     public int? LocatieId { get; set; }
     public Docent? Docent { get; set; }
     public int? DocentId { get; set; }
+    [BackingField(nameof(_beoordelingen))]
     public IEnumerable<Beoordeling> Beoordelingen { get => _beoordelingen ;}
     private IList<Beoordeling> _beoordelingen { get; set; }
 

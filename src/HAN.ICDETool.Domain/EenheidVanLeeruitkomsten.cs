@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization.Json;
+using Microsoft.EntityFrameworkCore;
 
 namespace HAN.ICDETool.Domain;
 
@@ -8,6 +9,7 @@ public class EenheidVanLeeruitkomsten
     public int Id { get; set; }
     public String Titel { get; set; }
     public String Omschrijving { get; set; }
+    [BackingField(nameof(_leeruitkomsten))]
     public IEnumerable<Leeruitkomst> Leeruitkomsten { get => _leeruitkomsten; }
     private IList<Leeruitkomst> _leeruitkomsten { get; } = new List<Leeruitkomst>();
     public int CourseInrichtingId { get; set; }

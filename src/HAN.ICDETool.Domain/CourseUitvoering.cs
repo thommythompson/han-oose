@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using HAN.ICDETool.SharedKernel;
+using Microsoft.EntityFrameworkCore;
 
 namespace HAN.ICDETool.Domain;
 
@@ -9,6 +10,7 @@ public class CourseUitvoering
     public CourseInrichting CourseInrichting { get; init; }
     public int COurseInrichtingId { get; init; }
     public DateTimeOffset StartDatum { get; init; }
+    [BackingField(nameof(_weken))]
     public IEnumerable<CourseWeekUitvoering> Weken { get => _weken;}
     private IList<CourseWeekUitvoering> _weken { get; } = new List<CourseWeekUitvoering>();
 

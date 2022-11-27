@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Net.Sockets;
+using Microsoft.EntityFrameworkCore;
 
 namespace HAN.ICDETool.Domain;
 
@@ -8,10 +9,13 @@ public class Leerdoel
     public int Id { get; set; }
     public string Titel { get; set; }
     public string Omschrijving { get; set; }
+    [BackingField(nameof(_gekoppeldeRubrics))]
     public IEnumerable<Rubric> GekoppeldeRubrics { get => _gekoppeldeRubrics; }
     private IList<Rubric> _gekoppeldeRubrics { get; } = new List<Rubric>();
+    [BackingField(nameof(_gekoppeldeLessen))]
     public IEnumerable<LesInrichting> GekoppeldeLessen { get => _gekoppeldeLessen; }
     private IList<LesInrichting> _gekoppeldeLessen { get; } = new List<LesInrichting>();
+    [BackingField(nameof(_gekoppeldeToetsen))]
     public IEnumerable<SchriftelijkeToets> GekoppeldeToetsen { get => _gekoppeldeToetsen; }
     private IList<SchriftelijkeToets> _gekoppeldeToetsen { get; } = new List<SchriftelijkeToets>();
     public int LeeruitkomstId { get; set; }

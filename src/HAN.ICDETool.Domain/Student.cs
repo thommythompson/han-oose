@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace HAN.ICDETool.Domain;
 
 public class Student : Persoon
@@ -10,6 +12,7 @@ public class Student : Persoon
     public int OpleidingsProfielId { get; set; }
     public CourseUitvoering VolgCourse { get; set; }
     public int CourseUitvoeringId { get; set; }
+    [BackingField(nameof(_beoordelingen))]
     public IEnumerable<Beoordeling> Beoordelingen { get => _beoordelingen ;}
     private IList<Beoordeling> _beoordelingen { get; set; }
     public int KlasId { get; set; }

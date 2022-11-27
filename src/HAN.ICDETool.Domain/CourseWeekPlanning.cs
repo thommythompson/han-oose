@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace HAN.ICDETool.Domain;
 
@@ -7,6 +8,7 @@ public class CourseWeekPlanning
     public int Id { get; set; }
     public ITijdDefinitie Duur { get; }
 
+    [BackingField(nameof(_weken))]
     public IEnumerable<CourseWeekInrichting> Weken { get => _weken; }
     private IList<CourseWeekInrichting> _weken { get; } = new List<CourseWeekInrichting>();
     public int CourseInrichtingId { get; set; }

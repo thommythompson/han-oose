@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.CompilerServices;
+using Microsoft.EntityFrameworkCore;
 
 namespace HAN.ICDETool.Domain;
 
@@ -12,13 +13,18 @@ public class CourseInrichting
     public CourseWeekPlanning Planning { get; private set; }
     public bool IsDefintief { get; private set; } = false;
     public DateTimeOffset AanmaakDatum { get;  } = DateTimeOffset.Now;
-    
+    [BackingField(nameof(_evls))]
     public IEnumerable<EenheidVanLeeruitkomsten> Evls { get => _evls; }
     private IList<EenheidVanLeeruitkomsten> _evls { get; } = new List<EenheidVanLeeruitkomsten>();
+    [BackingField(nameof(_tentamen))]
     public IEnumerable<TentamenInrichting> Tentamen { get => _tentamen; }
     private IList<TentamenInrichting> _tentamen { get; } = new List<TentamenInrichting>();
+    [BackingField(nameof(_lessen))]
     public IEnumerable<LesInrichting> Lessen { get => _lessen; } 
     private IList<LesInrichting> _lessen { get; } = new List<LesInrichting>();
+    [BackingField(nameof(_courseUitvoeringen))]
+    public IEnumerable<CourseUitvoering> CourseUitvoeringen { get => _courseUitvoeringen; } 
+    private IList<CourseUitvoering> _courseUitvoeringen { get; } = new List<CourseUitvoering>();
     public int CourseBibliotheekId { get; set; }
 
 

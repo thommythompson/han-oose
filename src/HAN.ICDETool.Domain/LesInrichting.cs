@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace HAN.ICDETool.Domain;
 
@@ -6,6 +7,7 @@ public class LesInrichting : Validator
 {
     public int Id { get; set; }
     public string Titel { get; set;  }
+    [BackingField(nameof(_lesMateriaal))]
     public IEnumerable<LesMateriaal> LesMateriaal { get => _lesMateriaal; }
     private IList<LesMateriaal> _lesMateriaal { get; } = new List<LesMateriaal>();
     public int CourseWeekInrichtingId { get; set; }

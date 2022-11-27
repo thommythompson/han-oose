@@ -1,5 +1,6 @@
 using System.Linq.Expressions;
 using HAN.ICDETool.Domain;
+using HAN.ICDETool.Infrastructure.Data.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Configuration;
@@ -48,20 +49,9 @@ public class ICDEContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.Entity<CourseWeekUitvoering>()
-            .HasOne(e => e.CourseWeekInrichting)
-            .WithOne()
-            .OnDelete(DeleteBehavior.NoAction);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(CourseWeekUitvoeringEntityTypeConfiguration).Assembly);
         
-        modelBuilder.Entity<CourseWeekUitvoering>()
-            .HasOne(e => e.Lessen)
-            .WithOne()
-            .OnDelete(DeleteBehavior.NoAction);
         
-        modelBuilder.Entity<CourseWeekUitvoering>()
-            .HasOne(e => e.Tentamen)
-            .WithOne()
-            .OnDelete(DeleteBehavior.NoAction);
 
     }
 }

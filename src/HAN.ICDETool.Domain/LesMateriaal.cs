@@ -1,10 +1,12 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace HAN.ICDETool.Domain;
 
 public class LesMateriaal
 {
     public int Id { get; set; }
+    [BackingField(nameof(_inhoud))]
     public IEnumerable<LesMateriaalLine> Inhoud { get => _inhoud; }
     private IList<LesMateriaalLine> _inhoud { get; }
     public int LesInrichtingId { get; set; }

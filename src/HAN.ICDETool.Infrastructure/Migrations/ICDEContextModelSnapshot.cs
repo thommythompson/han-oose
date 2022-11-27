@@ -131,8 +131,9 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Weging")
                         .HasColumnType("int");
@@ -503,8 +504,9 @@ namespace HAN.ICDETool.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("LocatieType")
-                        .HasColumnType("int");
+                    b.Property<string>("LocatieType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Naam")
                         .IsRequired()
@@ -778,7 +780,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
             modelBuilder.Entity("HAN.ICDETool.Domain.CourseUitvoering", b =>
                 {
                     b.HasOne("HAN.ICDETool.Domain.CourseInrichting", "CourseInrichting")
-                        .WithMany()
+                        .WithMany("CourseUitvoeringen")
                         .HasForeignKey("COurseInrichtingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -813,7 +815,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("HAN.ICDETool.Domain.CourseWeekInrichting", "CourseWeekInrichting")
-                        .WithMany()
+                        .WithMany("CourseWeekUitvoeringen")
                         .HasForeignKey("CourseWeekInrichtingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -898,7 +900,8 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                 {
                     b.HasOne("HAN.ICDETool.Domain.CourseWeekUitvoering", null)
                         .WithMany("Lessen")
-                        .HasForeignKey("CourseWeekUitvoeringId");
+                        .HasForeignKey("CourseWeekUitvoeringId")
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("HAN.ICDETool.Domain.Docent", "Docent")
                         .WithMany("LesUitvoeringen")
@@ -985,7 +988,8 @@ namespace HAN.ICDETool.Infrastructure.Migrations
 
                     b.HasOne("HAN.ICDETool.Domain.CourseWeekUitvoering", null)
                         .WithMany("Tentamen")
-                        .HasForeignKey("CourseWeekUitvoeringId");
+                        .HasForeignKey("CourseWeekUitvoeringId")
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("HAN.ICDETool.Domain.Docent", "Docent")
                         .WithMany("TentamenUitvoeringen")
@@ -1022,6 +1026,8 @@ namespace HAN.ICDETool.Infrastructure.Migrations
 
             modelBuilder.Entity("HAN.ICDETool.Domain.CourseInrichting", b =>
                 {
+                    b.Navigation("CourseUitvoeringen");
+
                     b.Navigation("Evls");
 
                     b.Navigation("Lessen");
@@ -1038,6 +1044,8 @@ namespace HAN.ICDETool.Infrastructure.Migrations
             modelBuilder.Entity("HAN.ICDETool.Domain.CourseWeekInrichting", b =>
                 {
                     b.Navigation("BeroepsProduct");
+
+                    b.Navigation("CourseWeekUitvoeringen");
 
                     b.Navigation("Lessen");
 
