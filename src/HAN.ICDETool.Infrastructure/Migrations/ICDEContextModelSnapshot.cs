@@ -476,7 +476,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CourseWeekUitvoeringId")
+                    b.Property<int>("CourseWeekUitvoeringId")
                         .HasColumnType("int");
 
                     b.Property<int?>("DocentId")
@@ -687,7 +687,10 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.Property<int?>("BeroepsProductId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CourseWeekUitvoeringId")
+                    b.Property<int>("CourseUitvoeringId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CourseWeekUitvoeringId")
                         .HasColumnType("int");
 
                     b.Property<int?>("DocentId")
@@ -898,10 +901,11 @@ namespace HAN.ICDETool.Infrastructure.Migrations
 
             modelBuilder.Entity("HAN.ICDETool.Domain.LesUitvoering", b =>
                 {
-                    b.HasOne("HAN.ICDETool.Domain.CourseWeekUitvoering", null)
+                    b.HasOne("HAN.ICDETool.Domain.CourseWeekUitvoering", "CourseWeekUitvoering")
                         .WithMany("Lessen")
                         .HasForeignKey("CourseWeekUitvoeringId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("HAN.ICDETool.Domain.Docent", "Docent")
                         .WithMany("LesUitvoeringen")
@@ -910,6 +914,8 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.HasOne("HAN.ICDETool.Domain.Locatie", "Locatie")
                         .WithMany("LesUitvoeringen")
                         .HasForeignKey("LocatieId");
+
+                    b.Navigation("CourseWeekUitvoering");
 
                     b.Navigation("Docent");
 
@@ -986,10 +992,11 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                         .WithMany("TentamenUitvoeringen")
                         .HasForeignKey("BeroepsProductId");
 
-                    b.HasOne("HAN.ICDETool.Domain.CourseWeekUitvoering", null)
+                    b.HasOne("HAN.ICDETool.Domain.CourseWeekUitvoering", "CourseWeekUitvoering")
                         .WithMany("Tentamen")
                         .HasForeignKey("CourseWeekUitvoeringId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("HAN.ICDETool.Domain.Docent", "Docent")
                         .WithMany("TentamenUitvoeringen")
@@ -1004,6 +1011,8 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                         .HasForeignKey("SchriftelijkeToetsId");
 
                     b.Navigation("BeroepsProduct");
+
+                    b.Navigation("CourseWeekUitvoering");
 
                     b.Navigation("Docent");
 

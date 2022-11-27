@@ -14,6 +14,8 @@ public class TentamenUitvoering
     public int? LocatieId { get; set; }
     public Docent? Docent { get; set; }
     public int? DocentId { get; set; }
+    public CourseWeekUitvoering CourseWeekUitvoering { get; set; }
+    public int CourseUitvoeringId { get; set; }
     [BackingField(nameof(_beoordelingen))]
     public IEnumerable<Beoordeling> Beoordelingen { get => _beoordelingen ;}
     private IList<Beoordeling> _beoordelingen { get; set; }

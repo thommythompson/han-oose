@@ -368,7 +368,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DocentId = table.Column<int>(type: "int", nullable: true),
                     LocatieId = table.Column<int>(type: "int", nullable: true),
-                    CourseWeekUitvoeringId = table.Column<int>(type: "int", nullable: true)
+                    CourseWeekUitvoeringId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -377,7 +377,8 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                         name: "FK_LesUitvoering_CourseWeekUitvoering_CourseWeekUitvoeringId",
                         column: x => x.CourseWeekUitvoeringId,
                         principalTable: "CourseWeekUitvoering",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_LesUitvoering_Docent_DocentId",
                         column: x => x.DocentId,
@@ -532,7 +533,8 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     BeroepsProductId = table.Column<int>(type: "int", nullable: true),
                     LocatieId = table.Column<int>(type: "int", nullable: true),
                     DocentId = table.Column<int>(type: "int", nullable: true),
-                    CourseWeekUitvoeringId = table.Column<int>(type: "int", nullable: true)
+                    CourseWeekUitvoeringId = table.Column<int>(type: "int", nullable: false),
+                    CourseUitvoeringId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -546,7 +548,8 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                         name: "FK_TentamenUitvoering_CourseWeekUitvoering_CourseWeekUitvoeringId",
                         column: x => x.CourseWeekUitvoeringId,
                         principalTable: "CourseWeekUitvoering",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_TentamenUitvoering_Docent_DocentId",
                         column: x => x.DocentId,
