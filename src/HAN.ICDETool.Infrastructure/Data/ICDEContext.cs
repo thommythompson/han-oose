@@ -11,8 +11,7 @@ public class ICDEContext : DbContext
 {
     private readonly IConfiguration _configuration;
     private readonly string _connectionString;
-
-    public DbSet<CourseBibliotheek> CourseBibliotheek { get; set; }
+    
     public DbSet<LesInrichting> LesInrichting { get; set; }
     public DbSet<LesMateriaal> LesMateriaal { get; set; }
     public DbSet<CourseWeekInrichting> CourseWeekInrichting { get; set; }

@@ -28,7 +28,6 @@ public class CourseInrichting
     [BackingField(nameof(_courseUitvoeringen))]
     public IEnumerable<CourseUitvoering> CourseUitvoeringen { get => _courseUitvoeringen; } 
     private IList<CourseUitvoering> _courseUitvoeringen { get; } = new List<CourseUitvoering>();
-    public int CourseBibliotheekId { get; set; }
 
 
     // EF Core constructor: EF Core does not support navigation types in the constructor
