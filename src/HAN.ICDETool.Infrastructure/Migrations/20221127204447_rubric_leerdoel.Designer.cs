@@ -4,6 +4,7 @@ using HAN.ICDETool.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HAN.ICDETool.Infrastructure.Migrations
 {
     [DbContext(typeof(ICDEContext))]
-    partial class ICDEContextModelSnapshot : ModelSnapshot
+    [Migration("20221127204447_rubric_leerdoel")]
+    partial class rubricleerdoel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

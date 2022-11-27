@@ -16,10 +16,14 @@ public class Rubric : Validator
     public Leerdoel? Leerdoel { get; set; }
     public int? LeerdoelId { get; set; }
     public int BeroepsProductId { get; set; }
-    
-    public Rubric(string titel, Leerdoel leerdoel)
+
+    private Rubric(string titel)
     {
         this.Titel = titel;
+    }
+    
+    public Rubric(string titel, Leerdoel leerdoel) : this(titel)
+    {
         this.Leerdoel = leerdoel;
     }
     

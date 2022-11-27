@@ -70,7 +70,7 @@ public class Program
         {
             var seeder = scope.ServiceProvider.GetService<IDbActions>();
 
-            seeder.CreateAndSeed().Wait();
+            seeder.CreateAndSeed();
         }
     }
     

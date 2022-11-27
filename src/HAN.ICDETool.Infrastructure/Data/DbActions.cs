@@ -15,10 +15,9 @@ public class DbActions : IDbActions
         _logger = logger;
     }
     
-    public async Task Seed()
+    public void Seed()
     {
         _logger.LogInformation("Start seeding database");
-        
         
         LesInrichting lesInrichting = new LesInrichting("Titel");
         lesInrichting.AddLesMateriaal(new LesMateriaal());
@@ -62,7 +61,7 @@ public class DbActions : IDbActions
         _dbContext.Database.Migrate();
     }
 
-    public async Task CreateAndSeed()
+    public void CreateAndSeed()
     {
         Create();
         
