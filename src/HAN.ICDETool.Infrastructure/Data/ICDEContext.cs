@@ -1,6 +1,8 @@
 using System.Linq.Expressions;
 using HAN.ICDETool.Domain;
+using HAN.ICDETool.Infrastructure.Data.Configuration;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Configuration;
 
 namespace HAN.ICDETool.Infrastructure.Data;
@@ -8,6 +10,7 @@ namespace HAN.ICDETool.Infrastructure.Data;
 public class ICDEContext : DbContext
 {
     private readonly IConfiguration _configuration;
+    private readonly string _connectionString;
 
     public DbSet<CourseBibliotheek> CourseBibliotheek { get; set; }
     public DbSet<LesInrichting> LesInrichting { get; set; }
@@ -23,7 +26,7 @@ public class ICDEContext : DbContext
     public DbSet<Leeruitkomst> Leeruitkomst { get; set; }
     public DbSet<Leerdoel> Leerdoel { get; set; }
     public DbSet<Klas> Klas { get; set; }
-    public DbSet<EenheidVanLeeruitkomsten> EenheidVanLeeruitkomstens { get; set; }
+    public DbSet<EenheidVanLeeruitkomsten> EenheidVanLeeruitkomsten { get; set; }
     public DbSet<Docent> Docent { get; set; }
     public DbSet<CourseWeekUitvoering> CourseWeekUitvoering { get; set; }
     public DbSet<CourseUitvoering> CourseUitvoering { get; set; }
@@ -33,9 +36,16 @@ public class ICDEContext : DbContext
     public DbSet<Beoordeling> Beoordeling { get; set; }
     public DbSet<Adres> Adres { get; set; }
 
+    // No parameter constructor for EF core power tools
+    public ICDEContext()
+    {
+        _connectionString = "Server=127.0.0.1; Database=IcdeTool; User Id=sa; Password=P@ssw0rd; MultipleActiveResultSets=true; TrustServerCertificate=true";
+    }
+
     public ICDEContext(IConfiguration configuration)
     {
         _configuration = configuration;
+        _connectionString = _configuration.GetConnectionString("Default");
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -47,20 +57,8 @@ public class ICDEContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.Entity<Beoordeling>()
-            .HasOne( e => e.TentamenUitvoering)
-            .WithMany()
-            .OnDelete(DeleteBehavior.NoAction);
-
-        modelBuilder.Entity<Beoordeling>()
-            .HasOne(e => e.BeoordeeldDoor)
-            .WithMany()
-            .OnDelete(DeleteBehavior.NoAction);
-
-        modelBuilder.Entity<Beoordeling>()
-            .HasOne(e => e.BeoordelingVoor)
-            .WithMany()
-            .OnDelete(DeleteBehavior.NoAction);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(CourseWeekUitvoeringEntityTypeConfiguration).Assembly);
+        
         
 
     }

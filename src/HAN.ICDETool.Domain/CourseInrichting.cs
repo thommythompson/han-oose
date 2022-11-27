@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.CompilerServices;
+using Microsoft.EntityFrameworkCore;
 
 namespace HAN.ICDETool.Domain;
 
@@ -12,18 +13,33 @@ public class CourseInrichting
     public CourseWeekPlanning Planning { get; private set; }
     public bool IsDefintief { get; private set; } = false;
     public DateTimeOffset AanmaakDatum { get;  } = DateTimeOffset.Now;
-    
+    [BackingField(nameof(_evls))]
     public IEnumerable<EenheidVanLeeruitkomsten> Evls { get => _evls; }
     private IList<EenheidVanLeeruitkomsten> _evls { get; } = new List<EenheidVanLeeruitkomsten>();
-    public IEnumerable<TentamenInrichting> Tentamen { get => _tentamen; }
-    private IList<TentamenInrichting> _tentamen { get; } = new List<TentamenInrichting>();
+    [BackingField(nameof(_beroepsProducten))]
+    public IEnumerable<BeroepsProduct> BeroepsProducten { get => _beroepsProducten; }
+    private IList<BeroepsProduct> _beroepsProducten { get; } = new List<BeroepsProduct>();
+    [BackingField(nameof(_toetsen))]
+    public IEnumerable<SchriftelijkeToets> Toetsen { get => _toetsen; }
+    private IList<SchriftelijkeToets> _toetsen { get; } = new List<SchriftelijkeToets>();
+    [BackingField(nameof(_lessen))]
     public IEnumerable<LesInrichting> Lessen { get => _lessen; } 
     private IList<LesInrichting> _lessen { get; } = new List<LesInrichting>();
+    [BackingField(nameof(_courseUitvoeringen))]
+    public IEnumerable<CourseUitvoering> CourseUitvoeringen { get => _courseUitvoeringen; } 
+    private IList<CourseUitvoering> _courseUitvoeringen { get; } = new List<CourseUitvoering>();
+    public int CourseBibliotheekId { get; set; }
 
-    public CourseInrichting(string titel, string omschrijving, Docent aangemaaktDoor)
+
+    // EF Core constructor: EF Core does not support navigation types in the constructor
+    private CourseInrichting(string titel, string omschrijving)
     {
         this.Titel = titel;
         this.Omschrijving = omschrijving;
+    }
+
+    public CourseInrichting(string titel, string omschrijving, Docent aangemaaktDoor) : this(titel, omschrijving)
+    {
         this.AangemaaktDoor = aangemaaktDoor;
     }
     
@@ -42,14 +58,24 @@ public class CourseInrichting
         _evls.Remove(eenheidVanLeeruitkomsten);
     }
     
-    public void AddTentamen(TentamenInrichting tentamenInrichting)
+    public void AddBeroepsProduct(BeroepsProduct beroepsProduct)
     {
-        _tentamen.Add(tentamenInrichting);
+        _beroepsProducten.Add(beroepsProduct);
     }
     
-    public void RemoveTentamen(TentamenInrichting tentamenInrichting)
+    public void RemoveBeroepsProduct(BeroepsProduct beroepsProduct)
     {
-        _tentamen.Remove(tentamenInrichting);
+        _beroepsProducten.Remove(beroepsProduct);
+    }
+
+    public void AddToets(SchriftelijkeToets toets)
+    {
+        _toetsen.Add(toets);
+    }
+
+    public void RemoveToets(SchriftelijkeToets toets)
+    {
+        _toetsen.Remove(toets);
     }
 
     public void AddLes(LesInrichting lesInrichting)

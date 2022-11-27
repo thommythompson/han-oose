@@ -201,6 +201,7 @@ class BeroepsProduct{
 }
 BeroepsProduct <--* Rubric : Rubrics
 BeroepsProduct -- TentamenType : TentamenType
+BeroepsProduct *--> CourseInrichting
 BeroepsProduct --|> TentamenInrichting
 
 class CourseBibliotheek{
@@ -222,8 +223,10 @@ class CourseInrichting {
     + void MaakDefinitief()
     + void AddEenheidVanLeeruitkomsten(eenheidVanLeeruitkomsten : EenheidVanLeeruitkomsten)
     + void RemoveEenheidVanLeeruitkomsten(eenheidVanLeeruitkomsten : EenheidVanLeeruitkomsten)
-    + void AddTentamen(tentamenInrichting : TentamenInrichting)
-    + void RemoveTentamen(tentamenInrichting : TentamenInrichting)
+    + void AddBeroepsProduct(beroepsProduct : BeroepsProduct)
+    + void RemoveBeroepsProduct(beroepsProduct : BeroepsProduct)
+    + void AddToets(toets : SchriftelijkeToets)
+    + void RemoveToets(toets : SchriftelijkeToets)
     + void AddLes(lesInrichting : LesInrichting)
     + void RemoveLes(lesInrichting : LesInrichting)
     + void CreatePlanning(duur : ITijdDefinitie)
@@ -233,7 +236,8 @@ class CourseInrichting {
 CourseInrichting <--* CourseWeekPlanning : Planning
 CourseInrichting -- ITijdDefinitie
 CourseInrichting <--* EenheidVanLeeruitkomsten : Evls
-CourseInrichting <--* TentamenInrichting : Tentamen
+CourseInrichting <--* BeroepsProduct : BeroepsProducten
+CourseInrichting <--* SchriftelijkeToets : Toetsen
 CourseInrichting <--* LesInrichting : Lessen
 
 class CourseUitvoering {
@@ -419,6 +423,7 @@ Rubric --|> Validator
 class SchriftelijkeToets {
     + SchriftelijkeToets(titel : string)
 }
+SchriftelijkeToets --> CourseInrichting
 SchriftelijkeToets --|> TentamenInrichting
 SchriftelijkeToets --|> Validator
 
@@ -450,6 +455,7 @@ TentamenInrichting -- TentamenType : Type
 class TentamenUitvoering{
     + Id : int
     + TentamenUitvoering(schriftelijkeToets : SchriftelijkeToets)
+    + TentamenUitvoering(beroepsProduct : BeroepsProduct)
 }
 TentamenUitvoering --> SchriftelijkeToets
 TentamenUitvoering --> BeroepsProduct

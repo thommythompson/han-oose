@@ -13,6 +13,7 @@ Tooling die gebruikt word binnen het team.
 
 - Azure Data Studio: voor database beheer.
 - Rider: Als IDE.
+- Visual Studio 2022 + EF Core Power Tool: voor EF Core visualisatie (requires Design package in data project)
 
 ```bash
 dotnet tool install --global dotnet-ef
@@ -48,7 +49,7 @@ Gebruik onderstaande AppSettings om je `appsettings.development.json` te vullen 
     }
   },
   "ConnectionStrings": {
-    "Default": "Server=localhost; Database=IcdeTool; User Id=sa; Password=P@ssw0rd; MultipleActiveResultSets=true;"
+    "Default": "Server=127.0.0.1; Database=IcdeTool; User Id=sa; Password=P@ssw0rd; MultipleActiveResultSets=true; TrustServerCertificate=true"
   }
 }
 ```

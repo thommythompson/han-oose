@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace HAN.ICDETool.Domain;
 
@@ -7,8 +8,10 @@ public class Leeruitkomst
     public int Id { get; set; }
     public string Titel { get; set; }
     public string Omschrijving { get; set; }
+    [BackingField(nameof(_leerdoelen))]
     public IEnumerable<Leerdoel> Leerdoelen { get => _leerdoelen; }
     private IList<Leerdoel> _leerdoelen { get; } = new List<Leerdoel>();
+    public int EenheidVanLeeruitkomstenId { get; set; }
 
     public Leeruitkomst(string titel, string omschrijving)
     {

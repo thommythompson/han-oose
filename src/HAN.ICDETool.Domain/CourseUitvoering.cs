@@ -1,17 +1,23 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using HAN.ICDETool.SharedKernel;
+using Microsoft.EntityFrameworkCore;
 
 namespace HAN.ICDETool.Domain;
 
 public class CourseUitvoering
 {
     public int Id { get; set; }
-    public CourseInrichting CourseInrichting { get; }
-    public DateTimeOffset StartDatum { get;  }
+    public CourseInrichting CourseInrichting { get; init; }
+    public int COurseInrichtingId { get; init; }
+    public DateTimeOffset StartDatum { get; init; }
+    [BackingField(nameof(_weken))]
     public IEnumerable<CourseWeekUitvoering> Weken { get => _weken;}
     private IList<CourseWeekUitvoering> _weken { get; } = new List<CourseWeekUitvoering>();
-    
-    public CourseUitvoering(CourseInrichting courseInrichting, DateTimeOffset startDatum)
+
+    // EF Core constructor: EF Core does not support navigation types in the constructor
+    private CourseUitvoering() { }
+
+    public CourseUitvoering(CourseInrichting courseInrichting, DateTimeOffset startDatum) : this()
     {
         this.CourseInrichting = courseInrichting;
         this.StartDatum = startDatum.GetMondayOfThisWeek();
