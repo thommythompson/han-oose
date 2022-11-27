@@ -7,10 +7,10 @@ public class Klas
 {
     public int Id { get; set; }
     public String Code { get; set; }
-    public int DocentId { get; set; }
+    public int? DocentId { get; set; }
     [BackingField(nameof(_studenten))]
-    public IEnumerable<Student> Studenten { get => _studenten; }
-    private IList<Student> _studenten { get; } = new List<Student>();
+    public IEnumerable<Student>? Studenten { get => _studenten; }
+    private IList<Student>? _studenten { get; } = new List<Student>();
 
     public Klas(string code)
     {

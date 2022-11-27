@@ -17,8 +17,8 @@ public class Docent : Persoon
     [BackingField(nameof(_tentamenUitvoeringen))]
     public IEnumerable<TentamenUitvoering> TentamenUitvoeringen { get => _tentamenUitvoeringen; }
     private IList<TentamenUitvoering> _tentamenUitvoeringen { get; set; }
-    public Klas MentorVan { get; set; }
-    public int KlasId { get; set; }
+    public Klas? MentorVan { get; set; }
+    public int? KlasId { get; set; }
 
     public Docent(string voornaam, string achternaam, string email)
     {
