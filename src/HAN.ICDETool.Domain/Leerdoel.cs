@@ -19,7 +19,20 @@ public class Leerdoel
     public IEnumerable<SchriftelijkeToets> GekoppeldeToetsen { get => _gekoppeldeToetsen; }
     private IList<SchriftelijkeToets> _gekoppeldeToetsen { get; } = new List<SchriftelijkeToets>();
     public int LeeruitkomstId { get; set; }
-    
+
+    [NotMapped]
+    private IEnumerable<Validator> _lesEenheden
+    {
+        get
+        {
+            List<Validator> list = new List<Validator>();
+            list.AddRange(_gekoppeldeLessen);
+            list.AddRange(_gekoppeldeToetsen);
+            list.AddRange(_gekoppeldeRubrics);
+            return list;
+        }
+    }
+
     public Leerdoel(string titel, string omschrijving)
     {
         this.Titel = titel;
@@ -58,12 +71,7 @@ public class Leerdoel
     
     public void Validate()
     {
-        IList<Validator> list = new List<Validator>();
-        // list.AddRange(_gekoppeldeLessen);
-        // list.AddRange(_gekoppeldeToetsen);
-        // list.AddRange(_gekoppeldeRubrics);
-
-        foreach (Validator lesEenheid in list)
+        foreach (Validator lesEenheid in _lesEenheden)
         {
             lesEenheid.validate();
         }

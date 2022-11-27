@@ -18,7 +18,7 @@ public class TestCourseUitvoering
 
         _courseInrichting.AddLes(new LesInrichting("Titel"));
         
-        _courseInrichting.AddTentamen(new SchriftelijkeToets("Titel"));
+        _courseInrichting.AddToets(new SchriftelijkeToets("Titel"));
     }
 
     [Test]
