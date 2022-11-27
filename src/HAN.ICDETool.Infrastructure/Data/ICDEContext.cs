@@ -10,6 +10,7 @@ namespace HAN.ICDETool.Infrastructure.Data;
 public class ICDEContext : DbContext
 {
     private readonly IConfiguration _configuration;
+    private readonly string _connectionString;
 
     public DbSet<CourseBibliotheek> CourseBibliotheek { get; set; }
     public DbSet<LesInrichting> LesInrichting { get; set; }
@@ -35,9 +36,16 @@ public class ICDEContext : DbContext
     public DbSet<Beoordeling> Beoordeling { get; set; }
     public DbSet<Adres> Adres { get; set; }
 
+    // No parameter constructor for EF core power tools
+    public ICDEContext()
+    {
+        _connectionString = "Server=127.0.0.1; Database=IcdeTool; User Id=sa; Password=P@ssw0rd; MultipleActiveResultSets=true; TrustServerCertificate=true";
+    }
+
     public ICDEContext(IConfiguration configuration)
     {
         _configuration = configuration;
+        _connectionString = _configuration.GetConnectionString("Default");
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

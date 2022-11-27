@@ -18,7 +18,7 @@ public class BeroepsProduct : TentamenInrichting
 
     private IList<TentamenUitvoering> _tentamenUitvoeringen { get; set; } = new List<TentamenUitvoering>();
     public int CourseInrichtingId { get; set; }
-    public int CourseWeekInrichtingId { get; set; }
+    public int? CourseWeekInrichtingId { get; set; }
 
     public BeroepsProduct(string titel)
     {

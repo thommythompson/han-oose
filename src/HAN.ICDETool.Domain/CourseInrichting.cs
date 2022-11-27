@@ -16,9 +16,12 @@ public class CourseInrichting
     [BackingField(nameof(_evls))]
     public IEnumerable<EenheidVanLeeruitkomsten> Evls { get => _evls; }
     private IList<EenheidVanLeeruitkomsten> _evls { get; } = new List<EenheidVanLeeruitkomsten>();
-    [BackingField(nameof(_tentamen))]
-    public IEnumerable<TentamenInrichting> Tentamen { get => _tentamen; }
-    private IList<TentamenInrichting> _tentamen { get; } = new List<TentamenInrichting>();
+    [BackingField(nameof(_beroepsProducten))]
+    public IEnumerable<BeroepsProduct> BeroepsProducten { get => _beroepsProducten; }
+    private IList<BeroepsProduct> _beroepsProducten { get; } = new List<BeroepsProduct>();
+    [BackingField(nameof(_toetsen))]
+    public IEnumerable<SchriftelijkeToets> Toetsen { get => _toetsen; }
+    private IList<SchriftelijkeToets> _toetsen { get; } = new List<SchriftelijkeToets>();
     [BackingField(nameof(_lessen))]
     public IEnumerable<LesInrichting> Lessen { get => _lessen; } 
     private IList<LesInrichting> _lessen { get; } = new List<LesInrichting>();
@@ -55,14 +58,24 @@ public class CourseInrichting
         _evls.Remove(eenheidVanLeeruitkomsten);
     }
     
-    public void AddTentamen(TentamenInrichting tentamenInrichting)
+    public void AddBeroepsProduct(BeroepsProduct beroepsProduct)
     {
-        _tentamen.Add(tentamenInrichting);
+        _beroepsProducten.Add(beroepsProduct);
     }
     
-    public void RemoveTentamen(TentamenInrichting tentamenInrichting)
+    public void RemoveBeroepsProduct(BeroepsProduct beroepsProduct)
     {
-        _tentamen.Remove(tentamenInrichting);
+        _beroepsProducten.Remove(beroepsProduct);
+    }
+
+    public void AddToets(SchriftelijkeToets toets)
+    {
+        _toetsen.Add(toets);
+    }
+
+    public void RemoveToets(SchriftelijkeToets toets)
+    {
+        _toetsen.Remove(toets);
     }
 
     public void AddLes(LesInrichting lesInrichting)

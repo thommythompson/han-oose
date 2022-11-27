@@ -10,8 +10,8 @@ public class LesInrichting : Validator
     [BackingField(nameof(_lesMateriaal))]
     public IEnumerable<LesMateriaal> LesMateriaal { get => _lesMateriaal; }
     private IList<LesMateriaal> _lesMateriaal { get; } = new List<LesMateriaal>();
-    public int CourseWeekInrichtingId { get; set; }
-    public int LeerdoelId { get; set; }
+    public int? CourseWeekInrichtingId { get; set; }
+    public int? LeerdoelId { get; set; }
 
     public LesInrichting(string titel)
     {

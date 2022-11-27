@@ -14,7 +14,7 @@ public class Rubric : Validator
     public IEnumerable<BeoordelingsCriteria> BeoordelingsCriteria { get => _beoordelingsCriteria; } 
     private IList<BeoordelingsCriteria> _beoordelingsCriteria { get; } = new List<BeoordelingsCriteria>();
 
-    public int LeerdoelId { get; set; }
+    public int? LeerdoelId { get; set; }
     public int BeroepsProductId { get; set; }
     
     public Rubric(string titel)

@@ -9,8 +9,8 @@ public class SchriftelijkeToets : TentamenInrichting, Validator
     public TentamenType Type { get; set; }
     public int Weging { get; set; }
     public int TeBehalenStudiepunten { get; set; }
-    public int CourseWeekInrichtingId { get; set; }
-    public int LeerdoelId { get; set; }
+    public int? CourseWeekInrichtingId { get; set; }
+    public int? LeerdoelId { get; set; }
     [BackingField(nameof(_tentamenUitvoeringen))]
     public IEnumerable<TentamenUitvoering> TentamenUitvoeringen { get => _tentamenUitvoeringen; }
     private IList<TentamenUitvoering> _tentamenUitvoeringen { get; set; }
