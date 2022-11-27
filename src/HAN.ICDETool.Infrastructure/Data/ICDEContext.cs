@@ -26,7 +26,7 @@ public class ICDEContext : DbContext
     public DbSet<Leeruitkomst> Leeruitkomst { get; set; }
     public DbSet<Leerdoel> Leerdoel { get; set; }
     public DbSet<Klas> Klas { get; set; }
-    public DbSet<EenheidVanLeeruitkomsten> EenheidVanLeeruitkomstens { get; set; }
+    public DbSet<EenheidVanLeeruitkomsten> EenheidVanLeeruitkomsten { get; set; }
     public DbSet<Docent> Docent { get; set; }
     public DbSet<CourseWeekUitvoering> CourseWeekUitvoering { get; set; }
     public DbSet<CourseUitvoering> CourseUitvoering { get; set; }

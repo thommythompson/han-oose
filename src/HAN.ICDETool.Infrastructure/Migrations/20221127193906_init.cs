@@ -195,7 +195,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EenheidVanLeeruitkomstens",
+                name: "EenheidVanLeeruitkomsten",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -206,9 +206,9 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EenheidVanLeeruitkomstens", x => x.Id);
+                    table.PrimaryKey("PK_EenheidVanLeeruitkomsten", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_EenheidVanLeeruitkomstens_CourseInrichting_CourseInrichtingId",
+                        name: "FK_EenheidVanLeeruitkomsten_CourseInrichting_CourseInrichtingId",
                         column: x => x.CourseInrichtingId,
                         principalTable: "CourseInrichting",
                         principalColumn: "Id",
@@ -281,9 +281,9 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Leeruitkomst", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Leeruitkomst_EenheidVanLeeruitkomstens_EenheidVanLeeruitkomstenId",
+                        name: "FK_Leeruitkomst_EenheidVanLeeruitkomsten_EenheidVanLeeruitkomstenId",
                         column: x => x.EenheidVanLeeruitkomstenId,
-                        principalTable: "EenheidVanLeeruitkomstens",
+                        principalTable: "EenheidVanLeeruitkomsten",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -339,8 +339,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                         name: "FK_CourseWeekUitvoering_CourseWeekInrichting_CourseWeekInrichtingId",
                         column: x => x.CourseWeekInrichtingId,
                         principalTable: "CourseWeekInrichting",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -698,8 +697,8 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                 column: "MentorVanId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EenheidVanLeeruitkomstens_CourseInrichtingId",
-                table: "EenheidVanLeeruitkomstens",
+                name: "IX_EenheidVanLeeruitkomsten_CourseInrichtingId",
+                table: "EenheidVanLeeruitkomsten",
                 column: "CourseInrichtingId");
 
             migrationBuilder.CreateIndex(
@@ -896,7 +895,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                 name: "Leeruitkomst");
 
             migrationBuilder.DropTable(
-                name: "EenheidVanLeeruitkomstens");
+                name: "EenheidVanLeeruitkomsten");
 
             migrationBuilder.DropTable(
                 name: "CourseInrichting");

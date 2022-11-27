@@ -40,6 +40,7 @@ public class DbActions : IDbActions
     public async Task CreateAndSeed()
     {
         Create();
+        
         Seed();
     }
 }

@@ -326,7 +326,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
 
                     b.HasIndex("CourseInrichtingId");
 
-                    b.ToTable("EenheidVanLeeruitkomstens");
+                    b.ToTable("EenheidVanLeeruitkomsten");
                 });
 
             modelBuilder.Entity("HAN.ICDETool.Domain.Klas", b =>
@@ -837,7 +837,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.HasOne("HAN.ICDETool.Domain.CourseWeekInrichting", "CourseWeekInrichting")
                         .WithMany("CourseWeekUitvoeringen")
                         .HasForeignKey("CourseWeekInrichtingId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("CourseWeekInrichting");

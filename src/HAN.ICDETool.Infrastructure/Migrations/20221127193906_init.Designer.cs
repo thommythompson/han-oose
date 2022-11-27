@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HAN.ICDETool.Infrastructure.Migrations
 {
     [DbContext(typeof(ICDEContext))]
-    [Migration("20221127191923_init")]
+    [Migration("20221127193906_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -329,7 +329,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
 
                     b.HasIndex("CourseInrichtingId");
 
-                    b.ToTable("EenheidVanLeeruitkomstens");
+                    b.ToTable("EenheidVanLeeruitkomsten");
                 });
 
             modelBuilder.Entity("HAN.ICDETool.Domain.Klas", b =>
@@ -840,7 +840,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.HasOne("HAN.ICDETool.Domain.CourseWeekInrichting", "CourseWeekInrichting")
                         .WithMany("CourseWeekUitvoeringen")
                         .HasForeignKey("CourseWeekInrichtingId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("CourseWeekInrichting");

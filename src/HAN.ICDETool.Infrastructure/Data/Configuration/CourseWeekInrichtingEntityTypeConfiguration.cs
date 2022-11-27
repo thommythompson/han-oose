@@ -10,6 +10,6 @@ public class CourseWeekInrichtingEntityTypeConfiguration : IEntityTypeConfigurat
     {
         builder.HasMany(e => e.CourseWeekUitvoeringen)
             .WithOne(e => e.CourseWeekInrichting)
-            .OnDelete(DeleteBehavior.Cascade);
+            .OnDelete(DeleteBehavior.NoAction);
     }
 }
