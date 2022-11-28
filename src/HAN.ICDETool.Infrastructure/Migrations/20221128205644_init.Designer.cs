@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HAN.ICDETool.Infrastructure.Migrations
 {
     [DbContext(typeof(ICDEContext))]
-    [Migration("20221127204447_rubric_leerdoel")]
-    partial class rubricleerdoel
+    [Migration("20221128205644_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -150,19 +150,6 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.ToTable("BeroepsProduct");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.CourseBibliotheek", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.HasKey("Id");
-
-                    b.ToTable("CourseBibliotheek");
-                });
-
             modelBuilder.Entity("HAN.ICDETool.Domain.CourseInrichting", b =>
                 {
                     b.Property<int>("Id")
@@ -170,9 +157,6 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CourseBibliotheekId")
-                        .HasColumnType("int");
 
                     b.Property<bool>("IsDefintief")
                         .HasColumnType("bit");
@@ -187,8 +171,6 @@ namespace HAN.ICDETool.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CourseBibliotheekId");
-
                     b.ToTable("CourseInrichting");
                 });
 
@@ -200,7 +182,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("COurseInrichtingId")
+                    b.Property<int>("CourseInrichtingId")
                         .HasColumnType("int");
 
                     b.Property<DateTimeOffset>("StartDatum")
@@ -208,7 +190,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("COurseInrichtingId");
+                    b.HasIndex("CourseInrichtingId");
 
                     b.ToTable("CourseUitvoering");
                 });
@@ -289,19 +271,11 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("KlasId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MentorVanId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Voornaam")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MentorVanId");
 
                     b.ToTable("Docent");
                 });
@@ -344,10 +318,14 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("DocentId")
+                    b.Property<int?>("DocentId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("DocentId")
+                        .IsUnique()
+                        .HasFilter("[DocentId] IS NOT NULL");
 
                     b.ToTable("Klas");
                 });
@@ -412,13 +390,13 @@ namespace HAN.ICDETool.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CourseInrichtingId")
+                    b.Property<int>("CourseInrichtingId")
                         .HasColumnType("int");
 
                     b.Property<int?>("CourseWeekInrichtingId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("LeerdoelId")
+                    b.Property<int>("LeerdoelId")
                         .HasColumnType("int");
 
                     b.Property<string>("Titel")
@@ -589,7 +567,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.Property<int>("KnockoutThreshold")
                         .HasColumnType("int");
 
-                    b.Property<int?>("LeerdoelId")
+                    b.Property<int>("LeerdoelId")
                         .HasColumnType("int");
 
                     b.Property<string>("Titel")
@@ -619,13 +597,13 @@ namespace HAN.ICDETool.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CourseInrichtingId")
+                    b.Property<int>("CourseInrichtingId")
                         .HasColumnType("int");
 
                     b.Property<int?>("CourseWeekInrichtingId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("LeerdoelId")
+                    b.Property<int>("LeerdoelId")
                         .HasColumnType("int");
 
                     b.Property<int>("TeBehalenStudiepunten")
@@ -635,8 +613,9 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Weging")
                         .HasColumnType("int");
@@ -791,20 +770,11 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                         .HasForeignKey("CourseWeekInrichtingId");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.CourseInrichting", b =>
-                {
-                    b.HasOne("HAN.ICDETool.Domain.CourseBibliotheek", null)
-                        .WithMany("Courses")
-                        .HasForeignKey("CourseBibliotheekId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("HAN.ICDETool.Domain.CourseUitvoering", b =>
                 {
                     b.HasOne("HAN.ICDETool.Domain.CourseInrichting", "CourseInrichting")
                         .WithMany("CourseUitvoeringen")
-                        .HasForeignKey("COurseInrichtingId")
+                        .HasForeignKey("CourseInrichtingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -846,17 +816,6 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.Navigation("CourseWeekInrichting");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.Docent", b =>
-                {
-                    b.HasOne("HAN.ICDETool.Domain.Klas", "MentorVan")
-                        .WithMany()
-                        .HasForeignKey("MentorVanId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("MentorVan");
-                });
-
             modelBuilder.Entity("HAN.ICDETool.Domain.EenheidVanLeeruitkomsten", b =>
                 {
                     b.HasOne("HAN.ICDETool.Domain.CourseInrichting", null)
@@ -864,6 +823,15 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                         .HasForeignKey("CourseInrichtingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("HAN.ICDETool.Domain.Klas", b =>
+                {
+                    b.HasOne("HAN.ICDETool.Domain.Docent", "Mentor")
+                        .WithOne("MentorVan")
+                        .HasForeignKey("HAN.ICDETool.Domain.Klas", "DocentId");
+
+                    b.Navigation("Mentor");
                 });
 
             modelBuilder.Entity("HAN.ICDETool.Domain.Leerdoel", b =>
@@ -888,15 +856,21 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                 {
                     b.HasOne("HAN.ICDETool.Domain.CourseInrichting", null)
                         .WithMany("Lessen")
-                        .HasForeignKey("CourseInrichtingId");
+                        .HasForeignKey("CourseInrichtingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("HAN.ICDETool.Domain.CourseWeekInrichting", null)
                         .WithMany("Lessen")
                         .HasForeignKey("CourseWeekInrichtingId");
 
-                    b.HasOne("HAN.ICDETool.Domain.Leerdoel", null)
+                    b.HasOne("HAN.ICDETool.Domain.Leerdoel", "Leerdoel")
                         .WithMany("GekoppeldeLessen")
-                        .HasForeignKey("LeerdoelId");
+                        .HasForeignKey("LeerdoelId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Leerdoel");
                 });
 
             modelBuilder.Entity("HAN.ICDETool.Domain.LesMateriaal", b =>
@@ -957,7 +931,9 @@ namespace HAN.ICDETool.Infrastructure.Migrations
 
                     b.HasOne("HAN.ICDETool.Domain.Leerdoel", "Leerdoel")
                         .WithMany("GekoppeldeRubrics")
-                        .HasForeignKey("LeerdoelId");
+                        .HasForeignKey("LeerdoelId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
                     b.Navigation("Leerdoel");
                 });
@@ -966,15 +942,21 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                 {
                     b.HasOne("HAN.ICDETool.Domain.CourseInrichting", null)
                         .WithMany("Toetsen")
-                        .HasForeignKey("CourseInrichtingId");
+                        .HasForeignKey("CourseInrichtingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("HAN.ICDETool.Domain.CourseWeekInrichting", null)
                         .WithMany("SchriftelijkeToets")
                         .HasForeignKey("CourseWeekInrichtingId");
 
-                    b.HasOne("HAN.ICDETool.Domain.Leerdoel", null)
+                    b.HasOne("HAN.ICDETool.Domain.Leerdoel", "Leerdoel")
                         .WithMany("GekoppeldeToetsen")
-                        .HasForeignKey("LeerdoelId");
+                        .HasForeignKey("LeerdoelId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Leerdoel");
                 });
 
             modelBuilder.Entity("HAN.ICDETool.Domain.Student", b =>
@@ -1038,11 +1020,6 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.Navigation("TentamenUitvoeringen");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.CourseBibliotheek", b =>
-                {
-                    b.Navigation("Courses");
-                });
-
             modelBuilder.Entity("HAN.ICDETool.Domain.CourseInrichting", b =>
                 {
                     b.Navigation("BeroepsProducten");
@@ -1053,8 +1030,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
 
                     b.Navigation("Lessen");
 
-                    b.Navigation("Planning")
-                        .IsRequired();
+                    b.Navigation("Planning");
 
                     b.Navigation("Toetsen");
                 });
@@ -1092,6 +1068,8 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.Navigation("Beoordelingen");
 
                     b.Navigation("LesUitvoeringen");
+
+                    b.Navigation("MentorVan");
 
                     b.Navigation("TentamenUitvoeringen");
                 });

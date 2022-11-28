@@ -7,8 +7,9 @@ public class LesMateriaal
 {
     public int Id { get; set; }
     [BackingField(nameof(_inhoud))]
-    public IEnumerable<LesMateriaalLine> Inhoud { get => _inhoud; }
-    private IList<LesMateriaalLine> _inhoud { get; }
+    public IEnumerable<LesMateriaalLine>? Inhoud { get => _inhoud; }
+
+    private IList<LesMateriaalLine>? _inhoud { get; set; } = new List<LesMateriaalLine>();
     public int LesInrichtingId { get; set; }
     
     public LesMateriaal()

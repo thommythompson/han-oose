@@ -31,6 +31,7 @@ public class ICDEContext : DbContext
     public DbSet<CourseUitvoering> CourseUitvoering { get; set; }
     public DbSet<CourseInrichting> CourseInrichting { get; set; }
     public DbSet<BeroepsProduct> BeroepsProduct { get; set; }
+    public DbSet<SchriftelijkeToets> SchriftelijkeToets { get; set; }
     public DbSet<BeoordelingsCriteria> BeoordelingsCriteria { get; set; }
     public DbSet<Beoordeling> Beoordeling { get; set; }
     public DbSet<Adres> Adres { get; set; }

@@ -10,8 +10,8 @@ public class EenheidVanLeeruitkomsten
     public String Titel { get; set; }
     public String Omschrijving { get; set; }
     [BackingField(nameof(_leeruitkomsten))]
-    public IEnumerable<Leeruitkomst> Leeruitkomsten { get => _leeruitkomsten; }
-    private IList<Leeruitkomst> _leeruitkomsten { get; } = new List<Leeruitkomst>();
+    public IEnumerable<Leeruitkomst>? Leeruitkomsten { get => _leeruitkomsten; }
+    private IList<Leeruitkomst>? _leeruitkomsten { get; } = new List<Leeruitkomst>();
     public int CourseInrichtingId { get; set; }
 
     public EenheidVanLeeruitkomsten(string titel, string omschrijving)
