@@ -46,7 +46,7 @@ public class EntityFrameworkDbActions : DbActions
         eenheidVanLeeruitkomsten.AddLeeruitkomst(leeruitkomst);
         courseInrichting.AddEenheidVanLeeruitkomsten(eenheidVanLeeruitkomsten);
         courseInrichting.AddToets(new SchriftelijkeToets("titel", leerdoel));
-        _dbContext.CourseInrichting.Add(courseInrichting);
+        _dbContext.EenheidVanLeeruitkomsten.Add(eenheidVanLeeruitkomsten);
         _dbContext.SaveChanges();
         
         courseInrichting.CreatePlanning(new Semester());
@@ -70,13 +70,11 @@ public class EntityFrameworkDbActions : DbActions
         }
         beroepsProduct.AddRubric(rubric1);
         beroepsProduct.AddRubric(rubric2);
-        courseInrichting = _dbContext.CourseInrichting.First();
         courseInrichting.AddBeroepsProduct(beroepsProduct);
         _dbContext.BeroepsProduct.Add(beroepsProduct);
         _dbContext.SaveChanges();
         
         SchriftelijkeToets schriftelijkeToets = new SchriftelijkeToets("titel", leerdoel);
-        courseInrichting = _dbContext.CourseInrichting.First();
         courseInrichting.AddToets(schriftelijkeToets);
         _dbContext.SchriftelijkeToets.Add(schriftelijkeToets);
         _dbContext.SaveChanges();
@@ -85,19 +83,14 @@ public class EntityFrameworkDbActions : DbActions
         courseWeekInrichting.AddLes(lesInrichting);
         courseWeekInrichting.AddBeroepsProduct(beroepsProduct);
         courseWeekInrichting.AddToets(schriftelijkeToets);
-        _dbContext.CourseWeekInrichting.Add(courseWeekInrichting);
+        _dbContext.CourseWeekInrichting.Update(courseWeekInrichting);
         _dbContext.SaveChanges();
         
         courseInrichting.MaakDefintief();
         CourseUitvoering courseUitvoering = courseInrichting.StartCourseUitvoering(new DateTimeOffset(DateTime.Now));
         _dbContext.CourseUitvoering.Add(courseUitvoering);
         _dbContext.SaveChanges();
-        
-        TentamenUitvoering tentamenUitvoering = courseUitvoering.Weken.First().Tentamen.First();
-        _dbContext.TentamenUitvoering.Add(tentamenUitvoering);
-        _dbContext.SaveChanges();
-        
-        
+
         Locatie locatie = new Locatie("Locatie naam", LocatieType.Fysiek);
         locatie.Adres = new Adres("Straatnaam", "1", "9999LA", "Arnhem");
         _dbContext.Locatie.Add(locatie);
@@ -120,6 +113,7 @@ public class EntityFrameworkDbActions : DbActions
         _dbContext.Klas.Add(klas);
         _dbContext.SaveChanges();
         
+        TentamenUitvoering tentamenUitvoering = courseUitvoering.Weken.First().Tentamen.First();
         _dbContext.Beoordeling.Add(new Beoordeling(tentamenUitvoering, student, docent)) ;
         _dbContext.SaveChanges();
         
@@ -130,6 +124,5 @@ public class EntityFrameworkDbActions : DbActions
         _logger.LogInformation("Ensuring database does exist");
         
         _dbContext.Database.EnsureCreated();
-        _dbContext.Database.Migrate();
     }
 }
