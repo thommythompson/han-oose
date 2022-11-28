@@ -9,8 +9,9 @@ public class OpleidingsProfiel
     public string Code { get; set; }
     public int OpleidingId { get; set; }
     [BackingField(nameof(_gevolgdDoor))]
-    public IEnumerable<Student> GevolgdDoor { get => _gevolgdDoor; }
-    private IList<Student> _gevolgdDoor { get; set; }
+    public IEnumerable<Student>? GevolgdDoor { get => _gevolgdDoor; }
+
+    private IList<Student>? _gevolgdDoor { get; set; } = new List<Student>();
 
     public OpleidingsProfiel(string naam, string code)
     {

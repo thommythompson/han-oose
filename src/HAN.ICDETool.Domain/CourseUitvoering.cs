@@ -8,7 +8,7 @@ public class CourseUitvoering
 {
     public int Id { get; set; }
     public CourseInrichting CourseInrichting { get; init; }
-    public int COurseInrichtingId { get; init; }
+    public int CourseInrichtingId { get; init; }
     public DateTimeOffset StartDatum { get; init; }
     [BackingField(nameof(_weken))]
     public IEnumerable<CourseWeekUitvoering> Weken { get => _weken;}

@@ -13,8 +13,9 @@ public class Student : Persoon
     public CourseUitvoering? VolgCourse { get; set; }
     public int? CourseUitvoeringId { get; set; }
     [BackingField(nameof(_beoordelingen))]
-    public IEnumerable<Beoordeling> Beoordelingen { get => _beoordelingen ;}
-    private IList<Beoordeling> _beoordelingen { get; set; }
+    public IEnumerable<Beoordeling>? Beoordelingen { get => _beoordelingen ;}
+
+    private IList<Beoordeling>? _beoordelingen { get; set; } = new List<Beoordeling>();
     public int? KlasId { get; set; }
     
     public Student(string voornaam, string achternaam, string email)

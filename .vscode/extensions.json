@@ -7,6 +7,7 @@
         "vscode-icons-team.vscode-icons",
         "davidanson.vscode-markdownlint",
         "streetsidesoftware.code-spell-checker-dutch",
-        "yzhang.markdown-all-in-one"
+        "yzhang.markdown-all-in-one",
+        "coderallan.vscode-dgmlviewer"
     ]
 }

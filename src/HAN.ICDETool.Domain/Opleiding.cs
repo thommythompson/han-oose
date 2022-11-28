@@ -9,8 +9,8 @@ public class Opleiding
     public String Naam { get; set; }
     public String Code { get; set; }
     [BackingField(nameof(_opleidingsProfielen))]
-    public IEnumerable<OpleidingsProfiel> OpleidingsProfielen { get => _opleidingsProfielen;} 
-    private IList<OpleidingsProfiel> _opleidingsProfielen { get; } = new List<OpleidingsProfiel>();
+    public IEnumerable<OpleidingsProfiel>? OpleidingsProfielen { get => _opleidingsProfielen;} 
+    private IList<OpleidingsProfiel>? _opleidingsProfielen { get; } = new List<OpleidingsProfiel>();
 
     public Opleiding(string naam, string code)
     {

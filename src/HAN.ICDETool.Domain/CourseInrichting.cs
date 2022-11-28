@@ -10,25 +10,24 @@ public class CourseInrichting
     public String Titel { get; set; }
     public String Omschrijving { get; set; }
     public Docent AangemaaktDoor { get; }
-    public CourseWeekPlanning Planning { get; private set; }
+    public CourseWeekPlanning? Planning { get; private set; }
     public bool IsDefintief { get; private set; } = false;
     public DateTimeOffset AanmaakDatum { get;  } = DateTimeOffset.Now;
     [BackingField(nameof(_evls))]
-    public IEnumerable<EenheidVanLeeruitkomsten> Evls { get => _evls; }
-    private IList<EenheidVanLeeruitkomsten> _evls { get; } = new List<EenheidVanLeeruitkomsten>();
+    public IEnumerable<EenheidVanLeeruitkomsten>? Evls { get => _evls; }
+    private IList<EenheidVanLeeruitkomsten>? _evls { get; } = new List<EenheidVanLeeruitkomsten>();
     [BackingField(nameof(_beroepsProducten))]
-    public IEnumerable<BeroepsProduct> BeroepsProducten { get => _beroepsProducten; }
-    private IList<BeroepsProduct> _beroepsProducten { get; } = new List<BeroepsProduct>();
+    public IEnumerable<BeroepsProduct>? BeroepsProducten { get => _beroepsProducten; }
+    private IList<BeroepsProduct>? _beroepsProducten { get; } = new List<BeroepsProduct>();
     [BackingField(nameof(_toetsen))]
-    public IEnumerable<SchriftelijkeToets> Toetsen { get => _toetsen; }
-    private IList<SchriftelijkeToets> _toetsen { get; } = new List<SchriftelijkeToets>();
+    public IEnumerable<SchriftelijkeToets>? Toetsen { get => _toetsen; }
+    private IList<SchriftelijkeToets>? _toetsen { get; } = new List<SchriftelijkeToets>();
     [BackingField(nameof(_lessen))]
-    public IEnumerable<LesInrichting> Lessen { get => _lessen; } 
-    private IList<LesInrichting> _lessen { get; } = new List<LesInrichting>();
+    public IEnumerable<LesInrichting>? Lessen { get => _lessen; } 
+    private IList<LesInrichting>? _lessen { get; } = new List<LesInrichting>();
     [BackingField(nameof(_courseUitvoeringen))]
-    public IEnumerable<CourseUitvoering> CourseUitvoeringen { get => _courseUitvoeringen; } 
-    private IList<CourseUitvoering> _courseUitvoeringen { get; } = new List<CourseUitvoering>();
-    public int CourseBibliotheekId { get; set; }
+    public IEnumerable<CourseUitvoering>? CourseUitvoeringen { get => _courseUitvoeringen; } 
+    private IList<CourseUitvoering>? _courseUitvoeringen { get; } = new List<CourseUitvoering>();
 
 
     // EF Core constructor: EF Core does not support navigation types in the constructor

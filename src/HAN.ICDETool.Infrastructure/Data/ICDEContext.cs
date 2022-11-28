@@ -11,8 +11,7 @@ public class ICDEContext : DbContext
 {
     private readonly IConfiguration _configuration;
     private readonly string _connectionString;
-
-    public DbSet<CourseBibliotheek> CourseBibliotheek { get; set; }
+    
     public DbSet<LesInrichting> LesInrichting { get; set; }
     public DbSet<LesMateriaal> LesMateriaal { get; set; }
     public DbSet<CourseWeekInrichting> CourseWeekInrichting { get; set; }
@@ -32,6 +31,7 @@ public class ICDEContext : DbContext
     public DbSet<CourseUitvoering> CourseUitvoering { get; set; }
     public DbSet<CourseInrichting> CourseInrichting { get; set; }
     public DbSet<BeroepsProduct> BeroepsProduct { get; set; }
+    public DbSet<SchriftelijkeToets> SchriftelijkeToets { get; set; }
     public DbSet<BeoordelingsCriteria> BeoordelingsCriteria { get; set; }
     public DbSet<Beoordeling> Beoordeling { get; set; }
     public DbSet<Adres> Adres { get; set; }

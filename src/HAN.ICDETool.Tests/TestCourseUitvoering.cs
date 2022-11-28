@@ -16,9 +16,11 @@ public class TestCourseUitvoering
         
         courseInrichting.CreatePlanning(new Semester());
 
-        _courseInrichting.AddLes(new LesInrichting("Titel"));
+        Leerdoel leerdoel = new Leerdoel("titel", "omschrijving");
         
-        _courseInrichting.AddTentamen(new SchriftelijkeToets("Titel"));
+        _courseInrichting.AddLes(new LesInrichting("Titel", leerdoel));
+        
+        _courseInrichting.AddToets(new SchriftelijkeToets("Titel", leerdoel));
     }
 
     [Test]

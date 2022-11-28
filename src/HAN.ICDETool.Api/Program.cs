@@ -68,10 +68,9 @@ public class Program
 
         using (var scope = scopeFactory.CreateScope())
         {
-            var seeder = scope.ServiceProvider.GetService<IDbActions>();
+            var seeder = scope.ServiceProvider.GetService<DbActions>();
 
-            seeder.CreateAndSeed().Wait();
+            seeder.CreateDatabaseIfNotExistsAndSeedIfDatabaseEmpty();
         }
     }
-    
 }
