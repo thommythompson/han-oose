@@ -4,16 +4,17 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <RootNamespace>HAN.ICDETool.Application</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\HAN.ICDETool.Application\HAN.ICDETool.Application.csproj" />
+      <ProjectReference Include="..\HAN.ICDETool.Core\HAN.ICDETool.Core.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="DocX" Version="2.3.0" />
-      <PackageReference Include="IronPdf" Version="2022.11.10347" />
-      <PackageReference Include="IronPdf.MacOs.ARM" Version="2022.11.10347" />
+      <PackageReference Include="Ardalis.Specification" Version="6.1.0" />
+      <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
     </ItemGroup>
 
 </Project>

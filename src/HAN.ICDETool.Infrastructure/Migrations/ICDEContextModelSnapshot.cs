@@ -22,7 +22,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.Adres", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.Adres", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -60,7 +60,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.ToTable("Adres");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.Beoordeling", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.Beoordeling", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -88,7 +88,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.ToTable("Beoordeling");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.BeoordelingsCriteria", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.BeoordelingsCriteria", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -110,7 +110,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.ToTable("BeoordelingsCriteria");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.BeroepsProduct", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.BeroepsProduct", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -147,7 +147,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.ToTable("BeroepsProduct");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.CourseInrichting", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.CourseInrichting", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -171,7 +171,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.ToTable("CourseInrichting");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.CourseUitvoering", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.CourseUitvoering", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -192,7 +192,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.ToTable("CourseUitvoering");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.CourseWeekInrichting", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.CourseWeekInrichting", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -210,7 +210,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.ToTable("CourseWeekInrichting");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.CourseWeekPlanning", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.CourseWeekPlanning", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -229,7 +229,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.ToTable("CourseWeekPlanning");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.CourseWeekUitvoering", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.CourseWeekUitvoering", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -252,7 +252,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.ToTable("CourseWeekUitvoering");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.Docent", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.Docent", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -277,7 +277,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.ToTable("Docent");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.EenheidVanLeeruitkomsten", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.EenheidVanLeeruitkomsten", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -303,7 +303,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.ToTable("EenheidVanLeeruitkomsten");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.Klas", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.Klas", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -327,7 +327,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.ToTable("Klas");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.Leerdoel", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.Leerdoel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -353,7 +353,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.ToTable("Leerdoel");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.Leeruitkomst", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.Leeruitkomst", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -379,7 +379,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.ToTable("Leeruitkomst");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.LesInrichting", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.LesInrichting", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -411,7 +411,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.ToTable("LesInrichting");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.LesMateriaal", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.LesMateriaal", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -429,7 +429,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.ToTable("LesMateriaal");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.LesMateriaalLine", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.LesMateriaalLine", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -454,7 +454,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.ToTable("LesMateriaalLine");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.LesUitvoering", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.LesUitvoering", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -482,7 +482,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.ToTable("LesUitvoering");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.Locatie", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.Locatie", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -503,7 +503,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.ToTable("Locatie");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.Opleiding", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.Opleiding", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -524,7 +524,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.ToTable("Opleiding");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.OpleidingsProfiel", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.OpleidingsProfiel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -550,7 +550,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.ToTable("OpleidingsProfiel");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.Rubric", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.Rubric", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -586,7 +586,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.ToTable("Rubric");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.SchriftelijkeToets", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.SchriftelijkeToets", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -628,7 +628,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.ToTable("SchriftelijkeToets");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.Student", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.Student", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -668,7 +668,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.ToTable("Student");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.TentamenUitvoering", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.TentamenUitvoering", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -709,30 +709,30 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.ToTable("TentamenUitvoering");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.Adres", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.Adres", b =>
                 {
-                    b.HasOne("HAN.ICDETool.Domain.Locatie", null)
+                    b.HasOne("HAN.ICDETool.Core.Locatie", null)
                         .WithOne("Adres")
-                        .HasForeignKey("HAN.ICDETool.Domain.Adres", "LocatieId")
+                        .HasForeignKey("HAN.ICDETool.Core.Adres", "LocatieId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.Beoordeling", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.Beoordeling", b =>
                 {
-                    b.HasOne("HAN.ICDETool.Domain.Docent", "BeoordeeldDoor")
+                    b.HasOne("HAN.ICDETool.Core.Docent", "BeoordeeldDoor")
                         .WithMany("Beoordelingen")
                         .HasForeignKey("DocentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HAN.ICDETool.Domain.Student", "BeoordelingVoor")
+                    b.HasOne("HAN.ICDETool.Core.Student", "BeoordelingVoor")
                         .WithMany("Beoordelingen")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HAN.ICDETool.Domain.TentamenUitvoering", "TentamenUitvoering")
+                    b.HasOne("HAN.ICDETool.Core.TentamenUitvoering", "TentamenUitvoering")
                         .WithMany("Beoordelingen")
                         .HasForeignKey("TentamenUitvoeringId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -745,31 +745,31 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.Navigation("TentamenUitvoering");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.BeoordelingsCriteria", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.BeoordelingsCriteria", b =>
                 {
-                    b.HasOne("HAN.ICDETool.Domain.Rubric", null)
+                    b.HasOne("HAN.ICDETool.Core.Rubric", null)
                         .WithMany("BeoordelingsCriteria")
                         .HasForeignKey("RubricId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.BeroepsProduct", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.BeroepsProduct", b =>
                 {
-                    b.HasOne("HAN.ICDETool.Domain.CourseInrichting", null)
+                    b.HasOne("HAN.ICDETool.Core.CourseInrichting", null)
                         .WithMany("BeroepsProducten")
                         .HasForeignKey("CourseInrichtingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HAN.ICDETool.Domain.CourseWeekInrichting", null)
+                    b.HasOne("HAN.ICDETool.Core.CourseWeekInrichting", null)
                         .WithMany("BeroepsProduct")
                         .HasForeignKey("CourseWeekInrichtingId");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.CourseUitvoering", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.CourseUitvoering", b =>
                 {
-                    b.HasOne("HAN.ICDETool.Domain.CourseInrichting", "CourseInrichting")
+                    b.HasOne("HAN.ICDETool.Core.CourseInrichting", "CourseInrichting")
                         .WithMany("CourseUitvoeringen")
                         .HasForeignKey("CourseInrichtingId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -778,33 +778,33 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.Navigation("CourseInrichting");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.CourseWeekInrichting", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.CourseWeekInrichting", b =>
                 {
-                    b.HasOne("HAN.ICDETool.Domain.CourseWeekPlanning", null)
+                    b.HasOne("HAN.ICDETool.Core.CourseWeekPlanning", null)
                         .WithMany("Weken")
                         .HasForeignKey("CourseWeekPlanningId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.CourseWeekPlanning", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.CourseWeekPlanning", b =>
                 {
-                    b.HasOne("HAN.ICDETool.Domain.CourseInrichting", null)
+                    b.HasOne("HAN.ICDETool.Core.CourseInrichting", null)
                         .WithOne("Planning")
-                        .HasForeignKey("HAN.ICDETool.Domain.CourseWeekPlanning", "CourseInrichtingId")
+                        .HasForeignKey("HAN.ICDETool.Core.CourseWeekPlanning", "CourseInrichtingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.CourseWeekUitvoering", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.CourseWeekUitvoering", b =>
                 {
-                    b.HasOne("HAN.ICDETool.Domain.CourseUitvoering", null)
+                    b.HasOne("HAN.ICDETool.Core.CourseUitvoering", null)
                         .WithMany("Weken")
                         .HasForeignKey("CourseUitvoeringId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HAN.ICDETool.Domain.CourseWeekInrichting", "CourseWeekInrichting")
+                    b.HasOne("HAN.ICDETool.Core.CourseWeekInrichting", "CourseWeekInrichting")
                         .WithMany("CourseWeekUitvoeringen")
                         .HasForeignKey("CourseWeekInrichtingId")
                         .OnDelete(DeleteBehavior.NoAction)
@@ -813,55 +813,55 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.Navigation("CourseWeekInrichting");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.EenheidVanLeeruitkomsten", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.EenheidVanLeeruitkomsten", b =>
                 {
-                    b.HasOne("HAN.ICDETool.Domain.CourseInrichting", null)
+                    b.HasOne("HAN.ICDETool.Core.CourseInrichting", null)
                         .WithMany("Evls")
                         .HasForeignKey("CourseInrichtingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.Klas", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.Klas", b =>
                 {
-                    b.HasOne("HAN.ICDETool.Domain.Docent", "Mentor")
+                    b.HasOne("HAN.ICDETool.Core.Docent", "Mentor")
                         .WithOne("MentorVan")
-                        .HasForeignKey("HAN.ICDETool.Domain.Klas", "DocentId");
+                        .HasForeignKey("HAN.ICDETool.Core.Klas", "DocentId");
 
                     b.Navigation("Mentor");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.Leerdoel", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.Leerdoel", b =>
                 {
-                    b.HasOne("HAN.ICDETool.Domain.Leeruitkomst", null)
+                    b.HasOne("HAN.ICDETool.Core.Leeruitkomst", null)
                         .WithMany("Leerdoelen")
                         .HasForeignKey("LeeruitkomstId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.Leeruitkomst", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.Leeruitkomst", b =>
                 {
-                    b.HasOne("HAN.ICDETool.Domain.EenheidVanLeeruitkomsten", null)
+                    b.HasOne("HAN.ICDETool.Core.EenheidVanLeeruitkomsten", null)
                         .WithMany("Leeruitkomsten")
                         .HasForeignKey("EenheidVanLeeruitkomstenId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.LesInrichting", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.LesInrichting", b =>
                 {
-                    b.HasOne("HAN.ICDETool.Domain.CourseInrichting", null)
+                    b.HasOne("HAN.ICDETool.Core.CourseInrichting", null)
                         .WithMany("Lessen")
                         .HasForeignKey("CourseInrichtingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HAN.ICDETool.Domain.CourseWeekInrichting", null)
+                    b.HasOne("HAN.ICDETool.Core.CourseWeekInrichting", null)
                         .WithMany("Lessen")
                         .HasForeignKey("CourseWeekInrichtingId");
 
-                    b.HasOne("HAN.ICDETool.Domain.Leerdoel", "Leerdoel")
+                    b.HasOne("HAN.ICDETool.Core.Leerdoel", "Leerdoel")
                         .WithMany("GekoppeldeLessen")
                         .HasForeignKey("LeerdoelId")
                         .OnDelete(DeleteBehavior.NoAction)
@@ -870,35 +870,35 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.Navigation("Leerdoel");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.LesMateriaal", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.LesMateriaal", b =>
                 {
-                    b.HasOne("HAN.ICDETool.Domain.LesInrichting", null)
+                    b.HasOne("HAN.ICDETool.Core.LesInrichting", null)
                         .WithMany("LesMateriaal")
                         .HasForeignKey("LesInrichtingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.LesMateriaalLine", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.LesMateriaalLine", b =>
                 {
-                    b.HasOne("HAN.ICDETool.Domain.LesMateriaal", null)
+                    b.HasOne("HAN.ICDETool.Core.LesMateriaal", null)
                         .WithMany("Inhoud")
                         .HasForeignKey("LesMateriaalId");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.LesUitvoering", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.LesUitvoering", b =>
                 {
-                    b.HasOne("HAN.ICDETool.Domain.CourseWeekUitvoering", "CourseWeekUitvoering")
+                    b.HasOne("HAN.ICDETool.Core.CourseWeekUitvoering", "CourseWeekUitvoering")
                         .WithMany("Lessen")
                         .HasForeignKey("CourseWeekUitvoeringId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HAN.ICDETool.Domain.Docent", "Docent")
+                    b.HasOne("HAN.ICDETool.Core.Docent", "Docent")
                         .WithMany("LesUitvoeringen")
                         .HasForeignKey("DocentId");
 
-                    b.HasOne("HAN.ICDETool.Domain.Locatie", "Locatie")
+                    b.HasOne("HAN.ICDETool.Core.Locatie", "Locatie")
                         .WithMany("LesUitvoeringen")
                         .HasForeignKey("LocatieId");
 
@@ -909,24 +909,24 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.Navigation("Locatie");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.OpleidingsProfiel", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.OpleidingsProfiel", b =>
                 {
-                    b.HasOne("HAN.ICDETool.Domain.Opleiding", null)
+                    b.HasOne("HAN.ICDETool.Core.Opleiding", null)
                         .WithMany("OpleidingsProfielen")
                         .HasForeignKey("OpleidingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.Rubric", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.Rubric", b =>
                 {
-                    b.HasOne("HAN.ICDETool.Domain.BeroepsProduct", null)
+                    b.HasOne("HAN.ICDETool.Core.BeroepsProduct", null)
                         .WithMany("Rubrics")
                         .HasForeignKey("BeroepsProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HAN.ICDETool.Domain.Leerdoel", "Leerdoel")
+                    b.HasOne("HAN.ICDETool.Core.Leerdoel", "Leerdoel")
                         .WithMany("GekoppeldeRubrics")
                         .HasForeignKey("LeerdoelId")
                         .OnDelete(DeleteBehavior.NoAction)
@@ -935,19 +935,19 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.Navigation("Leerdoel");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.SchriftelijkeToets", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.SchriftelijkeToets", b =>
                 {
-                    b.HasOne("HAN.ICDETool.Domain.CourseInrichting", null)
+                    b.HasOne("HAN.ICDETool.Core.CourseInrichting", null)
                         .WithMany("Toetsen")
                         .HasForeignKey("CourseInrichtingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HAN.ICDETool.Domain.CourseWeekInrichting", null)
+                    b.HasOne("HAN.ICDETool.Core.CourseWeekInrichting", null)
                         .WithMany("SchriftelijkeToets")
                         .HasForeignKey("CourseWeekInrichtingId");
 
-                    b.HasOne("HAN.ICDETool.Domain.Leerdoel", "Leerdoel")
+                    b.HasOne("HAN.ICDETool.Core.Leerdoel", "Leerdoel")
                         .WithMany("GekoppeldeToetsen")
                         .HasForeignKey("LeerdoelId")
                         .OnDelete(DeleteBehavior.NoAction)
@@ -956,17 +956,17 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.Navigation("Leerdoel");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.Student", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.Student", b =>
                 {
-                    b.HasOne("HAN.ICDETool.Domain.CourseUitvoering", "VolgCourse")
+                    b.HasOne("HAN.ICDETool.Core.CourseUitvoering", "VolgCourse")
                         .WithMany()
                         .HasForeignKey("CourseUitvoeringId");
 
-                    b.HasOne("HAN.ICDETool.Domain.Klas", null)
+                    b.HasOne("HAN.ICDETool.Core.Klas", null)
                         .WithMany("Studenten")
                         .HasForeignKey("KlasId");
 
-                    b.HasOne("HAN.ICDETool.Domain.OpleidingsProfiel", "VolgtProfiel")
+                    b.HasOne("HAN.ICDETool.Core.OpleidingsProfiel", "VolgtProfiel")
                         .WithMany("GevolgdDoor")
                         .HasForeignKey("OpleidingsProfielId");
 
@@ -975,27 +975,27 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.Navigation("VolgtProfiel");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.TentamenUitvoering", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.TentamenUitvoering", b =>
                 {
-                    b.HasOne("HAN.ICDETool.Domain.BeroepsProduct", "BeroepsProduct")
+                    b.HasOne("HAN.ICDETool.Core.BeroepsProduct", "BeroepsProduct")
                         .WithMany("TentamenUitvoeringen")
                         .HasForeignKey("BeroepsProductId");
 
-                    b.HasOne("HAN.ICDETool.Domain.CourseWeekUitvoering", "CourseWeekUitvoering")
+                    b.HasOne("HAN.ICDETool.Core.CourseWeekUitvoering", "CourseWeekUitvoering")
                         .WithMany("Tentamen")
                         .HasForeignKey("CourseWeekUitvoeringId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HAN.ICDETool.Domain.Docent", "Docent")
+                    b.HasOne("HAN.ICDETool.Core.Docent", "Docent")
                         .WithMany("TentamenUitvoeringen")
                         .HasForeignKey("DocentId");
 
-                    b.HasOne("HAN.ICDETool.Domain.Locatie", "Locatie")
+                    b.HasOne("HAN.ICDETool.Core.Locatie", "Locatie")
                         .WithMany("TentamenUitvoeringen")
                         .HasForeignKey("LocatieId");
 
-                    b.HasOne("HAN.ICDETool.Domain.SchriftelijkeToets", "SchriftelijkeToets")
+                    b.HasOne("HAN.ICDETool.Core.SchriftelijkeToets", "SchriftelijkeToets")
                         .WithMany("TentamenUitvoeringen")
                         .HasForeignKey("SchriftelijkeToetsId");
 
@@ -1010,14 +1010,14 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.Navigation("SchriftelijkeToets");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.BeroepsProduct", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.BeroepsProduct", b =>
                 {
                     b.Navigation("Rubrics");
 
                     b.Navigation("TentamenUitvoeringen");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.CourseInrichting", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.CourseInrichting", b =>
                 {
                     b.Navigation("BeroepsProducten");
 
@@ -1032,12 +1032,12 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.Navigation("Toetsen");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.CourseUitvoering", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.CourseUitvoering", b =>
                 {
                     b.Navigation("Weken");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.CourseWeekInrichting", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.CourseWeekInrichting", b =>
                 {
                     b.Navigation("BeroepsProduct");
 
@@ -1048,19 +1048,19 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.Navigation("SchriftelijkeToets");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.CourseWeekPlanning", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.CourseWeekPlanning", b =>
                 {
                     b.Navigation("Weken");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.CourseWeekUitvoering", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.CourseWeekUitvoering", b =>
                 {
                     b.Navigation("Lessen");
 
                     b.Navigation("Tentamen");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.Docent", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.Docent", b =>
                 {
                     b.Navigation("Beoordelingen");
 
@@ -1071,17 +1071,17 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.Navigation("TentamenUitvoeringen");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.EenheidVanLeeruitkomsten", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.EenheidVanLeeruitkomsten", b =>
                 {
                     b.Navigation("Leeruitkomsten");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.Klas", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.Klas", b =>
                 {
                     b.Navigation("Studenten");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.Leerdoel", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.Leerdoel", b =>
                 {
                     b.Navigation("GekoppeldeLessen");
 
@@ -1090,22 +1090,22 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.Navigation("GekoppeldeToetsen");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.Leeruitkomst", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.Leeruitkomst", b =>
                 {
                     b.Navigation("Leerdoelen");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.LesInrichting", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.LesInrichting", b =>
                 {
                     b.Navigation("LesMateriaal");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.LesMateriaal", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.LesMateriaal", b =>
                 {
                     b.Navigation("Inhoud");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.Locatie", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.Locatie", b =>
                 {
                     b.Navigation("Adres");
 
@@ -1114,32 +1114,32 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.Navigation("TentamenUitvoeringen");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.Opleiding", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.Opleiding", b =>
                 {
                     b.Navigation("OpleidingsProfielen");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.OpleidingsProfiel", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.OpleidingsProfiel", b =>
                 {
                     b.Navigation("GevolgdDoor");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.Rubric", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.Rubric", b =>
                 {
                     b.Navigation("BeoordelingsCriteria");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.SchriftelijkeToets", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.SchriftelijkeToets", b =>
                 {
                     b.Navigation("TentamenUitvoeringen");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.Student", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.Student", b =>
                 {
                     b.Navigation("Beoordelingen");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Domain.TentamenUitvoering", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.TentamenUitvoering", b =>
                 {
                     b.Navigation("Beoordelingen");
                 });

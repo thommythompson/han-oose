@@ -17,8 +17,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\HAN.ICDETool.Domain\HAN.ICDETool.Domain.csproj" />
-      <ProjectReference Include="..\HAN.ICDETool.Services\HAN.ICDETool.Services.csproj" />
+      <ProjectReference Include="..\HAN.ICDETool.Core\HAN.ICDETool.Core.csproj" />
+      <ProjectReference Include="..\HAN.ICDETool.ExporterService\HAN.ICDETool.ExporterService.csproj" />
     </ItemGroup>
 
 </Project>

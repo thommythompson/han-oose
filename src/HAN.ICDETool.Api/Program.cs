@@ -1,3 +1,4 @@
+using System.Reflection;
 using HAN.ICDETool.Api.Configuration;
 using HAN.ICDETool.Infrastructure.Data;
 using System.Text.Json.Serialization;
@@ -33,6 +34,8 @@ public class Program
 
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+        
+        builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
         
         new DependencyInjection().AddServices(builder);
 
