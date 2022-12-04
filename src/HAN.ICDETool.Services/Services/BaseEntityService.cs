@@ -19,7 +19,7 @@ public abstract class BaseEntityService<TEntity, TRequestDto, TReponseDto> : IEn
         _mapper = mapper;
     }
     
-    public TReponseDto Create(TRequestDto entity)
+    public virtual TReponseDto Create(TRequestDto entity)
     {
         var newEntity = _mapper.Map<TEntity>(entity);
         var result = _repository.AddAsync(newEntity).Result;
@@ -27,19 +27,19 @@ public abstract class BaseEntityService<TEntity, TRequestDto, TReponseDto> : IEn
         return _mapper.Map<TReponseDto>(result);
     }
 
-    public IEnumerable<TReponseDto> Read()
+    public virtual IEnumerable<TReponseDto> Read()
     {
         var result = _repository.ListAsync().Result;
         return _mapper.Map<List<TReponseDto>>(result);
     }
 
-    public TReponseDto Read(int id)
+    public virtual TReponseDto Read(int id)
     {
         var result =  _repository.GetByIdAsync(id).Result;
         return _mapper.Map<TReponseDto>(result);
     }
 
-    public TReponseDto Update(int id, TRequestDto entity)
+    public virtual TReponseDto Update(int id, TRequestDto entity)
     {
         var newEntity = _mapper.Map<TEntity>(entity);
         newEntity.Id = id;
@@ -48,7 +48,7 @@ public abstract class BaseEntityService<TEntity, TRequestDto, TReponseDto> : IEn
         return _mapper.Map<TReponseDto>(result);
     }
 
-    public void Delete(int id)
+    public virtual void Delete(int id)
     {
         var entity = _repository.GetByIdAsync(id).Result;
         _repository.DeleteAsync(entity);

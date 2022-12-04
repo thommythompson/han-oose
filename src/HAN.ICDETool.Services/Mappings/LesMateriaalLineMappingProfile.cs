@@ -12,12 +12,12 @@ public class LesMateriaalLineMappingProfile : Profile
         CreateMap<LesMateriaalLine, LesMateriaalLineResponseDto>()
             .ForMember(o => o.Id, ex => ex.MapFrom(o => o.Id))
             .ForMember(o => o.Line, ex => ex.MapFrom(o => o.Line))
-            .ForMember(o => o.LesMateriaalLineId, ex => ex.MapFrom(o => o.LesMateriaalLineId))
+            .ForMember(o => o.LesMateriaalLineId, ex => ex.MapFrom(o => o.LesMateriaalId))
             .ReverseMap();
         
         CreateMap<LesMateriaalLine, LesMateriaalLineRequestDto>()
             .ForMember(o => o.Line, ex => ex.MapFrom(o => o.Line))
-            .ForMember(o => o.LesMateriaalLineId, ex => ex.MapFrom(o => o.LesMateriaalLineId))
+            .ForMember(o => o.LesMateriaalLineId, ex => ex.MapFrom(o => o.LesMateriaalId))
             .ReverseMap();
     }
 }
