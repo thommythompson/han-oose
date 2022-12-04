@@ -14,7 +14,7 @@ public class DependencyInjection
     public void AddServices(WebApplicationBuilder builder)
     {
         builder.Services.AddScoped(typeof(IRepository<>),typeof(ICDERepository<>));
-        
+        builder.Services.AddTransient<ILesMateriaalService, LesMateriaalService>();
         builder.Services.AddTransient<IEntityService<LesInrichting, LesInrichtingRequestDto, LesInrichtingResponseDto>, LesInrichtingService>();
         builder.Services.AddTransient<IEntityService<LesMateriaal, LesMateriaalRequestDto, LesMateriaalResponseDto>, LesMateriaalService>();
         builder.Services.AddTransient<ILesMateriaalExporter, LesMateriaalExporter>();

@@ -19,39 +19,52 @@ public abstract class BaseEntityService<TEntity, TRequestDto, TReponseDto> : IEn
         _mapper = mapper;
     }
     
-    public virtual TReponseDto Create(TRequestDto entity)
+    public virtual async Task<TReponseDto> Create(TRequestDto entity)
     {
         var newEntity = _mapper.Map<TEntity>(entity);
-        var result = _repository.AddAsync(newEntity).Result;
-        _repository.SaveChangesAsync();
+        
+        var result = await _repository.AddAsync(newEntity);
+        await _repository.SaveChangesAsync();
+        
         return _mapper.Map<TReponseDto>(result);
     }
 
-    public virtual IEnumerable<TReponseDto> Read()
+    public virtual async Task<IEnumerable<TReponseDto>> Read()
     {
-        var result = _repository.ListAsync().Result;
+        var result = await _repository.ListAsync();
         return _mapper.Map<List<TReponseDto>>(result);
     }
 
-    public virtual TReponseDto Read(int id)
+    public virtual async Task<TReponseDto> Read(int id)
     {
-        var result =  _repository.GetByIdAsync(id).Result;
+        var result = await _repository.GetByIdAsync(id);
         return _mapper.Map<TReponseDto>(result);
     }
 
-    public virtual TReponseDto Update(int id, TRequestDto entity)
+    public virtual async Task<TReponseDto> Update(int id, TRequestDto entity)
     {
         var newEntity = _mapper.Map<TEntity>(entity);
         newEntity.Id = id;
-        var result = _repository.UpdateAsync(newEntity);
-        _repository.SaveChangesAsync();
+        
+        await _repository.UpdateAsync(newEntity);
+        await _repository.SaveChangesAsync();
+        var result = await _repository.GetByIdAsync(id);
+        
         return _mapper.Map<TReponseDto>(result);
     }
 
-    public virtual void Delete(int id)
+    public virtual async Task<int> Delete(int id)
     {
-        var entity = _repository.GetByIdAsync(id).Result;
-        _repository.DeleteAsync(entity);
-        _repository.SaveChangesAsync();
+        try
+        {
+            var entity = await _repository.GetByIdAsync(id);
+            await _repository.DeleteAsync(entity);
+            return await _repository.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"Delete operations failed: {ex}");
+            throw new Exception("Delete operations failed");
+        }
     }
 }

@@ -6,13 +6,16 @@ using Microsoft.AspNetCore.Mvc;
 namespace HAN.ICDETool.Api.Controllers;
 
 [ApiController]
-public abstract class BaseController<TEntity, TRequestDto, TResponseDto, IEntityService> : ControllerBase where TResponseDto : BaseResponseDto 
+public abstract class BaseController<TEntity, TRequestDto, TResponseDto, IEntityService> 
+    : ControllerBase where TResponseDto : BaseResponseDto 
 {
     private IEntityService<TEntity, TRequestDto, TResponseDto> _service;
     private readonly ILogger<BaseController<TEntity, TRequestDto, TResponseDto, IEntityService>> _logger;
     private readonly IMapper _mapper;
 
-    public BaseController(IEntityService<TEntity, TRequestDto, TResponseDto> service, ILogger<BaseController<TEntity, TRequestDto, TResponseDto, IEntityService>> logger, IMapper mapper)
+    public BaseController(IEntityService<TEntity, TRequestDto, TResponseDto> service, 
+        ILogger<BaseController<TEntity, TRequestDto, TResponseDto, IEntityService>> logger, 
+        IMapper mapper)
     {
         _service = service;
         _logger = logger;
@@ -21,11 +24,11 @@ public abstract class BaseController<TEntity, TRequestDto, TResponseDto, IEntity
     
     [HttpGet]
     [Route("")]
-    public IActionResult Get()
+    public async Task<IActionResult> Get()
     {
         try
         {
-            return Ok(_service.Read());
+            return Ok(await _service.Read());
         }
         catch (Exception ex)
         {
@@ -36,11 +39,11 @@ public abstract class BaseController<TEntity, TRequestDto, TResponseDto, IEntity
     
     [HttpGet]
     [Route("{id:int}")]
-    public IActionResult Get(int id)
+    public async Task<IActionResult> Get(int id)
     {
         try
         {
-            var result = _service.Read(id);
+            var result = await _service.Read(id);
 
             if (result != null) return Ok(result);
             return NotFound();
@@ -54,15 +57,15 @@ public abstract class BaseController<TEntity, TRequestDto, TResponseDto, IEntity
 
     [HttpPut]
     [Route("")]
-    public IActionResult Create(TRequestDto entity)
+    public async Task<IActionResult> Create([FromBody]TRequestDto entity)
     {
         try
         {
             if (ModelState.IsValid)
             {
-                var result = _service.Create(entity);
+                var result = await _service.Create(entity);
 
-                return Created($"/{typeof(TEntity)}/{result.Id}", entity);
+                return Created($"/{typeof(TEntity).Name}/{result.Id}", result);
             }
             else
             {
@@ -78,15 +81,15 @@ public abstract class BaseController<TEntity, TRequestDto, TResponseDto, IEntity
 
     [HttpPost]
     [Route("{id:int}")]
-    public IActionResult Update(int id, TRequestDto entity)
+    public async Task<IActionResult> Update(int id, [FromBody]TRequestDto entity)
     {
         try
         {
             if (ModelState.IsValid)
             {
-                var result = _service.Update(id, entity);
+                var result = await _service.Update(id, entity);
 
-                return Created($"/{typeof(TEntity)}/{result.Id}", entity);
+                return Created($"/{typeof(TEntity).Name}/{result.Id}", result);
             }
             else
             {
@@ -102,12 +105,14 @@ public abstract class BaseController<TEntity, TRequestDto, TResponseDto, IEntity
 
     [HttpDelete]
     [Route("{id:int}")]
-    public IActionResult Delete(int id)
+    public async Task<IActionResult> Delete(int id)
     {
         try
         {
-            _service.Delete(id);
-            return Ok();
+            int entitiesDeleted = await _service.Delete(id);
+            return Ok(new {
+                EntitiesDeleted = entitiesDeleted
+            });
         }
         catch (Exception ex)
         {

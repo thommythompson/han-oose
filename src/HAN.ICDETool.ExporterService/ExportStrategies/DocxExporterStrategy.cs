@@ -4,9 +4,18 @@ namespace HAN.ICDETool.ExporterService.ExportStrategies;
 
 public class DocxExporterStrategy : IExporterService
 {
+    private string _exportDirectory;
+    
+    public DocxExporterStrategy(string exportDirectory)
+    {
+        _exportDirectory = exportDirectory;
+    }
+    
     public string Export(IList<String> exportData)
     {
-        var document = DocX.Create("NewDocument.docx");
+        string fullPath = _exportDirectory + Guid.NewGuid() + ".docx";
+        
+        var document = DocX.Create(fullPath);
         
         foreach(String line in exportData)
         {
@@ -16,6 +25,6 @@ public class DocxExporterStrategy : IExporterService
         
         document.Save();
         
-        return "/path/to/docx/file";
+        return fullPath;
     }
 }

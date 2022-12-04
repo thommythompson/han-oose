@@ -18,7 +18,6 @@ public class LesInrichtingMappingProfile : Profile
         
         CreateMap<LesInrichting, LesInrichtingRequestDto>()
             .ForMember(o => o.Titel, ex => ex.MapFrom(o => o.Titel))
-            .ForMember(o => o.Leerdoel, ex => ex.MapFrom(o => o.Leerdoel))
             .ReverseMap();
     }
 }

@@ -5,6 +5,7 @@ using HAN.ICDETool.Services.Interfaces;
 using HAN.ICDETool.Core.Specifications;
 using HAN.ICDETool.Core.Entities;
 using HAN.ICDETool.Services.RequestDtos;
+using HAN.ICDETool.SharedKernel;
 using Microsoft.Extensions.Logging;
 
 namespace HAN.ICDETool.Services.Services;
@@ -28,9 +29,12 @@ public class LesMateriaalService : BaseEntityService<LesMateriaal, LesMateriaalR
         return _mapper.Map<List<LesMateriaalResponseDto>>(result);
     }
 
-    public string Export(string formaat, int id)
+    public CustomFile Export(string formaat, int id)
     {
         LesMateriaal lesMateriaal = _repository.GetByIdAsync(id).Result;
+
+        if (null == lesMateriaal)
+            throw new Exception("Lesmateriaal not found");
         
         ExportFormaat exportFormaat;
         

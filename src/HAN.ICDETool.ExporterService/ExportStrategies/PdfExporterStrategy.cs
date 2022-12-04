@@ -6,6 +6,13 @@ namespace HAN.ICDETool.ExporterService.ExportStrategies;
 
 public class PdfExporterStrategy : IExporterService
 {
+    private string _exportDirectory;
+    
+    public PdfExporterStrategy(string exportDirectory)
+    {
+        _exportDirectory = exportDirectory;
+    }
+    
     public string Export(IList<String> exportData)
     {
         IHTMLConverter converter = new HTMLConverter();
@@ -13,8 +20,10 @@ public class PdfExporterStrategy : IExporterService
         
         ChromePdfRenderer Renderer = new ChromePdfRenderer(); // Instantiates Chrome Renderer
         var pdf = Renderer.RenderHtmlAsPdf(html);
-        pdf.SaveAs("html_saved.pdf"); // Saves our PdfDocument object as a PDF
+
+        string fullPath = _exportDirectory + Guid.NewGuid() + ".pdf";
+        pdf.SaveAs(fullPath); // Saves our PdfDocument object as a PDF
         
-        return "/path/to/pdf/file";
+        return fullPath;
     }
 }

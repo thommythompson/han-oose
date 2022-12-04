@@ -2,9 +2,9 @@ namespace HAN.ICDETool.Services.Interfaces;
 
 public interface IEntityService<TEntity, TRequestDto, TReponseDto>
 {
-    public TReponseDto Create(TRequestDto entity);
-    public IEnumerable<TReponseDto> Read();
-    public TReponseDto Read(int id);
-    public TReponseDto Update(int id, TRequestDto entity);
-    public void Delete(int id);
+    public Task<TReponseDto> Create(TRequestDto entity);
+    public Task<IEnumerable<TReponseDto>> Read();
+    public Task<TReponseDto> Read(int id);
+    public Task<TReponseDto> Update(int id, TRequestDto entity);
+    public Task<int> Delete(int id);
 }
