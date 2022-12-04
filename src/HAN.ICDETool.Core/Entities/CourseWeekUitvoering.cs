@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HAN.ICDETool.Core.Entities;
 
-public class CourseWeekUitvoering
+public class CourseWeekUitvoering : BaseEntity
 {
     public int Id { get; set; }
     public DateTimeOffset Maandag { get; }

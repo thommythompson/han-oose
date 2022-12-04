@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HAN.ICDETool.Core.Entities;
 
-public class LesMateriaal
+public class LesMateriaal : BaseEntity
 {
     public int Id { get; set; }
     [BackingField(nameof(_inhoud))]

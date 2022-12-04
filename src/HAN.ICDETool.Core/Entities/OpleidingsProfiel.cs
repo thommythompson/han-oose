@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HAN.ICDETool.Core.Entities;
 
-public class OpleidingsProfiel
+public class OpleidingsProfiel : BaseEntity
 {
     public int Id { get; set; }
     public string Naam { get; set; }

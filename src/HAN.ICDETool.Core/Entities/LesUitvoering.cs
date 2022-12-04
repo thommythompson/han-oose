@@ -1,6 +1,6 @@
 namespace HAN.ICDETool.Core.Entities;
 
-public class LesUitvoering
+public class LesUitvoering : BaseEntity
 {
     public int Id { get; set; }
     public LesInrichting LesInrichting { get; }

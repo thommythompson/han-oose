@@ -1,18 +1,18 @@
 using AutoMapper;
-using HAN.ICDETool.Services.Dtos;
+using HAN.ICDETool.Services.ResponseDtos;
 using HAN.ICDETool.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HAN.ICDETool.Api.Controllers;
 
 [ApiController]
-public abstract class BaseController<TEntity, IEntityService> : ControllerBase where TEntity : BaseDto
+public abstract class BaseController<TEntity, TRequestDto, TResponseDto, IEntityService> : ControllerBase where TResponseDto : BaseResponseDto 
 {
-    private IEntityService<TEntity> _service;
-    private readonly ILogger<BaseController<TEntity, IEntityService>> _logger;
+    private IEntityService<TEntity, TRequestDto, TResponseDto> _service;
+    private readonly ILogger<BaseController<TEntity, TRequestDto, TResponseDto, IEntityService>> _logger;
     private readonly IMapper _mapper;
 
-    public BaseController(IEntityService<TEntity> service, ILogger<BaseController<TEntity, IEntityService>> logger, IMapper mapper)
+    public BaseController(IEntityService<TEntity, TRequestDto, TResponseDto> service, ILogger<BaseController<TEntity, TRequestDto, TResponseDto, IEntityService>> logger, IMapper mapper)
     {
         _service = service;
         _logger = logger;
@@ -54,15 +54,15 @@ public abstract class BaseController<TEntity, IEntityService> : ControllerBase w
 
     [HttpPut]
     [Route("")]
-    public IActionResult Create(TEntity entity)
+    public IActionResult Create(TRequestDto entity)
     {
         try
         {
             if (ModelState.IsValid)
             {
-                _service.Create(entity);
+                var result = _service.Create(entity);
 
-                return Created($"/{typeof(TEntity)}/{entity.Id}", entity);
+                return Created($"/{typeof(TEntity)}/{result.Id}", entity);
             }
             else
             {
@@ -77,16 +77,16 @@ public abstract class BaseController<TEntity, IEntityService> : ControllerBase w
     }
 
     [HttpPost]
-    [Route("")]
-    public IActionResult Update(TEntity entity)
+    [Route("{id:int}")]
+    public IActionResult Update(int id, TRequestDto entity)
     {
         try
         {
             if (ModelState.IsValid)
             {
-                _service.Update(entity);
+                var result = _service.Update(id, entity);
 
-                return Created($"/{typeof(TEntity)}/{entity.Id}", entity);
+                return Created($"/{typeof(TEntity)}/{result.Id}", entity);
             }
             else
             {

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HAN.ICDETool.Core.Entities;
 
-public class BeroepsProduct : TentamenInrichting
+public class BeroepsProduct : BaseEntity, TentamenInrichting
 {
     public int Id { get; set; }
     public string Titel { get; set; }

@@ -1,46 +1,57 @@
 using AutoMapper;
 using HAN.ICDETool.Application.Repositories.Interfaces;
+using HAN.ICDETool.Core.Entities;
 using HAN.ICDETool.Services.Interfaces;
 using Microsoft.Extensions.Logging;
 
 namespace HAN.ICDETool.Services.Services;
 
-public abstract class BaseEntityService<T, TDto> : IEntityService<T> where T : class
+public abstract class BaseEntityService<TEntity, TRequestDto, TReponseDto> : IEntityService<TEntity, TRequestDto, TReponseDto> where TEntity : class, BaseEntity
 {
-    private readonly IRepository<T> _repository;
-    private readonly ILogger<BaseEntityService<T, TDto>> _logger;
+    private readonly IRepository<TEntity> _repository;
+    private readonly ILogger<BaseEntityService<TEntity, TRequestDto, TReponseDto>> _logger;
     private readonly IMapper _mapper;
 
-    public BaseEntityService(IRepository<T> repository, ILogger<BaseEntityService<T, TDto>> logger, IMapper mapper)
+    public BaseEntityService(IRepository<TEntity> repository, ILogger<BaseEntityService<TEntity, TRequestDto, TReponseDto>> logger, IMapper mapper)
     {
         _repository = repository;
         _logger = logger;
         _mapper = mapper;
     }
-
-    public Task<T> Create(T entity)
+    
+    public TReponseDto Create(TRequestDto entity)
     {
-        return _repository.AddAsync(entity);
+        var newEntity = _mapper.Map<TEntity>(entity);
+        var result = _repository.AddAsync(newEntity).Result;
+        _repository.SaveChangesAsync();
+        return _mapper.Map<TReponseDto>(result);
     }
 
-    public Task<List<T>> Read()
+    public IEnumerable<TReponseDto> Read()
     {
-        return _repository.ListAsync();
+        var result = _repository.ListAsync().Result;
+        return _mapper.Map<List<TReponseDto>>(result);
     }
 
-    public Task<T> Read(int id)
+    public TReponseDto Read(int id)
     {
-        return _repository.GetByIdAsync(id);
+        var result =  _repository.GetByIdAsync(id).Result;
+        return _mapper.Map<TReponseDto>(result);
     }
 
-    public Task Update(T entity)
+    public TReponseDto Update(int id, TRequestDto entity)
     {
-        return _repository.UpdateAsync(entity);
+        var newEntity = _mapper.Map<TEntity>(entity);
+        newEntity.Id = id;
+        var result = _repository.UpdateAsync(newEntity);
+        _repository.SaveChangesAsync();
+        return _mapper.Map<TReponseDto>(result);
     }
 
-    public Task Delete(int id)
+    public void Delete(int id)
     {
         var entity = _repository.GetByIdAsync(id).Result;
-        return _repository.DeleteAsync(entity);
+        _repository.DeleteAsync(entity);
+        _repository.SaveChangesAsync();
     }
 }

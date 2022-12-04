@@ -1,6 +1,6 @@
 namespace HAN.ICDETool.Core.Entities;
 
-public class BeoordelingsCriteria
+public class BeoordelingsCriteria : BaseEntity
 {
     public int Id { get; set; }
     public String Omschrijving { get; set; }

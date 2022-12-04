@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HAN.ICDETool.Core.Entities;
 
-public class SchriftelijkeToets : TentamenInrichting, Validator
+public class SchriftelijkeToets : TentamenInrichting, Validator, BaseEntity
 {
     public int Id { get; set; }
     public string Titel { get; set; }

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HAN.ICDETool.Core.Entities;
 
-public class Leerdoel
+public class Leerdoel : BaseEntity
 {
     public int Id { get; set; }
     public string Titel { get; set; }

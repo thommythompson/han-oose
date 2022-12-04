@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HAN.ICDETool.Core.Entities;
 
-public class CourseWeekPlanning
+public class CourseWeekPlanning : BaseEntity
 {
     public int Id { get; set; }
     public ITijdDefinitie Duur { get; }

@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HAN.ICDETool.Core.Entities;
 
-public class Locatie
+public class Locatie : BaseEntity
 {
     public int Id { get; set; }
     public string Naam { get; init; }

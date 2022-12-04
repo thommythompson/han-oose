@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HAN.ICDETool.Core.Entities;
 
-public class TentamenUitvoering
+public class TentamenUitvoering : BaseEntity
 {
     public int Id { get; set; }
     public SchriftelijkeToets? SchriftelijkeToets { get; init; }

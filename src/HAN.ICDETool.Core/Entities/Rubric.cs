@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HAN.ICDETool.Core.Entities;
 
-public class Rubric : Validator
+public class Rubric : Validator, BaseEntity
 {
     public int Id { get; set; }
     public string Titel { get; set; }

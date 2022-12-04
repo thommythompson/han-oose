@@ -1,6 +1,6 @@
 namespace HAN.ICDETool.Core.Entities;
 
-public class LesMateriaalLine
+public class LesMateriaalLine : BaseEntity
 {
     public int Id { get; set; }
     public string Line { get; set; }

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HAN.ICDETool.Core.Entities;
 
-public class EenheidVanLeeruitkomsten
+public class EenheidVanLeeruitkomsten : BaseEntity
 {
     public int Id { get; set; }
     public String Titel { get; set; }

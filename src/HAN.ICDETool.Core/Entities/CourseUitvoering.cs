@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HAN.ICDETool.Core.Entities;
 
-public class CourseUitvoering
+public class CourseUitvoering : BaseEntity
 {
     public int Id { get; set; }
     public CourseInrichting CourseInrichting { get; init; }

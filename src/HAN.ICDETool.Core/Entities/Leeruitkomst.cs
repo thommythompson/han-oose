@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HAN.ICDETool.Core.Entities;
 
-public class Leeruitkomst
+public class Leeruitkomst : BaseEntity
 {
     public int Id { get; set; }
     public string Titel { get; set; }

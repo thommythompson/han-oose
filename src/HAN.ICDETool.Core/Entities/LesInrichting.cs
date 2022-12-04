@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HAN.ICDETool.Core.Entities;
 
-public class LesInrichting : Validator
+public class LesInrichting : Validator, BaseEntity
 {
     public int Id { get; set; }
     public string Titel { get; set;  }

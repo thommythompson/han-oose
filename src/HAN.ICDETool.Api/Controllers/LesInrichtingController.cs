@@ -1,16 +1,19 @@
 using AutoMapper;
-using HAN.ICDETool.Services.Dtos;
+using HAN.ICDETool.Core.Entities;
+using HAN.ICDETool.Services.ResponseDtos;
 using Microsoft.AspNetCore.Mvc;
 using HAN.ICDETool.Services.Interfaces;
+using HAN.ICDETool.Services.RequestDtos;
 
 namespace HAN.ICDETool.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class LesInrichtingController : BaseController<LesInrichtingDto,  ILesInrichtingService>
+public class LesInrichtingController : BaseController<LesInrichting, LesInrichtingRequestDto, LesInrichtingResponseDto,  ILesInrichtingService>
 {
-
-    public LesInrichtingController(IEntityService<LesInrichtingDto> service, ILogger<BaseController<LesInrichtingDto, ILesInrichtingService>> logger, IMapper mapper) : base(service, logger, mapper)
+    public LesInrichtingController(IEntityService<LesInrichting, LesInrichtingRequestDto, LesInrichtingResponseDto> service, 
+        ILogger<BaseController<LesInrichting, LesInrichtingRequestDto, LesInrichtingResponseDto, ILesInrichtingService>> logger, 
+        IMapper mapper) : base(service, logger, mapper)
     {
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HAN.ICDETool.Core.Entities;
 
-public class Klas
+public class Klas : BaseEntity
 {
     public int Id { get; set; }
     public String Code { get; set; }

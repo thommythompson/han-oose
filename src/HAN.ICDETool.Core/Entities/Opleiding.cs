@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HAN.ICDETool.Core.Entities;
 
-public class Opleiding
+public class Opleiding : BaseEntity
 {
     public int Id { get; set; }
     public String Naam { get; set; }
