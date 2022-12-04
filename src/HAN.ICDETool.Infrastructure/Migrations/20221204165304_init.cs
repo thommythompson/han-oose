@@ -558,8 +558,7 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Line = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LesMateriaalLineId = table.Column<int>(type: "int", nullable: false),
-                    LesMateriaalId = table.Column<int>(type: "int", nullable: true)
+                    LesMateriaalId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -568,7 +567,8 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                         name: "FK_LesMateriaalLine_LesMateriaal_LesMateriaalId",
                         column: x => x.LesMateriaalId,
                         principalTable: "LesMateriaal",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
