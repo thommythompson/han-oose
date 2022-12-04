@@ -1,6 +1,9 @@
+using System.Reflection;
 using HAN.ICDETool.Api.Configuration;
 using HAN.ICDETool.Infrastructure.Data;
 using System.Text.Json.Serialization;
+using AutoMapper;
+using HAN.ICDETool.Application.Mappings;
 using Microsoft.EntityFrameworkCore;
 
 namespace  HAN.ICDETool.Api;
@@ -33,6 +36,9 @@ public class Program
 
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+
+        var mapper = AutoMapperConfig.CreateMapper();
+        builder.Services.AddSingleton(mapper);
         
         new DependencyInjection().AddServices(builder);
 

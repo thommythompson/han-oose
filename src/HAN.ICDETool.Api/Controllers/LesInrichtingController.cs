@@ -1,32 +1,19 @@
+using AutoMapper;
+using HAN.ICDETool.Core.Entities;
+using HAN.ICDETool.Services.ResponseDtos;
 using Microsoft.AspNetCore.Mvc;
-using HAN.ICDETool.Application.Repositories.Interfaces;
-using HAN.ICDETool.Application.Services.Interfaces;
-using HAN.ICDETool.Domain;
+using HAN.ICDETool.Services.Interfaces;
+using HAN.ICDETool.Services.RequestDtos;
 
 namespace HAN.ICDETool.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class LesInrichtingController : IApiController<LesInrichting>
+public class LesInrichtingController : BaseController<LesInrichting, LesInrichtingRequestDto, LesInrichtingResponseDto,  ILesInrichtingService>
 {
-    private ILesInrichtingService _lesService;
-    
-    public LesInrichtingController(ILesInrichtingService lesService)
+    public LesInrichtingController(IEntityService<LesInrichting, LesInrichtingRequestDto, LesInrichtingResponseDto> service, 
+        ILogger<BaseController<LesInrichting, LesInrichtingRequestDto, LesInrichtingResponseDto, ILesInrichtingService>> logger, 
+        IMapper mapper) : base(service, logger, mapper)
     {
-        _lesService = lesService;
-    }
-    
-    [HttpGet]
-    [Route("")]
-    public IEnumerable<LesInrichting> Get()
-    {
-        return _lesService.Get();
-    }
-
-    [HttpGet]
-    [Route("{id}")]
-    public LesInrichting Get(int id)
-    {
-        return _lesService.GetById(id);
     }
 }

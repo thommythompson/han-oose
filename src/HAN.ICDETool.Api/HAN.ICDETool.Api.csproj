@@ -7,12 +7,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\HAN.ICDETool.Application\HAN.ICDETool.Application.csproj" />
-      <ProjectReference Include="..\HAN.ICDETool.Infrastructure\HAN.ICDETool.Infrastructure.csproj" />
       <ProjectReference Include="..\HAN.ICDETool.Services\HAN.ICDETool.Services.csproj" />
+      <ProjectReference Include="..\HAN.ICDETool.Infrastructure\HAN.ICDETool.Infrastructure.csproj" />
+      <ProjectReference Include="..\HAN.ICDETool.ExporterService\HAN.ICDETool.ExporterService.csproj" />
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
       <PackageReference Include="ErikEJ.EntityFrameworkCore.DgmlBuilder" Version="6.0.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0">
         <PrivateAssets>all</PrivateAssets>

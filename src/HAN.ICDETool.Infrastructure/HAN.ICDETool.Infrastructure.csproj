@@ -7,6 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Ardalis.Specification" Version="6.1.0" />
+      <PackageReference Include="Ardalis.Specification.EntityFrameworkCore" Version="6.1.0" />
       <PackageReference Include="ErikEJ.EntityFrameworkCore.DgmlBuilder" Version="6.0.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0">
         <PrivateAssets>all</PrivateAssets>
@@ -16,7 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\HAN.ICDETool.Application\HAN.ICDETool.Application.csproj" />
+      <ProjectReference Include="..\HAN.ICDETool.Services\HAN.ICDETool.Services.csproj" />
     </ItemGroup>
 
     <ItemGroup>

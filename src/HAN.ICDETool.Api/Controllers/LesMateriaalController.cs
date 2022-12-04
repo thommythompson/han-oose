@@ -1,32 +1,19 @@
+using AutoMapper;
+using HAN.ICDETool.Core.Entities;
 using Microsoft.AspNetCore.Mvc;
-using HAN.ICDETool.Application.Repositories.Interfaces;
-using HAN.ICDETool.Application.Services.Interfaces;
-using HAN.ICDETool.Domain;
+using HAN.ICDETool.Services.ResponseDtos;
+using HAN.ICDETool.Services.Interfaces;
+using HAN.ICDETool.Services.RequestDtos;
 
 namespace HAN.ICDETool.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class LesMateriaalController : IApiController<LesMateriaal>
+public class LesMateriaalController : BaseController<LesMateriaal, LesMateriaalRequestDto, LesMateriaalResponseDto, ILesMateriaalService>
 {
-    private ILesMateriaalService _service;
-    
-    public LesMateriaalController(ILesMateriaalService service)
+    public LesMateriaalController(IEntityService<LesMateriaal, LesMateriaalRequestDto, LesMateriaalResponseDto> service, 
+        ILogger<BaseController<LesMateriaal, LesMateriaalRequestDto, LesMateriaalResponseDto, ILesMateriaalService>> logger, 
+        IMapper mapper) : base(service, logger, mapper)
     {
-        _service = service;
-    }
-    
-    [HttpGet]
-    [Route("")]
-    public IEnumerable<LesMateriaal> Get()
-    {
-        return _service.Get();
-    }
-
-    [HttpGet]
-    [Route("{id}")]
-    public LesMateriaal Get(int id)
-    {
-        return _service.GetById(id);
     }
 }
