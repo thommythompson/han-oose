@@ -1,5 +1,4 @@
 using AutoMapper;
-using HAN.ICDETool.Application.Mappings;
 using HAN.ICDETool.Services.ResponseDtos;
 using HAN.ICDETool.Application.Repositories.Interfaces;
 using HAN.ICDETool.Services.Interfaces;

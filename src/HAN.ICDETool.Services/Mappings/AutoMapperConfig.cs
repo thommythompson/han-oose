@@ -1,6 +1,6 @@
 using AutoMapper;
 
-namespace HAN.ICDETool.Application.Mappings;
+namespace HAN.ICDETool.Services.Mappings;
 
 public class AutoMapperConfig
 {
@@ -12,6 +12,11 @@ public class AutoMapperConfig
             cfg.AddProfile<LesInrichtingMappingProfile>();
             cfg.AddProfile<LesMateriaalMappingProfile>();
             cfg.AddProfile<LesMateriaalLineMappingProfile>();
+            cfg.AddProfile<CourseInrichtingMappingProfile>();
+            cfg.AddProfile<CourseUitvoeringMappingProfile>();
+            cfg.AddProfile<CourseWeekUitvoeringMappingProfile>();
+            cfg.AddProfile<LesUitvoeringMappingProfile>();
+            cfg.AddProfile<TentamenUitvoeringMappingProfile>();
         });
 
         return config.CreateMapper();
