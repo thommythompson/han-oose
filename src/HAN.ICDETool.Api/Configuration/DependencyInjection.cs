@@ -17,6 +17,7 @@ public class DependencyInjection
         builder.Services.AddTransient<ILesMateriaalService, LesMateriaalService>();
         builder.Services.AddTransient<ILesInrichtingService, LesInrichtingService>();
         builder.Services.AddTransient<ILesMateriaalExporter, LesMateriaalExporter>();
+        builder.Services.AddTransient<ICourseInrichtingService, CourseInrichtingService>();
         builder.Services.AddTransient<DbActions, EntityFrameworkDbActions>();
     }
 }

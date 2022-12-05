@@ -1,10 +1,7 @@
-using System.Reflection;
 using HAN.ICDETool.Api.Configuration;
 using HAN.ICDETool.Infrastructure.Data;
 using System.Text.Json.Serialization;
-using AutoMapper;
-using HAN.ICDETool.Application.Mappings;
-using Microsoft.EntityFrameworkCore;
+using HAN.ICDETool.Services.Mappings;
 
 namespace  HAN.ICDETool.Api;
 

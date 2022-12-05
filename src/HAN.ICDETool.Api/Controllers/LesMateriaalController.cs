@@ -14,7 +14,6 @@ namespace HAN.ICDETool.Api.Controllers;
 public class LesMateriaalController : BaseController<LesMateriaal, LesMateriaalRequestDto, LesMateriaalResponseDto, ILesMateriaalService>
 {
     private ILesMateriaalService _service;
-
     private ILogger<BaseController<LesMateriaal, LesMateriaalRequestDto, LesMateriaalResponseDto, ILesMateriaalService>>
         _logger;
 
@@ -27,7 +26,7 @@ public class LesMateriaalController : BaseController<LesMateriaal, LesMateriaalR
     }
     
     [HttpPost]
-    [Route("{id:int}/export")]
+    [Route("{id:int}/Export")]
     public IActionResult Export(int id, [FromBody]ExportFormaatDto format)
     {
         try
