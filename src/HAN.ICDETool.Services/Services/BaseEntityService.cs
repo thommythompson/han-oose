@@ -19,47 +19,52 @@ public abstract class BaseEntityService<TEntity, TRequestDto, TReponseDto> : IEn
         _mapper = mapper;
     }
     
-    public virtual async Task<TReponseDto> Create(TRequestDto entity)
+    public virtual async Task<TReponseDto> Create(TRequestDto entity, CancellationToken cancellationToken)
     {
         var newEntity = _mapper.Map<TEntity>(entity);
         
-        var result = await _repository.AddAsync(newEntity);
-        await _repository.SaveChangesAsync();
+        var result = await _repository.AddAsync(newEntity, cancellationToken);
+        await _repository.SaveChangesAsync(cancellationToken);
         
         return _mapper.Map<TReponseDto>(result);
     }
 
-    public virtual async Task<IEnumerable<TReponseDto>> Read()
+    public virtual async Task<IEnumerable<TReponseDto>> Read(CancellationToken cancellationToken)
     {
-        var result = await _repository.ListAsync();
+        var result = await _repository.ListAsync(cancellationToken);
         return _mapper.Map<List<TReponseDto>>(result);
     }
 
-    public virtual async Task<TReponseDto> Read(int id)
+    public virtual async Task<TReponseDto> Read(int id, CancellationToken cancellationToken)
     {
-        var result = await _repository.GetByIdAsync(id);
+        var result = await _repository.GetByIdAsync(id, cancellationToken);
         return _mapper.Map<TReponseDto>(result);
     }
 
-    public virtual async Task<TReponseDto> Update(int id, TRequestDto entity)
+    public virtual async Task<TReponseDto> Update(int id, TRequestDto entity, CancellationToken cancellationToken)
     {
         var newEntity = _mapper.Map<TEntity>(entity);
         newEntity.Id = id;
         
-        await _repository.UpdateAsync(newEntity);
-        await _repository.SaveChangesAsync();
-        var result = await _repository.GetByIdAsync(id);
+        await _repository.UpdateAsync(newEntity, cancellationToken);
+        await _repository.SaveChangesAsync(cancellationToken);
+        var result = await _repository.GetByIdAsync(id, cancellationToken);
         
         return _mapper.Map<TReponseDto>(result);
     }
 
-    public virtual async Task<int> Delete(int id)
+    public virtual async Task Delete(int id, CancellationToken cancellationToken)
     {
         try
         {
-            var entity = await _repository.GetByIdAsync(id);
-            await _repository.DeleteAsync(entity);
-            return await _repository.SaveChangesAsync();
+            var entity = await _repository.GetByIdAsync(id, cancellationToken);
+
+            if(null == entity)
+            {
+                throw new Exception($"Entity with id {id} could not be found.");
+            }
+
+            await _repository.DeleteAsync(entity, cancellationToken);
         }
         catch (Exception ex)
         {

@@ -24,11 +24,11 @@ public abstract class BaseController<TEntity, TRequestDto, TResponseDto, IEntity
     
     [HttpGet]
     [Route("")]
-    public async Task<IActionResult> Get()
+    public async Task<IActionResult> Get(CancellationToken cancellationToken)
     {
         try
         {
-            return Ok(await _service.Read());
+            return Ok(await _service.Read(cancellationToken));
         }
         catch (Exception ex)
         {
@@ -39,11 +39,11 @@ public abstract class BaseController<TEntity, TRequestDto, TResponseDto, IEntity
     
     [HttpGet]
     [Route("{id:int}")]
-    public async Task<IActionResult> Get(int id)
+    public async Task<IActionResult> Get(int id, CancellationToken cancellationToken)
     {
         try
         {
-            var result = await _service.Read(id);
+            var result = await _service.Read(id, cancellationToken);
 
             if (result != null) return Ok(result);
             return NotFound();
@@ -57,13 +57,13 @@ public abstract class BaseController<TEntity, TRequestDto, TResponseDto, IEntity
 
     [HttpPut]
     [Route("")]
-    public async Task<IActionResult> Create([FromBody]TRequestDto entity)
+    public async Task<IActionResult> Create([FromBody]TRequestDto entity, CancellationToken cancellationToken)
     {
         try
         {
             if (ModelState.IsValid)
             {
-                var result = await _service.Create(entity);
+                var result = await _service.Create(entity, cancellationToken);
 
                 return Created($"/{typeof(TEntity).Name}/{result.Id}", result);
             }
@@ -81,13 +81,13 @@ public abstract class BaseController<TEntity, TRequestDto, TResponseDto, IEntity
 
     [HttpPost]
     [Route("{id:int}")]
-    public async Task<IActionResult> Update(int id, [FromBody]TRequestDto entity)
+    public async Task<IActionResult> Update(int id, [FromBody]TRequestDto entity, CancellationToken cancellationToken)
     {
         try
         {
             if (ModelState.IsValid)
             {
-                var result = await _service.Update(id, entity);
+                var result = await _service.Update(id, entity, cancellationToken);
 
                 return Created($"/{typeof(TEntity).Name}/{result.Id}", result);
             }
@@ -105,19 +105,17 @@ public abstract class BaseController<TEntity, TRequestDto, TResponseDto, IEntity
 
     [HttpDelete]
     [Route("{id:int}")]
-    public async Task<IActionResult> Delete(int id)
+    public async Task<IActionResult> Delete(int id, CancellationToken cancellationToken)
     {
         try
         {
-            int entitiesDeleted = await _service.Delete(id);
-            return Ok(new {
-                EntitiesDeleted = entitiesDeleted
-            });
+            await _service.Delete(id, cancellationToken); 
+            return NoContent();
         }
         catch (Exception ex)
         {
             _logger.LogError($"Unable to delete entity: {ex}");
-            return BadRequest("Unable to delete entity");
+            return BadRequest($"Unable to delete entity: {ex}");
         }
     }
 }

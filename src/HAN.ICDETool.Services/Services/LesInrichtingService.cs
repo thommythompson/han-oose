@@ -21,7 +21,7 @@ public class LesInrichtingService : BaseEntityService<LesInrichting, LesInrichti
         _mapper = mapper;
     }
 
-    public override async Task<IEnumerable<LesInrichtingResponseDto>> Read()
+    public override async Task<IEnumerable<LesInrichtingResponseDto>> Read(CancellationToken cancellationToken)
     {
         var result = await _repository.ListAsync(new LesInrichtingWithReferences());
         return _mapper.Map<List<LesInrichtingResponseDto>>(result);

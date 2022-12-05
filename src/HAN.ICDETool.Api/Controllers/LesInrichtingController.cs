@@ -11,7 +11,7 @@ namespace HAN.ICDETool.Api.Controllers;
 [Route("[controller]")]
 public class LesInrichtingController : BaseController<LesInrichting, LesInrichtingRequestDto, LesInrichtingResponseDto,  ILesInrichtingService>
 {
-    public LesInrichtingController(IEntityService<LesInrichting, LesInrichtingRequestDto, LesInrichtingResponseDto> service, 
+    public LesInrichtingController(ILesInrichtingService service, 
         ILogger<BaseController<LesInrichting, LesInrichtingRequestDto, LesInrichtingResponseDto, ILesInrichtingService>> logger, 
         IMapper mapper) : base(service, logger, mapper)
     {

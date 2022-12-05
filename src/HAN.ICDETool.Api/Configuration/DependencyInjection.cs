@@ -15,8 +15,7 @@ public class DependencyInjection
     {
         builder.Services.AddScoped(typeof(IRepository<>),typeof(ICDERepository<>));
         builder.Services.AddTransient<ILesMateriaalService, LesMateriaalService>();
-        builder.Services.AddTransient<IEntityService<LesInrichting, LesInrichtingRequestDto, LesInrichtingResponseDto>, LesInrichtingService>();
-        builder.Services.AddTransient<IEntityService<LesMateriaal, LesMateriaalRequestDto, LesMateriaalResponseDto>, LesMateriaalService>();
+        builder.Services.AddTransient<ILesInrichtingService, LesInrichtingService>();
         builder.Services.AddTransient<ILesMateriaalExporter, LesMateriaalExporter>();
         builder.Services.AddTransient<DbActions, EntityFrameworkDbActions>();
     }
