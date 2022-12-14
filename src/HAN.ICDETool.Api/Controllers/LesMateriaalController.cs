@@ -6,6 +6,7 @@ using HAN.ICDETool.Services.Interfaces;
 using HAN.ICDETool.Services.RequestDtos;
 using HAN.ICDETool.Services.Services;
 using HAN.ICDETool.SharedKernel;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HAN.ICDETool.Api.Controllers;
 
@@ -27,6 +28,7 @@ public class LesMateriaalController : BaseController<LesMateriaal, LesMateriaalR
     
     [HttpPost]
     [Route("{id:int}/Export")]
+    [Authorize(Roles = "Docent, Student")]
     public IActionResult Export(int id, [FromBody]ExportFormaatDto format)
     {
         try

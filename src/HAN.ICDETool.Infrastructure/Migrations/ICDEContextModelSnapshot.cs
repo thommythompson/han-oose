@@ -252,31 +252,6 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.ToTable("CourseWeekUitvoering");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Core.Entities.Docent", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Achternaam")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Voornaam")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Docent");
-                });
-
             modelBuilder.Entity("HAN.ICDETool.Core.Entities.EenheidVanLeeruitkomsten", b =>
                 {
                     b.Property<int>("Id")
@@ -319,10 +294,6 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DocentId")
-                        .IsUnique()
-                        .HasFilter("[DocentId] IS NOT NULL");
 
                     b.ToTable("Klas");
                 });
@@ -625,46 +596,6 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.ToTable("SchriftelijkeToets");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Core.Entities.Student", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Achternaam")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("CourseUitvoeringId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("KlasId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("OpleidingsProfielId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Voornaam")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CourseUitvoeringId");
-
-                    b.HasIndex("KlasId");
-
-                    b.HasIndex("OpleidingsProfielId");
-
-                    b.ToTable("Student");
-                });
-
             modelBuilder.Entity("HAN.ICDETool.Core.Entities.TentamenUitvoering", b =>
                 {
                     b.Property<int>("Id")
@@ -706,6 +637,252 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.ToTable("TentamenUitvoering");
                 });
 
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<int>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser<int>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser<int>");
+
+                    b.UseTphMappingStrategy();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("HAN.ICDETool.Core.Entities.Persoon", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser<int>");
+
+                    b.Property<string>("Achternaam")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("MentorVanKlasId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("VolgtCourseId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("VolgtProfileId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Voornaam")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ZitInKlasId")
+                        .HasColumnType("int");
+
+                    b.HasIndex("MentorVanKlasId")
+                        .IsUnique()
+                        .HasFilter("[MentorVanKlasId] IS NOT NULL");
+
+                    b.HasIndex("VolgtCourseId");
+
+                    b.HasIndex("VolgtProfileId");
+
+                    b.HasIndex("ZitInKlasId");
+
+                    b.HasDiscriminator().HasValue("Persoon");
+                });
+
             modelBuilder.Entity("HAN.ICDETool.Core.Entities.Adres", b =>
                 {
                     b.HasOne("HAN.ICDETool.Core.Entities.Locatie", null)
@@ -717,27 +894,27 @@ namespace HAN.ICDETool.Infrastructure.Migrations
 
             modelBuilder.Entity("HAN.ICDETool.Core.Entities.Beoordeling", b =>
                 {
-                    b.HasOne("HAN.ICDETool.Core.Entities.Docent", "BeoordeeldDoor")
-                        .WithMany("Beoordelingen")
+                    b.HasOne("HAN.ICDETool.Core.Entities.Persoon", "Docent")
+                        .WithMany("BeoordelingenGegeven")
                         .HasForeignKey("DocentId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("HAN.ICDETool.Core.Entities.Student", "BeoordelingVoor")
-                        .WithMany("Beoordelingen")
+                    b.HasOne("HAN.ICDETool.Core.Entities.Persoon", "Student")
+                        .WithMany("BeoordelingenOntvangen")
                         .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("HAN.ICDETool.Core.Entities.TentamenUitvoering", "TentamenUitvoering")
                         .WithMany("Beoordelingen")
                         .HasForeignKey("TentamenUitvoeringId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.Navigation("BeoordeeldDoor");
+                    b.Navigation("Docent");
 
-                    b.Navigation("BeoordelingVoor");
+                    b.Navigation("Student");
 
                     b.Navigation("TentamenUitvoering");
                 });
@@ -819,15 +996,6 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Core.Entities.Klas", b =>
-                {
-                    b.HasOne("HAN.ICDETool.Core.Entities.Docent", "Mentor")
-                        .WithOne("MentorVan")
-                        .HasForeignKey("HAN.ICDETool.Core.Entities.Klas", "DocentId");
-
-                    b.Navigation("Mentor");
-                });
-
             modelBuilder.Entity("HAN.ICDETool.Core.Entities.Leerdoel", b =>
                 {
                     b.HasOne("HAN.ICDETool.Core.Entities.Leeruitkomst", null)
@@ -893,8 +1061,8 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HAN.ICDETool.Core.Entities.Docent", "Docent")
-                        .WithMany("LesUitvoeringen")
+                    b.HasOne("HAN.ICDETool.Core.Entities.Persoon", "Docent")
+                        .WithMany("DocentVoorLesUitvoeringen")
                         .HasForeignKey("DocentId");
 
                     b.HasOne("HAN.ICDETool.Core.Entities.Locatie", "Locatie")
@@ -955,25 +1123,6 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.Navigation("Leerdoel");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Core.Entities.Student", b =>
-                {
-                    b.HasOne("HAN.ICDETool.Core.Entities.CourseUitvoering", "VolgCourse")
-                        .WithMany()
-                        .HasForeignKey("CourseUitvoeringId");
-
-                    b.HasOne("HAN.ICDETool.Core.Entities.Klas", null)
-                        .WithMany("Studenten")
-                        .HasForeignKey("KlasId");
-
-                    b.HasOne("HAN.ICDETool.Core.Entities.OpleidingsProfiel", "VolgtProfiel")
-                        .WithMany("GevolgdDoor")
-                        .HasForeignKey("OpleidingsProfielId");
-
-                    b.Navigation("VolgCourse");
-
-                    b.Navigation("VolgtProfiel");
-                });
-
             modelBuilder.Entity("HAN.ICDETool.Core.Entities.TentamenUitvoering", b =>
                 {
                     b.HasOne("HAN.ICDETool.Core.Entities.BeroepsProduct", "BeroepsProduct")
@@ -986,8 +1135,8 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HAN.ICDETool.Core.Entities.Docent", "Docent")
-                        .WithMany("TentamenUitvoeringen")
+                    b.HasOne("HAN.ICDETool.Core.Entities.Persoon", "Docent")
+                        .WithMany("DocentVoorTentamenUitvoeringen")
                         .HasForeignKey("DocentId");
 
                     b.HasOne("HAN.ICDETool.Core.Entities.Locatie", "Locatie")
@@ -1007,6 +1156,84 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.Navigation("Locatie");
 
                     b.Navigation("SchriftelijkeToets");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<int>", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser<int>", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser<int>", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<int>", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser<int>", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser<int>", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("HAN.ICDETool.Core.Entities.Persoon", b =>
+                {
+                    b.HasOne("HAN.ICDETool.Core.Entities.Klas", "MentorVanKlas")
+                        .WithOne("Mentor")
+                        .HasForeignKey("HAN.ICDETool.Core.Entities.Persoon", "MentorVanKlasId");
+
+                    b.HasOne("HAN.ICDETool.Core.Entities.CourseUitvoering", "VolgtCourse")
+                        .WithMany("Studenten")
+                        .HasForeignKey("VolgtCourseId");
+
+                    b.HasOne("HAN.ICDETool.Core.Entities.OpleidingsProfiel", "VolgtProfiel")
+                        .WithMany("GevolgdDoor")
+                        .HasForeignKey("VolgtProfileId");
+
+                    b.HasOne("HAN.ICDETool.Core.Entities.Klas", "ZitInKlas")
+                        .WithMany("Studenten")
+                        .HasForeignKey("ZitInKlasId");
+
+                    b.Navigation("MentorVanKlas");
+
+                    b.Navigation("VolgtCourse");
+
+                    b.Navigation("VolgtProfiel");
+
+                    b.Navigation("ZitInKlas");
                 });
 
             modelBuilder.Entity("HAN.ICDETool.Core.Entities.BeroepsProduct", b =>
@@ -1033,6 +1260,8 @@ namespace HAN.ICDETool.Infrastructure.Migrations
 
             modelBuilder.Entity("HAN.ICDETool.Core.Entities.CourseUitvoering", b =>
                 {
+                    b.Navigation("Studenten");
+
                     b.Navigation("Weken");
                 });
 
@@ -1059,17 +1288,6 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.Navigation("Tentamen");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Core.Entities.Docent", b =>
-                {
-                    b.Navigation("Beoordelingen");
-
-                    b.Navigation("LesUitvoeringen");
-
-                    b.Navigation("MentorVan");
-
-                    b.Navigation("TentamenUitvoeringen");
-                });
-
             modelBuilder.Entity("HAN.ICDETool.Core.Entities.EenheidVanLeeruitkomsten", b =>
                 {
                     b.Navigation("Leeruitkomsten");
@@ -1077,6 +1295,8 @@ namespace HAN.ICDETool.Infrastructure.Migrations
 
             modelBuilder.Entity("HAN.ICDETool.Core.Entities.Klas", b =>
                 {
+                    b.Navigation("Mentor");
+
                     b.Navigation("Studenten");
                 });
 
@@ -1133,14 +1353,20 @@ namespace HAN.ICDETool.Infrastructure.Migrations
                     b.Navigation("TentamenUitvoeringen");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Core.Entities.Student", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.Entities.TentamenUitvoering", b =>
                 {
                     b.Navigation("Beoordelingen");
                 });
 
-            modelBuilder.Entity("HAN.ICDETool.Core.Entities.TentamenUitvoering", b =>
+            modelBuilder.Entity("HAN.ICDETool.Core.Entities.Persoon", b =>
                 {
-                    b.Navigation("Beoordelingen");
+                    b.Navigation("BeoordelingenGegeven");
+
+                    b.Navigation("BeoordelingenOntvangen");
+
+                    b.Navigation("DocentVoorLesUitvoeringen");
+
+                    b.Navigation("DocentVoorTentamenUitvoeringen");
                 });
 #pragma warning restore 612, 618
         }

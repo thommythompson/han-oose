@@ -10,6 +10,7 @@
       <PackageReference Include="Ardalis.Specification" Version="6.1.0" />
       <PackageReference Include="Ardalis.Specification.EntityFrameworkCore" Version="6.1.0" />
       <PackageReference Include="ErikEJ.EntityFrameworkCore.DgmlBuilder" Version="6.0.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.11" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

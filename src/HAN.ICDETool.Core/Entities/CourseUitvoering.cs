@@ -10,9 +10,8 @@ public class CourseUitvoering : BaseEntity
     public CourseInrichting CourseInrichting { get; init; }
     public int CourseInrichtingId { get; init; }
     public DateTimeOffset StartDatum { get; init; }
-    [BackingField(nameof(_weken))]
-    public IEnumerable<CourseWeekUitvoering> Weken { get => _weken;}
-    private IList<CourseWeekUitvoering> _weken { get; } = new List<CourseWeekUitvoering>();
+    public IList<CourseWeekUitvoering> Weken { get;  } = new List<CourseWeekUitvoering>();
+    public IList<Persoon> Studenten { get; set; } = new List<Persoon>();
 
     // EF Core constructor: EF Core does not support navigation types in the constructor
     private CourseUitvoering() { }
@@ -31,7 +30,7 @@ public class CourseUitvoering : BaseEntity
         {
             DateTimeOffset date = StartDatum.AddDays(7 * i);
             
-            _weken.Add(new CourseWeekUitvoering(date, week));
+            Weken.Add(new CourseWeekUitvoering(date, week));
             
             i++;
         }
