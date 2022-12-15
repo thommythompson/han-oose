@@ -28,6 +28,7 @@
       <PackageReference Include="Newtonsoft.Json" Version="13.0.2-beta3" />
       <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.4.0" />
       <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.4.0" />
+      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.25.1" />
     </ItemGroup>
 
 </Project>

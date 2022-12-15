@@ -1,14 +1,18 @@
+using System.Security.Claims;
 using System.Text;
 using HAN.ICDETool.Api.Configuration;
 using HAN.ICDETool.Infrastructure.Data;
 using System.Text.Json.Serialization;
+using Azure.Identity;
 using HAN.ICDETool.Core.Entities;
 using HAN.ICDETool.Services.Mappings;
-using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.OpenApi.Models;
+using JwtRegisteredClaimNames = System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames;
 
 namespace  HAN.ICDETool.Api;
 
@@ -35,7 +39,7 @@ public class Program
         
         ConfigurationManager _config = builder.Configuration;
 
-        builder.Services.AddControllersWithViews()
+        builder.Services.AddControllersWithViews(cfg => cfg.Filters.Add(new AuthorizeFilter()))
             .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
         builder.Services.AddIdentity<Persoon, IdentityRole<int>>(cfg => 
@@ -46,14 +50,21 @@ public class Program
             })
             .AddEntityFrameworkStores<ICDEContext>();
 
-        builder.Services.AddAuthentication()
+        builder.Services.AddAuthentication(cfg =>
+                {
+                    cfg.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    cfg.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                }
+            )
             .AddJwtBearer(cfg => 
             {
                 cfg.TokenValidationParameters = new TokenValidationParameters()
                 {
                     ValidIssuer = _config["Tokens:Issuer"],
                     ValidAudience = _config["Tokens:Audience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Tokens:Key"]))
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Tokens:Key"])),
+                    NameClaimType = JwtRegisteredClaimNames.Name,
+                    RoleClaimType = ClaimTypes.Role
                 };
             });
         

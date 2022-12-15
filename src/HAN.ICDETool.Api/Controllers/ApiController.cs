@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HAN.ICDETool.Api.Controllers;
 
-[Authorize]
 [ApiController]
 public abstract class BaseController<TEntity, TRequestDto, TResponseDto, IEntityService> 
     : ControllerBase where TResponseDto : BaseResponseDto 
