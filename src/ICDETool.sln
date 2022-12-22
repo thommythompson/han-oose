@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HAN.ICDETool.Tests", "HAN.I
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HAN.ICDETool.ExporterService", "HAN.ICDETool.ExporterService\HAN.ICDETool.ExporterService.csproj", "{8550F521-B562-4A24-B471-F37F1FE52F77}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HAN.ICDETool.Web", "HAN.ICDETool.Web\HAN.ICDETool.Web.csproj", "{3C0329D3-1A36-4567-B19F-E426E6D8733A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HAN.ICDETool.ApiClient", "HAN.ICDETool.ApiClient\HAN.ICDETool.ApiClient.csproj", "{33FF2019-311A-40FE-BCFF-ADE29B08FC12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +59,14 @@ Global
 		{8550F521-B562-4A24-B471-F37F1FE52F77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8550F521-B562-4A24-B471-F37F1FE52F77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8550F521-B562-4A24-B471-F37F1FE52F77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C0329D3-1A36-4567-B19F-E426E6D8733A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C0329D3-1A36-4567-B19F-E426E6D8733A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C0329D3-1A36-4567-B19F-E426E6D8733A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C0329D3-1A36-4567-B19F-E426E6D8733A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33FF2019-311A-40FE-BCFF-ADE29B08FC12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33FF2019-311A-40FE-BCFF-ADE29B08FC12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33FF2019-311A-40FE-BCFF-ADE29B08FC12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33FF2019-311A-40FE-BCFF-ADE29B08FC12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

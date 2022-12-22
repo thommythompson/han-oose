@@ -3,14 +3,12 @@ using System.Text;
 using HAN.ICDETool.Api.Configuration;
 using HAN.ICDETool.Infrastructure.Data;
 using System.Text.Json.Serialization;
-using Azure.Identity;
 using HAN.ICDETool.Core.Entities;
 using HAN.ICDETool.Services.Mappings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.OpenApi.Models;
 using JwtRegisteredClaimNames = System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames;
 
@@ -72,6 +70,17 @@ public class Program
 
         builder.Services.AddEndpointsApiExplorer();
         
+        builder.Services.AddCors(options =>
+        {
+            options.AddDefaultPolicy(
+                builder =>
+                {
+                    builder.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+        });
+        
         ConfigureSwagger(builder.Services);
 
         var mapper = AutoMapperConfig.CreateMapper();
@@ -93,6 +102,8 @@ public class Program
         
         app.UseStaticFiles();
 
+        app.UseCors();
+            
         app.UseRouting();
 
         app.UseAuthentication();
@@ -102,7 +113,7 @@ public class Program
             name: "default",
             pattern: "{controller}/{action}/{id?}"
         );
-        
+
         app.UseHttpsRedirection();
         
         app.Run();

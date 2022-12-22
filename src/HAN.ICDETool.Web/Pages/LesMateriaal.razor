@@ -1,0 +1,45 @@
+﻿@page "/lesmateriaal"
+@using HAN.ICDETool.Services.ResponseDtos
+@inject ApiClient ApiClient
+
+<PageTitle>Lesmateriaal</PageTitle>
+
+<h1>Lesmateriaal</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@if (lesMateriaal == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Inhoud</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var materiaal in lesMateriaal)
+        {
+            <tr>
+                <td>@materiaal.Id</td>
+                <td>@materiaal.Inhoud</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+@code {
+    private IEnumerable<LesMateriaalResponseDto>? lesMateriaal;
+
+    protected override async Task OnInitializedAsync()
+    {
+        lesMateriaal = await ApiClient.FetchLesMateriaal();
+    }
+}
