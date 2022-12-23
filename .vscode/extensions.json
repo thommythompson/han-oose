@@ -1,0 +1,13 @@
+{
+    "recommendations": [
+        "bierner.markdown-emoji",
+        "jebbs.plantuml",
+        "bierner.markdown-mermaid",
+        "donjayamanne.githistory",
+        "vscode-icons-team.vscode-icons",
+        "davidanson.vscode-markdownlint",
+        "streetsidesoftware.code-spell-checker-dutch",
+        "yzhang.markdown-all-in-one",
+        "coderallan.vscode-dgmlviewer"
+    ]
+}

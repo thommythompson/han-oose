@@ -1,0 +1,45 @@
+﻿@inherits LayoutComponentBase
+@inject ApiClient ApiClient
+@inject NavigationManager NavManager
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu/>
+    </div>
+    
+    <main>
+        <div class="top-row px-4">
+        @if (IsAuthenticated)
+        {
+            <a href="@Logout" target="\login">Logout</a>
+        }
+        else
+        {
+            <a href="\login" target="\login">Login</a>
+        }
+        </div>
+        
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+
+@code {
+    public bool IsAuthenticated = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        IsAuthenticated = ApiClient.IsAuthenticated();
+
+        if (!IsAuthenticated)
+        {
+            NavManager.NavigateTo("/login");
+        }
+    }
+
+    protected void Logout()
+    {
+        ApiClient.Logout();
+    }
+}
