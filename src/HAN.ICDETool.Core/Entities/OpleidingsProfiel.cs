@@ -9,9 +9,9 @@ public class OpleidingsProfiel : BaseEntity
     public string Code { get; set; }
     public int OpleidingId { get; set; }
     [BackingField(nameof(_gevolgdDoor))]
-    public IEnumerable<Student>? GevolgdDoor { get => _gevolgdDoor; }
+    public IEnumerable<Persoon>? GevolgdDoor { get => _gevolgdDoor; }
 
-    private IList<Student>? _gevolgdDoor { get; set; } = new List<Student>();
+    private IList<Persoon>? _gevolgdDoor { get; set; } = new List<Persoon>();
 
     public OpleidingsProfiel(string naam, string code)
     {

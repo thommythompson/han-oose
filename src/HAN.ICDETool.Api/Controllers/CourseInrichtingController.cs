@@ -3,6 +3,7 @@ using HAN.ICDETool.Core.Entities;
 using HAN.ICDETool.Services.Interfaces;
 using HAN.ICDETool.Services.RequestDtos;
 using HAN.ICDETool.Services.ResponseDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HAN.ICDETool.Api.Controllers;
@@ -23,6 +24,7 @@ public class CourseInrichtingController : BaseController<CourseInrichting, Cours
     }
     
     [HttpPost]
+    [Authorize(Roles = "Docent")]
     [Route("{id:int}/StartUitvoering")]
     public async Task<IActionResult> Export(int id, DateTime date)
     {

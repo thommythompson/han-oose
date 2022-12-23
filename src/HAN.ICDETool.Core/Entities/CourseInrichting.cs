@@ -9,7 +9,7 @@ public class CourseInrichting : BaseEntity
     public int Id { get; set; }
     public String Titel { get; set; }
     public String Omschrijving { get; set; }
-    public Docent AangemaaktDoor { get; }
+    public Persoon AangemaaktDoor { get; }
     public CourseWeekPlanning? Planning { get; private set; }
     public bool IsDefintief { get; private set; } = false;
     public DateTimeOffset AanmaakDatum { get;  } = DateTimeOffset.Now;
@@ -37,7 +37,7 @@ public class CourseInrichting : BaseEntity
         this.Omschrijving = omschrijving;
     }
 
-    public CourseInrichting(string titel, string omschrijving, Docent aangemaaktDoor) : this(titel, omschrijving)
+    public CourseInrichting(string titel, string omschrijving, Persoon aangemaaktDoor) : this(titel, omschrijving)
     {
         this.AangemaaktDoor = aangemaaktDoor;
     }

@@ -10,7 +10,7 @@ public class TestCourseUitvoering
     [SetUp]
     public void Setup()
     {
-        Docent docent = new Docent("Voornaam", "Achternaam", "v.achternaam@email.com");
+        Persoon docent = new Persoon("Voornaam", "Achternaam", "v.achternaam@email.com");
         
         CourseInrichting courseInrichting = new CourseInrichting("Titel", "Omschrijving", docent);
         

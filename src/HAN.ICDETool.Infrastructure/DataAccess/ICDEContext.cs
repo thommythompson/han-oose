@@ -1,11 +1,13 @@
 using HAN.ICDETool.Core.Entities;
 using HAN.ICDETool.Infrastructure.Data.Configuration;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 namespace HAN.ICDETool.Infrastructure.Data;
 
-public class ICDEContext : DbContext
+public class ICDEContext : IdentityDbContext<IdentityUser<int>, IdentityRole<int>, int>
 {
     private readonly IConfiguration _configuration;
     private readonly string _connectionString;
@@ -14,7 +16,6 @@ public class ICDEContext : DbContext
     public DbSet<LesMateriaal> LesMateriaal { get; set; }
     public DbSet<CourseWeekInrichting> CourseWeekInrichting { get; set; }
     public DbSet<TentamenUitvoering> TentamenUitvoering { get; set; }
-    public DbSet<Student> Student { get; set; }
     public DbSet<Rubric> Rubric { get; set; }
     public DbSet<OpleidingsProfiel> OpleidingsProfiel { get; set; }
     public DbSet<Opleiding> Opleiding { get; set; }
@@ -24,7 +25,6 @@ public class ICDEContext : DbContext
     public DbSet<Leerdoel> Leerdoel { get; set; }
     public DbSet<Klas> Klas { get; set; }
     public DbSet<EenheidVanLeeruitkomsten> EenheidVanLeeruitkomsten { get; set; }
-    public DbSet<Docent> Docent { get; set; }
     public DbSet<CourseWeekUitvoering> CourseWeekUitvoering { get; set; }
     public DbSet<CourseUitvoering> CourseUitvoering { get; set; }
     public DbSet<CourseInrichting> CourseInrichting { get; set; }

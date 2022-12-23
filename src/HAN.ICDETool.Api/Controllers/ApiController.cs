@@ -1,6 +1,7 @@
 using AutoMapper;
 using HAN.ICDETool.Services.ResponseDtos;
 using HAN.ICDETool.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HAN.ICDETool.Api.Controllers;
@@ -22,6 +23,7 @@ public abstract class BaseController<TEntity, TRequestDto, TResponseDto, IEntity
         _mapper = mapper;
     }
     
+    [Authorize(Roles = "Docent, Student")]
     [HttpGet]
     [Route("")]
     public async Task<IActionResult> Get(CancellationToken cancellationToken)
@@ -37,6 +39,7 @@ public abstract class BaseController<TEntity, TRequestDto, TResponseDto, IEntity
         }
     }
     
+    [Authorize(Roles = "Docent, Student")]
     [HttpGet]
     [Route("{id:int}")]
     public async Task<IActionResult> Get(int id, CancellationToken cancellationToken)
@@ -55,6 +58,7 @@ public abstract class BaseController<TEntity, TRequestDto, TResponseDto, IEntity
         }
     }
 
+    [Authorize(Roles = "Docent")]
     [HttpPut]
     [Route("")]
     public async Task<IActionResult> Create([FromBody]TRequestDto entity, CancellationToken cancellationToken)
@@ -79,6 +83,7 @@ public abstract class BaseController<TEntity, TRequestDto, TResponseDto, IEntity
         return BadRequest("Unable to create entity");
     }
 
+    [Authorize(Roles = "Docent")]
     [HttpPost]
     [Route("{id:int}")]
     public async Task<IActionResult> Update(int id, [FromBody]TRequestDto entity, CancellationToken cancellationToken)
@@ -103,6 +108,7 @@ public abstract class BaseController<TEntity, TRequestDto, TResponseDto, IEntity
         return BadRequest("Unable to update entity");
     }
 
+    [Authorize(Roles = "Docent")]
     [HttpDelete]
     [Route("{id:int}")]
     public async Task<IActionResult> Delete(int id, CancellationToken cancellationToken)

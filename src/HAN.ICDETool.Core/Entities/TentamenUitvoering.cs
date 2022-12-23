@@ -12,7 +12,7 @@ public class TentamenUitvoering : BaseEntity
     public int? BeroepsProductId { get; init; }
     public Locatie? Locatie { get; set; }
     public int? LocatieId { get; set; }
-    public Docent? Docent { get; set; }
+    public Persoon? Docent { get; set; }
     public int? DocentId { get; set; }
     public CourseWeekUitvoering CourseWeekUitvoering { get; set; }
     public int CourseUitvoeringId { get; set; }

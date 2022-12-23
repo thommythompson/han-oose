@@ -15,7 +15,7 @@ public class TestExporterService
     [Test]
     public void TestPdfExporter()
     {
-        IExporterService exporterService = _exporterFactory.createExporter(ExporterType.PdfExporter);
+        IExporterService exporterService = _exporterFactory.createExporter(ExporterType.PdfExporter, "/Users/thomashofman/Downloads/");
 
         IList<String> exportData = new List<String>();
         exportData.Add("test");
@@ -29,7 +29,7 @@ public class TestExporterService
     [Test]
     public void TestCsvExporter()
     {
-        IExporterService exporterService = _exporterFactory.createExporter(ExporterType.CsvExporter);
+        IExporterService exporterService = _exporterFactory.createExporter(ExporterType.CsvExporter, "/Users/thomashofman/Downloads/");
 
         IList<String> exportData = new List<String>();
         exportData.Add("test");
@@ -43,7 +43,7 @@ public class TestExporterService
     [Test]
     public void TestDocxExporter()
     {
-        IExporterService exporterService = _exporterFactory.createExporter(ExporterType.DocxExporter);
+        IExporterService exporterService = _exporterFactory.createExporter(ExporterType.DocxExporter, "/Users/thomashofman/Downloads/");
         
         IList<String> exportData = new List<String>();
         exportData.Add("test");
