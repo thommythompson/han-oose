@@ -6,5 +6,5 @@ RUN dotnet publish ./src/HAN.ICDETool.Web/HAN.ICDETool.Web.csproj -c Release -o 
 
 FROM nginx:alpine
 WORKDIR /usr/share/nginx/html
-COPY --from=build-env /app/out/wwwroot .
+COPY --from=build-env /App/out/wwwroot .
 COPY nginx.conf /etc/nginx/nginx.conf
