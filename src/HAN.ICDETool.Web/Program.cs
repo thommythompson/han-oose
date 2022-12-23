@@ -8,7 +8,9 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-builder.Services.AddSingleton(new ApiClient("https://localhost:7028/"));
+string serverlessBaseURI = builder.Configuration["ServerlessBaseURI"];
+
+builder.Services.AddSingleton(new ApiClient(serverlessBaseURI));
 
 var mapper = AutoMapperConfig.CreateMapper();
 builder.Services.AddSingleton(mapper);

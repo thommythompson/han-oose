@@ -30,7 +30,6 @@ public class Program
         string environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
         
         builder.Configuration.SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json")
             .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
             .AddJsonFile($"appsettings.{environmentName}.json", optional: true)
             .AddEnvironmentVariables();
