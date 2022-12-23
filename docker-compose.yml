@@ -1,0 +1,33 @@
+version: '3.4'
+
+services:
+  icdetool-web:
+    image: thomashofman2/han-icdetool-web:latest
+    depends_on:
+      - icdetool-api
+    ports:
+      - 8080:8000
+    restart: unless-stopped
+
+  icdetool-api:
+    image: thomashofman2/han-icdetool-api:latest
+    depends_on:
+      - icdetool-sql
+    ports:
+      - 8081:8000
+    restart: unless-stopped
+
+  icdetool-sql:
+    image: postgres
+    expose:
+      - 1433
+    environment:
+      - POSTGRES_USER=jantoys
+      - POSTGRES_PASSWORD=mysecretpassword
+      - PGDATA=/var/lib/postgresql/data/pgdata
+      - jantoys-sql:/var/lib/postgresql/data
+    restart: unless-stopped
+  
+networks:
+  icdetool-network:
+    driver: bridge
