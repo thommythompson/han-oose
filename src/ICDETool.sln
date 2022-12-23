@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HAN.ICDETool.Web", "HAN.ICD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HAN.ICDETool.ApiClient", "HAN.ICDETool.ApiClient\HAN.ICDETool.ApiClient.csproj", "{33FF2019-311A-40FE-BCFF-ADE29B08FC12}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HAN.ICDETool.IntegrationTests", "HAN.ICDETool.IntegrationTests\HAN.ICDETool.IntegrationTests.csproj", "{76310035-9A0C-45CA-B333-E2CE29D4CE8A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{33FF2019-311A-40FE-BCFF-ADE29B08FC12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33FF2019-311A-40FE-BCFF-ADE29B08FC12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33FF2019-311A-40FE-BCFF-ADE29B08FC12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76310035-9A0C-45CA-B333-E2CE29D4CE8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76310035-9A0C-45CA-B333-E2CE29D4CE8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76310035-9A0C-45CA-B333-E2CE29D4CE8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76310035-9A0C-45CA-B333-E2CE29D4CE8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
