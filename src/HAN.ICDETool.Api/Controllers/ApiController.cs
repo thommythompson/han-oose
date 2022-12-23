@@ -26,7 +26,7 @@ public abstract class BaseController<TEntity, TRequestDto, TResponseDto, IEntity
     [Authorize(Roles = "Docent, Student")]
     [HttpGet]
     [Route("")]
-    public async Task<IActionResult> Get(CancellationToken cancellationToken)
+    public virtual async Task<IActionResult> Get(CancellationToken cancellationToken)
     {
         try
         {
@@ -42,7 +42,7 @@ public abstract class BaseController<TEntity, TRequestDto, TResponseDto, IEntity
     [Authorize(Roles = "Docent, Student")]
     [HttpGet]
     [Route("{id:int}")]
-    public async Task<IActionResult> Get(int id, CancellationToken cancellationToken)
+    public virtual async Task<IActionResult> Get(int id, CancellationToken cancellationToken)
     {
         try
         {
@@ -61,7 +61,7 @@ public abstract class BaseController<TEntity, TRequestDto, TResponseDto, IEntity
     [Authorize(Roles = "Docent")]
     [HttpPut]
     [Route("")]
-    public async Task<IActionResult> Create([FromBody]TRequestDto entity, CancellationToken cancellationToken)
+    public virtual async Task<IActionResult> Create([FromBody]TRequestDto entity, CancellationToken cancellationToken)
     {
         try
         {
@@ -86,7 +86,7 @@ public abstract class BaseController<TEntity, TRequestDto, TResponseDto, IEntity
     [Authorize(Roles = "Docent")]
     [HttpPost]
     [Route("{id:int}")]
-    public async Task<IActionResult> Update(int id, [FromBody]TRequestDto entity, CancellationToken cancellationToken)
+    public virtual async Task<IActionResult> Update(int id, [FromBody]TRequestDto entity, CancellationToken cancellationToken)
     {
         try
         {
@@ -111,7 +111,7 @@ public abstract class BaseController<TEntity, TRequestDto, TResponseDto, IEntity
     [Authorize(Roles = "Docent")]
     [HttpDelete]
     [Route("{id:int}")]
-    public async Task<IActionResult> Delete(int id, CancellationToken cancellationToken)
+    public virtual async Task<IActionResult> Delete(int id, CancellationToken cancellationToken)
     {
         try
         {

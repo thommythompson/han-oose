@@ -17,6 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\HAN.ICDETool.ApiClient\HAN.ICDETool.ApiClient.csproj" />
       <ProjectReference Include="..\HAN.ICDETool.Core\HAN.ICDETool.Core.csproj" />
       <ProjectReference Include="..\HAN.ICDETool.ExporterService\HAN.ICDETool.ExporterService.csproj" />
     </ItemGroup>

@@ -1,6 +1,3 @@
-using System.Diagnostics.SymbolStore;
-using HAN.ICDETool.SharedKernel;
-
 namespace HAN.ICDETool.Tests;
 
 public class TestCourseUitvoering

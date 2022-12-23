@@ -1,0 +1,28 @@
+@page "/Login"
+@using HAN.ICDETool.Web.Models
+@inject ApiClient ApiClient
+@inject NavigationManager NavManager
+
+<PageTitle>Login</PageTitle>
+
+<h1>Login</h1>
+
+<EditForm Model="@credentials" OnValidSubmit="@Authenticate">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <InputText id="Username" @bind-Value="credentials.Username" />
+    <InputText type="password" id="Password" @bind-Value="credentials.Password" />
+    
+    <button type="submit">Login</button>
+</EditForm>
+
+@code {
+    private Credentials credentials = new();
+
+    private async void Authenticate()
+    {
+        await ApiClient.Authenticate(credentials.Username, credentials.Password);
+        NavManager.NavigateTo("/");
+    }
+}
