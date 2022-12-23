@@ -1,0 +1,109 @@
+@page "/Beoordelingen"
+@using HAN.ICDETool.Services.ResponseDtos
+@inject ApiClient ApiClient
+
+<PageTitle>Beoordelingen</PageTitle>
+
+<h1>Beoordelingen</h1>
+
+@if (IsDocent)
+{
+    <h3>Gegeven beoordelingen</h3>
+    
+    @if (gekregenBeoordelingen == null)
+    {
+        <p>
+            <em>Loading...</em>
+        </p>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Gegeven Door</th>
+                <th>Gegeven Voor</th>
+                <th>TentamenId</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var obj in gegevenBeoordelingen)
+            {
+                <tr>
+                    <td>@obj.Id</td>
+                    <td>@obj.DocentNaam</td>
+                    <td>@obj.StudentNaam</td>
+                    <td>@obj.TentamenUitvoering.Id</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+}
+
+@if (IsStudent)
+{
+    <h3>Gekregen beoordelingen</h3>
+    
+    @if (gekregenBeoordelingen == null)
+    {
+        <p>
+            <em>Loading...</em>
+        </p>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Gegeven Door</th>
+                <th>Gegeven Voor</th>
+                <th>TentamenId</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var obj in gekregenBeoordelingen)
+            {
+                <tr>
+                    <td>@obj.Id</td>
+                    <td>@obj.DocentNaam</td>
+                    <td>@obj.StudentNaam</td>
+                    <td>@obj.TentamenUitvoering.Id</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+}
+
+@code {
+    private IEnumerable<BeoordelingResponseDto>? gekregenBeoordelingen;
+    private IEnumerable<BeoordelingResponseDto>? gegevenBeoordelingen;
+    private bool IsDocent = false;
+    private bool IsStudent = false;
+    
+
+    protected override async Task OnInitializedAsync()
+    {
+        await DetermineRoles();
+
+        if(IsDocent)
+            gegevenBeoordelingen = await ApiClient.FetchGegevenBeoordelingen();
+        
+        if(IsStudent)
+            gekregenBeoordelingen = await ApiClient.FetchGekregenBeoordelingen();
+    }
+
+    private async Task DetermineRoles()
+    {
+        IEnumerable<string> roles = await ApiClient.GetIdentityRoles();
+
+        if (roles.Contains("Student"))
+            IsStudent = true;
+
+        if (roles.Contains("Docent"))
+            IsDocent = true;
+    }
+}

@@ -8,6 +8,7 @@ public interface IAuthenticationClient
     Task<string> GetToken();
     Task<JwtSecurityToken> GetJwtToken(string username, string password);
     Task<JwtSecurityToken> GetJwtToken();
+    Task<IEnumerable<string>> GetRoles();
     bool TokenIsValid();
     void Clear();
 }

@@ -1,10 +1,9 @@
 using System.IdentityModel.Tokens.Jwt;
-using System.Net.Http.Json;
+using System.Security.Claims;
 using Flurl;
 using Flurl.Http;
 using HAN.ICDETool.Services.RequestDtos;
 using HAN.ICDETool.Services.ResponseDtos;
-using Microsoft.IdentityModel.Tokens;
 
 namespace HAN.ICDETool.ApiClient.Services;
 
@@ -84,13 +83,20 @@ public class AuthenticationClient : IAuthenticationClient
         
         _token = await url.PostJsonAsync(tokenRequestDto).ReceiveJson<TokenResponseDto>();
 
-        await GenerateJwtToken(_token);
+        _jwtSecurityToken = await GenerateJwtToken(_token);
     }    
     
     private async Task<JwtSecurityToken> GenerateJwtToken(TokenResponseDto token)
     {
         var handler = new JwtSecurityTokenHandler();
         return handler.ReadJwtToken(token.Token);
+    }
+
+    public async Task<IEnumerable<string>> GetRoles()
+    {
+        var jwtToken = await GetJwtToken();
+        var rolesString = jwtToken.Claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value).FirstOrDefault();
+        return rolesString.Split(",");
     }
 
     public bool TokenIsValid()
