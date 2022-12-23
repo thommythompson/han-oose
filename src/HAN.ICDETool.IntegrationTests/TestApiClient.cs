@@ -1,9 +1,6 @@
-using HAN.ICDETool.ApiClient;
 using HAN.ICDETool.ApiClient.Services;
-using HAN.ICDETool.Services.Interfaces;
-using HAN.ICDETool.Services.Services;
 
-namespace HAN.ICDETool.Tests;
+namespace HAN.ICDETool.IntegrationTests;
 
 public class TestApiClient
 {
@@ -11,7 +8,6 @@ public class TestApiClient
     private ILesMateriaalClient _lesMateriaalService;
     private ApiClient.ApiClient _apiClient;
     
-    // TODO: Move integration tests to seperated project
     [SetUp]
     public void Setup()
     {
