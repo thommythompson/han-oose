@@ -17,6 +17,7 @@ public class AutoMapperConfig
             cfg.AddProfile<CourseWeekUitvoeringMappingProfile>();
             cfg.AddProfile<LesUitvoeringMappingProfile>();
             cfg.AddProfile<TentamenUitvoeringMappingProfile>();
+            cfg.AddProfile<BeoordelingMappingProfile>();
         });
 
         return config.CreateMapper();

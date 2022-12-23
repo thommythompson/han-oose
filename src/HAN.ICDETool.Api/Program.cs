@@ -61,8 +61,9 @@ public class Program
                     ValidIssuer = _config["Tokens:Issuer"],
                     ValidAudience = _config["Tokens:Audience"],
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Tokens:Key"])),
-                    NameClaimType = JwtRegisteredClaimNames.Name,
-                    RoleClaimType = ClaimTypes.Role
+                    NameClaimType = ClaimTypes.Name,
+                    RoleClaimType = ClaimTypes.Role,
+                    
                 };
             });
         
