@@ -1,109 +1,107 @@
 @page "/Beoordelingen"
 @using HAN.ICDETool.Services.ResponseDtos
+@using Microsoft.AspNetCore.Http
+@using System.Collections.ObjectModel
+@using System.Security.Claims
 @inject ApiClient ApiClient
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@attribute [Authorize]
 
 <PageTitle>Beoordelingen</PageTitle>
 
 <h1>Beoordelingen</h1>
 
-@if (IsDocent)
-{
-    <h3>Gegeven beoordelingen</h3>
-    
-    @if (gekregenBeoordelingen == null)
-    {
-        <p>
-            <em>Loading...</em>
-        </p>
-    }
-    else
-    {
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Id</th>
-                <th>Gegeven Door</th>
-                <th>Gegeven Voor</th>
-                <th>TentamenId</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach (var obj in gegevenBeoordelingen)
+<AuthorizeView Roles="Docent">
+    <Authorized>
+        <h3>Gegeven beoordelingen</h3>
+            
+            @if (gekregenBeoordelingen == null)
             {
-                <tr>
-                    <td>@obj.Id</td>
-                    <td>@obj.DocentNaam</td>
-                    <td>@obj.StudentNaam</td>
-                    <td>@obj.TentamenUitvoering.Id</td>
-                </tr>
+                <p>
+                    <em>Loading...</em>
+                </p>
             }
-            </tbody>
-        </table>
-    }
-}
+            else
+            {
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Gegeven Door</th>
+                        <th>Gegeven Voor</th>
+                        <th>TentamenId</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var obj in gegevenBeoordelingen)
+                    {
+                        <tr>
+                            <td>@obj.Id</td>
+                            <td>@obj.DocentNaam</td>
+                            <td>@obj.StudentNaam</td>
+                            <td>@obj.TentamenUitvoering.Id</td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            }
+    </Authorized>
+</AuthorizeView>
 
-@if (IsStudent)
-{
-    <h3>Gekregen beoordelingen</h3>
-    
-    @if (gekregenBeoordelingen == null)
-    {
-        <p>
-            <em>Loading...</em>
-        </p>
-    }
-    else
-    {
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Id</th>
-                <th>Gegeven Door</th>
-                <th>Gegeven Voor</th>
-                <th>TentamenId</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach (var obj in gekregenBeoordelingen)
+<AuthorizeView Roles="Student">
+    <Authorized>
+        <h3>Gekregen beoordelingen</h3>
+            
+            @if (gekregenBeoordelingen == null)
             {
-                <tr>
-                    <td>@obj.Id</td>
-                    <td>@obj.DocentNaam</td>
-                    <td>@obj.StudentNaam</td>
-                    <td>@obj.TentamenUitvoering.Id</td>
-                </tr>
+                <p>
+                    <em>Loading...</em>
+                </p>
             }
-            </tbody>
-        </table>
-    }
-}
+            else
+            {
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Gegeven Door</th>
+                        <th>Gegeven Voor</th>
+                        <th>TentamenId</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var obj in gekregenBeoordelingen)
+                    {
+                        <tr>
+                            <td>@obj.Id</td>
+                            <td>@obj.DocentNaam</td>
+                            <td>@obj.StudentNaam</td>
+                            <td>@obj.TentamenUitvoering.Id</td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            }
+    </Authorized>
+</AuthorizeView>
 
 @code {
-    private IEnumerable<BeoordelingResponseDto>? gekregenBeoordelingen;
-    private IEnumerable<BeoordelingResponseDto>? gegevenBeoordelingen;
+    private IEnumerable<BeoordelingResponseDto> gekregenBeoordelingen = new Collection<BeoordelingResponseDto>();
+    private IEnumerable<BeoordelingResponseDto> gegevenBeoordelingen = new Collection<BeoordelingResponseDto>();
     private bool IsDocent = false;
     private bool IsStudent = false;
-    
 
     protected override async Task OnInitializedAsync()
     {
-        await DetermineRoles();
+        AuthenticationState authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+
+        IsDocent = authState.User.IsInRole("Docent");
+        IsStudent = authState.User.IsInRole("Student");
 
         if(IsDocent)
             gegevenBeoordelingen = await ApiClient.FetchGegevenBeoordelingen();
         
         if(IsStudent)
             gekregenBeoordelingen = await ApiClient.FetchGekregenBeoordelingen();
-    }
-
-    private async Task DetermineRoles()
-    {
-        IEnumerable<string> roles = await ApiClient.GetIdentityRoles();
-
-        if (roles.Contains("Student"))
-            IsStudent = true;
-
-        if (roles.Contains("Docent"))
-            IsDocent = true;
     }
 }

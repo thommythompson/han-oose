@@ -1,4 +1,4 @@
-namespace HAN.ICDETool.Tests;
+namespace HAN.ICDETool.Tests.Unit;
 
 public class TestAdres
 {

@@ -1,10 +1,6 @@
-using System.Diagnostics.SymbolStore;
-using HAN.ICDETool.SharedKernel;
-using Microsoft.AspNetCore.Identity;
+namespace HAN.ICDETool.Tests.Unit;
 
-namespace HAN.ICDETool.Tests;
-
-public class TestCourseInrichting
+public class TestCourseUitvoering
 {
     private CourseInrichting _courseInrichting;
     
@@ -25,22 +21,14 @@ public class TestCourseInrichting
     }
 
     [Test]
-    public void TestStartCourseUitvoeringVanInrichtingDieNietDefintiefIs()
+    public void TestMaandagDatumToewijzing()
     {
-        DateTimeOffset date = DateTime.Now;
-
-        Assert.Throws<Exception>(() => _courseInrichting.StartCourseUitvoering(date));
-    }
-    
-    [Test]
-    public void TestStartCourseUitvoering()
-    {
-        DateTimeOffset date = DateTime.Now;
+        DateTimeOffset date = new DateTime(2022, 11, 19);
 
         _courseInrichting.MaakDefintief();
 
         CourseUitvoering _courseUitvoering = _courseInrichting.StartCourseUitvoering(date);
         
-        Assert.That(_courseUitvoering.CourseInrichting, Is.EqualTo(_courseInrichting));
+        Assert.That(_courseUitvoering.Weken.First().Maandag, Is.EqualTo((DateTimeOffset)new DateTime(2022, 11, 14)));
     }
 }
