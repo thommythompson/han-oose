@@ -1,8 +1,4 @@
 ﻿using HAN.ICDETool.ApiClient.Services;
-using Flurl;
-using Flurl.Http;
-using HAN.ICDETool.Core.Entities;
-using HAN.ICDETool.Services.Interfaces;
 using HAN.ICDETool.Services.ResponseDtos;
 
 namespace HAN.ICDETool.ApiClient;
@@ -14,32 +10,22 @@ public class ApiClient
     private ILesMateriaalClient _lesMateriaalClient;
     private IBeoordelingClient _beoordelingClient;
 
-    public ApiClient(string baseUrl)
+    public ApiClient(IApiClientConfig config, IAuthenticationClient authenticationClient)
     {
-        _authenticationClient = new AuthenticationClient(baseUrl);
-        _httpClient = new HttpClientWrapper(baseUrl, _authenticationClient);
+        _authenticationClient = authenticationClient;
+        _httpClient = new HttpClientWrapper(config.ServerlessBaseUrl, _authenticationClient);
         _lesMateriaalClient = new LesMateriaalClient(_httpClient);
         _beoordelingClient = new BeoordelingClient(_httpClient);
     }
 
     public async Task Authenticate(string username, string password)
     {
-        await _authenticationClient.GetToken(username, password);
-    }
-
-    public async Task<IEnumerable<string>> GetIdentityRoles()
-    {
-        return await _authenticationClient.GetRoles();
-    }
-    
-    public bool IsAuthenticated()
-    {
-        return _authenticationClient.TokenIsValid();
+        await _authenticationClient.Authenticate(username, password);
     }
 
     public void Logout()
     {
-        _authenticationClient.Clear();
+        _authenticationClient.Logout();
     }
 
     public async Task<IEnumerable<LesMateriaalResponseDto>> FetchLesMateriaal()

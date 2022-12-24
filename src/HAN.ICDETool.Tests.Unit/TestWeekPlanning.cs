@@ -1,7 +1,7 @@
 using System.Diagnostics.SymbolStore;
 using HAN.ICDETool.SharedKernel;
 
-namespace HAN.ICDETool.Tests;
+namespace HAN.ICDETool.Tests.Unit;
 
 public class TestWeekplanning
 {

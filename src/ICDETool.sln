@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HAN.ICDETool.SharedKernel",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HAN.ICDETool.Api", "HAN.ICDETool.Api\HAN.ICDETool.Api.csproj", "{9B599714-0D6B-4336-953D-5F5164B6B3FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HAN.ICDETool.Tests", "HAN.ICDETool.Tests\HAN.ICDETool.Tests.csproj", "{A7F88FFF-034D-4175-9600-0B7B295F2598}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HAN.ICDETool.Tests.Unit", "HAN.ICDETool.Tests.Unit\HAN.ICDETool.Tests.Unit.csproj", "{A7F88FFF-034D-4175-9600-0B7B295F2598}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HAN.ICDETool.ExporterService", "HAN.ICDETool.ExporterService\HAN.ICDETool.ExporterService.csproj", "{8550F521-B562-4A24-B471-F37F1FE52F77}"
 EndProject
@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HAN.ICDETool.Web", "HAN.ICD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HAN.ICDETool.ApiClient", "HAN.ICDETool.ApiClient\HAN.ICDETool.ApiClient.csproj", "{33FF2019-311A-40FE-BCFF-ADE29B08FC12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HAN.ICDETool.IntegrationTests", "HAN.ICDETool.IntegrationTests\HAN.ICDETool.IntegrationTests.csproj", "{76310035-9A0C-45CA-B333-E2CE29D4CE8A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HAN.ICDETool.Tests.Integration", "HAN.ICDETool.Tests.Integration\HAN.ICDETool.Tests.Integration.csproj", "{76310035-9A0C-45CA-B333-E2CE29D4CE8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
