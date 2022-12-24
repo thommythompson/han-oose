@@ -1,6 +1,6 @@
 using HAN.ICDETool.ExporterService.ExportStrategies;
 
-namespace HAN.ICDETool.Tests;
+namespace HAN.ICDETool.Tests.Unit;
 
 public class TestExporterService
 {

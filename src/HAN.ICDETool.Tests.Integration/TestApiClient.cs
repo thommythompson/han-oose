@@ -1,6 +1,6 @@
 using HAN.ICDETool.ApiClient.Services;
 
-namespace HAN.ICDETool.IntegrationTests;
+namespace HAN.ICDETool.Tests.Integration;
 
 public class TestApiClient
 {

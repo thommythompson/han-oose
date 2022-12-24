@@ -1,0 +1,39 @@
+version: '3.4'
+
+services:
+  icdetool-web:
+    image: thomashofman2/han-oose-web:latest
+    depends_on:
+      - icdetool-api
+    ports:
+      - 8080:80
+    volumes:
+    - type: bind
+      source: ./Appsettings.Web.json
+      target: /usr/share/nginx/html/appsettings.json
+    restart: unless-stopped
+
+  icdetool-api:
+    image: thomashofman2/han-oose-api:latest
+    depends_on:
+      - icdetool-sql
+    ports:
+      - 8081:80
+    volumes:
+    - type: bind
+      source: ./Appsettings.Api.json
+      target: /App/appsettings.json
+    restart: unless-stopped
+
+  icdetool-sql:
+    image: mcr.microsoft.com/azure-sql-edge
+    expose:
+      - 1433
+    environment:
+      - ACCEPT_EULA=1
+      - MSSQL_SA_PASSWORD=P@ssw0rd
+    restart: unless-stopped
+  
+networks:
+  icdetool-network:
+    driver: bridge

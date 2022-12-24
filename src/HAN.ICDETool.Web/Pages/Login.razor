@@ -2,6 +2,7 @@
 @using HAN.ICDETool.Web.Models
 @inject ApiClient ApiClient
 @inject NavigationManager NavManager
+@inject ILocalStorageService LocalStorage
 
 <PageTitle>Login</PageTitle>
 
@@ -23,6 +24,6 @@
     private async void Authenticate()
     {
         await ApiClient.Authenticate(credentials.Username, credentials.Password);
-        NavManager.NavigateTo("/");
+        NavManager.NavigateTo("/", true);
     }
 }

@@ -3,8 +3,6 @@ name: Dockerize
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
   run-tests:
@@ -42,7 +40,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: ./src/HAN.ICDETool.Api
+          context: .
           file: Dockerfile.Api
           platforms: linux/amd64,linux/arm64
           push: true
@@ -67,7 +65,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: ./src/HAN.ICDETool.Web
+          context: .
           file: Dockerfile.Web
           platforms: linux/amd64,linux/arm64
           push: true
