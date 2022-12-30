@@ -27,17 +27,21 @@
     1.3. [Doelgroep](#13-doelgroep) </br>
 2. [Aanpak & Prioritering](#2-aanpak--prioritering) </br>
 3. [Architectuur](#3-architectuur) </br>
-    3.1. [Layering](#31-layering) </br>
-    3.2. [Distribution](#32-distribution) </br>
+    3.1. [Layering](#31-layers) </br>
+    3.2. [Distribution/Scalability](#32-distributionscalability) </br>
     3.3. [Architectuur Patterns](#33-architectuur-patterns) </br>
 4. [Technische keuzes](#4-technische-keuzes)
 5. [Design](#5-design) </br>
-    5.1. [Class Diagram](#51-class-diagram) </br>
-        5.1.1. [Toelichting](#511-toelichting) </br>
-        5.1.2. [Domein consistentie/inconsistentie](#512-domein-consistentieinconsistentie) </br>
-    5.2. [UC15 - Start uitvoering](#52-uc-15-start-uitvoering) </br>
-        5.2.1. [Design](#521-design) </br>
-        5.2.2. [Toelichting](#522-toelichting) </br>
+    5.1. [Api, Repository & Service Design](#51-api-repository--service-design) </br>
+    5.2. [Domein Design](#52-domein-design) </br>
+        5.2.1. [Toelichting](#521-toelichting) </br>
+        5.2.2. [Domein consistentie/inconsistentie](#522-domein-consistentieinconsistentie) </br>
+    5.3. [UC15 - Start uitvoering](#53-uc-15-start-uitvoering) </br>
+        5.3.1. [Design](#531-design) </br>
+        5.3.2. [Toelichting](#532-toelichting) </br>
+    5.4. [UC-18 Exporteer Informatie](#54-uc-18-exporteer-informatie) </br>
+        5.4.1. [Design](#541-design) </br>
+        5.4.2. [Toelichting](#542-toelichting) </br>
 6. [Overige](#6-overige) </br>
     6.1. [Versiebeheer](#61-versiebeheer) </br>
     6.2. [Build Management (CI/CD)](#62-build-management-cicd) </br>
@@ -166,7 +170,18 @@ alle frameworks, framework onderdelen en libraries correct gebruikt en volledig 
 
 # 5. Design
 
-## 5.1. Domein Class Diagram
+## 5.1. Api, Repository & Service Design
+
+```mermaid
+classDiagram
+
+class BaseController
+class BaseService
+class BaseRepository
+
+```
+
+## 5.2. Domein Design
 
 ```mermaid
 classDiagram
@@ -479,7 +494,7 @@ Correct toepassen standaard notatie en het diagram moet de volledig requirements
 
 ---
 
-### 5.1.1 Toelichting
+### 5.2.1 Toelichting
 
 ---
 :warning: **_CRITERIA:_**
@@ -487,7 +502,7 @@ Minimaal 1 extra diagram (geen class diagram) opnemen, diverse modellen vereist 
 
 ---
 
-### 5.1.2. Domein consistentie/inconsistentie
+### 5.2.2. Domein consistentie/inconsistentie
 
 - persoon
 - additionele interface
@@ -498,7 +513,7 @@ Zowel inconsistenties als consistenties benoemd, inconsistenties volledig van re
 
 ---
 
-## 5.2 UC-15 Start Uitvoering
+## 5.3 UC-15 Start Uitvoering
 
 ---
 :warning: **_CRITERIA:_**
@@ -512,7 +527,7 @@ een variatie aan principes en patterns op correcte en onderbouwde manier toegepa
 
 ---
 
-### 5.2.1. Design
+### 5.3.1. Design
 
 ```mermaid
 sequenceDiagram
@@ -591,7 +606,7 @@ Class Diagram en/of sequence diagram toegespitst op de use case.
 
 ---
 
-### 5.2.2. Toelichting
+### 5.3.2. Toelichting
 
 ---
 :warning: **_NOTE:_**
@@ -600,6 +615,31 @@ Toelichten van gebruikte GoF patterns, SOLID principes & GRASP principes.
 ---
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
+
+## 5.4 UC-18 Exporteer Informatie
+
+---
+:warning: **_CRITERIA:_**
+Ontwerp problemen identificeren en ontwerp keuzes onderbouwen met relevant alternatieven en overwegingen voor een 10
+
+---
+
+---
+:warning: **_NOTE:_**
+een variatie aan principes en patterns op correcte en onderbouwde manier toegepast voor een 10
+
+---
+
+### 5.4.1. Design
+
+### 5.4.2. Toelichting
+
+---
+:warning: **_NOTE:_**
+Toelichten van gebruikte GoF patterns, SOLID principes & GRASP principes.
+
+---
+
 
 # 6. Overige
 
