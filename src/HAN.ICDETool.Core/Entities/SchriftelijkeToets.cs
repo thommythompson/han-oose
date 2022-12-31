@@ -14,8 +14,8 @@ public class SchriftelijkeToets : TentamenInrichting, Validator, BaseEntity
     public Leerdoel Leerdoel { get; set; }
     public int LeerdoelId { get; set; }
     [BackingField(nameof(_tentamenUitvoeringen))]
-    public IEnumerable<TentamenUitvoering>? TentamenUitvoeringen { get => _tentamenUitvoeringen; }
-    private IList<TentamenUitvoering>? _tentamenUitvoeringen { get; set; } = new List<TentamenUitvoering>();
+    public IReadOnlyList<TentamenUitvoering>? TentamenUitvoeringen { get => _tentamenUitvoeringen; }
+    private List<TentamenUitvoering>? _tentamenUitvoeringen { get; set; } = new List<TentamenUitvoering>();
 
     private SchriftelijkeToets(string titel)
     {

@@ -17,8 +17,8 @@ public class TentamenUitvoering : BaseEntity
     public CourseWeekUitvoering CourseWeekUitvoering { get; set; }
     public int CourseUitvoeringId { get; set; }
     [BackingField(nameof(_beoordelingen))]
-    public IEnumerable<Beoordeling> Beoordelingen { get => _beoordelingen ;}
-    private IList<Beoordeling> _beoordelingen { get; set; } = new List<Beoordeling>();
+    public IReadOnlyList<Beoordeling> Beoordelingen { get => _beoordelingen ;}
+    private List<Beoordeling> _beoordelingen { get; set; } = new List<Beoordeling>();
 
     // EF Core constructor: EF Core does not support navigation types in the constructor
     private TentamenUitvoering() { }

@@ -10,8 +10,8 @@ public class Klas : BaseEntity
     public Persoon? Mentor { get; set; }
     public int? DocentId { get; set; }
     [BackingField(nameof(_studenten))]
-    public IEnumerable<Persoon>? Studenten { get => _studenten; }
-    private IList<Persoon>? _studenten { get; set;  } = new List<Persoon>();
+    public IReadOnlyList<Persoon>? Studenten { get => _studenten; }
+    private List<Persoon>? _studenten { get; set;  } = new List<Persoon>();
 
     public Klas(string code)
     {

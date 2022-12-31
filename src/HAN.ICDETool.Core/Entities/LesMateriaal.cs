@@ -7,9 +7,9 @@ public class LesMateriaal : BaseEntity
 {
     public int Id { get; set; }
     [BackingField(nameof(_inhoud))]
-    public IEnumerable<LesMateriaalLine>? Inhoud { get => _inhoud; }
+    public IReadOnlyList<LesMateriaalLine>? Inhoud { get => _inhoud; }
 
-    private IList<LesMateriaalLine>? _inhoud { get; set; } = new List<LesMateriaalLine>();
+    private List<LesMateriaalLine>? _inhoud { get; set; } = new List<LesMateriaalLine>();
     public int LesInrichtingId { get; set; }
     
     public LesMateriaal()
@@ -17,9 +17,9 @@ public class LesMateriaal : BaseEntity
         _inhoud = genereerInhoud();
     }
 
-    private IList<LesMateriaalLine> genereerInhoud()
+    private List<LesMateriaalLine> genereerInhoud()
     {
-        IList<LesMateriaalLine> list = new List<LesMateriaalLine>();
+        List<LesMateriaalLine> list = new List<LesMateriaalLine>();
         
         list.Add(new LesMateriaalLine("Titel"));
         list.Add(new LesMateriaalLine("Inleiding"));

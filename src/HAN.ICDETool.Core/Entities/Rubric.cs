@@ -10,8 +10,8 @@ public class Rubric : Validator, BaseEntity
     public int VoldoendeThreshold { get; set; } = 0;
     public int KnockoutThreshold { get; set; } = 0;
     [BackingField(nameof(_beoordelingsCriteria))]
-    public IEnumerable<BeoordelingsCriteria>? BeoordelingsCriteria { get => _beoordelingsCriteria; } 
-    private IList<BeoordelingsCriteria>? _beoordelingsCriteria { get; } = new List<BeoordelingsCriteria>();
+    public IReadOnlyList<BeoordelingsCriteria>? BeoordelingsCriteria { get => _beoordelingsCriteria; } 
+    private List<BeoordelingsCriteria>? _beoordelingsCriteria { get; } = new List<BeoordelingsCriteria>();
     public Leerdoel Leerdoel { get; set; }
     public int LeerdoelId { get; set; }
     public int BeroepsProductId { get; set; }

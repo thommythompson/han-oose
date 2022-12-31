@@ -8,8 +8,8 @@ public class LesInrichting : Validator, BaseEntity
     public int Id { get; set; }
     public string Titel { get; set;  }
     [BackingField(nameof(_lesMateriaal))]
-    public IEnumerable<LesMateriaal>? LesMateriaal { get => _lesMateriaal; }
-    private IList<LesMateriaal>? _lesMateriaal { get; } = new List<LesMateriaal>();
+    public IReadOnlyList<LesMateriaal>? LesMateriaal { get => _lesMateriaal; }
+    private List<LesMateriaal>? _lesMateriaal { get; } = new List<LesMateriaal>();
     public int? CourseWeekInrichtingId { get; set; }
     public int CourseInrichtingId { get; set; }
     public Leerdoel Leerdoel { get; set; }
