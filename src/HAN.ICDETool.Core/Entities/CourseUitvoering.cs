@@ -34,8 +34,10 @@ public class CourseUitvoering : BaseEntity
         foreach (CourseWeekInrichting week in CourseInrichting.Planning.Weken)
         {
             DateTimeOffset date = StartDatum.AddDays(7 * i);
+
+            var weekUitvoering = new CourseWeekUitvoering(date, week);
             
-            _weken.Add(new CourseWeekUitvoering(date, week));
+            _weken.Add(weekUitvoering);
             
             i++;
         }

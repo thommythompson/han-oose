@@ -485,9 +485,11 @@ Minimaal 1 extra diagram (geen class diagram) opnemen, diverse modellen vereist 
 
 ### 5.2.2. Domein consistentie/inconsistentie
 
-- persoon
-- additionele interface
-
+- additionele interfaces
+- course bieb is weg
+- ef core constructor
+- persoon weg
+  
 ---
 :warning: **_CRITERIA:_**
 Zowel inconsistenties als consistenties benoemd, inconsistenties volledig van relevante, onderbouwde verbetervoorstellen voorzien voor een 10
@@ -518,25 +520,32 @@ sequenceDiagram
     CourseInrichting->>CourseUitvoering: CourseUitvoering(this, date)
     deactivate CourseInrichting
     activate CourseUitvoering
-    CourseUitvoering->>CourseUitvoering: creeerWeekUitvoeringen
+    CourseUitvoering->>DateOnly: StartDate = GetMondayOfThisWeek()
+    CourseUitvoering->>CourseUitvoering: creeerWeekUitvoeringen()
     
-    loop weken in planning
-        CourseUitvoering->>CourseUitvoering: Weken.Add()
-        CourseUitvoering->>CourseWeekUitvoering: CourseWeekUitvoering(week, date)
+    loop week in CourseInrichting.Planning.Weken
+        CourseUitvoering->>CourseWeekUitvoering: weekUitvoering = CourseWeekUitvoering(week, StartDate)
+        CourseUitvoering->>CourseUitvoering: Weken.Add(weekUitvoering)
         deactivate CourseUitvoering
+
         activate CourseWeekUitvoering
-        CourseWeekUitvoering->>DateOnly: StartOfWeek()
-        
+
         CourseWeekUitvoering->>CourseWeekUitvoering: creeerTentamen()
-        loop tentamen in week
-            CourseWeekUitvoering->>CourseWeekUitvoering: _tentamen.Add()
-            CourseWeekUitvoering ->> TentamenUitvoering: TentamenUitvoering(tentamen)
+        loop schriftelijkeToets in CourseWeekInrichitng.SchiftelijkeToets
+            CourseWeekUitvoering ->> TentamenUitvoering: tentamenUitvoering = TentamenUitvoering(schriftelijkeToets)
+            CourseWeekUitvoering->>CourseWeekUitvoering: _tentamen.Add(tentamenUitvoering)
         end
+        loop beroepsProduct in CourseWeekInrichitng.Beroepsproduct
+            CourseWeekUitvoering ->> TentamenUitvoering: tentamenUitvoering = TentamenUitvoering(beroepsProduct)
+            CourseWeekUitvoering->>CourseWeekUitvoering: _tentamen.Add(tentamenUitvoering)
+        end
+
         CourseWeekUitvoering->>CourseWeekUitvoering: creeerLessen()
-        loop les in week
-            CourseWeekUitvoering->>CourseWeekUitvoering: _les.Add()
-            CourseWeekUitvoering ->> LesUitvoering: LesUitvoering(les)
+        loop les in CourseWeekInrichting.Lessen
+            CourseWeekUitvoering->>LesUitvoering: lesUitvoering = new LesUitvoering(les);
+            CourseWeekUitvoering->>CourseWeekUitvoering: _les.Add(lesUitvoering)
         end
+
     end
     deactivate CourseWeekUitvoering
     
@@ -546,35 +555,39 @@ sequenceDiagram
 classDiagram
 
     class CourseInrichting {
-        + CourseWeekPlanning Planning
-        + StartCourseUitvoering(DateOnly date)
+        + Planning : CourseWeekPlanning
+        + StartCourseUitvoering(date : DateTimeOffset)
     }
 
     class CourseUitvoering {
-        + CourseUitvoering(CourseInrichting inrichting, DateOnly date)
-        - creeerWeekUitvoeringen(date)
+        + CourseUitvoering(inrichting : CourseInrichting, date : DateTimeOffset)
+        - creeerWeekUitvoeringen()
     }
 
     class CourseWeekUitvoering {
-        + CourseWeekUitvoering(CourseWeekInrichting inrichting, DateOnly date)
-        - creeerTentamen()
-        - creeerLessen()
+        + CourseWeekUitvoering(inrichting : CourseWeekInrichting, maandag : DateTimeOffset)
+        - creeerTentamenUitvoeringen()
+        - creeerLesUitvoeringen()
     }
 
     class TentamenUitvoering {
-        - TentamenInrichting _inrichting
-        + TentamenUitvoering(TentamenInrichting inrichting)
+        + SchriftelijkeToets : SchriftelijkeToets [0..1]
+        + BeroepsProduct : BeroepsProduct [0..1]
+        + TentamenUitvoering(schriftelijkeToets : SchriftelijkeToets)
+        + TentamenUitvoering(beroepsProduct : BeroepsProduct)
     }
 
     class LesUitvoering {
-        - LesInrichting _inrichting
-        + LesUitvoering(LesInrichting inrichting)
+        - LesInrichting : LesInrichting
+        + LesUitvoering(lesInrichting: LesInrichting)
     }
 
-    class DateOnly {
-        + StartOfWeek()
+
+    class DateTimeOffset {
+        + GetMondayOfThisWeek()
     }
 
+    CourseUitvoering -- DateTimeOffset
     CourseInrichting "1" <--o "0..*" CourseUitvoering 
     CourseWeekUitvoering "1..*" o--> "1" CourseUitvoering 
     LesUitvoering "1..*" o--> "1" CourseWeekUitvoering

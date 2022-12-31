@@ -34,12 +34,16 @@ public class CourseWeekUitvoering : BaseEntity
     {
         foreach (SchriftelijkeToets schriftelijkeToets in CourseWeekInrichting.SchriftelijkeToets)
         {
-            _tentamen.Add(new TentamenUitvoering(schriftelijkeToets));
+            var tentamenUitvoering = new TentamenUitvoering(schriftelijkeToets);
+            
+            _tentamen.Add(tentamenUitvoering);
         }
 
         foreach (BeroepsProduct beroepsProduct in CourseWeekInrichting.BeroepsProduct)
         {
-            _tentamen.Add(new TentamenUitvoering(beroepsProduct));
+            var tentamenUitvoering = new TentamenUitvoering(beroepsProduct);
+            
+            _tentamen.Add(tentamenUitvoering);
         }
     }
 
@@ -47,7 +51,8 @@ public class CourseWeekUitvoering : BaseEntity
     {
         foreach (LesInrichting les in CourseWeekInrichting.Lessen)
         {
-            _lessen.Add(new LesUitvoering(les));
+            var lesUitvoering = new LesUitvoering(les);
+            _lessen.Add(lesUitvoering);
         }
     }
 }

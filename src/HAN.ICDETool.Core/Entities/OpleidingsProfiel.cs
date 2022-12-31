@@ -10,7 +10,6 @@ public class OpleidingsProfiel : BaseEntity
     public int OpleidingId { get; set; }
     [BackingField(nameof(_gevolgdDoor))]
     public IReadOnlyList<Persoon>? GevolgdDoor { get => _gevolgdDoor; }
-
     private List<Persoon>? _gevolgdDoor { get; set; } = new List<Persoon>();
 
     public OpleidingsProfiel(string naam, string code)
