@@ -148,23 +148,20 @@ Binnen de applicatie word er gebruik gemaakt van een aantal  architectuur patter
 
 ## 4. Technische keuzes
 
-- .NET 6 / C#10
-- ORM framework: EF Core 6
-- Presentatie framework: MVC
-- Swagger
-- Ardalis repsistory
-- Frontend: Javascript/Ajax/Jquery/Bootstrap 5
-- Project management: github projects
-- Dependency Injection via host builder
-- Configuration Management (IConfiguration)
-- Database: MSSQL
-- Blazor
+Het project zal geprogrammeerd worden in de laatste versie van C#, C# 10. C# is een "strongly typed" programmeer taal gebasseerd op het .NET framework. Er is voor deze programmeer taal gekozen omdat het team dat de opdracht zal uitvoeren het meest bekend is met deze programmeertaal. Voor C# zijn vele verschillende libraries beschikbaar, binnen C# heten deze NuGet packages, deze packages voorkomen dat veel voorkomende functionaliteit opnieuw ontworpen hoeft te worden en bevatten bestaande oplossingen die binnen je eigen applicatie te integreren zijn. In onderstaande worden deze packages en de keuze daarvoor toegelicht.
 
----
-:warning: **_CRITERIA:_**
-alle frameworks, framework onderdelen en libraries correct gebruikt en volledig geïntegreerd, keuze voor deze onderbouwd voor een 10
-
----
+- Enitity Framework Core 6 SqlServer: Voor de persistentie van data maken wij gebruiken van een ORM framework. Alhoewel er alternatieven beschikbaar zijn is het meest gebruikte ORM framework voor C# Entity Framework (EF), dit ORM framework is ontwikkelt door Microsoft zelf. Het gebruik van een ORM framework voorkomt dat men zelf SQL queries moet schrijven voor het bewerken en ophalen van data in de database. Deze sql queries worden automatisch gegeneerd door EF wanneer aangegeven word dat de data gepersisteerd mag worden, dit gebeurd op basis van de gemaakte wijzigingen in de data sets die men gespecificeerd heeft. In dit geval hebben wij gekozen voor de SqlServer variant, deze package maakt het mogelijk om T-SQL queries te genereren voor Microsoft SQL Server en Azure SQL Edge. Wij kiezen in dit geval om bij dezelfde vendor (Microsoft) te blijven aangezien ervaring leert dat dit vaak zorgt voor de beste integratie.
+- Ardalis Specification: De Ardalis Specification fungeert als een wrapper om de Entity Framework repository. Deze wrapper maakt het mogelijk om queries uit te voeren middels specifications daarnaast accepteert de wrapper een generic parameter die naar een DbSet refereert, dit vereenvoudigd het maken van een generieke service aangezien de repository bijhorend bij de service nu als een generic gespecificeerd kan worden.
+- Microsoft MVC: Het Api project maakt gebruik van het Microsoft MVC framework. Dit framework bevat een groot scala aan functionaliteit, zo bevat het een gestandardiseerde oplossing voor dependency injection, maakt het ons mogelijk om controllers te gebruiken en bied het een configuration management oplossing aan die het mogelijk maakt de configuratie voor de applicatie via een extern bestand te beheren.
+- Identity: Identity is net als MVC een groot scala aan gebundelde functionaliteiten, deze functionaliteiten zijn allen gericht op authenticatie en authorisatie. Het identity framework ontwikkelt door Microsoft bied een gestandaardiseerde oplossing voor gebruikersauthenticatie en het inloggen, registreren en uitloggen van deze gebruikers. Ook bied het mogelijkheden tot role based access, het gebruik van claims en JWT token en zelf de mogelijkheid om te integreren met externe authenticatie providers via OAuth2. Een mooie bijkomstigheid is dat het naadloos integreert met Microsoft MVC.
+- Swagger: Swagger stelt een grafische interface beschikbaar die gegenereerd word op basis van de bestaande controllers en hun bijhorende methoden. Zo maakt Swagger grafisch inzichtelijk wat een request precies aan parameters of body verwacht en wat het format is van de bijhorende response. Swagger stelt de gebruikers zelfs in staat om middels te grafische interface de api aan te roepen en dus te testen. 
+- AutoMapper: AutoMapper maakt het mogelijk om middels een vooraf gedefineerde mapping types te impliciet te casten. Dit is zeer handig bij het gebruik van request en response DTO waar de eigenschappen van een DTO en een entiteit op elkaar "gemapt" worden en voorkomt dat dat een zelfgemaakte implementatie benodigd is voor deze conversie.
+- Newtonsoft Json: Voorziet in het serialiseren van objecten naar JSON en het deseraliseren van JSON naar objecten. 
+- Blazor WASM: Blazor WASM is een web framework dat gebruikt maakt van web assembly. Blazor maakt het mogelijk om C# te compileren naar web assembly en deze code vervolgens uit te voeren in de browser van de eindgebruiker. Microsoft stuurt aan op het gebruik van Blazor Server en Blazor WASM als de nieuwe standaard voor web ontwikkeling binnen de Microsoft Suite. Gezien de mate waarin Microsoft het gebruik van Blazor stimuleert valt er te stellen dat dit voorlopig een toekomstbestendige oplossing is. De adoptatie van Blazor is eenvoudig voor een C# ontwikkelaar en voorkomt dat men de learning curve van een JavaScript framework als Angular, React of Vue moet ondergaan.
+- Blazor Local Storage: Maakte het mogelijk om de lokale browser opslag aan de client zijde te gebruiken. Deze opslag blijft bewaard zelf na het sluiten van de browser en maakt het bijvoorbeeld mogelijk om authenticatie tokens voor langer gebruik op te slaan zodat men zich niet steeds hoeft te authenticeren.
+- Blazor Authentication: Blazor Auhtentication maakt het mogelijk om gebruik te maken van de eigenschappen van een gebruikers identity binnen de gebruikers interface. Zo maakt het Blazor Authentication het mogelijk om gehele web pagina of bepaalde aspecten daarvan alleen beschikbaar te stellen aan geauthenticeerde gebruikers of gebruikers die een of meerdere specifieke rollen hebben.
+- Bootstrap 5: Bootstrap 5 is een CSS framework en maakt het met relatief weinig effort en alleen HTML mogelijk om een mooie gebruikers interface te realiseren.
+- Flurl: Flurl is een wrapper om de standaard HttpClient die met C# geleverd word. De wrapper maakt gebruik van een fluent syntax voor request/url building wat resulteert in een stuk gebruikersvriendelijke manier van het maken van HTTP request. Daarnaast is Flurl ook unit testbaar, je kan exact testen op de headers, body en url die Flurl zal gebruiken voor haar requesten.
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
