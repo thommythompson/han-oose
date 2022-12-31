@@ -20,6 +20,7 @@
 |v0.4|H2, H3|Thomas Hofman|30-12-2022|
 |v0.5|H4|Thomas Hofman|31-12-2022|
 |v0.5|H6|Thomas Hofman|31-12-2022|
+|v0.6|H5.3.1, H5.4.1, H5.2|Thomas Hofman|31-12-2022|
 
 # Inhoudsopgave
 
@@ -189,7 +190,7 @@ class Adres{
     + Id : int
     + Straat : string
     + Huisnummer : string
-    + Toevoeging : string
+    + Toevoeging : string [0..1]
     + Postcode : string
     + Plaatsnaam : string
     + Adres(Id : int, Straat : string, Huisnummer : string, Postcode : string, Plaatsnaam : string, Toevoeging : string = null)
@@ -199,8 +200,8 @@ class Beoordeling{
     + Id : int
     + Beoordeling(tentamenUitvoering : TentamenUitvoering, beoordelingVoor : Student,  beoordeeldDoor : Docent)
 }
-Beoordeling --> Student : BeoordelingVoor
-Beoordeling --> Docent : BeoordeeldDoor
+Beoordeling "*" --> "1" Student : BeoordelingVoor
+Beoordeling "*" --> "1" Docent : BeoordeeldDoor
 
 class BeoordelingsCriteria{
     + Id : int
@@ -217,26 +218,17 @@ class BeroepsProduct{
     + void AddRubrics(rubric : Rubric)
     + void RemoveRubrics(rubric : Rubric)
 }
-BeroepsProduct <--* Rubric : Rubrics
-BeroepsProduct -- TentamenType : TentamenType
-BeroepsProduct *--> CourseInrichting
+BeroepsProduct "1" <--* "*" Rubric : Rubrics
+BeroepsProduct "1" -- "1" TentamenType : TentamenType
+BeroepsProduct "*" *--> "1" CourseInrichting
 BeroepsProduct --|> TentamenInrichting
 
-class CourseBibliotheek{
-    + void AddCourse(courseInrichting : CourseInrichting)
-    + void RemoveCourse(courseInrichting : CourseInrichting)
-}
-CourseBibliotheek <--* CourseInrichting : Courses
-
 class CourseInrichting {
-    + int Id
-    + string Titel
-    + string Omschrijving
-    + Docent AangemaaktDoor
-    + CourseWeekPlanning Planning
-    + bool IsDefinitief = false
-    + DateTimeOffset AanmaakDatum
-    - DateTimeOffset _aanmaakDatum
+    + Id : int
+    + Titel : string
+    + Omschrijving : string 
+    + IsDefinitief = false : bool
+    + AanmaakDatum : DateTimeOffset 
     + CourseInrichting(title : string, omschrijving : string, aangemaaktDoor : Docent)
     + void MaakDefinitief()
     + void AddEenheidVanLeeruitkomsten(eenheidVanLeeruitkomsten : EenheidVanLeeruitkomsten)
@@ -249,90 +241,87 @@ class CourseInrichting {
     + void RemoveLes(lesInrichting : LesInrichting)
     + void CreatePlanning(duur : ITijdDefinitie)
     + void RemovePlanning()
-    + CourseUitvoering StartCourseUitvoering(DateTimeOffset)
+    + CourseUitvoering StartCourseUitvoering(date : DateTimeOffset)
 }
-CourseInrichting <--* CourseWeekPlanning : Planning
+CourseInrichting "*" <-- "1" Persoon : AangemaaktDoor
+CourseInrichting "1" <--* "1" CourseWeekPlanning : Planning
 CourseInrichting -- ITijdDefinitie
-CourseInrichting <--* EenheidVanLeeruitkomsten : Evls
-CourseInrichting <--* BeroepsProduct : BeroepsProducten
-CourseInrichting <--* SchriftelijkeToets : Toetsen
-CourseInrichting <--* LesInrichting : Lessen
+CourseInrichting "1" <--* "*" EenheidVanLeeruitkomsten : Evls
+CourseInrichting "1" <--* "*" BeroepsProduct : BeroepsProducten
+CourseInrichting "1" <--* "*" SchriftelijkeToets : Toetsen
+CourseInrichting "1" <--* "*" LesInrichting : Lessen
 
 class CourseUitvoering {
     + Id : int
     + StartDatum : DateTimeOffset
-    - _startDatum : DateTimeOffset
+    + CourseUitvoering(courseInrichting : CourseInrichting, startdatum : DateTimeOffset)
     - void creeerWeekUitvoeringen()
 }
-CourseUitvoering *--> CourseInrichting : CourseInrichting
-CourseUitvoering <--* CourseWeekUitvoering : Weken
+CourseUitvoering "*" *--> "1" CourseInrichting : CourseInrichting
+CourseUitvoering "1" <--* "*" CourseWeekUitvoering : Weken
 
 class CourseWeekInrichting{
-    + int Id
-    + void AddSchriftelijkeToets(schriftelijkeToets : SchriftelijkeToets)
-    + void RemoveSchriftelijkeToets(schriftelijkeToets : SchriftelijkeToets)
+    + Id : int
+    + void AddToets : SchriftelijkeToets)
+    + void RemoveToets(schriftelijkeToets : SchriftelijkeToets)
     + void RemoveBeroepsProduct(beroepsProduct : BeroepsProduct)
     + void RemoveBeroepsProduct(beroepsProduct : BeroepsProduct)
     + void RemoveLes(les : LesInrichting)
     + void RemoveLes(les : LesInrichting)
 }
-CourseWeekInrichting <--* SchriftelijkeToets : SchriftelijkeToets 
-CourseWeekInrichting <--* BeroepsProduct : BeroepsProduct
-CourseWeekInrichting <--* LesInrichting : LesInrichting
+CourseWeekInrichting "1" <--* "*" SchriftelijkeToets : SchriftelijkeToets 
+CourseWeekInrichting "1" <--* "*" BeroepsProduct : BeroepsProduct
+CourseWeekInrichting "1" <--* "*" LesInrichting : LesInrichting
 
 class CourseWeekPlanning{
-    + int Id
+    + Id : int
     + CourseWeekPlanning(duur : ITijdDefinitie)
     - void vulPlanningMetWeken()
 }
-CourseWeekPlanning --> ITijdDefinitie : Duur
-CourseWeekPlanning <--* CourseWeekInrichting : Weken
+CourseWeekPlanning "*" --> "1" ITijdDefinitie : Duur
+CourseWeekPlanning "1" <--* "*" CourseWeekInrichting : Weken
 
 class CourseWeekUitvoering{
-    + int Id
-    + DateTimeOffset Maandag
+    + Id : int
+    + Maandag : DateTimeOffset 
     + CourseWeekUitvoering(date : DateTimeOffset, courseWeekInrichting : CourseWeekInrichting)
     - void creeerTentamenUitvoeringen()
     - void creeerLesUitvoeringen()
 }
-CourseWeekUitvoering *--> CourseWeekInrichting : CourseWeekInrichting
-CourseWeekUitvoering --> TentamenUitvoering : Tentamen
-CourseWeekUitvoering --> LesUitvoering : Lessen
-
-class Docent {
-    + Docent(voornaam : string, achternaam : string, email : string)
-}
-Docent --|> Persoon
+CourseWeekUitvoering "*" *--> "1" CourseWeekInrichting : CourseWeekInrichting
+CourseWeekUitvoering "1" --> "*" TentamenUitvoering : Tentamen
+CourseWeekUitvoering "1" --> "*" LesUitvoering : Lessen
 
 class EenheidVanLeeruitkomsten{
-    + int Id
-    + string Titel
-    + string Omschrijving
+    + Id : int
+    + Titel : string
+    + Omschrijving : string
     + EenheidVanLeeruitkomsten(titel : string, omschrijving : string)
     + void AddLeeruitkomst(Leeruitkomst)
     + void RemoveLeeruitkomst(Leeruitkomst)
 }
-EenheidVanLeeruitkomsten <--* Leeruitkomst : Leeruitkomsten
+EenheidVanLeeruitkomsten "1" <--* "*" Leeruitkomst : Leeruitkomsten
 
 <<Interface>> ITijdDefinitie
 class ITijdDefinitie{
-    + int DuurInWeken
-    + int TeBehalenStudiepunten
+    + DuurInWeken : int
+    + TeBehalenStudiepunten : int
 }
 
 class Klas{
-    + int Id
-    + string Code
+    + Id : int
+    + Code : string
     + void AddStudent(Student)
     + void RemoveStudent(Student)
 }
-Klas --> Docent : Mentor
-Klas --> Student : Studenten
+Klas "1" --> "1" Persoon : Mentor
+Klas "1" --> "*" Persoon : Studenten
 
 class Leerdoel{
-    + int Id
-    + string Titel
-    + string Omschrijving
+    + Id : int
+    + Titel : string
+    + Omschrijving : string
+    - _lesEenheden : IEnumerable<Validator> 
     + Leerdoel(titel : string, omschrijving : string)
     + void KoppelRubrics(Rubric)
     + void OntkoppelRubric(Rubric)
@@ -341,132 +330,126 @@ class Leerdoel{
     + void KoppelToets(SchriftelijkeToets)
     + void OntkoppelToets(SchriftelijkeToets)
 }
-Leerdoel --> Rubric : GekoppeldeRubrics
-Leerdoel --> LesInrichting : GekoppeldeLessen
-Leerdoel --> SchriftelijkeToets : GekoppeldeToetsen
+Leerdoel "1" --> "*" Rubric : GekoppeldeRubrics
+Leerdoel "1" --> "*" LesInrichting : GekoppeldeLessen
+Leerdoel "1" --> "*" SchriftelijkeToets : GekoppeldeToetsen
 
 class Leeruitkomst{
-    + int Id
-    + string Titel
-    + string Omschrijving
+    + Id : int
+    + Titel : string
+    + Omschrijving : string
     + Leeruitkomst(titel : string, omschrijving : string)
-    + void KoppelLeerdoel(Leerdoel)
-    + void OntkoppelLeerdoel(Leerdoel)
+    + void KoppelLeerdoel(leerdoel : Leerdoel)
+    + void OntkoppelLeerdoel(leerdoel : Leerdoel)
 }
-Leeruitkomst --> Leerdoel : Leerdoelen
+Leeruitkomst "1" --> "*" Leerdoel : Leerdoelen
 
 class LesInrichting{
-    + int Id
-    + string Titel
+    + Id : int
+    + Titel : string
     + LesInrichting(titel : string)
-    + void AddLesMateriaal(LesMateriaal)
-    + void RemoveLesMateriaal(LesMateriaal)
+    + void AddLesMateriaal(lesMateriaal : LesMateriaal)
+    + void RemoveLesMateriaal(lesMateriaal : LesMateriaal)
 }
-LesInrichting --> LesMateriaal : LesMateriaal
+LesInrichting "1" --> "*" LesMateriaal : LesMateriaal
 LesInrichting --|> Validator
 
 class LesMateriaal{
-    + int Id
+    + Id : int
     + LesMateriaal()
-    - IList<LesMateriaalLine> genereerInhoud()
+    - List<LesMateriaalLine> genereerInhoud()
 }
-LesMateriaal --> LesMateriaalLine : Inhoud
+LesMateriaal "1" --> "*" LesMateriaalLine : Inhoud
 
 class LesMateriaalLine{
-    + int Id
-    + string Line
-    + LesMateriaalLine(line: string)
+    + Id : int
+    + Line : string
+    + LesMateriaalLine(line : string)
 }
 
 class LesUitvoering{
     + int Id
     + LesUitvoering(lesInrichting : LesInrichting)
 }
-LesUitvoering *--> LesInrichting : LesInrichting
-LesUitvoering --> Docent : Docent
-LesUitvoering --> Locatie : Locatie
+LesUitvoering "*" *--> "1" LesInrichting : LesInrichting
+LesUitvoering "*" --> "1" Docent : Docent
+LesUitvoering "*" --> "1" Locatie : Locatie
 
 class Locatie{
-    + int Id
-    + string Naam
+    + Id : int
+    + Naam : string
     + Locatie(naam : string, locatieType : string)
 }
 Locatie -- LocatieType : LocatieType
-Locatie --> Adres : Adres
+Locatie "1" --> "1" Adres : Adres
 
 <<Enumeration>> LocatieType
 
 class Opleiding{
-    + int Id
-    + string Naam
-    + string Code
+    + Id : int
+    + Naam : string
+    + Code : string
     + Opleiding(naam : string, code : string)
-    + void AddOpleidingsProfiel(OpleidingsProfiel)
-    + void RemoveOpleidingsProfiel(OpleidingsProfiel)
+    + void AddOpleidingsProfiel(profiel : OpleidingsProfiel)
+    + void RemoveOpleidingsProfiel(profiel : OpleidingsProfiel)
 }
-Opleiding <--* OpleidingsProfiel : OpleidingsProfiel
-
-
+Opleiding "1" <--* "*" OpleidingsProfiel : OpleidingsProfiel
 
 class OpleidingsProfiel{
-    + int Id
-    + string Naam
-    + string Code
+    + Id : int
+    + Naam : string
+    + Code : string
     + OpleidingsProfiel(naam : string, code : string)
 }
 
-class Periode
+class Periode {
+    + DuurInWeken = 10
+    + TeBehalenStudiepunten = 15
+}
 Periode --|> ITijdDefinitie
 
 <<interface>> Persoon
 class Persoon {
-    + string Voornaam
-    + string Achternaam
-    + string Email
+    + Voornaam : string
+    + Achternaam : string
 }
+Persoon "*" --> "0..1" OpleidingsProfile : VolgtProfiel
+Persoon "*" --> "0..1" CourseUitvoering : VolgtCourse
 
 class Rubric {
-    + int Id
-    + string Titel
-    + int Weging = 0
-    + int VoldoendeThreshold = 0
+    + Id : int
+    + Titel : string
+    + Weging = 0 : int
+    + VoldoendeThreshold = 0 : int
     + int KnockoutThreshold = 0
     + Rubric(titel : string)
     + void AddBeoordelingsCriteria(BeoordelingsCriteria)
     + void RemoveBeoordelingsCriteria(BeoordelingsCriteria)
 }
-Rubric <--* BeoordelingsCriteria : BeoordelingsCriteria
+Rubric "1" <--* "*" BeoordelingsCriteria : BeoordelingsCriteria
 Rubric --|> Validator
 
 class SchriftelijkeToets {
     + SchriftelijkeToets(titel : string)
 }
-SchriftelijkeToets --> CourseInrichting
+SchriftelijkeToets "*" --> "1" CourseInrichting
 SchriftelijkeToets --|> TentamenInrichting
 SchriftelijkeToets --|> Validator
 
-class Semester
-Semester --|> ITijdDefinitie
-
-class Student{
-    + OpleidingsProfiel VolgtProfiel
-    + CourseUitvoering VolgCourse
-    + Student(voornaam : string, achternaam : string, email : string)
+class Semester {
+    + DuurInWeken = 20 : int
+    + TeBehalenStudiepunten = 30 : int
 }
-Student --|> Persoon
-Student --> OpleidingsProfiel
-Student --> CourseUitvoering
-
+Semester --|> ITijdDefinitie
 
 <<interface>> TentamenInrichting
 class TentamenInrichting{
-    + int Id
-    + string Titel
-    + TentamenType Type
-    + int Weging
-    + int TeBehalenStudiepunten
+    + Id : int
+    + Titel : string
+    + Weging : int
+    + TeBehalenStudiepunten : int
 }
-TentamenInrichting -- TentamenType : Type
+TentamenInrichting "*" --> "1" TentamenType : Type
 
 <<Enumeration>> TentamenType
 
@@ -475,10 +458,10 @@ class TentamenUitvoering{
     + TentamenUitvoering(schriftelijkeToets : SchriftelijkeToets)
     + TentamenUitvoering(beroepsProduct : BeroepsProduct)
 }
-TentamenUitvoering --> SchriftelijkeToets
-TentamenUitvoering --> BeroepsProduct
-TentamenUitvoering --> Locatie
-TentamenUitvoering --> Docent
+TentamenUitvoering "*" --> "1" SchriftelijkeToets
+TentamenUitvoering "*" --> "1" BeroepsProduct
+TentamenUitvoering "*" --> "1" Locatie
+TentamenUitvoering "*" --> "1" Docent
 
 <<interface>> Validator
 class Validator{
@@ -503,9 +486,11 @@ Minimaal 1 extra diagram (geen class diagram) opnemen, diverse modellen vereist 
 
 ### 5.2.2. Domein consistentie/inconsistentie
 
-- persoon
-- additionele interface
-
+- additionele interfaces
+- course bieb is weg
+- ef core constructor
+- persoon weg
+  
 ---
 :warning: **_CRITERIA:_**
 Zowel inconsistenties als consistenties benoemd, inconsistenties volledig van relevante, onderbouwde verbetervoorstellen voorzien voor een 10
@@ -536,25 +521,32 @@ sequenceDiagram
     CourseInrichting->>CourseUitvoering: CourseUitvoering(this, date)
     deactivate CourseInrichting
     activate CourseUitvoering
-    CourseUitvoering->>CourseUitvoering: creeerWeekUitvoeringen
+    CourseUitvoering->>DateOnly: StartDate = GetMondayOfThisWeek()
+    CourseUitvoering->>CourseUitvoering: creeerWeekUitvoeringen()
     
-    loop weken in planning
-        CourseUitvoering->>CourseUitvoering: Weken.Add()
-        CourseUitvoering->>CourseWeekUitvoering: CourseWeekUitvoering(week, date)
+    loop week in CourseInrichting.Planning.Weken
+        CourseUitvoering->>CourseWeekUitvoering: weekUitvoering = CourseWeekUitvoering(week, StartDate)
+        CourseUitvoering->>CourseUitvoering: Weken.Add(weekUitvoering)
         deactivate CourseUitvoering
+
         activate CourseWeekUitvoering
-        CourseWeekUitvoering->>DateOnly: StartOfWeek()
-        
+
         CourseWeekUitvoering->>CourseWeekUitvoering: creeerTentamen()
-        loop tentamen in week
-            CourseWeekUitvoering->>CourseWeekUitvoering: _tentamen.Add()
-            CourseWeekUitvoering ->> TentamenUitvoering: TentamenUitvoering(tentamen)
+        loop schriftelijkeToets in CourseWeekInrichitng.SchiftelijkeToets
+            CourseWeekUitvoering ->> TentamenUitvoering: tentamenUitvoering = TentamenUitvoering(schriftelijkeToets)
+            CourseWeekUitvoering->>CourseWeekUitvoering: _tentamen.Add(tentamenUitvoering)
         end
+        loop beroepsProduct in CourseWeekInrichitng.Beroepsproduct
+            CourseWeekUitvoering ->> TentamenUitvoering: tentamenUitvoering = TentamenUitvoering(beroepsProduct)
+            CourseWeekUitvoering->>CourseWeekUitvoering: _tentamen.Add(tentamenUitvoering)
+        end
+
         CourseWeekUitvoering->>CourseWeekUitvoering: creeerLessen()
-        loop les in week
-            CourseWeekUitvoering->>CourseWeekUitvoering: _les.Add()
-            CourseWeekUitvoering ->> LesUitvoering: LesUitvoering(les)
+        loop les in CourseWeekInrichting.Lessen
+            CourseWeekUitvoering->>LesUitvoering: lesUitvoering = new LesUitvoering(les);
+            CourseWeekUitvoering->>CourseWeekUitvoering: _les.Add(lesUitvoering)
         end
+
     end
     deactivate CourseWeekUitvoering
     
@@ -564,35 +556,39 @@ sequenceDiagram
 classDiagram
 
     class CourseInrichting {
-        + CourseWeekPlanning Planning
-        + StartCourseUitvoering(DateOnly date)
+        + Planning : CourseWeekPlanning
+        + StartCourseUitvoering(date : DateTimeOffset)
     }
 
     class CourseUitvoering {
-        + CourseUitvoering(CourseInrichting inrichting, DateOnly date)
-        - creeerWeekUitvoeringen(date)
+        + CourseUitvoering(inrichting : CourseInrichting, date : DateTimeOffset)
+        - creeerWeekUitvoeringen()
     }
 
     class CourseWeekUitvoering {
-        + CourseWeekUitvoering(CourseWeekInrichting inrichting, DateOnly date)
-        - creeerTentamen()
-        - creeerLessen()
+        + CourseWeekUitvoering(inrichting : CourseWeekInrichting, maandag : DateTimeOffset)
+        - creeerTentamenUitvoeringen()
+        - creeerLesUitvoeringen()
     }
 
     class TentamenUitvoering {
-        - TentamenInrichting _inrichting
-        + TentamenUitvoering(TentamenInrichting inrichting)
+        + SchriftelijkeToets : SchriftelijkeToets [0..1]
+        + BeroepsProduct : BeroepsProduct [0..1]
+        + TentamenUitvoering(schriftelijkeToets : SchriftelijkeToets)
+        + TentamenUitvoering(beroepsProduct : BeroepsProduct)
     }
 
     class LesUitvoering {
-        - LesInrichting _inrichting
-        + LesUitvoering(LesInrichting inrichting)
+        - LesInrichting : LesInrichting
+        + LesUitvoering(lesInrichting: LesInrichting)
     }
 
-    class DateOnly {
-        + StartOfWeek()
+
+    class DateTimeOffset {
+        + GetMondayOfThisWeek()
     }
 
+    CourseUitvoering -- DateTimeOffset
     CourseInrichting "1" <--o "0..*" CourseUitvoering 
     CourseWeekUitvoering "1..*" o--> "1" CourseUitvoering 
     LesUitvoering "1..*" o--> "1" CourseWeekUitvoering
@@ -631,14 +627,126 @@ een variatie aan principes en patterns op correcte en onderbouwde manier toegepa
 
 ### 5.4.1. Design
 
+```mermaid
+sequenceDiagram
+    autonumber
+    Client->>LesMateriaalExporter: ExportLesMateriaal(ExportFormaat.Pdf, LesMateriaal)
+    activate LesMateriaalExporter
+    LesMateriaalExporter->>ExporterFactory: factory : IExporterFactory = ExporterFactory()
+    LesMateriaalExporter->>ExporterFactory: ChooseExportType(ExportFormaat.Pdf)
+    
+    ExporterFactory->>PdfExporterStrategy: _exporterStrategy = PdfExporterStrategy(_exportDirectory)
+    PdfExporterStrategy->>ExporterStrategy: ExportStrategy(_exportDirectory)
+
+    LesMateriaalExporter->>LesMateriaal: lesMateriaalLines = Inhoud
+
+    LesMateriaalExporter->>ExporterFactory: result = Export(lesMateriaalLines)
+
+    ExporterFactory->>ExporterStrategy: result = Export(exportData)
+
+    ExporterStrategy->>System.IO.Directory: exists : bool = Exists(_exportDirectory)
+
+    alt exists == true
+    ExporterStrategy->>System.IO.Directory: CreateDirectory(_exportDirectory)
+    end
+
+    ExporterStrategy->>PdfExporterStrategy: filePath : string = ConvertStringListToFile(exportData, _exportDirectory)
+
+    ExporterStrategy->>System.IO.File: fileBytes : bytes[] = ReadAllBytes(filePath)
+
+    ExporterStrategy->>CustomFile: result = CustomerFile("application/octet-stream", filePath, fileBytes)
+
+    ExporterStrategy-->>ExporterFactory: result
+
+    ExporterFactory-->> LesMateriaalExporter: result
+
+    LesMateriaalExporter-->>Client: result
+```
+
+```mermaid
+classDiagram
+
+    class LesMateriaalExporter {
+        + CustomFile ExportLesMateriaal(formaat : ExportFormaat, lesMateriaal : LesMateriaal)
+    }
+    LesMateriaalExporter -- ExportFormaat
+    LesMateriaalExporter -- LesMateriaal
+    LesMateriaalExporter -- IExporterFactory
+    LesMateriaalExporter --|> ILesMateriaalExporter
+
+    
+    class ExporterFactory {
+        - _exportDirectory : string = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Files/")
+        - _exporterStrategy : ExporterStrategy
+        + void ChooseExporterType(type : ExportFormaat)
+        + CustomFile Export(exportData : IList<string>)
+    }
+
+    ExporterFactory --|> IExporterFactory
+    ExporterFactory -- ExportFormaat
+    ExporterFactory -- ExporterStrategy
+    ExporterFactory -- CsvExporterStrategy
+    ExporterFactory -- PdfExporterStrategy
+    ExporterFactory -- DocxExporterStrategy
+
+    class ExporterStrategy {
+        - _exportDirectory : string
+        + ExporterStrategy(exportDirectory : string)
+        + CustomFile Export(exportData : IList<string>)
+        + ConvertStringListToFile(exportData : IList<string>, exportDirectory : string) 
+    }
+    <<Abstract>> ExporterStrategy
+    ExporterStrategy -- CustomFile
+
+    class CustomFile {
+        + FileContents : byte[]
+        + ContentType : string
+        + FileName : string
+    }
+
+    class CsvExporterStrategy {
+        - _exporterDirectory : string
+        + CsvExporterStrategy(exportDirectory : string)
+    }
+    CsvExporterStrategy --|> ExporterStrategy
+
+    class DocxExporterStrategy {
+        - _exporterDirectory : string
+        + DocxExporterStrategy(exportDirectory : string)
+    }
+    DocxExporterStrategy --|> ExporterStrategy
+
+    class PdfExporterStrategy {
+        - _exporterDirectory : string
+        + PdfExporterStrategy(exportDirectory : string)
+    }
+    PdfExporterStrategy --|> ExporterStrategy
+    PdfExporterStrategy -- IHtmlConverter
+
+    class HtmlConverter {
+        + string ConvertStringListToHtml(lines : IList<string>)
+    }
+    HtmlConverter --|> IHtmlConverter
+
+    ExportFormaat
+    <<Enumeration>> ExportFormaat
+    IHtmlConverter
+    <<Interface>> IHtmlConverter
+    <<Interface>> ILesMateriaalExporter
+    <<Interface>> IExporterFactory
+```
+
 ### 5.4.2. Toelichting
+
+- Extra project aangemaakt want herbruikbaar
+- strategy & factory pattern
+- 2 libraries toegevoegd.
 
 ---
 :warning: **_NOTE:_**
 Toelichten van gebruikte GoF patterns, SOLID principes & GRASP principes.
 
 ---
-
 
 # 6. Overige
 
