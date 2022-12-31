@@ -18,6 +18,8 @@
 |v0.2|Converteren van docx naar markdown|Thomas Hofman|12-11-2022|
 |v0.3|Concept H4, H5|Thomas Hofman|12-11-2022|
 |v0.4|H2, H3|Thomas Hofman|30-12-2022|
+|v0.5|H4|Thomas Hofman|31-12-2022|
+|v0.5|H6|Thomas Hofman|31-12-2022|
 
 # Inhoudsopgave
 
@@ -642,36 +644,42 @@ Toelichten van gebruikte GoF patterns, SOLID principes & GRASP principes.
 
 ## 6.1. Versiebeheer
 
-- Version management: github repos
+De bron code word ondergebracht in Github, versie beheer word uitgevoerd door middel van Git. Binnen Git zal er gewerkt worden middels verschillende branches:
 
----
-:warning: **_CRITERIA:_**
-versiebeheer en build management toegepast voor een 10
+- Master: De master branch bevat altijd de laatste productie versie van de applicatie.
+- Develop: De develop branch bevat altijd de versie van de applicatie die op het moment in ontwikkeling is.
+- Feat/Fix: Een feature branch bevat de incrementele toevoeging van een feature aan de applicatie. Een fix branch bevat de aanpassingen om een bug op te lossen. 
 
----
+Men dient altijd te programmeren in een feature of een fix branch, deze feature of fix branches zijn gebasseerd op de laatste versie van de develop branch. Wanneer een feature of fix afgerond is dient de ontwikkelaar een pull request aan te maken binnen Github die de feature of fix zal mergen in de develop branch. Wanneer de development versie gereed is voor productie dienst er een pull request aangemaakt te worden die de development branch merged in de master branch. 
+
+```mermaid
+  gitGraph
+    commit id: "init main"
+    branch develop
+    commit id: "init develop"
+    branch feat/uc15-start-uitvoering
+    commit id: "changes for new feature"
+    checkout develop
+    merge feat/uc15-start-uitvoering
+    checkout main
+    merge develop
+```
 
 ## 6.2. Build Management (CI/CD)
 
-- Build management: github actions
-- CI --> build artifacts
-- Runs tests
-- CD --> build docker container & upload to repo
+Door een pull request naar de master branch word een pipeline getriggerd, deze pipeline is ingericht in Github Actions en voert de volgende stappen uit.
 
----
-:warning: **_CRITERIA:_**
-versiebeheer en build management toegepast voor een 10
-
----
+1. De api applicatie word gebuild en bijhorende unit tests worden uitgevoerd, indien de testen falen word de pipeline gestopt.
+2. De api dockerfile word gebuild, deze docker file build de applicatie en verpakt deze vervolgens in een container die geupload word naar een docker hub registry.
+3. De web dockerfile word gebuild, deze docker file build de web applicatie, dit resulteert in een set statische files die vervolgens gekopieerd worden in de web root van een nginx container, deze nginx container word vervolgens geupload naar een docker hub repository.
 
 ## 6.3. Unit-, Integratie- Tests
 
-- Test Framework: xUnit
+Het project bevat zowel unit als integratie testen, deze testen zijn ondergebracht in de projecten `HAN.ICDETool.Tests.Unit` en `HAN.ICDETool.Tests.Integration`. Zowel de unit als de integratie testen maken gebruik van het nUnit test framework. De unit testen zijn gericht op de domein functionaliteit en de integratie testen op de integratie tussen de api client en de api server, deze testen vereisen dus dat het api project gestart is. Om te verzekeren dat er data aanwezig om de api client mee te testen word de database bij het starten van de api server automatisch geseed met dummy data indien deze leeg is.
 
----
-:warning: **_CRITERIA:_**
-unit- en integratietests dekken werking grotendeels af, werking gedemonstreerd voor een 10
+## 6.4. Deployment
 
----
+De web en api containers dienen gehost te worden, zowel de web als de api container zal beschikbaar zijn voor HTTP verzoeken via TCP poort 80. Mocht HTTPS gewenst zijn dan dient dit opgelost te worden middels een reverse proxy die het geencrypte verkeer zal offloaden. In de root van de code repository staat een `docker-compose.yml`, dit bestand beschrijft hoe de omgeving gehost kan worden, uiteraard ben je niet verbonden aan docker en zijn de container ook onder te brengen in bijvoorbeeld Kubernetes.
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
