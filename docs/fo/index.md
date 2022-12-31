@@ -133,6 +133,7 @@ rectangle ICDE-Tool {
     usecase "UC-2 Bekijk Beoordelingen" as UC2
     usecase "UC-20 Aanmelden" as UC20
 }
+
 d --> UC11
 d --> UC10
 d --> UC12
@@ -292,6 +293,7 @@ alle relevante domein-concepten volledig beschreven dmv. correct toegepaste stan
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
 # 5. Bronnen
+
 |APA Bronvermelding|
 |------------------|
 |{Larman}

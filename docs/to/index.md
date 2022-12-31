@@ -18,6 +18,8 @@
 |v0.2|Converteren van docx naar markdown|Thomas Hofman|12-11-2022|
 |v0.3|Concept H4, H5|Thomas Hofman|12-11-2022|
 |v0.4|H2, H3|Thomas Hofman|30-12-2022|
+|v0.5|H4|Thomas Hofman|31-12-2022|
+|v0.5|H6|Thomas Hofman|31-12-2022|
 
 # Inhoudsopgave
 
@@ -27,17 +29,21 @@
     1.3. [Doelgroep](#13-doelgroep) </br>
 2. [Aanpak & Prioritering](#2-aanpak--prioritering) </br>
 3. [Architectuur](#3-architectuur) </br>
-    3.1. [Layering](#31-layering) </br>
-    3.2. [Distribution](#32-distribution) </br>
+    3.1. [Layering](#31-layers) </br>
+    3.2. [Distribution/Scalability](#32-distributionscalability) </br>
     3.3. [Architectuur Patterns](#33-architectuur-patterns) </br>
 4. [Technische keuzes](#4-technische-keuzes)
 5. [Design](#5-design) </br>
-    5.1. [Class Diagram](#51-class-diagram) </br>
-        5.1.1. [Toelichting](#511-toelichting) </br>
-        5.1.2. [Domein consistentie/inconsistentie](#512-domein-consistentieinconsistentie) </br>
-    5.2. [UC15 - Start uitvoering](#52-uc-15-start-uitvoering) </br>
-        5.2.1. [Design](#521-design) </br>
-        5.2.2. [Toelichting](#522-toelichting) </br>
+    5.1. [Api, Repository & Service Design](#51-api-repository--service-design) </br>
+    5.2. [Domein Design](#52-domein-design) </br>
+        5.2.1. [Toelichting](#521-toelichting) </br>
+        5.2.2. [Domein consistentie/inconsistentie](#522-domein-consistentieinconsistentie) </br>
+    5.3. [UC15 - Start uitvoering](#53-uc-15-start-uitvoering) </br>
+        5.3.1. [Design](#531-design) </br>
+        5.3.2. [Toelichting](#532-toelichting) </br>
+    5.4. [UC-18 Exporteer Informatie](#54-uc-18-exporteer-informatie) </br>
+        5.4.1. [Design](#541-design) </br>
+        5.4.2. [Toelichting](#542-toelichting) </br>
 6. [Overige](#6-overige) </br>
     6.1. [Versiebeheer](#61-versiebeheer) </br>
     6.2. [Build Management (CI/CD)](#62-build-management-cicd) </br>
@@ -144,29 +150,37 @@ Binnen de applicatie word er gebruik gemaakt van een aantal  architectuur patter
 
 ## 4. Technische keuzes
 
-- .NET 6 / C#10
-- ORM framework: EF Core 6
-- Presentatie framework: MVC
-- Swagger
-- Ardalis repsistory
-- Frontend: Javascript/Ajax/Jquery/Bootstrap 5
-- Project management: github projects
-- Dependency Injection via host builder
-- Configuration Management (IConfiguration)
-- Database: MSSQL
-- Blazor
+Het project zal geprogrammeerd worden in de laatste versie van C#, C# 10. C# is een "strongly typed" programmeer taal gebasseerd op het .NET framework. Er is voor deze programmeer taal gekozen omdat het team dat de opdracht zal uitvoeren het meest bekend is met deze programmeertaal. Voor C# zijn vele verschillende libraries beschikbaar, binnen C# heten deze NuGet packages, deze packages voorkomen dat veel voorkomende functionaliteit opnieuw ontworpen hoeft te worden en bevatten bestaande oplossingen die binnen je eigen applicatie te integreren zijn. In onderstaande worden deze packages en de keuze daarvoor toegelicht.
 
----
-:warning: **_CRITERIA:_**
-alle frameworks, framework onderdelen en libraries correct gebruikt en volledig geïntegreerd, keuze voor deze onderbouwd voor een 10
-
----
+- Enitity Framework Core 6 SqlServer: Voor de persistentie van data maken wij gebruiken van een ORM framework. Alhoewel er alternatieven beschikbaar zijn is het meest gebruikte ORM framework voor C# Entity Framework (EF), dit ORM framework is ontwikkelt door Microsoft zelf. Het gebruik van een ORM framework voorkomt dat men zelf SQL queries moet schrijven voor het bewerken en ophalen van data in de database. Deze sql queries worden automatisch gegeneerd door EF wanneer aangegeven word dat de data gepersisteerd mag worden, dit gebeurd op basis van de gemaakte wijzigingen in de data sets die men gespecificeerd heeft. In dit geval hebben wij gekozen voor de SqlServer variant, deze package maakt het mogelijk om T-SQL queries te genereren voor Microsoft SQL Server en Azure SQL Edge. Wij kiezen in dit geval om bij dezelfde vendor (Microsoft) te blijven aangezien ervaring leert dat dit vaak zorgt voor de beste integratie.
+- Ardalis Specification: De Ardalis Specification fungeert als een wrapper om de Entity Framework repository. Deze wrapper maakt het mogelijk om queries uit te voeren middels specifications daarnaast accepteert de wrapper een generic parameter die naar een DbSet refereert, dit vereenvoudigd het maken van een generieke service aangezien de repository bijhorend bij de service nu als een generic gespecificeerd kan worden.
+- Microsoft MVC: Het Api project maakt gebruik van het Microsoft MVC framework. Dit framework bevat een groot scala aan functionaliteit, zo bevat het een gestandardiseerde oplossing voor dependency injection, maakt het ons mogelijk om controllers te gebruiken en bied het een configuration management oplossing aan die het mogelijk maakt de configuratie voor de applicatie via een extern bestand te beheren.
+- Identity: Identity is net als MVC een groot scala aan gebundelde functionaliteiten, deze functionaliteiten zijn allen gericht op authenticatie en authorisatie. Het identity framework ontwikkelt door Microsoft bied een gestandaardiseerde oplossing voor gebruikersauthenticatie en het inloggen, registreren en uitloggen van deze gebruikers. Ook bied het mogelijkheden tot role based access, het gebruik van claims en JWT token en zelf de mogelijkheid om te integreren met externe authenticatie providers via OAuth2. Een mooie bijkomstigheid is dat het naadloos integreert met Microsoft MVC.
+- Swagger: Swagger stelt een grafische interface beschikbaar die gegenereerd word op basis van de bestaande controllers en hun bijhorende methoden. Zo maakt Swagger grafisch inzichtelijk wat een request precies aan parameters of body verwacht en wat het format is van de bijhorende response. Swagger stelt de gebruikers zelfs in staat om middels te grafische interface de api aan te roepen en dus te testen. 
+- AutoMapper: AutoMapper maakt het mogelijk om middels een vooraf gedefineerde mapping types te impliciet te casten. Dit is zeer handig bij het gebruik van request en response DTO waar de eigenschappen van een DTO en een entiteit op elkaar "gemapt" worden en voorkomt dat dat een zelfgemaakte implementatie benodigd is voor deze conversie.
+- Newtonsoft Json: Voorziet in het serialiseren van objecten naar JSON en het deseraliseren van JSON naar objecten. 
+- Blazor WASM: Blazor WASM is een web framework dat gebruikt maakt van web assembly. Blazor maakt het mogelijk om C# te compileren naar web assembly en deze code vervolgens uit te voeren in de browser van de eindgebruiker. Microsoft stuurt aan op het gebruik van Blazor Server en Blazor WASM als de nieuwe standaard voor web ontwikkeling binnen de Microsoft Suite. Gezien de mate waarin Microsoft het gebruik van Blazor stimuleert valt er te stellen dat dit voorlopig een toekomstbestendige oplossing is. De adoptatie van Blazor is eenvoudig voor een C# ontwikkelaar en voorkomt dat men de learning curve van een JavaScript framework als Angular, React of Vue moet ondergaan.
+- Blazor Local Storage: Maakte het mogelijk om de lokale browser opslag aan de client zijde te gebruiken. Deze opslag blijft bewaard zelf na het sluiten van de browser en maakt het bijvoorbeeld mogelijk om authenticatie tokens voor langer gebruik op te slaan zodat men zich niet steeds hoeft te authenticeren.
+- Blazor Authentication: Blazor Auhtentication maakt het mogelijk om gebruik te maken van de eigenschappen van een gebruikers identity binnen de gebruikers interface. Zo maakt het Blazor Authentication het mogelijk om gehele web pagina of bepaalde aspecten daarvan alleen beschikbaar te stellen aan geauthenticeerde gebruikers of gebruikers die een of meerdere specifieke rollen hebben.
+- Bootstrap 5: Bootstrap 5 is een CSS framework en maakt het met relatief weinig effort en alleen HTML mogelijk om een mooie gebruikers interface te realiseren.
+- Flurl: Flurl is een wrapper om de standaard HttpClient die met C# geleverd word. De wrapper maakt gebruik van een fluent syntax voor request/url building wat resulteert in een stuk gebruikersvriendelijke manier van het maken van HTTP request. Daarnaast is Flurl ook unit testbaar, je kan exact testen op de headers, body en url die Flurl zal gebruiken voor haar requesten.
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
 # 5. Design
 
-## 5.1. Domein Class Diagram
+## 5.1. Api, Repository & Service Design
+
+```mermaid
+classDiagram
+
+class BaseController
+class BaseService
+class BaseRepository
+
+```
+
+## 5.2. Domein Design
 
 ```mermaid
 classDiagram
@@ -479,7 +493,7 @@ Correct toepassen standaard notatie en het diagram moet de volledig requirements
 
 ---
 
-### 5.1.1 Toelichting
+### 5.2.1 Toelichting
 
 ---
 :warning: **_CRITERIA:_**
@@ -487,7 +501,7 @@ Minimaal 1 extra diagram (geen class diagram) opnemen, diverse modellen vereist 
 
 ---
 
-### 5.1.2. Domein consistentie/inconsistentie
+### 5.2.2. Domein consistentie/inconsistentie
 
 - persoon
 - additionele interface
@@ -498,7 +512,7 @@ Zowel inconsistenties als consistenties benoemd, inconsistenties volledig van re
 
 ---
 
-## 5.2 UC-15 Start Uitvoering
+## 5.3 UC-15 Start Uitvoering
 
 ---
 :warning: **_CRITERIA:_**
@@ -512,7 +526,7 @@ een variatie aan principes en patterns op correcte en onderbouwde manier toegepa
 
 ---
 
-### 5.2.1. Design
+### 5.3.1. Design
 
 ```mermaid
 sequenceDiagram
@@ -591,7 +605,7 @@ Class Diagram en/of sequence diagram toegespitst op de use case.
 
 ---
 
-### 5.2.2. Toelichting
+### 5.3.2. Toelichting
 
 ---
 :warning: **_NOTE:_**
@@ -601,40 +615,71 @@ Toelichten van gebruikte GoF patterns, SOLID principes & GRASP principes.
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
+## 5.4 UC-18 Exporteer Informatie
+
+---
+:warning: **_CRITERIA:_**
+Ontwerp problemen identificeren en ontwerp keuzes onderbouwen met relevant alternatieven en overwegingen voor een 10
+
+---
+
+---
+:warning: **_NOTE:_**
+een variatie aan principes en patterns op correcte en onderbouwde manier toegepast voor een 10
+
+---
+
+### 5.4.1. Design
+
+### 5.4.2. Toelichting
+
+---
+:warning: **_NOTE:_**
+Toelichten van gebruikte GoF patterns, SOLID principes & GRASP principes.
+
+---
+
+
 # 6. Overige
 
 ## 6.1. Versiebeheer
 
-- Version management: github repos
+De bron code word ondergebracht in Github, versie beheer word uitgevoerd door middel van Git. Binnen Git zal er gewerkt worden middels verschillende branches:
 
----
-:warning: **_CRITERIA:_**
-versiebeheer en build management toegepast voor een 10
+- Master: De master branch bevat altijd de laatste productie versie van de applicatie.
+- Develop: De develop branch bevat altijd de versie van de applicatie die op het moment in ontwikkeling is.
+- Feat/Fix: Een feature branch bevat de incrementele toevoeging van een feature aan de applicatie. Een fix branch bevat de aanpassingen om een bug op te lossen. 
 
----
+Men dient altijd te programmeren in een feature of een fix branch, deze feature of fix branches zijn gebasseerd op de laatste versie van de develop branch. Wanneer een feature of fix afgerond is dient de ontwikkelaar een pull request aan te maken binnen Github die de feature of fix zal mergen in de develop branch. Wanneer de development versie gereed is voor productie dienst er een pull request aangemaakt te worden die de development branch merged in de master branch. 
+
+```mermaid
+  gitGraph
+    commit id: "init main"
+    branch develop
+    commit id: "init develop"
+    branch feat/uc15-start-uitvoering
+    commit id: "changes for new feature"
+    checkout develop
+    merge feat/uc15-start-uitvoering
+    checkout main
+    merge develop
+```
 
 ## 6.2. Build Management (CI/CD)
 
-- Build management: github actions
-- CI --> build artifacts
-- Runs tests
-- CD --> build docker container & upload to repo
+Door een pull request naar de master branch word een pipeline getriggerd, deze pipeline is ingericht in Github Actions en voert de volgende stappen uit.
 
----
-:warning: **_CRITERIA:_**
-versiebeheer en build management toegepast voor een 10
-
----
+1. De api applicatie word gebuild en bijhorende unit tests worden uitgevoerd, indien de testen falen word de pipeline gestopt.
+2. De api dockerfile word gebuild, deze docker file build de applicatie en verpakt deze vervolgens in een container die geupload word naar een docker hub registry.
+3. De web dockerfile word gebuild, deze docker file build de web applicatie, dit resulteert in een set statische files die vervolgens gekopieerd worden in de web root van een nginx container, deze nginx container word vervolgens geupload naar een docker hub repository.
 
 ## 6.3. Unit-, Integratie- Tests
 
-- Test Framework: xUnit
+Het project bevat zowel unit als integratie testen, deze testen zijn ondergebracht in de projecten `HAN.ICDETool.Tests.Unit` en `HAN.ICDETool.Tests.Integration`. Zowel de unit als de integratie testen maken gebruik van het nUnit test framework. De unit testen zijn gericht op de domein functionaliteit en de integratie testen op de integratie tussen de api client en de api server, deze testen vereisen dus dat het api project gestart is. Om te verzekeren dat er data aanwezig om de api client mee te testen word de database bij het starten van de api server automatisch geseed met dummy data indien deze leeg is.
 
----
-:warning: **_CRITERIA:_**
-unit- en integratietests dekken werking grotendeels af, werking gedemonstreerd voor een 10
+## 6.4. Deployment
 
----
+De web en api containers dienen gehost te worden, zowel de web als de api container zal beschikbaar zijn voor HTTP verzoeken via TCP poort 80. Mocht HTTPS gewenst zijn dan dient dit opgelost te worden middels een reverse proxy die het geencrypte verkeer zal offloaden. In de root van de code repository staat een `docker-compose.yml`, dit bestand beschrijft hoe de omgeving gehost kan worden, uiteraard ben je niet verbonden aan docker en zijn de container ook onder te brengen in bijvoorbeeld Kubernetes.
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 

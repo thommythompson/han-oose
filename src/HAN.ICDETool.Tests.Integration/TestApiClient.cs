@@ -1,4 +1,8 @@
+using Blazored.LocalStorage;
+using Bunit;
+using HAN.ICDETool.ApiClient;
 using HAN.ICDETool.ApiClient.Services;
+using HAN.ICDETool.Web.Helper;
 
 namespace HAN.ICDETool.Tests.Integration;
 
@@ -11,28 +15,32 @@ public class TestApiClient
     [SetUp]
     public void Setup()
     {
-        string baseUrl = "https://localhost:7028/";
+        IApiClientConfig apiClientConfig = new ApiClientConfig
+        {
+            ServerlessBaseUrl = "https://localhost:7028/"
+        };
         
-        _authService = new AuthenticationClient(baseUrl);
-        _apiClient = new ApiClient.ApiClient(baseUrl);
-        _lesMateriaalService = new LesMateriaalClient(new HttpClientWrapper(baseUrl, _authService));
+        using var ctx = new Bunit.TestContext();
+        var localStorage = ctx.AddBlazoredLocalStorage();
+        
+        _authService = new AuthenticationClient(apiClientConfig, localStorage);
+        _apiClient = new ApiClient.ApiClient(apiClientConfig, _authService);
+        _lesMateriaalService = new LesMateriaalClient(new HttpClientWrapper(apiClientConfig.ServerlessBaseUrl, _authService));
     }
     
     [Test]
     public async Task TestAuthentication()
     {
-        var result = await _authService.GetToken("student1@han.nl", "P@ssw0rd");
+        await _authService.Authenticate("student1@han.nl", "P@ssw0rd");
+        var result = await _authService.GetToken();
         
         Assert.NotNull(result);
-        Assert.That(_authService.TokenIsValid, Is.True);
     }
     
     [Test]
     public async Task TestAuthenticationViaClient()
     {
         await _apiClient.Authenticate("student1@han.nl", "P@ssw0rd");
-        
-        Assert.That(_apiClient.IsAuthenticated, Is.True);
     }
     
     [Test]
@@ -40,6 +48,24 @@ public class TestApiClient
     {
         await _apiClient.Authenticate("student1@han.nl", "P@ssw0rd");
         var result = await _apiClient.FetchLesMateriaal();
+        
+        Assert.NotNull(result);
+    }
+    
+    [Test]
+    public async Task TestFetchGekregenBeoordelingenViaClient()
+    {
+        await _apiClient.Authenticate("student1@han.nl", "P@ssw0rd");
+        var result = await _apiClient.FetchGekregenBeoordelingen();
+        
+        Assert.NotNull(result);
+    }
+    
+    [Test]
+    public async Task TestFetchGegevenBeoordelingenViaClient()
+    {
+        await _apiClient.Authenticate("docent1@han.nl", "P@ssw0rd");
+        var result = await _apiClient.FetchGegevenBeoordelingen();
         
         Assert.NotNull(result);
     }
