@@ -11,11 +11,11 @@ public class CourseWeekUitvoering : BaseEntity
     public CourseWeekInrichting CourseWeekInrichting { get; init; }
     public int CourseWeekInrichtingId { get; init; }
     [BackingField(nameof(_tentamen))]
-    public IEnumerable<TentamenUitvoering>? Tentamen { get => _tentamen; }
-    private IList<TentamenUitvoering>? _tentamen { get; } = new List<TentamenUitvoering>();
+    public IReadOnlyList<TentamenUitvoering>? Tentamen { get => _tentamen; }
+    private List<TentamenUitvoering>? _tentamen { get; } = new List<TentamenUitvoering>();
     [BackingField(nameof(_lessen))]
-    public IEnumerable<LesUitvoering>? Lessen { get => _lessen; }
-    private IList<LesUitvoering>? _lessen { get; } = new List<LesUitvoering>();
+    public IReadOnlyList<LesUitvoering>? Lessen { get => _lessen; }
+    private List<LesUitvoering>? _lessen { get; } = new List<LesUitvoering>();
     public int CourseUitvoeringId { get; set; }
 
     // EF Core constructor: EF Core does not support navigation types in the constructor

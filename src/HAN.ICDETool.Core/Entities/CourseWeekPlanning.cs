@@ -9,8 +9,8 @@ public class CourseWeekPlanning : BaseEntity
     public ITijdDefinitie Duur { get; }
 
     [BackingField(nameof(_weken))]
-    public IEnumerable<CourseWeekInrichting> Weken { get => _weken; }
-    private IList<CourseWeekInrichting> _weken { get; } = new List<CourseWeekInrichting>();
+    public IReadOnlyList<CourseWeekInrichting> Weken { get => _weken; }
+    private List<CourseWeekInrichting> _weken { get; } = new List<CourseWeekInrichting>();
     public int CourseInrichtingId { get; set; }
 
     // EF Core constructor: EF Core does not support navigation types in the constructor

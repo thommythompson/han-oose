@@ -13,6 +13,7 @@ public class TestExporterService
     }
 
     [Test]
+    [Ignore("Dependecies not available at MacOS ARM")]
     public void TestPdfExporter()
     {
         IExporterService exporterService = _exporterFactory.createExporter(ExporterType.PdfExporter, "/Users/thomashofman/Downloads/");
@@ -41,7 +42,6 @@ public class TestExporterService
     }
     
     [Test]
-    [Ignore("Dependecies not available at MacOS ARM")]
     public void TestDocxExporter()
     {
         IExporterService exporterService = _exporterFactory.createExporter(ExporterType.DocxExporter, "/Users/thomashofman/Downloads/");

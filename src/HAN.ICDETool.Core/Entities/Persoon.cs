@@ -19,9 +19,16 @@ public class Persoon : IdentityUser<int>, BaseEntity
     public Klas? MentorVanKlas { get; set; }
     public int? MentorVanKlasId { get; set; }
     
-    public IList<Beoordeling>? BeoordelingenOntvangen { get; set; } = new List<Beoordeling>();
-    public IList<Beoordeling>? BeoordelingenGegeven { get; set; } = new List<Beoordeling>();
-    public IList<LesUitvoering> DocentVoorLesUitvoeringen { get; set; } = new List<LesUitvoering>();
+    [BackingField(nameof(_beoordelingenOntvangen))]
+    public IReadOnlyList<Beoordeling>? BeoordelingenOntvangen { get => _beoordelingenOntvangen; }
+
+    public List<Beoordeling>? _beoordelingenOntvangen { get; set; } = new();
+    [BackingField(nameof(_beoordelingenGegeven))]
+    public IReadOnlyList<Beoordeling>? BeoordelingenGegeven { get => _beoordelingenGegeven; }
+    public List<Beoordeling>? _beoordelingenGegeven { get; set; } = new();
+    
+    // Onderstaande properties hebben geen backing field omdat EF dit niet ondersteund voor de gedefineerde relaties.
+    public IList<LesUitvoering>? DocentVoorLesUitvoeringen { get; set; } = new List<LesUitvoering>();
     public IList<TentamenUitvoering>? DocentVoorTentamenUitvoeringen { get; set; } = new List<TentamenUitvoering>();
     
     public Persoon(string voornaam, string achternaam, string email)
@@ -31,7 +38,4 @@ public class Persoon : IdentityUser<int>, BaseEntity
         base.Email = email;
         base.UserName = email;
     }
-    
-    
-    
 }
