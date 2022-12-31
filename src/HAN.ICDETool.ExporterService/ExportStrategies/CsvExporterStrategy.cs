@@ -1,17 +1,14 @@
 namespace HAN.ICDETool.ExporterService.ExportStrategies;
 
-public class CsvExporterStrategy : IExporterService
+public class CsvExporterStrategy : ExporterStrategy
 {
-    private string _exportDirectory;
-    
-    public CsvExporterStrategy(string exportDirectory)
+    public CsvExporterStrategy(string exportDirectory) : base(exportDirectory)
     {
-        _exportDirectory = exportDirectory;
     }
     
-    public string Export(IList<string> exportData)
+    public override string ConvertStringListToFile(IList<string> exportData, string exportDirectory)
     {
-        string fullPath = _exportDirectory + Guid.NewGuid() + ".csv";
+        string fullPath = exportDirectory + Guid.NewGuid() + ".csv";
         return fullPath;
     }
 }

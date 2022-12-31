@@ -20,6 +20,7 @@
 |v0.4|H2, H3|Thomas Hofman|30-12-2022|
 |v0.5|H4|Thomas Hofman|31-12-2022|
 |v0.5|H6|Thomas Hofman|31-12-2022|
+|v0.6|H5.3.1, H5.4.1, H5.2|Thomas Hofman|31-12-2022|
 
 # Inhoudsopgave
 
@@ -626,14 +627,126 @@ een variatie aan principes en patterns op correcte en onderbouwde manier toegepa
 
 ### 5.4.1. Design
 
+```mermaid
+sequenceDiagram
+    autonumber
+    Client->>LesMateriaalExporter: ExportLesMateriaal(ExportFormaat.Pdf, LesMateriaal)
+    activate LesMateriaalExporter
+    LesMateriaalExporter->>ExporterFactory: factory : IExporterFactory = ExporterFactory()
+    LesMateriaalExporter->>ExporterFactory: ChooseExportType(ExportFormaat.Pdf)
+    
+    ExporterFactory->>PdfExporterStrategy: _exporterStrategy = PdfExporterStrategy(_exportDirectory)
+    PdfExporterStrategy->>ExporterStrategy: ExportStrategy(_exportDirectory)
+
+    LesMateriaalExporter->>LesMateriaal: lesMateriaalLines = Inhoud
+
+    LesMateriaalExporter->>ExporterFactory: result = Export(lesMateriaalLines)
+
+    ExporterFactory->>ExporterStrategy: result = Export(exportData)
+
+    ExporterStrategy->>System.IO.Directory: exists : bool = Exists(_exportDirectory)
+
+    alt exists == true
+    ExporterStrategy->>System.IO.Directory: CreateDirectory(_exportDirectory)
+    end
+
+    ExporterStrategy->>PdfExporterStrategy: filePath : string = ConvertStringListToFile(exportData, _exportDirectory)
+
+    ExporterStrategy->>System.IO.File: fileBytes : bytes[] = ReadAllBytes(filePath)
+
+    ExporterStrategy->>CustomFile: result = CustomerFile("application/octet-stream", filePath, fileBytes)
+
+    ExporterStrategy-->>ExporterFactory: result
+
+    ExporterFactory-->> LesMateriaalExporter: result
+
+    LesMateriaalExporter-->>Client: result
+```
+
+```mermaid
+classDiagram
+
+    class LesMateriaalExporter {
+        + CustomFile ExportLesMateriaal(formaat : ExportFormaat, lesMateriaal : LesMateriaal)
+    }
+    LesMateriaalExporter -- ExportFormaat
+    LesMateriaalExporter -- LesMateriaal
+    LesMateriaalExporter -- IExporterFactory
+    LesMateriaalExporter --|> ILesMateriaalExporter
+
+    
+    class ExporterFactory {
+        - _exportDirectory : string = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Files/")
+        - _exporterStrategy : ExporterStrategy
+        + void ChooseExporterType(type : ExportFormaat)
+        + CustomFile Export(exportData : IList<string>)
+    }
+
+    ExporterFactory --|> IExporterFactory
+    ExporterFactory -- ExportFormaat
+    ExporterFactory -- ExporterStrategy
+    ExporterFactory -- CsvExporterStrategy
+    ExporterFactory -- PdfExporterStrategy
+    ExporterFactory -- DocxExporterStrategy
+
+    class ExporterStrategy {
+        - _exportDirectory : string
+        + ExporterStrategy(exportDirectory : string)
+        + CustomFile Export(exportData : IList<string>)
+        + ConvertStringListToFile(exportData : IList<string>, exportDirectory : string) 
+    }
+    <<Abstract>> ExporterStrategy
+    ExporterStrategy -- CustomFile
+
+    class CustomFile {
+        + FileContents : byte[]
+        + ContentType : string
+        + FileName : string
+    }
+
+    class CsvExporterStrategy {
+        - _exporterDirectory : string
+        + CsvExporterStrategy(exportDirectory : string)
+    }
+    CsvExporterStrategy --|> ExporterStrategy
+
+    class DocxExporterStrategy {
+        - _exporterDirectory : string
+        + DocxExporterStrategy(exportDirectory : string)
+    }
+    DocxExporterStrategy --|> ExporterStrategy
+
+    class PdfExporterStrategy {
+        - _exporterDirectory : string
+        + PdfExporterStrategy(exportDirectory : string)
+    }
+    PdfExporterStrategy --|> ExporterStrategy
+    PdfExporterStrategy -- IHtmlConverter
+
+    class HtmlConverter {
+        + string ConvertStringListToHtml(lines : IList<string>)
+    }
+    HtmlConverter --|> IHtmlConverter
+
+    ExportFormaat
+    <<Enumeration>> ExportFormaat
+    IHtmlConverter
+    <<Interface>> IHtmlConverter
+    <<Interface>> ILesMateriaalExporter
+    <<Interface>> IExporterFactory
+```
+
 ### 5.4.2. Toelichting
+
+- Extra project aangemaakt want herbruikbaar
+- strategy & factory pattern
+- 2 libraries toegevoegd.
 
 ---
 :warning: **_NOTE:_**
 Toelichten van gebruikte GoF patterns, SOLID principes & GRASP principes.
 
 ---
-
 
 # 6. Overige
 

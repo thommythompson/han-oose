@@ -1,57 +1,61 @@
+using System.Diagnostics.CodeAnalysis;
+using System.Transactions;
 using HAN.ICDETool.ExporterService.ExportStrategies;
+using HAN.ICDETool.Services.Interfaces;
 
 namespace HAN.ICDETool.Tests.Unit;
 
 public class TestExporterService
 {
-    private ExporterFactory _exporterFactory;
-    
+
     [SetUp]
     public void Setup()
     {
-        _exporterFactory = new ExporterFactory();
     }
 
     [Test]
     [Ignore("Dependecies not available at MacOS ARM")]
-    public void TestPdfExporter()
+    public void TestStrategyPdf()
     {
-        IExporterService exporterService = _exporterFactory.createExporter(ExporterType.PdfExporter, "/Users/thomashofman/Downloads/");
-
+        IExporterFactory exporterFactory = new ExporterFactory();
+        exporterFactory.ChooseExportType(ExportFormaat.Pdf);
+        
         IList<String> exportData = new List<String>();
         exportData.Add("test");
 
-        String path = exporterService.Export(exportData);
-        
-        Assert.That(exporterService, Is.TypeOf<PdfExporterStrategy>());
-        Assert.That(path, Contains.Substring("/Users/thomashofman/Downloads/"));
+        var file = exporterFactory.Export(exportData);
+
+        Assert.NotNull(file.FileContents);
+        Assert.That(file.FileName, Contains.Substring(".pdf"));
     }
     
     [Test]
-    public void TestCsvExporter()
+    public void TestStrategyCsv()
     {
-        IExporterService exporterService = _exporterFactory.createExporter(ExporterType.CsvExporter, "/Users/thomashofman/Downloads/");
-
+        IExporterFactory exporterFactory = new ExporterFactory();
+        exporterFactory.ChooseExportType(ExportFormaat.Csv);
+        
         IList<String> exportData = new List<String>();
         exportData.Add("test");
 
-        String path = exporterService.Export(exportData);
-        
-        Assert.That(exporterService, Is.TypeOf<CsvExporterStrategy>());
-        Assert.That(path, Contains.Substring("/Users/thomashofman/Downloads/"));
+        var file = exporterFactory.Export(exportData);
+
+        Assert.NotNull(file.FileContents);
+        Assert.That(file.FileName, Contains.Substring(".csv"));
     }
     
     [Test]
-    public void TestDocxExporter()
+    public void TestStrategyDocx()
     {
-        IExporterService exporterService = _exporterFactory.createExporter(ExporterType.DocxExporter, "/Users/thomashofman/Downloads/");
+        IExporterFactory exporterFactory = new ExporterFactory();
+        exporterFactory.ChooseExportType(ExportFormaat.Docx);
         
         IList<String> exportData = new List<String>();
         exportData.Add("test");
 
-        String path = exporterService.Export(exportData);
-        
-        Assert.That(exporterService, Is.TypeOf<DocxExporterStrategy>());
-        Assert.That(path, Contains.Substring("/Users/thomashofman/Downloads/"));
+        var file = exporterFactory.Export(exportData);
+
+        Assert.NotNull(file.FileContents);
+        Assert.That(file.FileName, Contains.Substring(".docx"));
     }
 }

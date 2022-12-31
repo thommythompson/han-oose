@@ -2,18 +2,15 @@ using Xceed.Words.NET;
 
 namespace HAN.ICDETool.ExporterService.ExportStrategies;
 
-public class DocxExporterStrategy : IExporterService
+public class DocxExporterStrategy : ExporterStrategy
 {
-    private string _exportDirectory;
-    
-    public DocxExporterStrategy(string exportDirectory)
+    public DocxExporterStrategy(string exportDirectory) : base(exportDirectory)
     {
-        _exportDirectory = exportDirectory;
     }
     
-    public string Export(IList<String> exportData)
+    public override string ConvertStringListToFile(IList<string> exportData, string exportDirectory)
     {
-        string fullPath = _exportDirectory + Guid.NewGuid() + ".docx";
+        string fullPath = exportDirectory + Guid.NewGuid() + ".docx";
         
         var document = DocX.Create(fullPath);
         
