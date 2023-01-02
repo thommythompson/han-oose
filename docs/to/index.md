@@ -21,6 +21,7 @@
 |v0.5|H4|Thomas Hofman|31-12-2022|
 |v0.5|H6|Thomas Hofman|31-12-2022|
 |v0.6|H5.3.1, H5.4.1, H5.2|Thomas Hofman|31-12-2022|
+|v0.6|H5.1|Thomas Hofman|2-01-2023|
 
 # Inhoudsopgave
 
@@ -36,6 +37,7 @@
 4. [Technische keuzes](#4-technische-keuzes)
 5. [Design](#5-design) </br>
     5.1. [Api, Repository & Service Design](#51-api-repository--service-design) </br>
+        5.1.1. [Toelichting](#511-toelichting) </br>
     5.2. [Domein Design](#52-domein-design) </br>
         5.2.1. [Toelichting](#521-toelichting) </br>
         5.2.2. [Domein consistentie/inconsistentie](#522-domein-consistentieinconsistentie) </br>
@@ -175,11 +177,83 @@ Het project zal geprogrammeerd worden in de laatste versie van C#, C# 10. C# is 
 ```mermaid
 classDiagram
 
-class BaseController
-class BaseService
-class BaseRepository
+class BaseController~TEntity, TRequestDto, TResponseDto, IEntityService~ {
+    - _service : IEntityService~TEntity, TRequestDto, TResponseDto~
+    - _logger : ILogger~BaseController~TEntity, TRequestDto, TResponseDto, IEntityService~~
+    - _mapper : IMapper
+    + BaseController(service : IEntityService~TEntity, TRequestDto, TResponseDto~, logger, ILogger~BaseController~TEntity, TRequestDto, TResponseDto, IEntityService~~, mapper : IMapper )
+    + Task<IActionResult> Get(cancellationToken : CancellationToken)
+    + Task<IActionResult> Get(id : int, cancellationToken : CancellationToken)
+    + Task<IActionResult> Create(entity : TRequestDto, cancellationToken : CancellationToken)
+    + Task<IActionResult> Update(id : int, entity : TRequestDto, cancellationToken : CancellationToken)
+    + Task<IActionResult> Delete(id : int, cancellationToken : CancellationToken)
+}
+<<Abstract>> BaseController
+BaseController --> IEntityService
 
+class IEntityService {
+    + Task<TReponseDto> Create(entity : TRequestDto,  cancellationToken : CancellationToken)
+    + Task<IEnumerable<TReponseDto>> Read(cancellationToken : CancellationToken);
+    + Task<TReponseDto> Read(id : int, cancellationToken : CancellationToken);
+    + Task<TReponseDto> Update(id : int, entity : TRequestDto, cancellationToken : CancellationToken);
+    + Task Delete(id : int, cancellationToken : CancellationToken);
+}
+<<Interface>> IEntityService
+
+class BaseEntityService {
+    - _repository : IRepository~TEntity~
+    - _logger : ILogger~BaseEntityService~TEntity, TRequestDto, TReponseDto~~
+    - _mapper : IMapper
+    + BaseEntityService(repository : IRepository~TEntity~, logger : ILogger~BaseEntityService~TEntity, TRequestDto, TReponseDto~~, mapper : IMapper)
+}
+<<Abstract>> BaseEntityService
+BaseEntityService --|> IEntityService
+BaseEntityService --> IRepository
+
+class IRepository~T~
+<<Interface>> IRepository
+class RepositoryBase~T~
+<<Abstract>> RepositoryBase
+class ICDERepository~T~ {
+    - _dbContext : ICDEContext
+    + ICDERepository(dbContext : ICDEContext)
+}
+ICDERepository --|> RepositoryBase
+ICDERepository --|> IRepository
+ICDERepository --> ICDEContext
+
+class IdentityDbContext~IdentityUser<int>, IdentityRol<int>, int~
+
+class ICDEContext {
+    - _configuration : IConfiguration
+    - _connectionString : string
+    + LesInrichting : DbSet<LesInrichting>  
+    + LesMateriaal  : DbSet<LesMateriaal> 
+    + CourseWeekInrichting : DbSet<CourseWeekInrichting> 
+    + TentamenUitvoering : DbSet<TentamenUitvoering>  
+    + Rubric : DbSet<Rubric>  
+    + OpleidingsProfiel  : DbSet<OpleidingsProfiel> 
+    + Opleiding  : DbSet<Opleiding> 
+    + Locatie  : DbSet<Locatie> 
+    + LesUitvoering  : DbSet<LesUitvoering> 
+    + Leeruitkomst  : DbSet<Leeruitkomst> 
+    + Leerdoel  : DbSet<Leerdoel> 
+    + Klas : DbSet<Klas> 
+    + EenheidVanLeeruitkomsten  : DbSet<EenheidVanLeeruitkomsten> 
+    + CourseWeekUitvoering  : DbSet<CourseWeekUitvoering> 
+    + CourseUitvoering  : DbSet<CourseUitvoering> 
+    + CourseInrichting  : DbSet<CourseInrichting> 
+    + BeroepsProduct  : DbSet<BeroepsProduct> 
+    + SchriftelijkeToets : DbSet<SchriftelijkeToets>  
+    + BeoordelingsCriteria : DbSet<BeoordelingsCriteria> 
+    + Beoordeling  : DbSet<Beoordeling> 
+    + Adres  : DbSet<Adres> 
+    + ICDEContext(configuration : IConfiguration )
+}
+ICDEContext --|> IdentityDbContext
 ```
+
+## 5.1.1 Toelichting
 
 ## 5.2. Domein Design
 
