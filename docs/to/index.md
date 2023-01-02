@@ -20,7 +20,7 @@
 |v0.4|H2, H3|Thomas Hofman|30-12-2022|
 |v0.5|H4|Thomas Hofman|31-12-2022|
 |v0.5|H6|Thomas Hofman|31-12-2022|
-|v0.6|H5.3.1, H5.4.1, H5.2|Thomas Hofman|31-12-2022|
+|v0.6|H5.3, H5.4, H5.2|Thomas Hofman|31-12-2022|
 |v0.6|H5.1|Thomas Hofman|2-01-2023|
 
 # Inhoudsopgave
@@ -40,12 +40,9 @@
         5.1.1. [Toelichting](#511-toelichting) </br>
     5.2. [Domein Design](#52-domein-design) </br>
         5.2.1. [Toelichting](#521-toelichting) </br>
-        5.2.2. [Domein consistentie/inconsistentie](#522-domein-consistentieinconsistentie) </br>
     5.3. [UC15 - Start uitvoering](#53-uc-15-start-uitvoering) </br>
-        5.3.1. [Design](#531-design) </br>
         5.3.2. [Toelichting](#532-toelichting) </br>
     5.4. [UC-18 Exporteer Informatie](#54-uc-18-exporteer-informatie) </br>
-        5.4.1. [Design](#541-design) </br>
         5.4.2. [Toelichting](#542-toelichting) </br>
 6. [Overige](#6-overige) </br>
     6.1. [Versiebeheer](#61-versiebeheer) </br>
@@ -177,6 +174,15 @@ Het project zal geprogrammeerd worden in de laatste versie van C#, C# 10. C# is 
 ```mermaid
 classDiagram
 
+class IEntityService~TEntity, TRequestDto, TReponseDto~ {
+    + Task<TReponseDto> Create(entity : TRequestDto,  cancellationToken : CancellationToken)
+    + Task<IEnumerable<TReponseDto>> Read(cancellationToken : CancellationToken);
+    + Task<TReponseDto> Read(id : int, cancellationToken : CancellationToken);
+    + Task<TReponseDto> Update(id : int, entity : TRequestDto, cancellationToken : CancellationToken);
+    + Task Delete(id : int, cancellationToken : CancellationToken);
+}
+<<Interface>> IEntityService
+
 class BaseController~TEntity, TRequestDto, TResponseDto, IEntityService~ {
     - _service : IEntityService~TEntity, TRequestDto, TResponseDto~
     - _logger : ILogger~BaseController~TEntity, TRequestDto, TResponseDto, IEntityService~~
@@ -191,16 +197,10 @@ class BaseController~TEntity, TRequestDto, TResponseDto, IEntityService~ {
 <<Abstract>> BaseController
 BaseController --> IEntityService
 
-class IEntityService {
-    + Task<TReponseDto> Create(entity : TRequestDto,  cancellationToken : CancellationToken)
-    + Task<IEnumerable<TReponseDto>> Read(cancellationToken : CancellationToken);
-    + Task<TReponseDto> Read(id : int, cancellationToken : CancellationToken);
-    + Task<TReponseDto> Update(id : int, entity : TRequestDto, cancellationToken : CancellationToken);
-    + Task Delete(id : int, cancellationToken : CancellationToken);
-}
-<<Interface>> IEntityService
+class IRepository~T~
+<<Interface>> IRepository
 
-class BaseEntityService {
+class BaseEntityService~TEntity, TRequestDto, TReponseDto~ {
     - _repository : IRepository~TEntity~
     - _logger : ILogger~BaseEntityService~TEntity, TRequestDto, TReponseDto~~
     - _mapper : IMapper
@@ -210,8 +210,7 @@ class BaseEntityService {
 BaseEntityService --|> IEntityService
 BaseEntityService --> IRepository
 
-class IRepository~T~
-<<Interface>> IRepository
+
 class RepositoryBase~T~
 <<Abstract>> RepositoryBase
 class ICDERepository~T~ {
@@ -254,6 +253,14 @@ ICDEContext --|> IdentityDbContext
 ```
 
 ## 5.1.1 Toelichting
+
+Binnen ons domein model zijn er veel entiteiten waarvoor create, read, update en delete (CRUD) acties uitgevoerd moeten worden. Deze implementaties zijn voor vrijwel alle entiteiten hetzelfde, om deze reden zijn er controller en service base classes gemaakt zodat deze zelfde implementatie net steeds voor iedere entiteit gecodeerd hoeft te worden, de constructie werkt als volgt:
+
+De BaseController ontvangt een aantal generics, de TEntity, TRequestDto en TReponseDto generic parameters die de controller ontvangt worden gebruikt om de response en request data types te bepalen en om de juiste entity service te betrekken, de IEntityService verwacht deze generic parameters namelijk ook.  
+
+De TRequestDto bevat alleen de attributen die schrijfbaar zijn en worden gebruik voor de create en update functionaliteit, deze dto bevat bijvoorbeeld geen id want deze word automatisch bepaald. De TRepsonseDto bevat alle attributen die als antwoord terug gegeven worden bij een create read of update verzoek, een delete verzoek geeft geen antwoord terug.
+
+De entity service vereist naast de eerder benoemde parameters ook een IRepository parameter, deze IRepository interface is afkomstig uit de Ardalis.Specifiction package en maar het mogelijk om middels generics een entity repository te specificeren, dit is essentieel wanneer je middels generics de repository voor een specifieke entiteit wil afdwingen. De entity service is verantwoordelijk voor het ophalen/muteren van de data en de mapping tussen de DTO's en de daadwerkelijke entiteit typen uit te voeren, hiervoor krijgt de entity service een AutoMapper (IMapper) mee in de constructor. 
 
 ## 5.2. Domein Design
 
@@ -544,48 +551,14 @@ class Validator{
 
 ```
 
----
-:warning: **_CRITERIA:_**
-Correct toepassen standaard notatie en het diagram moet de volledig requirements afdekken.
-
----
-
 ### 5.2.1 Toelichting
-
----
-:warning: **_CRITERIA:_**
-Minimaal 1 extra diagram (geen class diagram) opnemen, diverse modellen vereist voor een 8
-
----
-
-### 5.2.2. Domein consistentie/inconsistentie
 
 - additionele interfaces
 - course bieb is weg
 - ef core constructor
 - persoon weg
-  
----
-:warning: **_CRITERIA:_**
-Zowel inconsistenties als consistenties benoemd, inconsistenties volledig van relevante, onderbouwde verbetervoorstellen voorzien voor een 10
-
----
 
 ## 5.3 UC-15 Start Uitvoering
-
----
-:warning: **_CRITERIA:_**
-Ontwerp problemen identificeren en ontwerp keuzes onderbouwen met relevant alternatieven en overwegingen voor een 10
-
----
-
----
-:warning: **_NOTE:_**
-een variatie aan principes en patterns op correcte en onderbouwde manier toegepast voor een 10
-
----
-
-### 5.3.1. Design
 
 ```mermaid
 sequenceDiagram
@@ -669,12 +642,6 @@ classDiagram
     TentamenUitvoering "1..*" o--> "1" CourseWeekUitvoering
 ```
 
----
-:warning: **_NOTE:_**
-Class Diagram en/of sequence diagram toegespitst op de use case.
-
----
-
 ### 5.3.2. Toelichting
 
 ---
@@ -686,20 +653,6 @@ Toelichten van gebruikte GoF patterns, SOLID principes & GRASP principes.
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
 ## 5.4 UC-18 Exporteer Informatie
-
----
-:warning: **_CRITERIA:_**
-Ontwerp problemen identificeren en ontwerp keuzes onderbouwen met relevant alternatieven en overwegingen voor een 10
-
----
-
----
-:warning: **_NOTE:_**
-een variatie aan principes en patterns op correcte en onderbouwde manier toegepast voor een 10
-
----
-
-### 5.4.1. Design
 
 ```mermaid
 sequenceDiagram
