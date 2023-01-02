@@ -41,9 +41,9 @@
     5.2. [Domein Design](#52-domein-design) </br>
         5.2.1. [Toelichting](#521-toelichting) </br>
     5.3. [UC15 - Start uitvoering](#53-uc-15-start-uitvoering) </br>
-        5.3.2. [Toelichting](#532-toelichting) </br>
+        5.3.1. [Toelichting](#531-toelichting) </br>
     5.4. [UC-18 Exporteer Informatie](#54-uc-18-exporteer-informatie) </br>
-        5.4.2. [Toelichting](#542-toelichting) </br>
+        5.4.1. [Toelichting](#541-toelichting) </br>
 6. [Overige](#6-overige) </br>
     6.1. [Versiebeheer](#61-versiebeheer) </br>
     6.2. [Build Management (CI/CD)](#62-build-management-cicd) </br>
@@ -494,7 +494,7 @@ class Persoon {
     + Voornaam : string
     + Achternaam : string
 }
-Persoon "*" --> "0..1" OpleidingsProfile : VolgtProfiel
+Persoon "*" --> "0..1" OpleidingsProfiel : VolgtProfiel
 Persoon "*" --> "0..1" CourseUitvoering : VolgtCourse
 
 class Rubric {
@@ -553,10 +553,12 @@ class Validator{
 
 ### 5.2.1 Toelichting
 
-- additionele interfaces
-- course bieb is weg
-- ef core constructor
-- persoon weg
+Het class model dat de domein laag representeert is grote lijnen gelijk aan het domein model dat eerder opgesteld is in het functioneel ontwerp. Er zijn echter een aantal uitzonderingen gemaakt, deze wijzigingen komen voornamelijk voort uit nieuwe inzichten, behoefte aan technische eenvoudig of het conformeren aan technisch frameworks, de volgende wijzigingen zijn aangebracht ten opzichte van het originele domein model:
+
+- De CourseBibliotheek is verwijderd uit het model, dit is gedaan omdat de course bibliotheek een 1:1 relatie had met de database, per database zal er altijd een course bibliotheek bestaan, dit maakt deze entiteit overbodig.
+- De Docent en Student concepten zijn achterwegen gelaten, bij het gebruik van het Identity Framework (voor authenticatie en autorisatie) bleek dat het slechts mogelijk was om een enkele identity class te specificeren. In het domein model is eerder de generalisatie "Persoon" geconstateerd, de Persoon class is daarom als identity class verkozen en de Docent en Persoon classes zijn achterwege gelaten. Daarmee valt wel te constateren dat de domein laag niet 100% onafhankelijk is van de technische implementatie.
+- Aan het model zijn verschillende tijddefinities toegevoegd (Periode & Semester) deze tijddefinities fungeren als constanten, het zijn data types met vooraf gedefinieerde waardes.
+- Wanneer een constructor gedefinieerd word zal entity framework deze constructor gebruiken om de class te instantieren. Entity framework ondersteund alleen primitieve types in de constructor, om deze reden is er bij classes die een constructor met primitieve types bevatten een extra private constructor toegevoegd met alleen primitieve types. Entity framework zal deze constructor gebruiken achteraf de waardes van de andere attributen bepalen.
 
 ## 5.3 UC-15 Start Uitvoering
 
@@ -642,7 +644,7 @@ classDiagram
     TentamenUitvoering "1..*" o--> "1" CourseWeekUitvoering
 ```
 
-### 5.3.2. Toelichting
+### 5.3.1. Toelichting
 
 ---
 :warning: **_NOTE:_**
@@ -763,7 +765,7 @@ classDiagram
     <<Interface>> IExporterFactory
 ```
 
-### 5.4.2. Toelichting
+### 5.4.1. Toelichting
 
 - Extra project aangemaakt want herbruikbaar
 - strategy & factory pattern
