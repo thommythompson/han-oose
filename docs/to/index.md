@@ -21,7 +21,8 @@
 |v0.5|H4|Thomas Hofman|31-12-2022|
 |v0.5|H6|Thomas Hofman|31-12-2022|
 |v0.6|H5.3, H5.4, H5.2|Thomas Hofman|31-12-2022|
-|v0.6|H5.1|Thomas Hofman|2-01-2023|
+|v0.7|H5.1, H5.1.1|Thomas Hofman|02-01-2023|
+|v0.8|H5.3.1, H5.4.1|Thomas Hofman|03-01-2023|
 
 # Inhoudsopgave
 
@@ -575,17 +576,15 @@ sequenceDiagram
     
     loop week in CourseInrichting.Planning.Weken
         CourseUitvoering->>CourseWeekUitvoering: weekUitvoering = CourseWeekUitvoering(week, StartDate)
-        CourseUitvoering->>CourseUitvoering: Weken.Add(weekUitvoering)
-        deactivate CourseUitvoering
 
         activate CourseWeekUitvoering
 
         CourseWeekUitvoering->>CourseWeekUitvoering: creeerTentamen()
-        loop schriftelijkeToets in CourseWeekInrichitng.SchiftelijkeToets
+        loop schriftelijkeToets in CourseWeekInrichting.SchriftelijkeToets
             CourseWeekUitvoering ->> TentamenUitvoering: tentamenUitvoering = TentamenUitvoering(schriftelijkeToets)
             CourseWeekUitvoering->>CourseWeekUitvoering: _tentamen.Add(tentamenUitvoering)
         end
-        loop beroepsProduct in CourseWeekInrichitng.Beroepsproduct
+        loop beroepsProduct in CourseWeekInrichting.Beroepsproduct
             CourseWeekUitvoering ->> TentamenUitvoering: tentamenUitvoering = TentamenUitvoering(beroepsProduct)
             CourseWeekUitvoering->>CourseWeekUitvoering: _tentamen.Add(tentamenUitvoering)
         end
@@ -595,6 +594,9 @@ sequenceDiagram
             CourseWeekUitvoering->>LesUitvoering: lesUitvoering = new LesUitvoering(les);
             CourseWeekUitvoering->>CourseWeekUitvoering: _les.Add(lesUitvoering)
         end
+
+        CourseUitvoering->>CourseUitvoering: Weken.Add(weekUitvoering)
+        deactivate CourseUitvoering
 
     end
     deactivate CourseWeekUitvoering
@@ -645,6 +647,19 @@ classDiagram
 ```
 
 ### 5.3.1. Toelichting
+
+Deze use case richt zich op het starten van een vooraf ingerichte en als defintief bestempelde course binnen het domein ook wel course inrichting genoemd. Bij het starten van deze course zijn er een aantal entiteiten die geinstantieert moeten worden, een course inrichting bevat namelijk een planning bestaande uit weken met tentamen en lessen die in deze weken gepland zijn. Een inrichting kan meerdere malen (of helemaal niet) uitgevoerd worden en een uitvoering bevat data gerelateerd aan deze specifieke uitvoering.
+
+De methodes zijn toegewezen op basis van het creator en information expert pricipe, deze principes zijn onderdeel van de GRASP Patterns. Het information expert pricipe defineert dat een verantwoordelijk (methode) toegewezen moet worden aan de class die de informatie bezit om deze verantwoordelijkheid uit te voeren. Het creator principe defineert dat een class de verantwoordelijk moeten krijgen om een andere class aan te maken wanneer:
+
+1. De aan te maken class onderdeel is van deze class.
+2. De aan te maken class gemonitord word door deze class.
+3. De aan te maken class nauw gebruikt word door deze class.
+4. De class van de informatie voorzien is om de aan te maken class te instantieren. (information expert)
+
+In dit geval gaat het om de creatie van child objecten, een course bevat een planning met weken, deze weken bevatten tentamens of lessen. In de constructor van het nieuwe object wordt de bijhorende inrichting als parameter meegegeven, vervolgens worden in de constructor methodes aangeroepen om de child object (indien deze er zijn) aan te maken. 
+
+Er is niet gekozen om gebruik te maken van een van de GoF patterns omdat dit niet benodigd was aangezien er geschikte kanditaten om de benodigde methodes aan toe te wijzen al aanwezig waren.
 
 ---
 :warning: **_NOTE:_**
@@ -702,21 +717,26 @@ classDiagram
     LesMateriaalExporter -- LesMateriaal
     LesMateriaalExporter -- IExporterFactory
     LesMateriaalExporter --|> ILesMateriaalExporter
-
+    LesMateriaalExporter -- CustomFile
     
+    class IExporterStrategy {
+        + CustomFile Export(exportData : IList<string>)
+    }
+    <<Interface>> IExporterStrategy
+
     class ExporterFactory {
         - _exportDirectory : string = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Files/")
         - _exporterStrategy : ExporterStrategy
         + void ChooseExporterType(type : ExportFormaat)
         + CustomFile Export(exportData : IList<string>)
     }
-
     ExporterFactory --|> IExporterFactory
     ExporterFactory -- ExportFormaat
-    ExporterFactory -- ExporterStrategy
     ExporterFactory -- CsvExporterStrategy
     ExporterFactory -- PdfExporterStrategy
     ExporterFactory -- DocxExporterStrategy
+    ExporterFactory -- CustomFile
+    ExporterFactory -- IExporterStrategy
 
     class ExporterStrategy {
         - _exportDirectory : string
@@ -725,6 +745,7 @@ classDiagram
         + ConvertStringListToFile(exportData : IList<string>, exportDirectory : string) 
     }
     <<Abstract>> ExporterStrategy
+    ExporterStrategy --|> IExporterStrategy
     ExporterStrategy -- CustomFile
 
     class CustomFile {
@@ -767,15 +788,24 @@ classDiagram
 
 ### 5.4.1. Toelichting
 
-- Extra project aangemaakt want herbruikbaar
-- strategy & factory pattern
-- 2 libraries toegevoegd.
+Het doel van deze use case is om gebruiker in staat te stellen om lesmateriaal te exporteren in een csv, pdf of docx formaat. Deze export service is onder gebracht in een apart project zodat deze eventueel in andere oplossingen hergebruikt kan worden. Er is hier een combinatie van verschillende patronen gebruikt, deze zal ik in onderstaande toelichten.
 
----
-:warning: **_NOTE:_**
-Toelichten van gebruikte GoF patterns, SOLID principes & GRASP principes.
+Te beginnen met de LesMateriaalExporter class, deze class implementeert de ILesMateriaalExporter interface afkomstig uit het service project. De LesMateriaalExporter class functioneert als een wrapper om de export functionaliteit en zorgt ervoor dat de implementatie zich conformeert aan de interface die in de service laag gespecificeerd wordt. Door de interface onder te brengen in de service laag en hieraan te conformeren word de afhankelijkheid omgedraaid (dependency inversion).
 
----
+De LesMateriaalExporter class heeft een ExportLesMateriaal methode, deze methode ontvangt als parameters een export formaat (csv, pdf of docx) en het daadwerkelijk lesmateriaal dat geëxporteerd moet worden. En de methode zal eerst een factory gemaakt worden, deze factory heeft een methode (Factory Method) die op basis van het gekozen formaat de bijhorende export class kan instantieren. Deze export classes zijn verschillende strategieën, die allemaal overerven van dezelfde abstract class, namelijk de  ExporterStrategy class. Deze abstract class bevat een Export methode die een list van strings als parameter ontvangt en een instantie van de CustomFile class terug geeft, deze CustomFile class bevat onder andere een byte array, de file.
+
+De Export methode is een template methode, het bevat de standaard functionaliteit om de map waar de export files in terecht komen aan te maken indien deze nog niet bestaat en bevat de functionaliteit om de CustomFile te instantieren. De Export class roept een abstracte methode aan die geïmplementeerd zal moeten worden de verschillende strategieën (Strategy Pattern). Dit is de ConvertStringListToFile methode, deze methode vereist dat een string terug gegeven word, deze string representeert het pad naar de exporteerde file. Dit zodat de standaard Export functionaliteit de bytes van deze file kan ophalen om vervolgens de CustomFile class te instantieren.
+
+Het daadwerkelijk exporteren naar het gewenste format gebeurd in de strategie die door de factory aangemaakt is, deze strategy implementeert de ConvertStringListToFile methode. Het daadwerkelijk exporteren word in het geval van de pdf en docx strategieën overgelaten aan externe libraries zodat deze logica niet zelf ontwikkelt hoeft te worden, dit libraries die hiervoor gebruikt zijn zijn de DocX en IronPdf libraries. Een CSV is een "comma separated file", deze bestaat uit meerder regels meer door komma's gesepareerde text, elke regel staat voor een rij, elke komma voor een kolom. Deze implementatie is eenvoudig zelf te verwezenlijken, een library is dan ook niet benodigd. 
+
+De DocX library bevat methodes om de opmaak van het bestand te manipuleren, de IronPdf library verwacht als input een HTML formaat. Om deze reden is er een HTMLConvert class aangemaakt met een ConvertStringListToHtml methode die de conversie uit voert.
+
+De maakt gebruik van onderstaande architectuur en design patterns om tegemoet te komen aan alle SOLID principes:
+
+- Dependency Inversion
+- Factory Method (GoF)
+- Strategy Pattern (GoF)
+- Template Method (GoF)
 
 # 6. Overige
 
