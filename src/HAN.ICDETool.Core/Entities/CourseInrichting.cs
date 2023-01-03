@@ -14,20 +14,20 @@ public class CourseInrichting : BaseEntity
     public bool IsDefintief { get; private set; } = false;
     public DateTimeOffset AanmaakDatum { get;  } = DateTimeOffset.Now;
     [BackingField(nameof(_evls))]
-    public IEnumerable<EenheidVanLeeruitkomsten>? Evls { get => _evls; }
-    private IList<EenheidVanLeeruitkomsten>? _evls { get; } = new List<EenheidVanLeeruitkomsten>();
+    public IReadOnlyList<EenheidVanLeeruitkomsten>? Evls { get => _evls; }
+    private List<EenheidVanLeeruitkomsten>? _evls { get; } = new List<EenheidVanLeeruitkomsten>();
     [BackingField(nameof(_beroepsProducten))]
-    public IEnumerable<BeroepsProduct>? BeroepsProducten { get => _beroepsProducten; }
-    private IList<BeroepsProduct>? _beroepsProducten { get; } = new List<BeroepsProduct>();
+    public IReadOnlyList<BeroepsProduct>? BeroepsProducten { get => _beroepsProducten; }
+    private List<BeroepsProduct>? _beroepsProducten { get; } = new List<BeroepsProduct>();
     [BackingField(nameof(_toetsen))]
-    public IEnumerable<SchriftelijkeToets>? Toetsen { get => _toetsen; }
-    private IList<SchriftelijkeToets>? _toetsen { get; } = new List<SchriftelijkeToets>();
+    public IReadOnlyList<SchriftelijkeToets>? Toetsen { get => _toetsen; }
+    private List<SchriftelijkeToets>? _toetsen { get; } = new List<SchriftelijkeToets>();
     [BackingField(nameof(_lessen))]
-    public IEnumerable<LesInrichting>? Lessen { get => _lessen; } 
-    private IList<LesInrichting>? _lessen { get; } = new List<LesInrichting>();
+    public IReadOnlyList<LesInrichting>? Lessen { get => _lessen; } 
+    private List<LesInrichting>? _lessen { get; } = new List<LesInrichting>();
     [BackingField(nameof(_courseUitvoeringen))]
-    public IEnumerable<CourseUitvoering>? CourseUitvoeringen { get => _courseUitvoeringen; } 
-    private IList<CourseUitvoering>? _courseUitvoeringen { get; } = new List<CourseUitvoering>();
+    public IReadOnlyList<CourseUitvoering>? CourseUitvoeringen { get => _courseUitvoeringen; } 
+    private List<CourseUitvoering>? _courseUitvoeringen { get; } = new List<CourseUitvoering>();
 
 
     // EF Core constructor: EF Core does not support navigation types in the constructor

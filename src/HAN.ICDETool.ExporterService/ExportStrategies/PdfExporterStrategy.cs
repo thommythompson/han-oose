@@ -4,16 +4,13 @@ using IronPdf;
 
 namespace HAN.ICDETool.ExporterService.ExportStrategies;
 
-public class PdfExporterStrategy : IExporterService
+public class PdfExporterStrategy : ExporterStrategy
 {
-    private string _exportDirectory;
-    
-    public PdfExporterStrategy(string exportDirectory)
+    public PdfExporterStrategy(string exportDirectory) : base(exportDirectory)
     {
-        _exportDirectory = exportDirectory;
     }
-    
-    public string Export(IList<String> exportData)
+
+    public override string ConvertStringListToFile(IList<string> exportData, string exportDirectory)
     {
         IHTMLConverter converter = new HTMLConverter();
         String html = converter.ConvertStringListToHtml(exportData);
@@ -21,7 +18,7 @@ public class PdfExporterStrategy : IExporterService
         ChromePdfRenderer Renderer = new ChromePdfRenderer(); // Instantiates Chrome Renderer
         var pdf = Renderer.RenderHtmlAsPdf(html);
 
-        string fullPath = _exportDirectory + Guid.NewGuid() + ".pdf";
+        string fullPath = exportDirectory + Guid.NewGuid() + ".pdf";
         pdf.SaveAs(fullPath); // Saves our PdfDocument object as a PDF
         
         return fullPath;

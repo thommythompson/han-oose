@@ -1,20 +1,31 @@
+using HAN.ICDETool.Services.Interfaces;
+using HAN.ICDETool.SharedKernel;
+
 namespace HAN.ICDETool.ExporterService.ExportStrategies;
-public class ExporterFactory
+public class ExporterFactory : IExporterFactory
 {
-    public IExporterService createExporter(ExporterType type, string exportDirectory)
+    private readonly string _exportDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Files/");
+    private IExporterStrategy? _exporterStrategy;
+
+    public void ChooseExportType(ExportFormaat type)
     {
         switch (type)
         {
-            case ExporterType.CsvExporter:
-                return new CsvExporterStrategy(exportDirectory);
+            case ExportFormaat.Csv:
+                _exporterStrategy = new CsvExporterStrategy(_exportDirectory);
                 break;
-            case ExporterType.PdfExporter:
-                return new PdfExporterStrategy(exportDirectory);
+            case ExportFormaat.Pdf:
+                _exporterStrategy =  new PdfExporterStrategy(_exportDirectory);
                 break;
-            case ExporterType.DocxExporter:
-                return new DocxExporterStrategy(exportDirectory);
+            case ExportFormaat.Docx:
+                _exporterStrategy =  new DocxExporterStrategy(_exportDirectory);
                 break;
         }
-        return null;
+    }
+    
+    public CustomFile Export(IList<string> exportData)
+    {
+        var result = _exporterStrategy.Export(exportData);
+        return result;
     }
 }

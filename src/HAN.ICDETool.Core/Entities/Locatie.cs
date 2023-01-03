@@ -10,14 +10,14 @@ public class Locatie : BaseEntity
     public Adres? Adres { get; set; }
     
     [BackingField(nameof(_LesUitvoeringen))]
-    public IEnumerable<LesUitvoering>? LesUitvoeringen { get => _LesUitvoeringen; }
+    public IReadOnlyList<LesUitvoering>? LesUitvoeringen { get => _LesUitvoeringen; }
 
-    private IList<LesUitvoering>? _LesUitvoeringen { get; set; } = new List<LesUitvoering>();
+    private List<LesUitvoering>? _LesUitvoeringen { get; set; } = new List<LesUitvoering>();
     
     [BackingField(nameof(_tentamenUitvoeringen))]
-    public IEnumerable<TentamenUitvoering>? TentamenUitvoeringen { get => _tentamenUitvoeringen; }
+    public IReadOnlyList<TentamenUitvoering>? TentamenUitvoeringen { get => _tentamenUitvoeringen; }
 
-    private IList<TentamenUitvoering>? _tentamenUitvoeringen { get; set; } = new List<TentamenUitvoering>();
+    private List<TentamenUitvoering>? _tentamenUitvoeringen { get; set; } = new List<TentamenUitvoering>();
 
     public Locatie(string naam, LocatieType locatieType)
     {

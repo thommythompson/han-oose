@@ -9,9 +9,9 @@ public class TestCourseUitvoering
     {
         Persoon docent = new Persoon("Voornaam", "Achternaam", "v.achternaam@email.com");
         
-        CourseInrichting courseInrichting = new CourseInrichting("Titel", "Omschrijving", docent);
+        _courseInrichting = new CourseInrichting("Titel", "Omschrijving", docent);
         
-        courseInrichting.CreatePlanning(new Semester());
+        _courseInrichting.CreatePlanning(new Semester());
 
         Leerdoel leerdoel = new Leerdoel("titel", "omschrijving");
         

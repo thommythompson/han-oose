@@ -34,12 +34,6 @@ public class ICDEContext : IdentityDbContext<IdentityUser<int>, IdentityRole<int
     public DbSet<Beoordeling> Beoordeling { get; set; }
     public DbSet<Adres> Adres { get; set; }
 
-    // No parameter constructor for EF core power tools
-    public ICDEContext()
-    {
-        _connectionString = "Server=127.0.0.1; Database=IcdeTool; User Id=sa; Password=P@ssw0rd; MultipleActiveResultSets=true; TrustServerCertificate=true";
-    }
-
     public ICDEContext(IConfiguration configuration)
     {
         _configuration = configuration;
