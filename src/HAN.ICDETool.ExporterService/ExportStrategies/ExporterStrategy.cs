@@ -2,7 +2,7 @@
 
 namespace HAN.ICDETool.ExporterService.ExportStrategies;
 
-public abstract class ExporterStrategy
+public abstract class ExporterStrategy : IExporterStrategy
 {
     private string _exportDirectory;
 

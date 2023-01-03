@@ -20,7 +20,9 @@
 |v0.4|H2, H3|Thomas Hofman|30-12-2022|
 |v0.5|H4|Thomas Hofman|31-12-2022|
 |v0.5|H6|Thomas Hofman|31-12-2022|
-|v0.6|H5.3.1, H5.4.1, H5.2|Thomas Hofman|31-12-2022|
+|v0.6|H5.3, H5.4, H5.2|Thomas Hofman|31-12-2022|
+|v0.7|H5.1, H5.1.1|Thomas Hofman|02-01-2023|
+|v0.8|H5.3.1, H5.4.1|Thomas Hofman|03-01-2023|
 
 # Inhoudsopgave
 
@@ -36,15 +38,13 @@
 4. [Technische keuzes](#4-technische-keuzes)
 5. [Design](#5-design) </br>
     5.1. [Api, Repository & Service Design](#51-api-repository--service-design) </br>
+        5.1.1. [Toelichting](#511-toelichting) </br>
     5.2. [Domein Design](#52-domein-design) </br>
         5.2.1. [Toelichting](#521-toelichting) </br>
-        5.2.2. [Domein consistentie/inconsistentie](#522-domein-consistentieinconsistentie) </br>
     5.3. [UC15 - Start uitvoering](#53-uc-15-start-uitvoering) </br>
-        5.3.1. [Design](#531-design) </br>
-        5.3.2. [Toelichting](#532-toelichting) </br>
+        5.3.1. [Toelichting](#531-toelichting) </br>
     5.4. [UC-18 Exporteer Informatie](#54-uc-18-exporteer-informatie) </br>
-        5.4.1. [Design](#541-design) </br>
-        5.4.2. [Toelichting](#542-toelichting) </br>
+        5.4.1. [Toelichting](#541-toelichting) </br>
 6. [Overige](#6-overige) </br>
     6.1. [Versiebeheer](#61-versiebeheer) </br>
     6.2. [Build Management (CI/CD)](#62-build-management-cicd) </br>
@@ -175,11 +175,93 @@ Het project zal geprogrammeerd worden in de laatste versie van C#, C# 10. C# is 
 ```mermaid
 classDiagram
 
-class BaseController
-class BaseService
-class BaseRepository
+class IEntityService~TEntity, TRequestDto, TReponseDto~ {
+    + Task<TReponseDto> Create(entity : TRequestDto,  cancellationToken : CancellationToken)
+    + Task<IEnumerable<TReponseDto>> Read(cancellationToken : CancellationToken);
+    + Task<TReponseDto> Read(id : int, cancellationToken : CancellationToken);
+    + Task<TReponseDto> Update(id : int, entity : TRequestDto, cancellationToken : CancellationToken);
+    + Task Delete(id : int, cancellationToken : CancellationToken);
+}
+<<Interface>> IEntityService
 
+class BaseController~TEntity, TRequestDto, TResponseDto, IEntityService~ {
+    - _service : IEntityService~TEntity, TRequestDto, TResponseDto~
+    - _logger : ILogger~BaseController~TEntity, TRequestDto, TResponseDto, IEntityService~~
+    - _mapper : IMapper
+    + BaseController(service : IEntityService~TEntity, TRequestDto, TResponseDto~, logger, ILogger~BaseController~TEntity, TRequestDto, TResponseDto, IEntityService~~, mapper : IMapper )
+    + Task<IActionResult> Get(cancellationToken : CancellationToken)
+    + Task<IActionResult> Get(id : int, cancellationToken : CancellationToken)
+    + Task<IActionResult> Create(entity : TRequestDto, cancellationToken : CancellationToken)
+    + Task<IActionResult> Update(id : int, entity : TRequestDto, cancellationToken : CancellationToken)
+    + Task<IActionResult> Delete(id : int, cancellationToken : CancellationToken)
+}
+<<Abstract>> BaseController
+BaseController --> IEntityService
+
+class IRepository~T~
+<<Interface>> IRepository
+
+class BaseEntityService~TEntity, TRequestDto, TReponseDto~ {
+    - _repository : IRepository~TEntity~
+    - _logger : ILogger~BaseEntityService~TEntity, TRequestDto, TReponseDto~~
+    - _mapper : IMapper
+    + BaseEntityService(repository : IRepository~TEntity~, logger : ILogger~BaseEntityService~TEntity, TRequestDto, TReponseDto~~, mapper : IMapper)
+}
+<<Abstract>> BaseEntityService
+BaseEntityService --|> IEntityService
+BaseEntityService --> IRepository
+
+
+class RepositoryBase~T~
+<<Abstract>> RepositoryBase
+class ICDERepository~T~ {
+    - _dbContext : ICDEContext
+    + ICDERepository(dbContext : ICDEContext)
+}
+ICDERepository --|> RepositoryBase
+ICDERepository --|> IRepository
+ICDERepository --> ICDEContext
+
+class IdentityDbContext~IdentityUser<int>, IdentityRol<int>, int~
+
+class ICDEContext {
+    - _configuration : IConfiguration
+    - _connectionString : string
+    + LesInrichting : DbSet<LesInrichting>  
+    + LesMateriaal  : DbSet<LesMateriaal> 
+    + CourseWeekInrichting : DbSet<CourseWeekInrichting> 
+    + TentamenUitvoering : DbSet<TentamenUitvoering>  
+    + Rubric : DbSet<Rubric>  
+    + OpleidingsProfiel  : DbSet<OpleidingsProfiel> 
+    + Opleiding  : DbSet<Opleiding> 
+    + Locatie  : DbSet<Locatie> 
+    + LesUitvoering  : DbSet<LesUitvoering> 
+    + Leeruitkomst  : DbSet<Leeruitkomst> 
+    + Leerdoel  : DbSet<Leerdoel> 
+    + Klas : DbSet<Klas> 
+    + EenheidVanLeeruitkomsten  : DbSet<EenheidVanLeeruitkomsten> 
+    + CourseWeekUitvoering  : DbSet<CourseWeekUitvoering> 
+    + CourseUitvoering  : DbSet<CourseUitvoering> 
+    + CourseInrichting  : DbSet<CourseInrichting> 
+    + BeroepsProduct  : DbSet<BeroepsProduct> 
+    + SchriftelijkeToets : DbSet<SchriftelijkeToets>  
+    + BeoordelingsCriteria : DbSet<BeoordelingsCriteria> 
+    + Beoordeling  : DbSet<Beoordeling> 
+    + Adres  : DbSet<Adres> 
+    + ICDEContext(configuration : IConfiguration )
+}
+ICDEContext --|> IdentityDbContext
 ```
+
+## 5.1.1 Toelichting
+
+Binnen ons domein model zijn er veel entiteiten waarvoor create, read, update en delete (CRUD) acties uitgevoerd moeten worden. Deze implementaties zijn voor vrijwel alle entiteiten hetzelfde, om deze reden zijn er controller en service base classes gemaakt zodat deze zelfde implementatie net steeds voor iedere entiteit gecodeerd hoeft te worden, de constructie werkt als volgt:
+
+De BaseController ontvangt een aantal generics, de TEntity, TRequestDto en TReponseDto generic parameters die de controller ontvangt worden gebruikt om de response en request data types te bepalen en om de juiste entity service te betrekken, de IEntityService verwacht deze generic parameters namelijk ook.  
+
+De TRequestDto bevat alleen de attributen die schrijfbaar zijn en worden gebruik voor de create en update functionaliteit, deze dto bevat bijvoorbeeld geen id want deze word automatisch bepaald. De TRepsonseDto bevat alle attributen die als antwoord terug gegeven worden bij een create read of update verzoek, een delete verzoek geeft geen antwoord terug.
+
+De entity service vereist naast de eerder benoemde parameters ook een IRepository parameter, deze IRepository interface is afkomstig uit de Ardalis.Specifiction package en maar het mogelijk om middels generics een entity repository te specificeren, dit is essentieel wanneer je middels generics de repository voor een specifieke entiteit wil afdwingen. De entity service is verantwoordelijk voor het ophalen/muteren van de data en de mapping tussen de DTO's en de daadwerkelijke entiteit typen uit te voeren, hiervoor krijgt de entity service een AutoMapper (IMapper) mee in de constructor. 
 
 ## 5.2. Domein Design
 
@@ -413,7 +495,7 @@ class Persoon {
     + Voornaam : string
     + Achternaam : string
 }
-Persoon "*" --> "0..1" OpleidingsProfile : VolgtProfiel
+Persoon "*" --> "0..1" OpleidingsProfiel : VolgtProfiel
 Persoon "*" --> "0..1" CourseUitvoering : VolgtCourse
 
 class Rubric {
@@ -470,48 +552,16 @@ class Validator{
 
 ```
 
----
-:warning: **_CRITERIA:_**
-Correct toepassen standaard notatie en het diagram moet de volledig requirements afdekken.
-
----
-
 ### 5.2.1 Toelichting
 
----
-:warning: **_CRITERIA:_**
-Minimaal 1 extra diagram (geen class diagram) opnemen, diverse modellen vereist voor een 8
+Het class model dat de domein laag representeert is grote lijnen gelijk aan het domein model dat eerder opgesteld is in het functioneel ontwerp. Er zijn echter een aantal uitzonderingen gemaakt, deze wijzigingen komen voornamelijk voort uit nieuwe inzichten, behoefte aan technische eenvoudig of het conformeren aan technisch frameworks, de volgende wijzigingen zijn aangebracht ten opzichte van het originele domein model:
 
----
-
-### 5.2.2. Domein consistentie/inconsistentie
-
-- additionele interfaces
-- course bieb is weg
-- ef core constructor
-- persoon weg
-  
----
-:warning: **_CRITERIA:_**
-Zowel inconsistenties als consistenties benoemd, inconsistenties volledig van relevante, onderbouwde verbetervoorstellen voorzien voor een 10
-
----
+- De CourseBibliotheek is verwijderd uit het model, dit is gedaan omdat de course bibliotheek een 1:1 relatie had met de database, per database zal er altijd een course bibliotheek bestaan, dit maakt deze entiteit overbodig.
+- De Docent en Student concepten zijn achterwegen gelaten, bij het gebruik van het Identity Framework (voor authenticatie en autorisatie) bleek dat het slechts mogelijk was om een enkele identity class te specificeren. In het domein model is eerder de generalisatie "Persoon" geconstateerd, de Persoon class is daarom als identity class verkozen en de Docent en Persoon classes zijn achterwege gelaten. Daarmee valt wel te constateren dat de domein laag niet 100% onafhankelijk is van de technische implementatie.
+- Aan het model zijn verschillende tijddefinities toegevoegd (Periode & Semester) deze tijddefinities fungeren als constanten, het zijn data types met vooraf gedefinieerde waardes.
+- Wanneer een constructor gedefinieerd word zal entity framework deze constructor gebruiken om de class te instantieren. Entity framework ondersteund alleen primitieve types in de constructor, om deze reden is er bij classes die een constructor met primitieve types bevatten een extra private constructor toegevoegd met alleen primitieve types. Entity framework zal deze constructor gebruiken achteraf de waardes van de andere attributen bepalen.
 
 ## 5.3 UC-15 Start Uitvoering
-
----
-:warning: **_CRITERIA:_**
-Ontwerp problemen identificeren en ontwerp keuzes onderbouwen met relevant alternatieven en overwegingen voor een 10
-
----
-
----
-:warning: **_NOTE:_**
-een variatie aan principes en patterns op correcte en onderbouwde manier toegepast voor een 10
-
----
-
-### 5.3.1. Design
 
 ```mermaid
 sequenceDiagram
@@ -526,17 +576,15 @@ sequenceDiagram
     
     loop week in CourseInrichting.Planning.Weken
         CourseUitvoering->>CourseWeekUitvoering: weekUitvoering = CourseWeekUitvoering(week, StartDate)
-        CourseUitvoering->>CourseUitvoering: Weken.Add(weekUitvoering)
-        deactivate CourseUitvoering
 
         activate CourseWeekUitvoering
 
         CourseWeekUitvoering->>CourseWeekUitvoering: creeerTentamen()
-        loop schriftelijkeToets in CourseWeekInrichitng.SchiftelijkeToets
+        loop schriftelijkeToets in CourseWeekInrichting.SchriftelijkeToets
             CourseWeekUitvoering ->> TentamenUitvoering: tentamenUitvoering = TentamenUitvoering(schriftelijkeToets)
             CourseWeekUitvoering->>CourseWeekUitvoering: _tentamen.Add(tentamenUitvoering)
         end
-        loop beroepsProduct in CourseWeekInrichitng.Beroepsproduct
+        loop beroepsProduct in CourseWeekInrichting.Beroepsproduct
             CourseWeekUitvoering ->> TentamenUitvoering: tentamenUitvoering = TentamenUitvoering(beroepsProduct)
             CourseWeekUitvoering->>CourseWeekUitvoering: _tentamen.Add(tentamenUitvoering)
         end
@@ -546,6 +594,9 @@ sequenceDiagram
             CourseWeekUitvoering->>LesUitvoering: lesUitvoering = new LesUitvoering(les);
             CourseWeekUitvoering->>CourseWeekUitvoering: _les.Add(lesUitvoering)
         end
+
+        CourseUitvoering->>CourseUitvoering: Weken.Add(weekUitvoering)
+        deactivate CourseUitvoering
 
     end
     deactivate CourseWeekUitvoering
@@ -595,13 +646,20 @@ classDiagram
     TentamenUitvoering "1..*" o--> "1" CourseWeekUitvoering
 ```
 
----
-:warning: **_NOTE:_**
-Class Diagram en/of sequence diagram toegespitst op de use case.
+### 5.3.1. Toelichting
 
----
+Deze use case richt zich op het starten van een vooraf ingerichte en als defintief bestempelde course binnen het domein ook wel course inrichting genoemd. Bij het starten van deze course zijn er een aantal entiteiten die geinstantieert moeten worden, een course inrichting bevat namelijk een planning bestaande uit weken met tentamen en lessen die in deze weken gepland zijn. Een inrichting kan meerdere malen (of helemaal niet) uitgevoerd worden en een uitvoering bevat data gerelateerd aan deze specifieke uitvoering.
 
-### 5.3.2. Toelichting
+De methodes zijn toegewezen op basis van het creator en information expert pricipe, deze principes zijn onderdeel van de GRASP Patterns. Het information expert pricipe defineert dat een verantwoordelijk (methode) toegewezen moet worden aan de class die de informatie bezit om deze verantwoordelijkheid uit te voeren. Het creator principe defineert dat een class de verantwoordelijk moeten krijgen om een andere class aan te maken wanneer:
+
+1. De aan te maken class onderdeel is van deze class.
+2. De aan te maken class gemonitord word door deze class.
+3. De aan te maken class nauw gebruikt word door deze class.
+4. De class van de informatie voorzien is om de aan te maken class te instantieren. (information expert)
+
+In dit geval gaat het om de creatie van child objecten, een course bevat een planning met weken, deze weken bevatten tentamens of lessen. In de constructor van het nieuwe object wordt de bijhorende inrichting als parameter meegegeven, vervolgens worden in de constructor methodes aangeroepen om de child object (indien deze er zijn) aan te maken. 
+
+Er is niet gekozen om gebruik te maken van een van de GoF patterns omdat dit niet benodigd was aangezien er geschikte kanditaten om de benodigde methodes aan toe te wijzen al aanwezig waren.
 
 ---
 :warning: **_NOTE:_**
@@ -612,20 +670,6 @@ Toelichten van gebruikte GoF patterns, SOLID principes & GRASP principes.
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
 ## 5.4 UC-18 Exporteer Informatie
-
----
-:warning: **_CRITERIA:_**
-Ontwerp problemen identificeren en ontwerp keuzes onderbouwen met relevant alternatieven en overwegingen voor een 10
-
----
-
----
-:warning: **_NOTE:_**
-een variatie aan principes en patterns op correcte en onderbouwde manier toegepast voor een 10
-
----
-
-### 5.4.1. Design
 
 ```mermaid
 sequenceDiagram
@@ -673,21 +717,26 @@ classDiagram
     LesMateriaalExporter -- LesMateriaal
     LesMateriaalExporter -- IExporterFactory
     LesMateriaalExporter --|> ILesMateriaalExporter
-
+    LesMateriaalExporter -- CustomFile
     
+    class IExporterStrategy {
+        + CustomFile Export(exportData : IList<string>)
+    }
+    <<Interface>> IExporterStrategy
+
     class ExporterFactory {
         - _exportDirectory : string = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Files/")
         - _exporterStrategy : ExporterStrategy
         + void ChooseExporterType(type : ExportFormaat)
         + CustomFile Export(exportData : IList<string>)
     }
-
     ExporterFactory --|> IExporterFactory
     ExporterFactory -- ExportFormaat
-    ExporterFactory -- ExporterStrategy
     ExporterFactory -- CsvExporterStrategy
     ExporterFactory -- PdfExporterStrategy
     ExporterFactory -- DocxExporterStrategy
+    ExporterFactory -- CustomFile
+    ExporterFactory -- IExporterStrategy
 
     class ExporterStrategy {
         - _exportDirectory : string
@@ -696,6 +745,7 @@ classDiagram
         + ConvertStringListToFile(exportData : IList<string>, exportDirectory : string) 
     }
     <<Abstract>> ExporterStrategy
+    ExporterStrategy --|> IExporterStrategy
     ExporterStrategy -- CustomFile
 
     class CustomFile {
@@ -736,17 +786,26 @@ classDiagram
     <<Interface>> IExporterFactory
 ```
 
-### 5.4.2. Toelichting
+### 5.4.1. Toelichting
 
-- Extra project aangemaakt want herbruikbaar
-- strategy & factory pattern
-- 2 libraries toegevoegd.
+Het doel van deze use case is om gebruiker in staat te stellen om lesmateriaal te exporteren in een csv, pdf of docx formaat. Deze export service is onder gebracht in een apart project zodat deze eventueel in andere oplossingen hergebruikt kan worden. Er is hier een combinatie van verschillende patronen gebruikt, deze zal ik in onderstaande toelichten.
 
----
-:warning: **_NOTE:_**
-Toelichten van gebruikte GoF patterns, SOLID principes & GRASP principes.
+Te beginnen met de LesMateriaalExporter class, deze class implementeert de ILesMateriaalExporter interface afkomstig uit het service project. De LesMateriaalExporter class functioneert als een wrapper om de export functionaliteit en zorgt ervoor dat de implementatie zich conformeert aan de interface die in de service laag gespecificeerd wordt. Door de interface onder te brengen in de service laag en hieraan te conformeren word de afhankelijkheid omgedraaid (dependency inversion).
 
----
+De LesMateriaalExporter class heeft een ExportLesMateriaal methode, deze methode ontvangt als parameters een export formaat (csv, pdf of docx) en het daadwerkelijk lesmateriaal dat geëxporteerd moet worden. En de methode zal eerst een factory gemaakt worden, deze factory heeft een methode (Factory Method) die op basis van het gekozen formaat de bijhorende export class kan instantieren. Deze export classes zijn verschillende strategieën, die allemaal overerven van dezelfde abstract class, namelijk de  ExporterStrategy class. Deze abstract class bevat een Export methode die een list van strings als parameter ontvangt en een instantie van de CustomFile class terug geeft, deze CustomFile class bevat onder andere een byte array, de file.
+
+De Export methode is een template methode, het bevat de standaard functionaliteit om de map waar de export files in terecht komen aan te maken indien deze nog niet bestaat en bevat de functionaliteit om de CustomFile te instantieren. De Export class roept een abstracte methode aan die geïmplementeerd zal moeten worden de verschillende strategieën (Strategy Pattern). Dit is de ConvertStringListToFile methode, deze methode vereist dat een string terug gegeven word, deze string representeert het pad naar de exporteerde file. Dit zodat de standaard Export functionaliteit de bytes van deze file kan ophalen om vervolgens de CustomFile class te instantieren.
+
+Het daadwerkelijk exporteren naar het gewenste format gebeurd in de strategie die door de factory aangemaakt is, deze strategy implementeert de ConvertStringListToFile methode. Het daadwerkelijk exporteren word in het geval van de pdf en docx strategieën overgelaten aan externe libraries zodat deze logica niet zelf ontwikkelt hoeft te worden, dit libraries die hiervoor gebruikt zijn zijn de DocX en IronPdf libraries. Een CSV is een "comma separated file", deze bestaat uit meerder regels meer door komma's gesepareerde text, elke regel staat voor een rij, elke komma voor een kolom. Deze implementatie is eenvoudig zelf te verwezenlijken, een library is dan ook niet benodigd. 
+
+De DocX library bevat methodes om de opmaak van het bestand te manipuleren, de IronPdf library verwacht als input een HTML formaat. Om deze reden is er een HTMLConvert class aangemaakt met een ConvertStringListToHtml methode die de conversie uit voert.
+
+De maakt gebruik van onderstaande architectuur en design patterns om tegemoet te komen aan alle SOLID principes:
+
+- Dependency Inversion
+- Factory Method (GoF)
+- Strategy Pattern (GoF)
+- Template Method (GoF)
 
 # 6. Overige
 

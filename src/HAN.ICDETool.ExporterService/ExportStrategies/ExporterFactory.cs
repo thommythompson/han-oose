@@ -5,7 +5,7 @@ namespace HAN.ICDETool.ExporterService.ExportStrategies;
 public class ExporterFactory : IExporterFactory
 {
     private readonly string _exportDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Files/");
-    private ExporterStrategy? _exporterStrategy;
+    private IExporterStrategy? _exporterStrategy;
 
     public void ChooseExportType(ExportFormaat type)
     {
