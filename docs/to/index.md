@@ -23,6 +23,7 @@
 |v0.6|H5.3, H5.4, H5.2|Thomas Hofman|31-12-2022|
 |v0.7|H5.1, H5.1.1|Thomas Hofman|02-01-2023|
 |v0.8|H5.3.1, H5.4.1|Thomas Hofman|03-01-2023|
+|V0.9|H1, H1.1, H1.2, H1,3|Ricardo de Wijs|05-01-2023|
 
 # Inhoudsopgave
 
@@ -53,9 +54,20 @@
 
 # 1. Inleiding
 
+Om het project technische te ondersteunen is na de eerste iteratie van het functionele ontwerp begonnen met het opstellen van dit technische ontwerp. Projectdocumentatie bestaat ten allertijden uit een technisch en een functioneel deel. Dit technische ontwerp waarborgt het technische deel van de projectdocumentatie. Bij het opstellen van dit document worden er rekening gehouden met de volgende zaken:
+
+1. Technische modellen zijn consistent met de code en met het FO
+2. Juiste modellen zijn toegepast
+3. Modellen of technische uitwerking draagt bij en is geen onnodige document vulling
+
 ## 1.1. Aanleiding
 
+Zoals eerder aangegeven bevat project documentatie een technisch deel daarbij dwingt
+casusopdracht het schrijven van een technisch ontwerp af.
+
 ## 1.2. Doelstelling
+
+Dit document beschrijft op basis van het functionele ontwerp de technische werking en samenhang van het oose-casus. Teven worden de technische keuzes onderbouwd en zullen de gebruikte technieken worden toegelicht. Ook dient dit document als naslag voor eventuele toekomstige uitbreidingen of aanpassingen.
 
 ## 1.3. Doelgroep
 

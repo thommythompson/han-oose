@@ -7,19 +7,27 @@
 - [ ] [UC-1 - Ontwikkel Course](#uc-1-ontwikkel-course)
 - [x] [UC-3 - Beheer Gebruikers](#uc-3-beheer-gebruikers)
 - [x] [UC-4 - Beheer Klassen](#uc-4-beheer-klassen)
+- [ ] [UC-5 - Vraag course info op](#uc-5-vraag-course-info-op)
+- [ ] [UC-6 - Vraag course info op](#uc-6-vraag-courseplanning-op)
 - [x] [UC-7 - Beheer Opleidingen](#uc-7-beheer-opleidingen)
+- [ ] [UC-8 - Geef beoordeling](#uc-8-geef-beoordeling)
 - [x] [UC-9 - Beheer Opleidingsprofielen](#uc-9-beheer-opleidingsprofielen)
 - [x] [UC-10 - Ontwikkel Leeruitkomst](#uc-10-ontwikkel-leeruitkomst)
+- [ ] [UC-11 - Ontwikkel EVL](#uc-11-ontwikkel-evl)
 - [x] [UC-12 - Ontwikkel Leerdoelen](#uc-12-ontwikkel-leerdoelen)
 - [ ] [UC-19 - Beheer Locaties](#uc-19-beheer-locaties)
 
 ## Fully Dressed
 
 - [x] [UC-2 - Bekijken beoordelingen](#uc-2-bekijken-beoordelingen)
+- [ ] [UC-13 - Ontwikkel toets](#uc-13-ontwikkel-toets)
+- [ ] [UC-14 - Maak rubriek](#uc-14-maak-rubriek)
 - [x] [UC-15 - Start Uitvoering](#uc-15-start-uitvoering)
 - [x] [UC-16 - Maak course planning definitief](#uc-16-maak-course-template-definitief)
 - [x] [UC-17 - Maak Weekplanning](#uc-17---maak-weekplanning)
+- [ ] [UC-18 - Exporteer informatie](#uc-18-exporteer-informatie)
 - [x] [UC-20 - Aanmelden](#uc-20-aanmelden)
+- [ ] [UC-21 - Ontwikkel beroepsproduct](#uc-21-ontwikkel-beroepsproduct)
 - [ ] [UC-22 - Ontwikkel Les](#uc-22-ontwikkel-les)
 
 # **UC-1 Ontwikkel Course**
@@ -397,6 +405,21 @@
 Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen van de klas aan de course iedere student individueel aan de course verbonden een student kan namelijk wisselen van klas en of blijven zitten. --> verwerken in UC-15 “Start Uitvoering”
 
 ---
+
+<font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
+# **UC-5 Vraag course info op**
+
+<table>
+<td><strong>TODO!</Strong></td>
+</Table>
+
+<font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
+# **UC-6 Vraag courseplanning op**
+
+<table>
+<td><strong>TODO!</Strong></td>
+</Table>
+
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
 
 # **UC-7 Beheer Opleidingen**
@@ -483,6 +506,13 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
     </tr>
   </tbody>
 </table>
+
+<font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
+# **UC-8 Geef Beoordeling**
+
+<table>
+<td><strong>TODO!</Strong></td>
+</Table>
 
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
 
@@ -686,6 +716,14 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
 
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
 
+# **UC-11 Ontwikkel EVL**
+
+<table>
+<td><strong>TODO!</Strong></td>
+</Table>
+
+<font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
+
 # **UC-12 Ontwikkel leerdoelen**
 
 <table>
@@ -785,6 +823,22 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
     </tr>
   </tbody>
 </table>
+
+<font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
+
+# **UC-13 Ontwikkel toets**
+
+<table>
+<td><strong>TODO!</Strong></td>
+</Table>
+
+<font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
+
+# **UC-14 Maak rubriek**
+
+<table>
+<td><strong>TODO!</Strong></td>
+</Table>
 
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
 
@@ -1215,6 +1269,14 @@ sequenceDiagram
 ```
 
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
+# **UC-18 Exporteer informatie**
+
+<table>
+<td><strong>TODO!</Strong></td>
+</Table>
+
+
+<font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
 
 
 # **UC-19 Beheer Locaties**
@@ -1414,6 +1476,16 @@ sequenceDiagram
     
     Systeem-->>-Gebruiker: 6. Doorverwijzen
 ```
+
+<font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
+
+# **UC-21 Ontwikkel beroepsproduct**
+
+<table>
+<td><strong>TODO!</Strong></td>
+</Table>
+
+
 
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
 
