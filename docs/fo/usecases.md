@@ -4,7 +4,7 @@
 
 ## CRUD Specificatie
 
-- [ ] [UC-1 - Ontwikkel Course](#uc-1-ontwikkel-course)
+- [X] [UC-1 - Ontwikkel Course](#uc-1-ontwikkel-course)
 - [x] [UC-3 - Beheer Gebruikers](#uc-3-beheer-gebruikers)
 - [x] [UC-4 - Beheer Klassen](#uc-4-beheer-klassen)
 - [ ] [UC-5 - Vraag course info op](#uc-5-vraag-course-info-op)
@@ -81,24 +81,21 @@
     </tr>
     <tr>
       <td><strong>Succes definitie</strong></td>
-      <td>&nbsp;</td>
+      <td>Er is een nieuw coursetemplate aangemaakt</td>
     </tr>
     <tr>
       <td><strong>Requirements</strong></td>
-      <td>FR-1, FR-28</td>
+      <td>FR-1,28</td>
     </tr>
     <tr>
       <td colspan="2"><strong>Main Success Scenario</strong></td>
+       <td></td>
     </tr>
     <tr>
       <td><strong>Create/Update:</strong></td>
       <td>&nbsp;</td>
     </tr>
-    <tr>
-      <td><strong>Delete:</strong></td>
-      <td>Wanneer er nog locaties toegewijd zijn aan lessen uit een actieve Course Uitvoering kan de locatie niet
-        verwijderd worden</td>
-    </tr>
+    
   </tbody>
 </table>
 
@@ -215,15 +212,94 @@
       </td>
       <!-- 5.B  -->
     </tr>
+    
+  </tbody>
+</table>
+
+
+<font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
+
+# **UC-1 - Ontwikkel Course**
+
+<table>
+  <tbody>
     <tr>
-      <td colspan="2"><strong>Alternative flow A</strong></td>
+      <td><strong>ID</strong></td>
+      <td>&nbsp;UC-1</td>
     </tr>
     <tr>
-      <td colspan="2">2a. <em>[De student heeft nog geen enkele course gevolgd]</em><br>
-        1. Het systeem toont dat er geen resultaten gevonden zijn.</td>
+      <td><strong>Naam</strong></td>
+      <td>&nbsp;Docent</td>
+    </tr>
+    <tr>
+      <td><strong>Omschrijving</strong></td>
+      <td>&nbsp;Deze use case is gebaseerd op het CRUD-template, binnen deze use case worden alleen uitzonderingen of
+        specificiteit belicht.</td>
+    </tr>
+    <tr>
+      <td><strong>Scope</strong></td>
+      <td>&nbsp;ICDE-Tool</td>
+    </tr>
+    <tr>
+      <td><strong>Trigger</strong></td>
+      <td>&nbsp;Gebruikers Interactie</td>
+    </tr>
+    <tr>
+      <td><strong>Level</strong></td>
+      <td>&nbsp;User-Goal</td>
+    </tr>
+    <tr>
+      <td><strong>Primary Actor</strong></td>
+      <td>&nbsp;Docent</td>
+    </tr>
+    <tr>
+      <td><strong>Belangen &amp; belanghebbenden</strong></td>
+      <td>
+        <p>- Docent: wil een course template maken en/of aanpassen.
+        </p>
+        <p>- Student: </p>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Pre-Condities</strong></td>
+      <td>&nbsp;- De docent is geauthentiseerd.
+        <div>
+          <div>- De desbetreffende klas waarvan de student lid moet worden bestaat al. (UC-4)</div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Succes definitie</strong></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><strong>Requirements</strong></td>
+      <td>&nbsp;FR-1,28,3</td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Main Success Scenario</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Actor</strong></td>
+      <td><strong>System</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Create/Update:</strong></td>
+      <td>&nbsp;De benodigde data zijn een naam, email adres en in het geval van een student ook een klas, het systeem
+        valideert of in deze databehoefte voorzien is.</td>
+    </tr>
+    <tr>
+      <td><strong>Delete:</strong></td>
+      <td>&nbsp;In het geval van een student verwijdert het systeem de student en alle persoons informatie zoals
+        eventuele beoordelingen voor tentamens die hij/zij behaalt heeft. In het geval van een docent wordt er gekeken
+        of de docent gerelateerd is aan een entiteit binnen het systeem, zoals een beoordeling, les of tentaminering,
+        als dit een geval is kan de docent niet verwijderd worden.</td>
     </tr>
   </tbody>
 </table>
+
+
+
 
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
 
