@@ -40,9 +40,8 @@ Voor het hele document geldt: het FO moet net zo gedetailleerd als het TO, daarn
     3.2. [Crud Identificatie](#32-crud-use-cases) </br>
     3.3. [Use Cases](#33-use-cases) </br>
     3.4. [Use Case Diagram](#34-use-case-diagram) </br>
-4. [Niet functionele requirements](#4-niet-functionele-requirements) </br>
-5. [Domein Model](#5-domein-model) </br>
-6. [Bronnen](#6-bronnen)
+4. [Domein Model](#5-domein-model) </br>
+5. [Bronnen](#6-bronnen)
 
 # 1. Inleiding
 
@@ -163,25 +162,7 @@ s --> UC2
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
-# 4. Niet functionele requirements (NFR)
-
-In onderstaande zijn de non-functional requirements omschreven, deze requirements zijn onderverdeeld in de categorieën volgens het FURPS+ model (Larman 2005, 5.4) <s>Functional</s>, Usability, Reliability, Performance en Supportability.
-
-|NFR-#  |Requirement    | MOSCOW  |  
-|---|---|---|
-|1   | Als docent/student wil ik de applicatie kunnen gebruiken ongeacht mijn locatie zo lang ik een internetverbinding heb. |M|
-|2   | Als docent/student wil ik de applicatie kunnen gebruiken op mijn laptop, tablet en smartphone. |S|
-|3   | Validatie kan middels han account. |W|
-|4   | De data van de aplicatie wordt persistent opgeslagen. |M|
-|5   | De applicatie wordt ontwikkeld in C#. |M|
-|6   | Het systeem is benaderbaar via een REST API |S|
-|7   | Bij het optreden van een probleem kan het systeem zichzelf herstellen/herstarten.|S|
-|8   | Indien het systeem veel verzoeken krijgt kan het opschalen in performance. |S|
-
-
-<font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
-
-# 5. Domein Model
+# 4. Domein Model
 
 Binnen het domein model richten wij ons op het verstaan van de business taal, hetgeen dat van belang is de vastlegging van concepten, hun attributen en de relatie tussen deze concepten. Het domein model zelf is een visuele representatie van het business domein al zullen wij ons eerst richten op de identificatie van de concepten. De vastlegging hiervan is tekstueel, de reden voor de vastleggen is dat oorsprong van alle concepten zo te herleiden valt.
 
@@ -313,7 +294,7 @@ alle relevante domein-concepten volledig beschreven dmv. correct toegepaste stan
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
-# 6. Bronnen
+# 5. Bronnen
 
 |APA Bronvermelding|
 |------------------|

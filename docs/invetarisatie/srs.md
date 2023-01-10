@@ -126,39 +126,47 @@ alle non-functionele requirements volledig, eenduidig, begrijpelijk en testbaar 
 
 |NFR-#|Requirement|Prio|Question|
 |-----|-----------|----|--------|
-|1|De tool moet han breed inzetbaar zijn.|||
-|2|De tool moet vanaf x-locatie beschikbaar zijn|||
-|3|De tool moet het voor een elke docent en docent mogelijk zijn om binnen x-tijd alle courses in te zien. |||
+|1|De tool voorzien zijn van goede help documentatie.|Should||
+|2|Als docent/student wil ik de applicatie kunnen gebruiken ongeacht mijn locatie zo lang ik een internetverbinding heb|Must||.
+|3|De tijdinvestering om de tool te leren gebruiken is minder dan twee werkdagen |Should||
+|4|Als docent/student wil ik de applicatie kunnen gebruiken op mijn laptop, tablet en smartphone.|Should||
 
 ## 3.2. Reliability
 
 |NFR-#|Requirement|Prio|Question|
 |-----|-----------|----|--------|
-|4|Het systeem moet zonder fouten zijn taak uitvoeren in x-procent van de use cases.|||
-|5|Het systeem moet x-procent van de tijd beschikbaar zijn per maand gedurende werktijden (9-17).|||
+|4|Het systeem moet zonder fouten zijn taak uitvoeren in 80 procent van de use cases.|Would||
+|5|Het systeem moet 80 procent van de tijd beschikbaar zijn per maand gedurende werktijden (9-17).|Would||
 
 ## 3.3. Performance
 
 |NFR-#|Requirement|Prio|Question|
 |-----|-----------|----|--------|
-|6|De reponse tijd voor de start pagina moet tot … users een reponse tijd hebben van … voor x browser/client. (Inclusief rendering)|||
-|7|Het systeem moet kunnen schalen om … gelijktijdige users van dienst te kunnen zijn. |||
-|8|De applicatie heeft minimaal x-cpu en x-memory nodig om x-aantal-users te kunnen afhandelen|||
+|6|De reponse tijd voor de start pagina moet tot 10 users een reponse tijd hebben van 1 sec voor Chrome browser/client. (Inclusief rendering)|||
+|7|Het systeem moet kunnen schalen om gelijktijdige users van dienst te kunnen zijn. |Would||
+|8|De applicatie heeft minimaal 1-cpu en 200MB-memory nodig om 2-users te kunnen afhandelen|Must||
 
 ## 3.4. Supportability
 
 |NFR-#|Requirement|Prio|Question|
 |-----|-----------|----|--------|
-|9|De applicatie moet volledig werken in x-client/x-browser vanaf x-versie.|||
-|10|Het systeem moet van logging voorzien zijn zodat fouten getraceert kunnen worden.|||
+|9|De applicatie moet volledig werken in Chrome browser vanaf versie 108.0.5359.124.|Must||
+|10|Het systeem moet van logging voorzien zijn zodat fouten getraceerd kunnen worden.|Would||
+|11|Het gebruik van unit-tests is een vereiste, alle kern functionaliteit dient te voorzien zijn unit-tests.|Must||
 
-## 3.5 Plus
+## 3.5 Plus - Implementation
 
 |NFR-#|Requirement|Prio|Question|
 |-----|-----------|----|--------|
-|11|Het gebruik van unit-tests is een vereiste, alle kern functionaliteit dient te voorzien zijn unit-tests.|||
-|12|Het systeem moet een interface beschikbaar stellen zodat andere software de mogelijkheid heeft met het systeem te integreren.|||
-|13|Het systeem moet kunnen draaien op een AMD64 processor architectuur.|||
+|11|De applicatie wordt ontwikkeld in C#.|Must||
+|12|Het systeem moet kunnen draaien op een AMD64 processor architectuur.|Must||
+|13|De data van de applicatie wordt persistent opgeslagen.|Must||
+
+## 3.5 Plus - Interface
+
+|NFR-#|Requirement|Prio|Question|
+|-----|-----------|----|--------|
+|14|Het systeem moet een interface beschikbaar stellen zodat andere software de mogelijkheid heeft met het systeem te integreren.|Would||
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
