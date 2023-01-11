@@ -4,23 +4,23 @@
 
 ## CRUD Specificatie
 
-- [X] [UC-1 - Ontwikkel Course](#uc-1-ontwikkel-course)
+- [x] [UC-1 - Ontwikkel Course](#uc-1-ontwikkel-course)
 - [x] [UC-3 - Beheer Gebruikers](#uc-3-beheer-gebruikers)
 - [x] [UC-4 - Beheer Klassen](#uc-4-beheer-klassen)
 - [ ] [UC-5 - Vraag course info op](#uc-5-vraag-course-info-op)
-- [ ] [UC-6 - Vraag course info op](#uc-6-vraag-courseplanning-op)
+- [x] [UC-6 - Vraag course info op](#uc-6-vraag-courseplanning-op)
 - [x] [UC-7 - Beheer Opleidingen](#uc-7-beheer-opleidingen)
-- [ ] [UC-8 - Geef beoordeling](#uc-8-geef-beoordeling)
+- [x] [UC-8 - Geef beoordeling](#uc-8-geef-beoordeling)
 - [x] [UC-9 - Beheer Opleidingsprofielen](#uc-9-beheer-opleidingsprofielen)
 - [x] [UC-10 - Ontwikkel Leeruitkomst](#uc-10-ontwikkel-leeruitkomst)
 - [ ] [UC-11 - Ontwikkel EVL](#uc-11-ontwikkel-evl)
 - [x] [UC-12 - Ontwikkel Leerdoelen](#uc-12-ontwikkel-leerdoelen)
-- [ ] [UC-19 - Beheer Locaties](#uc-19-beheer-locaties)
+- [x] [UC-19 - Beheer Locaties](#uc-19-beheer-locaties)
 
 ## Fully Dressed
 
 - [x] [UC-2 - Bekijken beoordelingen](#uc-2-bekijken-beoordelingen)
-- [ ] [UC-13 - Ontwikkel toets](#uc-13-ontwikkel-toets)
+- [x] [UC-13 - Ontwikkel toets](#uc-13-ontwikkel-toets)
 - [ ] [UC-14 - Maak rubriek](#uc-14-maak-rubriek)
 - [x] [UC-15 - Start Uitvoering](#uc-15-start-uitvoering)
 - [x] [UC-16 - Maak course planning definitief](#uc-16-maak-course-template-definitief)
@@ -493,8 +493,82 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
 # **UC-6 Vraag courseplanning op**
 
 <table>
-<td><strong>TODO!</Strong></td>
-</Table>
+  <tbody>
+    <tr>
+      <td><strong>ID</strong></td>
+      <td>&nbsp;UC-6</td>
+    </tr>
+    <tr>
+      <td><strong>Naam</strong></td>
+      <td>Vraag courseplanning op </td>
+    </tr>
+    <tr>
+      <td><strong>Omschrijving</strong></td>
+      <td>Deze use case is gebaseerd op het CRUD template, binnen deze use case worden alleen uitzonderingen of
+        specificiteit belicht.</td>
+    </tr>
+    <tr>
+      <td><strong>Scope</strong></td>
+      <td>&nbsp;ICDE-Tool</td>
+    </tr>
+    <tr>
+      <td><strong>Trigger</strong></td>
+      <td>&nbsp;Gebruikers Interactie</td>
+    </tr>
+    <tr>
+      <td><strong>Level</strong></td>
+      <td>&nbsp;User-Goal</td>
+    </tr>
+    <tr>
+      <td><strong>Primary Actor</strong></td>
+      <td>&nbsp;Docent / Student</td>
+    </tr>
+    <tr>
+      <td><strong>Belangen &amp; belanghebbenden</strong></td>
+      <td>
+        <div>Student: wil een courseplanning kunnen inzien zodat hij/zij weet wanneer welke activiteiten plaats vinden.
+        </div>
+        <div>
+        Docent: wil een coursplanning kunnen inzien zodat hij/zij weet wanneer welke stof behandeld moet worden
+ &hellip;</div>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Pre-Condities</strong></td>
+      <td>
+        <div>- De docent/student is geauthentiseerd. (UC-20)</div>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Succes definitie</strong></td>
+      <td>Het systeem toont de coursplanning. </td>
+    </tr>
+    <tr>
+      <td><strong>Requirements</strong></td>
+      <td>
+        <div>
+          <div>FR-3</div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Main Success Scenario</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Actor</strong></td>
+      <td><strong>System</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Read:</strong></td>
+      <td>
+        <div>
+          <div>De benodigde data is de klas, het systeem toont de klas en de courseplanning.
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
 
@@ -587,8 +661,80 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
 # **UC-8 Geef Beoordeling**
 
 <table>
-<td><strong>TODO!</Strong></td>
-</Table>
+  <tbody>
+    <tr>
+      <td><strong>ID</strong></td>
+      <td>&nbsp;UC-8</td>
+    </tr>
+    <tr>
+      <td><strong>Naam</strong></td>
+      <td>Geef beoordeling</td>
+    </tr>
+    <tr>
+      <td><strong>Omschrijving</strong></td>
+      <td>Deze usecase beschrijft het invoeren van beoordelingen bij gemaakte tentamen.</td>
+    </tr>
+    <tr>
+      <td><strong>Scope</strong></td>
+      <td>&nbsp;ICDE-Tool</td>
+    </tr>
+    <tr>
+      <td><strong>Trigger</strong></td>
+      <td>&nbsp;Gebruikers Interactie</td>
+    </tr>
+    <tr>
+      <td><strong>Level</strong></td>
+      <td>&nbsp;User-Goal</td>
+    </tr>
+    <tr>
+      <td><strong>Primary Actor</strong></td>
+      <td>&nbsp;Docent / Student</td>
+    </tr>
+    <tr>
+      <td><strong>Belangen &amp; belanghebbenden</strong></td>
+      <td>
+        <div>
+        Docent: wil een tentamenbeoordeling vastleggen.
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Pre-Condities</strong></td>
+      <td>
+        <div>- De docent/student is geauthentiseerd. (UC-20)</div>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Succes definitie</strong></td>
+      <td> Een tentamencijfer is vastgelegd bij de student die het tentamen heeft afgenomen. </td>
+    </tr>
+    <tr>
+      <td><strong>Requirements</strong></td>
+      <td>
+        <div>
+          <div>FR-7</div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Main Success Scenario</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Actor</strong></td>
+      <td><strong>System</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Update:</strong></td>
+      <td>
+        <div>
+          <div>De benodigde data is de klas, tentamen, student en het cijfer. het systeem  legt het cijfer vast.
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
 
@@ -905,8 +1051,204 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
 # **UC-13 Ontwikkel toets**
 
 <table>
-<td><strong>TODO!</Strong></td>
-</Table>
+  <tbody>
+    <tr>
+      <td><strong>ID</strong></td>
+      <td>&nbsp;UC-13</td>
+    </tr>
+    <tr>
+      <td><strong>Naam</strong></td>
+      <td>&nbsp;Ontwikkel toetsing</td>
+    </tr>
+    <tr>
+      <td><strong>Omschrijving</strong></td>
+      <td>Het ontwikkelen van een toetsing bestaat uit het inladen (toevoegen) van een toets en een bijbehorend beoordelingsmodel deze toets krijgt een weging.</td>
+    </tr>
+    <tr>
+      <td><strong>Scope</strong></td>
+      <td>&nbsp;ICDE-Tool</td>
+    </tr>
+    <tr>
+      <td><strong>Trigger</strong></td>
+      <td>&nbsp;Gebruikers Interactie</td>
+    </tr>
+    <tr>
+      <td><strong>Level</strong></td>
+      <td>&nbsp;User-Goal</td>
+    </tr>
+    <tr>
+      <td><strong>Primary Actor</strong></td>
+      <td>&nbsp;Docent</td>
+    </tr>
+    <tr>
+      <td><strong>Belangen &amp; belanghebbenden</strong></td>
+      <td>Docent: wil op een consistente manier toetsing en nakijkmodellen beschikbaar voor een leerdoel.</td>
+    </tr>
+    <tr>
+      <td><strong>Pre-Condities</strong></td>
+      <td>Authenticatie is afgehandeld; gebruiker is bevoegd om op het systeem in te loggen.</td>
+    </tr>
+    <tr>
+      <td><strong>Succes definitie</strong></td>
+      <td>Er is een nieuwe schriftelijke toets met een nakijk model beschikbaar gemaakt binnen het systeem.</td>
+    </tr>
+    <tr>
+      <td><strong>Requirements</strong></td>
+      <td>&nbsp;
+        <div>
+          <div>FR-7,6,37,12</div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Main Success Scenario</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Actor</strong></td>
+      <td><strong>System</strong></td>
+    </tr>
+    <tr>
+      <td>&nbsp;
+        <div>
+          <div>1. Gebruiker start het toevoegen van nieuwe toetsing</div>
+        </div>
+      </td>
+      <!-- 1.A  -->
+      <td>&nbsp;</td>
+      <!-- 1.B  -->
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <!-- 2.A  -->
+      <td>&nbsp;
+        <div>
+          <div>2. het systeem vraag wat voor typen toets het gaat</div>
+        </div>
+      </td>
+      <!-- 2.B  -->
+    </tr>
+    <tr>
+      <td>3. Gebruiker geeft een type.</td>
+      <!-- 3.A  -->
+      <td>&nbsp;
+        <div>
+          <div>4. Het systeem vraagt om een toetsingsnaam.</div>
+        </div>
+      </td>
+      <!-- 3.B  -->
+    </tr>
+    <tr>
+      <td>5. Gebruiker geeft een naam.</td>
+      <!-- 4.A  -->
+      <td>&nbsp;
+        <div>
+          <div>6. Het systeem controleert of er al een toets bestaat met deze naam.</div>
+          <div>7. Het systeem voegt een versienummer toe.</div>
+          <div> 8. Het systeem vraag gebruiker om het toets document.</div>
+        </div>
+      </td>
+      <!-- 4.B  -->
+    </tr>
+    <tr>
+      <td>9. Gebruiker geeft het toets document</td>
+      <!-- 5.A  -->
+      <td>&nbsp;
+        <div>
+          <div>10. het systeem vraag gebruiker om het nakijkmodel</div>
+        </div>
+      </td>
+      <!-- 5.B  -->
+    </tr>
+       <tr>
+      <td>11. Gebruiker geeft het nakijkmodel</td>
+      <!-- 6.A  -->
+      <td>&nbsp;
+        <div>
+          <div>12.Het systeem vraagt om de weging van de toets</div>
+        </div>
+      </td>
+      <!-- 6.B  -->
+    </tr>
+       <tr>
+      <td>13.Gebruiker geeft de weging</td>
+      <!-- 7.A  -->
+      <td>&nbsp;
+        <div>
+         <div>14. Het systeem toont alle ingevoerde gegevens en vraag of deze correct zijn.</div>
+        </div>
+      </td>
+      <!-- 7.B  -->
+    </tr>
+       <tr>
+      <td>15.Gebruiker bevestigt</td>
+      <!-- 8.A  -->
+      <td>&nbsp;
+        <div>
+          <div>16. Het systeem slaat de gegevens op en beëindigt het proces.</div>
+        </div>
+      </td>
+      <!-- 8.B  -->
+    </tr>
+    <tr>
+        <td colspan="2"><strong>Alternative flow 4</strong></td>
+    </tr>
+    <tr>
+        <td colspan="2">4.a <em>[Toets bestaat al]</em>
+            <br>
+            1.	Het systeem vraagt of bestaande toetsing wordt ge-update.
+            2.	Gebruiker bevestigd. 
+            3.	Het systeem maakt nieuwe toetsing met dezelfde naam maar met verhoogd versienummer.
+            <br>
+            <em>Usecase gaat verder bij main succes scenario punt 8.</em>
+        </td>
+    </tr>
+      <tr>
+        <td colspan="2">4.b <em>[Toets bestaat al]</em>
+            <br>
+           1.   Het systeem vraagt of bestaande toetsing wordt ge-update.
+           2.   Gebruiker geeft aan dat dit niet het geval is.
+             </br>
+            <em>Usecase gaat verder bij main succes scenario punt 4.</em>
+        </td>
+    </tr>
+       <tr>
+        <td colspan="2"><strong>Alternative flow 8+10</strong></td>
+    </tr>
+     <tr>
+        <td colspan="2">8+10.a <em>[Systeem kan niet overweg met bestandstype]</em>
+            <br>
+            1.	Het systeem geeft aan dat het bestandstype niet voldoet.
+            2.	Het systeem vraag de gebruiker een bestand aan te leveren dat wel voldoet.
+            3.	De gebruiker geeft een bestand van het juiste type. 
+            <br>
+            <em>Het systeem gaat verder met het main succes scenario</em>
+        </td>
+    </tr>
+      <tr>
+        <td colspan="2">8+10.b <em>[Systeem kan niet overweg met bestandstype]</em>
+            <br>
+            1.	Het systeem geeft aan dat het bestandstype niet voldoet.
+            2.	Het systeem vraag de gebruiker een bestand aan te leveren dat wel voldoet.
+            3.	De gebruiker geeft aan te willen stoppen met het proces
+            <br>
+            <em>Het systeem stop het proces zonder invoer te verwerken</em>
+        </td>
+    </tr>
+     <tr>
+        <td colspan="2"><strong>Alternative flow 15</strong></td>
+    </tr>
+    <tr>
+        <td colspan="2">15.a <em>[Gebruiker geeft aan dat invoer onjuist is]</em>
+            <br>
+            1.	Hey systeem vraagt welke invoer onjuist is.
+            2 .	Gebruiker geeft aan welke invoer onjuist is.
+            3.	Het systeem maakt nieuwe toetsing met dezelfde naam maar met verhoogd versienummer.
+            <br>
+            <em>Het systeem gaat naar de stap van het main succes scenario waarin de invoer opnieuw gedaan kan worden en vervolgt vanaf daar haar stappen.</em>
+        </td>
+    </tr>
+  </tbody>
+</table>
 
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
 
