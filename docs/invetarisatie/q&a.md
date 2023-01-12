@@ -229,13 +229,12 @@ Stakeholders vanuit de HAN betrokken bij de casus ICDE en degene die de casus ui
 
 # 6. Bronnen
 
-|APA Bronvermelding|
+|Bronvermelding|
 |------------------|
-{interview Ronald}
-{interview John 1}
-{interview John 2}
-{interview John 3}
-{interview John 4}
-{feedback klas 13-10-2022}
+| Interview Stakeholder Ronald 20-09-2022
+| Interview Stakeholder John 27-09-2022
+| Interview Stakeholder John 07-10-2022
+| Interview Stakeholder John 17-10-2022
+| Feedback Tussentijdse Presentatie 13-10-2022
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>

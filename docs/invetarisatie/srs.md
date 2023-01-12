@@ -149,5 +149,6 @@ In onderstaande zijn de non-functional requirements omschreven, deze requirement
 |APA Bronvermelding|
 |------------------|
 |Larman, C., & Kruchten, P. (2005). Applying UML and Patterns: An Introduction to Object-oriented Analysis and Design and Iterative Development. Prentice Hall.
+|Swart, N. de, & de Swart, N. (2017). Handboek Requirements: Leidraad voor analisten in agile, traditionele en hybride omgevingen. Reed Business Education.
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>

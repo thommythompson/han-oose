@@ -1,19 +1,12 @@
 [Terug](/README.md)
 
----
-:warning: **_NOTE:_**
-Voor het hele document geldt: het FO moet net zo gedetailleerd als het TO, daarnaast mogen in het FO geen technische keuzes gemaakt worden. (John)
-
----
-
 # Functioneel Ontwerp
 
 **Opdrachtgever:** De HAN - Hoge School Arnhem Nijmegen</br>
-**Datum**: 12-11-2022 </br>
-**Studenten**: Thomas Hofman (622438), Ricardo de Wijs ({studentnr})</br>
-**Versie**: v0.4 </br>
-**Klas**: {klascode} </br>
-**Locatie**: Arnhem
+**Datum**: 12-01-2023 </br>
+**Studenten**: Thomas Hofman (622438), Ricardo de Wijs (498412)</br>
+**Versie**: v1.0 </br>
+**Locatie**: Arnhem </br>
 **Docent**: John Gorter
 
 # Versiebeheer
@@ -25,7 +18,10 @@ Voor het hele document geldt: het FO moet net zo gedetailleerd als het TO, daarn
 |v0.3|Converteren van docx naar markdown|Thomas Hofman|12-11-2022|
 |v0.4|CRUD Use Cases|Thomas Hofman|12-11-2022|
 |v0.5|CRUD Use Cases|Thomas Hofman|12-11-2022|
-|v0.6|Use Cases toevoegen |Ricardo de Wijs|08-01-2023|
+|v0.6|Use Cases|Thomas Hofman|30-12-2022|
+|v0.7|Use Cases|Thomas Hofman|31-12-2022|
+|v0.8|Use Cases toevoegen |Ricardo de Wijs|08-01-2023|
+|v1.0|Eerste versie |Thomas Hofman|12-01-2023|
 
 # Inhoudsopgave
 
@@ -40,14 +36,14 @@ Voor het hele document geldt: het FO moet net zo gedetailleerd als het TO, daarn
     3.2. [Crud Identificatie](#32-crud-use-cases) </br>
     3.3. [Use Cases](#33-use-cases) </br>
     3.4. [Use Case Diagram](#34-use-case-diagram) </br>
-4. [Domein Model](#5-domein-model) </br>
-5. [Bronnen](#6-bronnen)
+4. [Domein Model](#4-domein-model) </br>
+5. [Bronnen](#5-bronnen)
 
 # 1. Inleiding
 
 ## 1.1. Aanleiding
 
-De aanleiding voor het schrijven van dit functioneel ontwerp is de wens vanuit de organisatie de HAN namens semester ontwikkelaars om een systeem te kunnen gebruiken dat hun assisteert bij het ontwikkelen van een course.
+De aanleiding voor het schrijven van dit functioneel ontwerp is de opdracht gegeven door de I-OOSE semester ontwikkelaars werkzaam bij de organisatie "De HAN" om een systeem te bouwen dat hun assisteert bij het ontwikkelen van een course.
 
 ## 1.2. Doelstelling
 
@@ -61,37 +57,27 @@ Stakeholders vanuit de HAN betrokken bij de casus ICDE en degene die de casus ui
 
 # 2. Functionele Omschrijving
 
-Om goed te begrijpen wat het te ontwikkelen systeem(SUD) moet gaan doen, zijn er op basis van de initiële casus beschrijving: “Intergrated Course Design Environment” en op basis van een domein onderzoek vragen gesteld aan de stakeholders. De uitkomsten resulteren in een functioneel eisenpakket. Als toevoeging van dit eisenpakket is er in de volgende paragraaf een beknopte functionele beschrijving opgenomen om te toetsen of de interpretatie van de klantvraag juist is.
+Om goed te begrijpen wat het te ontwikkelen systeem (SUD) moet gaan doen zijn er op basis van de initiële casus beschrijving: “Integrated Course Design Environment” (ICDE) en op basis van een domein onderzoek vragen gesteld aan de stakeholders. De uitkomsten resulteren in een functioneel eisenpakket, het software requirement specification (SRS) document. Als toevoeging op het SRS document is er in de volgende paragraaf een beknopte functionele beschrijving opgenomen.
 
 ## 2.1. Systeemfunctie
 
-**Bilbiotheek** </br>
-Dit systeem zal primair semesterontwikkelaars ondersteunen met het ontwikkelen van één of meerdere semesters. Om deze ondersteuning te kunnen bieden zal het systeem gevoed moeten worden met informatie over de vakken, beoordelingscriteria en lesmethoden. Onze aanname is ook dat het systeem ook een bibliotheek functie vervuld waaruit geput kan worden om een semester samen te stellen. Deze bibliotheek wordt gevuld door de semesterontwikkelaars zelf. Het systeem ziet erop toe dat het vullen op een eenduidige en consistente manier gebeurt.
+Dit systeem zal primair course ontwikkelaars ondersteunen met het ontwikkelen van één of meerdere courses. Om deze ondersteuning te kunnen bieden zal het systeem gevoed moeten worden met informatie over de vakken, beoordelingscriteria en lesmethoden. Onze aanname is ook dat het systeem ook een bibliotheek functie vervuld waaruit geput kan worden om een semester samen te stellen en vervolgens uit te voeren. Deze bibliotheek wordt gevuld door de semesterontwikkelaars zelf. Het systeem ziet erop toe dat het vullen op een eenduidige en consistente manier gebeurt.
 
-**Ontwikkelproces** </br>
-Tijdens het ontwikkelproces zal de bibliotheek groeien. Een semester moet voldoen aan voldoende inhoud, en deze inhoud moet op zijn beurt weer genoeg waarde hebben voor een bepaald aantal studiepunten (EC’S). Het systeem bewaakt de gestelde course eisen en zal deze eisen actief afdwingen.
+Gedurende het gebruik van het systeem zal de bibliotheek groeien. De inhoud, lessen en tentamen, die onderdeel zijn van een semester/periode moet voldoen aan specifieke eisen (deze business logica ligt vast in de requirements), de tentamen zullen verbonden zijn aan een x aantal studiepunten, het totaal van de haalbare studiepunten zal gelijk moeten zijn aan een vooraf gestelde quota (Periode 15/Semester 30). Het systeem dwingt business logica als deze af om te garanderen dat courses in overeenstemming zijn met de business logica.
 
-**Kwaliteit** </br>
-Om kwaliteit van het ontwikkelde semester of het semester in ontwikkeling te waarborgen zal het systeem de mogelijkheid bieden om inzagen te geven aan derden bijv. management, docenten of onderwijskundigen.
-
-**Externe ondersteuning** </br>
-Bij ontwikkelen van een semester wordt ook informatie verzameld over studiebelasting, beoordelingscriteria per vak of onderdeel en de samenstelling van een semester. Al deze informatie is nuttig voor studenten, roostermakers of voor marketing. Daarom zal het systeem voorbereid worden om deze informatie te distribueren naar andere systemen.
+De voornaamste gebruikers van het systeem zullen docenten en studenten zijn. Docenten hebben de mogelijkheid om ontwikkelde courses uit te voeren en vervolgens de voortgang van de studenten bij te houden en bijvoorbeeld docenten toe te wijzen aan lessen. Een student kan de inrichting van de courses die hij/zij volgt en de bijhorende voortgang bekijken.
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
 # 3. Use Cases
 
-Binnen het hoofdstuk use cases zullen wij ons richten op het identificeren en vastleggen van use cases. Het in kaart brengen doen wij volgens de Larman methode, deze begint met het het vaststellen van de scope. Vervolgens zullen wij over gaan tot de daadwerkelijke use case identificatie, dit doen wij middels de “User-Goal” en “Event Analysis” methoden. Het vastleggen van dit proces doen wij zodat de oorsprong van de use cases systematisch te herleiden valt.
+Binnen het hoofdstuk use cases zullen wij ons richten op het identificeren en vastleggen van use cases. Het in kaart brengen doen wij volgens de Larman (Larman, 2005) methode, deze begint met het het vaststellen van de scope. Vervolgens zullen wij over gaan tot de daadwerkelijke use case identificatie, dit doen wij middels de “User-Goal” en “Event Analysis” methoden. De data bronnen waarop wij deze technieken zullen toepassen zijn de "Questions & Answers" en "Software Requirements Specification" documenten.
 
-De in kaart gebrachte use cases worden waar nodig uitgewerkt tot een daadwerkelijke tekstuele use case, ofte wijl een use case in fully dressed format. Vervolgens sluiten wij dit hoofdstuk af met een use case diagram, een visuele weergave van hoe de use cases zich tot elkaar verhouden. 
+De in kaart gebrachte use cases worden waar nodig uitgewerkt tot een daadwerkelijke tekstuele use case, ofte wijl een use case in fully dressed format. Vervolgens sluiten wij dit hoofdstuk af met een use case diagram, een visuele weergave van hoe de use cases zich tot elkaar verhouden.
 
 ## 3.1. Scope
 
----
-:warning: **_NOTE:_**
-Kort toelichten wat externe en interne functionaliteit is.
-
----
+**TODO!**
 
 ## 3.2. Crud Use Cases
 
@@ -99,9 +85,9 @@ Veel van de use cases bevatten overeenkomende functionaliteit, namelijk een stan
 
 ## 3.3. Use Cases
 
-Middels verschillende use case identificatie technieken (zoals ..., ... &  ...) hebben wij belangrijke entiteiten, actoren en hun doelen weten te identificeren. Uit deze informatie hebben wij een aantal use cases weten te extraheren, waar nodig worden deze in onderstaande toegelicht middels een “fully dressed” formaat. Het fully dressed use case model is gebasseerd op het meest wijd geadoppteerde template van Alistair Cockburn (Larman 2004, 6.8).
+Middels de “User-Goal” en “Event Analysis” use case identificatie technieken hebben wij belangrijke entiteiten, actoren en hun doelen weten te identificeren. Uit deze informatie hebben wij een aantal use cases weten te extraheren, waar nodig worden deze in het bijgevoegde use case document toegelicht middels een “fully dressed” formaat. Het fully dressed use case model is gebaseerd op het meest wijd geadopteerde template van Alistair Cockburn (Larman 2005).
 
-Niet alle use cases zijn even complex, sommige use cases zijn gebasseerd op basis van de in hoofdstuk 3.2 gedefineerd CRUD use cases. Voor deze use cases worden alleen afwijkingen/specificiteiten vastlegd.
+Niet alle use cases zijn even complex, sommige use cases zijn gebaseerd op basis van de in hoofdstuk 3.2 gedefinieerd CRUD use cases. Voor deze use cases worden alleen afwijkingen/specificiteiten vastgelegd.
 
 De uitwerkingen van alle use cases zijn [hier](usecases.md) in te zien.
 
@@ -134,6 +120,7 @@ rectangle ICDE-Tool {
     usecase "UC-6 Vraag course planning op" as UC6
     usecase "UC-2 Bekijk Beoordelingen" as UC2
     usecase "UC-20 Aanmelden" as UC20
+    usecase "UC-23 Nieuwe versie" as UC23
 }
 
 d --> UC11
@@ -141,15 +128,16 @@ d --> UC10
 d --> UC12
 d --> UC13
 d --> UC21
-UC21 <.. UC14 : extends
+UC21 <.. UC14 : <<extends>>
 d --> UC22
 d --> UC1
 UC1 <.. UC17 : <<extends>>
-UC1 <.. UC16 : extends
+UC1 <.. UC16 : <<extends>>
+UC1 <.. UC23 : <<extends>>
 d --> UC15
 d --> UC19
 d --> UC4
-UC4 <.. UC3 : extends
+UC4 <.. UC3 : <<extends>>
 d --> UC8
 d --> UC7
 d --> UC9
@@ -164,7 +152,7 @@ s --> UC2
 
 # 4. Domein Model
 
-Binnen het domein model richten wij ons op het verstaan van de business taal, hetgeen dat van belang is de vastlegging van concepten, hun attributen en de relatie tussen deze concepten. Het domein model zelf is een visuele representatie van het business domein al zullen wij ons eerst richten op de identificatie van de concepten. De vastlegging hiervan is tekstueel, de reden voor de vastleggen is dat oorsprong van alle concepten zo te herleiden valt.
+Binnen het domein model richten wij ons op het verstaan van de business taal, hetgeen dat van belang is de vastlegging van concepten, hun attributen en de relatie tussen deze concepten. Het domein model zelf is een visuele representatie van het business domein. De concepten hebben wij geïdentificeerd middels de "noun identification method" (Larman 2005), dat betekent dat wij alle zelfstandig naamwoorden in kaart hebben gebracht en als concepten hebben bestempelt. De verhoudingen en relevantie van deze concepten hebben wij gevalideerd met de stakeholders, deze communicatie is vastgelegd in het "Questions & Answers" document. Wij hebben alleen het resultaat relevant bevonden om op te nemen in een ontwerp document, de werkdocumenten waarin wij de "noun identification method" hebben toegepast zijn daarom achterwegen gelaten.
 
 ```plantuml
 object CourseBibliotheek 
@@ -286,19 +274,13 @@ Locatie "1" -- "1..*" LesUitvoering
 Locatie "1" -- "1..*" TentamenUitvoering
 ```
 
----
-:warning: **_CRITERIA:_**
-alle relevante domein-concepten volledig beschreven dmv. correct toegepaste standaard-notatie, implementatie-onafhankelijk, correctheid/compleetheid aantoonbaar onderbouwd voor een 10
-
----
-
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
 # 5. Bronnen
 
 |APA Bronvermelding|
 |------------------|
-|{Larman}
-|{Handboek Requirements, Nicole de Zwart}
+|Larman, C., & Kruchten, P. (2005). Applying UML and Patterns: An Introduction to Object-oriented Analysis and Design and Iterative Development. Prentice Hall.
+
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>

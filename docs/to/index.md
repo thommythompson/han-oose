@@ -3,11 +3,10 @@
 # Technisch Ontwerp
 
 **Opdrachtgever:** De HAN - Hoge School Arnhem Nijmegen</br>
-**Datum**: 12-11-2022 </br>
-**Studenten**: Thomas Hofman (622438), Ricardo de Wijs ({studentnr})</br>
-**Versie**: v0.2 </br>
-**Klas**: {klascode} </br>
-**Locatie**: Arnhem
+**Datum**: 12-01-2022 </br>
+**Studenten**: Thomas Hofman (622438), Ricardo de Wijs (498412)</br>
+**Versie**: v0.9 </br>
+**Locatie**: Arnhem </br>
 **Docent**: John Gorter
 
 # Versiebeheer
