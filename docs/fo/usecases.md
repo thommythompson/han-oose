@@ -2,25 +2,40 @@
 
 # Use Case Overview
 
+---
+:warning: **_NOTITIE:_**
+Niet alle use cases zijn uitgewerkt, de uitwerken van de niet uitgewerkte use cases waren toegewezen aan een collega student die het semester vroegtijdig heeft verlaten.
+
+---
+
 ## CRUD Specificatie
 
-- [ ] [UC-1 - Ontwikkel Course](#uc-1-ontwikkel-course)
+- [x] [UC-1 - Ontwikkel Course](#uc-1-ontwikkel-course)
 - [x] [UC-3 - Beheer Gebruikers](#uc-3-beheer-gebruikers)
 - [x] [UC-4 - Beheer Klassen](#uc-4-beheer-klassen)
+- [ ] [UC-5 - Vraag course info op](#uc-5-vraag-course-info-op)
+- [x] [UC-6 - Vraag course planning op](#uc-6-vraag-courseplanning-op)
 - [x] [UC-7 - Beheer Opleidingen](#uc-7-beheer-opleidingen)
+- [x] [UC-8 - Geef beoordeling](#uc-8-geef-beoordeling)
 - [x] [UC-9 - Beheer Opleidingsprofielen](#uc-9-beheer-opleidingsprofielen)
 - [x] [UC-10 - Ontwikkel Leeruitkomst](#uc-10-ontwikkel-leeruitkomst)
+- [ ] [UC-11 - Ontwikkel EVL](#uc-11-ontwikkel-evl)
 - [x] [UC-12 - Ontwikkel Leerdoelen](#uc-12-ontwikkel-leerdoelen)
-- [ ] [UC-19 - Beheer Locaties](#uc-19-beheer-locaties)
+- [x] [UC-19 - Beheer Locaties](#uc-19-beheer-locaties)
 
 ## Fully Dressed
 
 - [x] [UC-2 - Bekijken beoordelingen](#uc-2-bekijken-beoordelingen)
+- [x] [UC-13 - Ontwikkel toets](#uc-13-ontwikkel-toets)
+- [ ] [UC-14 - Maak rubriek](#uc-14-maak-rubriek)
 - [x] [UC-15 - Start Uitvoering](#uc-15-start-uitvoering)
 - [x] [UC-16 - Maak course planning definitief](#uc-16-maak-course-template-definitief)
 - [x] [UC-17 - Maak Weekplanning](#uc-17---maak-weekplanning)
+- [ ] [UC-18 - Exporteer informatie](#uc-18-exporteer-informatie)
 - [x] [UC-20 - Aanmelden](#uc-20-aanmelden)
+- [ ] [UC-21 - Ontwikkel beroepsproduct](#uc-21-ontwikkel-beroepsproduct)
 - [ ] [UC-22 - Ontwikkel Les](#uc-22-ontwikkel-les)
+- [ ] [UC-23 - Nieuwe versie](#uc-23-nieuwe-versie)
 
 # **UC-1 Ontwikkel Course**
 
@@ -28,71 +43,69 @@
   <tbody>
     <tr>
       <td><strong>ID</strong></td>
-      <td>&nbsp;UC-1</td>
+      <td>UC-1</td>
     </tr>
     <tr>
       <td><strong>Naam</strong></td>
-      <td>Ontwikkel Course</td>
+      <td>Docent</td>
     </tr>
     <tr>
       <td><strong>Omschrijving</strong></td>
-      <td>
-        <p>Een course dient als template voor een uitvoering. Deze template kan, wanneer de template definitief wordt
-          gemaakt, gebruikt worden om een course te starten. Tijdens het proces kunnen de onderliggende objecten
-          iteratief aangemaakt worden.</p>
-        Deze use case is gebaseerd op het CRUD-template
-      </td>
+      <td>Deze use case is gebaseerd op het CRUD-template, binnen deze use case worden alleen uitzonderingen of
+        specificiteit belicht.</td>
     </tr>
     <tr>
       <td><strong>Scope</strong></td>
-      <td>&nbsp;ICDE-Tool</td>
+      <td>ICDE-Tool</td>
     </tr>
     <tr>
       <td><strong>Trigger</strong></td>
-      <td>&nbsp;Gebruikers Interactie</td>
+      <td>Gebruikers Interactie</td>
     </tr>
     <tr>
       <td><strong>Level</strong></td>
-      <td>&nbsp;User-Goal</td>
+      <td>User-Goal</td>
     </tr>
     <tr>
       <td><strong>Primary Actor</strong></td>
-      <td>&nbsp;Docent</td>
+      <td>Docent</td>
     </tr>
     <tr>
       <td><strong>Belangen &amp; belanghebbenden</strong></td>
       <td>
-        <div>- Docent: wil een course template maken en/of aanpassen.</div>
+        <p>- Docent: wil een course template maken en/of aanpassen.
+        </p>
+        <p>- Student: </p>
       </td>
     </tr>
     <tr>
       <td><strong>Pre-Condities</strong></td>
-      <td>
-        <p>- Gebruiker is aangemeld als docent</p>
+      <td>- De docent is geauthentiseerd.
+        <div>
+          <div>- De desbetreffende klas waarvan de student lid moet worden bestaat al. (UC-4)</div>
+        </div>
       </td>
     </tr>
     <tr>
-      <td><strong>Succes definitie</strong></td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
       <td><strong>Requirements</strong></td>
-      <td>FR-1, FR-28</td>
-    </tr>
-    <tr>
-      <td colspan="2"><strong>Main Success Scenario</strong></td>
+      <td>FR-1,28,3</td>
     </tr>
     <tr>
       <td><strong>Create/Update:</strong></td>
-      <td>&nbsp;</td>
+      <td>De benodigde data zijn een naam, email adres en in het geval van een student ook een klas, het systeem
+        valideert of in deze databehoefte voorzien is.</td>
     </tr>
     <tr>
       <td><strong>Delete:</strong></td>
-      <td>Wanneer er nog locaties toegewijd zijn aan lessen uit een actieve Course Uitvoering kan de locatie niet
-        verwijderd worden</td>
+      <td>In het geval van een student verwijdert het systeem de student en alle persoons informatie zoals
+        eventuele beoordelingen voor tentamens die hij/zij behaalt heeft. In het geval van een docent wordt er gekeken
+        of de docent gerelateerd is aan een entiteit binnen het systeem, zoals een beoordeling, les of tentaminering,
+        als dit een geval is kan de docent niet verwijderd worden.</td>
     </tr>
   </tbody>
 </table>
+
+<font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
 
 # **UC-2 Bekijken beoordelingen**
 
@@ -100,48 +113,48 @@
   <tbody>
     <tr>
       <td><strong>ID</strong></td>
-      <td>&nbsp;UC-2</td>
+      <td>UC-2</td>
     </tr>
     <tr>
       <td><strong>Naam</strong></td>
-      <td>&nbsp;Bekijken beoordelingen</td>
+      <td>Bekijken beoordelingen</td>
     </tr>
     <tr>
       <td><strong>Omschrijving</strong></td>
-      <td>&nbsp;Deze use case is verantwoordelijk voor het inzichtelijk maken van beoordelingen voor studenten.</td>
+      <td>Deze use case is verantwoordelijk voor het inzichtelijk maken van beoordelingen voor studenten.</td>
     </tr>
     <tr>
       <td><strong>Scope</strong></td>
-      <td>&nbsp;ICDE-Tool</td>
+      <td>ICDE-Tool</td>
     </tr>
     <tr>
       <td><strong>Trigger</strong></td>
-      <td>&nbsp;Gebruikers Interactie</td>
+      <td>Gebruikers Interactie</td>
     </tr>
     <tr>
       <td><strong>Level</strong></td>
-      <td>&nbsp;User-Goal</td>
+      <td>User-Goal</td>
     </tr>
     <tr>
       <td><strong>Primary Actor</strong></td>
-      <td>&nbsp;Student</td>
+      <td>Student</td>
     </tr>
     <tr>
       <td><strong>Belangen &amp; belanghebbenden</strong></td>
-      <td>&nbsp;- Student: Wil zijn/haar voorgang en behaalde resultaten kunnen bekijken.</td>
+      <td>- Student: Wil zijn/haar voorgang en behaalde resultaten kunnen bekijken.</td>
     </tr>
     <tr>
       <td><strong>Pre-Condities</strong></td>
-      <td>&nbsp;- Authenticatie is afgehandeld; gebruiker is bevoegd om op het systeem in te loggen.</td>
+      <td>- Authenticatie is afgehandeld; gebruiker is bevoegd om op het systeem in te loggen.</td>
     </tr>
     <tr>
       <td><strong>Succes definitie</strong></td>
-      <td>&nbsp;- Er word een overzicht getoond van de course voortang in de vorm van een lijst van behaalde resultaten
+      <td>- Er word een overzicht getoond van de course voortang in de vorm van een lijst van behaalde resultaten
         en het aantal behaalde studiepunten ten opzichte van het totaal haalbare aantal studiepunten.</td>
     </tr>
     <tr>
       <td><strong>Requirements</strong></td>
-      <td>&nbsp;
+      <td>
         <div>
           <div>FR-38</div>
         </div>
@@ -155,19 +168,19 @@
       <td><strong>System</strong></td>
     </tr>
     <tr>
-      <td>&nbsp;
+      <td>
         <div>
           <div>1. De student vraagt aan het systeem om een overzicht van alle beoordelingen.</div>
         </div>
       </td>
       <!-- 1.A  -->
-      <td>&nbsp;</td>
+      <td></td>
       <!-- 1.B  -->
     </tr>
     <tr>
-      <td>&nbsp;</td>
+      <td></td>
       <!-- 2.A  -->
-      <td>&nbsp;
+      <td>
         <div>
           <div>2. Het systeem haalt alle tentamineringen van de student op (ook die waarvoor nog geen beoordeling
             behaald is).</div>
@@ -176,9 +189,9 @@
       <!-- 2.B  -->
     </tr>
     <tr>
-      <td>&nbsp;</td>
+      <td></td>
       <!-- 3.A  -->
-      <td>&nbsp;
+      <td>
         <div>
           <div>3. Het systeem categoriseert de beoordelingen per course uitvoering.</div>
         </div>
@@ -186,9 +199,9 @@
       <!-- 3.B  -->
     </tr>
     <tr>
-      <td>&nbsp;</td>
+      <td></td>
       <!-- 4.A  -->
-      <td>&nbsp;
+      <td>
         <div>
           <div>4. Het systeem berekent per course uitvoering het behaalde aantal studiepunten en de eindbeoordeling voor
             de course. (Een optelsom van de voorgeschreven studiepunten van de tentamineringen die onderdeel zijn van de
@@ -198,21 +211,14 @@
       <!-- 4.B  -->
     </tr>
     <tr>
-      <td>&nbsp;</td>
+      <td></td>
       <!-- 5.A  -->
-      <td>&nbsp;
+      <td>
         <div>
           <div>5. Het systeem toont een overzicht van alle beoordelingen.</div>
         </div>
       </td>
       <!-- 5.B  -->
-    </tr>
-    <tr>
-      <td colspan="2"><strong>Alternative flow A</strong></td>
-    </tr>
-    <tr>
-      <td colspan="2">2a. <em>[De student heeft nog geen enkele course gevolgd]</em><br>
-        1. Het systeem toont dat er geen resultaten gevonden zijn.</td>
     </tr>
   </tbody>
 </table>
@@ -225,32 +231,32 @@
   <tbody>
     <tr>
       <td><strong>ID</strong></td>
-      <td>&nbsp;UC-3</td>
+      <td>UC-3</td>
     </tr>
     <tr>
       <td><strong>Naam</strong></td>
-      <td>&nbsp;Beheer Gebruikers</td>
+      <td>Beheer Gebruikers</td>
     </tr>
     <tr>
       <td><strong>Omschrijving</strong></td>
-      <td>&nbsp;Deze use case is gebaseerd op het CRUD-template, binnen deze use case worden alleen uitzonderingen of
+      <td>Deze use case is gebaseerd op het CRUD-template, binnen deze use case worden alleen uitzonderingen of
         specificiteit belicht.</td>
     </tr>
     <tr>
       <td><strong>Scope</strong></td>
-      <td>&nbsp;ICDE-Tool</td>
+      <td>ICDE-Tool</td>
     </tr>
     <tr>
       <td><strong>Trigger</strong></td>
-      <td>&nbsp;Gebruikers Interactie</td>
+      <td>Gebruikers Interactie</td>
     </tr>
     <tr>
       <td><strong>Level</strong></td>
-      <td>&nbsp;User-Goal</td>
+      <td>User-Goal</td>
     </tr>
     <tr>
       <td><strong>Primary Actor</strong></td>
-      <td>&nbsp;Docent</td>
+      <td>Docent</td>
     </tr>
     <tr>
       <td><strong>Belangen &amp; belanghebbenden</strong></td>
@@ -262,35 +268,24 @@
     </tr>
     <tr>
       <td><strong>Pre-Condities</strong></td>
-      <td>&nbsp;- De docent is geauthentiseerd.
+      <td>- De docent is geauthentiseerd.
         <div>
           <div>- De desbetreffende klas waarvan de student lid moet worden bestaat al. (UC-4)</div>
         </div>
       </td>
     </tr>
     <tr>
-      <td><strong>Succes definitie</strong></td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
       <td><strong>Requirements</strong></td>
-      <td>&nbsp;FR-4</td>
-    </tr>
-    <tr>
-      <td colspan="2"><strong>Main Success Scenario</strong></td>
-    </tr>
-    <tr>
-      <td><strong>Actor</strong></td>
-      <td><strong>System</strong></td>
+      <td>FR-4</td>
     </tr>
     <tr>
       <td><strong>Create/Update:</strong></td>
-      <td>&nbsp;De benodigde data zijn een naam, email adres en in het geval van een student ook een klas, het systeem
+      <td>De benodigde data zijn een naam, email adres en in het geval van een student ook een klas, het systeem
         valideert of in deze databehoefte voorzien is.</td>
     </tr>
     <tr>
       <td><strong>Delete:</strong></td>
-      <td>&nbsp;In het geval van een student verwijdert het systeem de student en alle persoons informatie zoals
+      <td>In het geval van een student verwijdert het systeem de student en alle persoons informatie zoals
         eventuele beoordelingen voor tentamens die hij/zij behaalt heeft. In het geval van een docent wordt er gekeken
         of de docent gerelateerd is aan een entiteit binnen het systeem, zoals een beoordeling, les of tentaminering,
         als dit een geval is kan de docent niet verwijderd worden.</td>
@@ -306,7 +301,7 @@
   <tbody>
     <tr>
       <td><strong>ID</strong></td>
-      <td>&nbsp;UC-4</td>
+      <td>UC-4</td>
     </tr>
     <tr>
       <td><strong>Naam</strong></td>
@@ -319,19 +314,19 @@
     </tr>
     <tr>
       <td><strong>Scope</strong></td>
-      <td>&nbsp;ICDE-Tool</td>
+      <td>ICDE-Tool</td>
     </tr>
     <tr>
       <td><strong>Trigger</strong></td>
-      <td>&nbsp;Gebruikers Interactie</td>
+      <td>Gebruikers Interactie</td>
     </tr>
     <tr>
       <td><strong>Level</strong></td>
-      <td>&nbsp;User-Goal</td>
+      <td>User-Goal</td>
     </tr>
     <tr>
       <td><strong>Primary Actor</strong></td>
-      <td>&nbsp;Docent</td>
+      <td>Docent</td>
     </tr>
     <tr>
       <td><strong>Belangen &amp; belanghebbenden</strong></td>
@@ -353,23 +348,12 @@
       </td>
     </tr>
     <tr>
-      <td><strong>Succes definitie</strong></td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
       <td><strong>Requirements</strong></td>
       <td>
         <div>
           <div>FR-29</div>
         </div>
       </td>
-    </tr>
-    <tr>
-      <td colspan="2"><strong>Main Success Scenario</strong></td>
-    </tr>
-    <tr>
-      <td><strong>Actor</strong></td>
-      <td><strong>System</strong></td>
     </tr>
     <tr>
       <td><strong>Create/Update:</strong></td>
@@ -392,11 +376,83 @@
   </tbody>
 </table>
 
----
-:warning: **_NOTE:_**
-Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen van de klas aan de course iedere student individueel aan de course verbonden een student kan namelijk wisselen van klas en of blijven zitten. --> verwerken in UC-15 “Start Uitvoering”
+<font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
+# **UC-5 Vraag course info op**
 
----
+<table>
+<td><strong>TODO!</Strong></td>
+</Table>
+
+<font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
+# **UC-6 Vraag courseplanning op**
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>ID</strong></td>
+      <td>UC-6</td>
+    </tr>
+    <tr>
+      <td><strong>Naam</strong></td>
+      <td>Vraag course planning op </td>
+    </tr>
+    <tr>
+      <td><strong>Omschrijving</strong></td>
+      <td>Deze use case is gebaseerd op het CRUD template, binnen deze use case worden alleen uitzonderingen of
+        specificiteit belicht.</td>
+    </tr>
+    <tr>
+      <td><strong>Scope</strong></td>
+      <td>ICDE-Tool</td>
+    </tr>
+    <tr>
+      <td><strong>Trigger</strong></td>
+      <td>Gebruikers Interactie</td>
+    </tr>
+    <tr>
+      <td><strong>Level</strong></td>
+      <td>User-Goal</td>
+    </tr>
+    <tr>
+      <td><strong>Primary Actor</strong></td>
+      <td>Docent / Student</td>
+    </tr>
+    <tr>
+      <td><strong>Belangen &amp; belanghebbenden</strong></td>
+      <td>
+        <div>Student: wil een course planning kunnen inzien zodat hij/zij weet wanneer welke activiteiten plaats vinden.
+        </div>
+        <div>
+        Docent: wil een course planning kunnen inzien zodat hij/zij weet wanneer welke stof behandeld moet worden
+ &hellip;</div>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Pre-Condities</strong></td>
+      <td>
+        <div>- De docent/student is geauthentiseerd. (UC-20)</div>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Requirements</strong></td>
+      <td>
+        <div>
+          <div>FR-3</div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Read:</strong></td>
+      <td>
+        <div>
+          <div>De benodigde data is de klas, het systeem toont de klas en de courseplanning.
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
 
 # **UC-7 Beheer Opleidingen**
@@ -405,7 +461,7 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
   <tbody>
     <tr>
       <td><strong>ID</strong></td>
-      <td>&nbsp;UC-7</td>
+      <td>UC-7</td>
     </tr>
     <tr>
       <td><strong>Naam</strong></td>
@@ -418,19 +474,19 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
     </tr>
     <tr>
       <td><strong>Scope</strong></td>
-      <td>&nbsp;ICDE-Tool</td>
+      <td>ICDE-Tool</td>
     </tr>
     <tr>
       <td><strong>Trigger</strong></td>
-      <td>&nbsp;Gebruikers Interactie</td>
+      <td>Gebruikers Interactie</td>
     </tr>
     <tr>
       <td><strong>Level</strong></td>
-      <td>&nbsp;User-Goal</td>
+      <td>User-Goal</td>
     </tr>
     <tr>
       <td><strong>Primary Actor</strong></td>
-      <td>&nbsp;Docent</td>
+      <td>Docent</td>
     </tr>
     <tr>
       <td><strong>Belangen &amp; belanghebbenden</strong></td>
@@ -445,23 +501,12 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
       </td>
     </tr>
     <tr>
-      <td><strong>Succes definitie</strong></td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
       <td><strong>Requirements</strong></td>
       <td>
         <div>
           <div>FR-29</div>
         </div>
       </td>
-    </tr>
-    <tr>
-      <td colspan="2"><strong>Main Success Scenario</strong></td>
-    </tr>
-    <tr>
-      <td><strong>Actor</strong></td>
-      <td><strong>System</strong></td>
     </tr>
     <tr>
       <td><strong>Create/Update:</strong></td>
@@ -485,6 +530,78 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
 </table>
 
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
+# **UC-8 Geef Beoordeling**
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>ID</strong></td>
+      <td>UC-8</td>
+    </tr>
+    <tr>
+      <td><strong>Naam</strong></td>
+      <td>Geef beoordeling</td>
+    </tr>
+    <tr>
+      <td><strong>Omschrijving</strong></td>
+      <td>Deze usecase beschrijft het invoeren van beoordelingen bij gemaakte tentamen.</td>
+    </tr>
+    <tr>
+      <td><strong>Scope</strong></td>
+      <td>ICDE-Tool</td>
+    </tr>
+    <tr>
+      <td><strong>Trigger</strong></td>
+      <td>Gebruikers Interactie</td>
+    </tr>
+    <tr>
+      <td><strong>Level</strong></td>
+      <td>User-Goal</td>
+    </tr>
+    <tr>
+      <td><strong>Primary Actor</strong></td>
+      <td>Docent / Student</td>
+    </tr>
+    <tr>
+      <td><strong>Belangen &amp; belanghebbenden</strong></td>
+      <td>
+        <div>
+        Docent: wil een tentamenbeoordeling vastleggen.
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Pre-Condities</strong></td>
+      <td>
+        <div>- De docent/student is geauthentiseerd. (UC-20)</div>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Succes definitie</strong></td>
+      <td> Een tentamencijfer is vastgelegd bij de student die het tentamen heeft afgenomen. </td>
+    </tr>
+    <tr>
+      <td><strong>Requirements</strong></td>
+      <td>
+        <div>
+          <div>FR-7</div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Update:</strong></td>
+      <td>
+        <div>
+          <div>De benodigde data is de klas, tentamen, student en het cijfer. het systeem  legt het cijfer vast.
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
 
 # **UC-9 Beheer Opleidingsprofielen**
 
@@ -492,7 +609,7 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
   <tbody>
     <tr>
       <td><strong>ID</strong></td>
-      <td>&nbsp;UC-9</td>
+      <td>UC-9</td>
     </tr>
     <tr>
       <td><strong>Naam</strong></td>
@@ -509,19 +626,19 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
     </tr>
     <tr>
       <td><strong>Scope</strong></td>
-      <td>&nbsp;ICDE-Tool</td>
+      <td>ICDE-Tool</td>
     </tr>
     <tr>
       <td><strong>Trigger</strong></td>
-      <td>&nbsp;Gebruikers Interactie</td>
+      <td>Gebruikers Interactie</td>
     </tr>
     <tr>
       <td><strong>Level</strong></td>
-      <td>&nbsp;User-Goal</td>
+      <td>User-Goal</td>
     </tr>
     <tr>
       <td><strong>Primary Actor</strong></td>
-      <td>&nbsp;Docent</td>
+      <td>Docent</td>
     </tr>
     <tr>
       <td><strong>Belangen &amp; belanghebbenden</strong></td>
@@ -543,23 +660,12 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
       </td>
     </tr>
     <tr>
-      <td><strong>Succes definitie</strong></td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
       <td><strong>Requirements</strong></td>
       <td>
         <div>
           <div>FR-29</div>
         </div>
       </td>
-    </tr>
-    <tr>
-      <td colspan="2"><strong>Main Success Scenario</strong></td>
-    </tr>
-    <tr>
-      <td><strong>Actor</strong></td>
-      <td><strong>System</strong></td>
     </tr>
     <tr>
       <td><strong>Create/Update:</strong></td>
@@ -590,7 +696,7 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
   <tbody>
     <tr>
       <td><strong>ID</strong></td>
-      <td>&nbsp;UC-10</td>
+      <td>UC-10</td>
     </tr>
     <tr>
       <td><strong>Naam</strong></td>
@@ -611,26 +717,26 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
     </tr>
     <tr>
       <td><strong>Scope</strong></td>
-      <td>&nbsp;ICDE-Tool</td>
+      <td>ICDE-Tool</td>
     </tr>
     <tr>
       <td><strong>Trigger</strong></td>
-      <td>&nbsp;Gebruikers Interactie</td>
+      <td>Gebruikers Interactie</td>
     </tr>
     <tr>
       <td><strong>Level</strong></td>
-      <td>&nbsp;User-Goal</td>
+      <td>User-Goal</td>
     </tr>
     <tr>
       <td><strong>Primary Actor</strong></td>
-      <td>&nbsp;Docent</td>
+      <td>Docent</td>
     </tr>
     <tr>
       <td><strong>Belangen &amp; belanghebbenden</strong></td>
       <td>
         <div>
           <div>- Docent: Wil vast kunnen leggen welke leeruitkomsten er binnen deze EVL behaald moeten worden zodat men
-            hier passende leerdoelen aan kan verbinden.&nbsp;</div>
+            hier passende leerdoelen aan kan verbinden.</div>
           <div>- Student: Wil deze vastlegging kunnen inzien zodat men weet wat de beoogde leeruitkomsten zijn.</div>
         </div>
       </td>
@@ -645,23 +751,12 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
       </td>
     </tr>
     <tr>
-      <td><strong>Succes definitie</strong></td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
       <td><strong>Requirements</strong></td>
       <td>
         <div>
           <div>FR-9</div>
         </div>
       </td>
-    </tr>
-    <tr>
-      <td colspan="2"><strong>Main Success Scenario</strong></td>
-    </tr>
-    <tr>
-      <td><strong>Actor</strong></td>
-      <td><strong>System</strong></td>
     </tr>
     <tr>
       <td><strong>Create/Update:</strong></td>
@@ -686,13 +781,21 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
 
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
 
+# **UC-11 Ontwikkel EVL**
+
+<table>
+<td><strong>TODO!</Strong></td>
+</Table>
+
+<font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
+
 # **UC-12 Ontwikkel leerdoelen**
 
 <table>
   <tbody>
     <tr>
       <td><strong>ID</strong></td>
-      <td>&nbsp;UC-12</td>
+      <td>UC-12</td>
     </tr>
     <tr>
       <td><strong>Naam</strong></td>
@@ -713,19 +816,19 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
     </tr>
     <tr>
       <td><strong>Scope</strong></td>
-      <td>&nbsp;ICDE-Tool</td>
+      <td>ICDE-Tool</td>
     </tr>
     <tr>
       <td><strong>Trigger</strong></td>
-      <td>&nbsp;Gebruikers Interactie</td>
+      <td>Gebruikers Interactie</td>
     </tr>
     <tr>
       <td><strong>Level</strong></td>
-      <td>&nbsp;User-Goal</td>
+      <td>User-Goal</td>
     </tr>
     <tr>
       <td><strong>Primary Actor</strong></td>
-      <td>&nbsp;Docent</td>
+      <td>Docent</td>
     </tr>
     <tr>
       <td><strong>Belangen &amp; belanghebbenden</strong></td>
@@ -747,23 +850,12 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
       </td>
     </tr>
     <tr>
-      <td><strong>Succes definitie</strong></td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
       <td><strong>Requirements</strong></td>
       <td>
         <div>
           <div>FR-11</div>
         </div>
       </td>
-    </tr>
-    <tr>
-      <td colspan="2"><strong>Main Success Scenario</strong></td>
-    </tr>
-    <tr>
-      <td><strong>Actor</strong></td>
-      <td><strong>System</strong></td>
     </tr>
     <tr>
       <td><strong>Create/Update:</strong></td>
@@ -788,39 +880,251 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
 
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
 
+# **UC-13 Ontwikkel toets**
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>ID</strong></td>
+      <td>UC-13</td>
+    </tr>
+    <tr>
+      <td><strong>Naam</strong></td>
+      <td>Ontwikkel toetsing</td>
+    </tr>
+    <tr>
+      <td><strong>Omschrijving</strong></td>
+      <td>Het ontwikkelen van een toetsing bestaat uit het inladen (toevoegen) van een toets en een bijbehorend beoordelingsmodel deze toets krijgt een weging.</td>
+    </tr>
+    <tr>
+      <td><strong>Scope</strong></td>
+      <td>ICDE-Tool</td>
+    </tr>
+    <tr>
+      <td><strong>Trigger</strong></td>
+      <td>Gebruikers Interactie</td>
+    </tr>
+    <tr>
+      <td><strong>Level</strong></td>
+      <td>User-Goal</td>
+    </tr>
+    <tr>
+      <td><strong>Primary Actor</strong></td>
+      <td>Docent</td>
+    </tr>
+    <tr>
+      <td><strong>Belangen &amp; belanghebbenden</strong></td>
+      <td>Docent: wil op een consistente manier toetsing en nakijkmodellen beschikbaar voor een leerdoel.</td>
+    </tr>
+    <tr>
+      <td><strong>Pre-Condities</strong></td>
+      <td>Authenticatie is afgehandeld; gebruiker is bevoegd om op het systeem in te loggen.</td>
+    </tr>
+    <tr>
+      <td><strong>Succes definitie</strong></td>
+      <td>Er is een nieuwe schriftelijke toets met een nakijk model beschikbaar gemaakt binnen het systeem.</td>
+    </tr>
+    <tr>
+      <td><strong>Requirements</strong></td>
+      <td>
+        <div>
+          <div>FR-7,6,37,12</div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Main Success Scenario</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Actor</strong></td>
+      <td><strong>System</strong></td>
+    </tr>
+    <tr>
+      <td>
+        <div>
+          <div>1. Gebruiker start het toevoegen van nieuwe toetsing</div>
+        </div>
+      </td>
+      <!-- 1.A  -->
+      <td></td>
+      <!-- 1.B  -->
+    </tr>
+    <tr>
+      <td></td>
+      <!-- 2.A  -->
+      <td>
+        <div>
+          <div>2. het systeem vraag wat voor typen toets het gaat</div>
+        </div>
+      </td>
+      <!-- 2.B  -->
+    </tr>
+    <tr>
+      <td>3. Gebruiker geeft een type.</td>
+      <!-- 3.A  -->
+      <td>
+        <div>
+          <div>4. Het systeem vraagt om een toetsingsnaam.</div>
+        </div>
+      </td>
+      <!-- 3.B  -->
+    </tr>
+    <tr>
+      <td>5. Gebruiker geeft een naam.</td>
+      <!-- 4.A  -->
+      <td>
+        <div>
+          <div>6. Het systeem controleert of er al een toets bestaat met deze naam.</div>
+          <div>7. Het systeem voegt een versienummer toe.</div>
+          <div> 8. Het systeem vraag gebruiker om het toets document.</div>
+        </div>
+      </td>
+      <!-- 4.B  -->
+    </tr>
+    <tr>
+      <td>9. Gebruiker geeft het toets document</td>
+      <!-- 5.A  -->
+      <td>
+        <div>
+          <div>10. het systeem vraag gebruiker om het nakijkmodel</div>
+        </div>
+      </td>
+      <!-- 5.B  -->
+    </tr>
+       <tr>
+      <td>11. Gebruiker geeft het nakijkmodel</td>
+      <!-- 6.A  -->
+      <td>
+        <div>
+          <div>12.Het systeem vraagt om de weging van de toets</div>
+        </div>
+      </td>
+      <!-- 6.B  -->
+    </tr>
+       <tr>
+      <td>13.Gebruiker geeft de weging</td>
+      <!-- 7.A  -->
+      <td>
+        <div>
+         <div>14. Het systeem toont alle ingevoerde gegevens en vraag of deze correct zijn.</div>
+        </div>
+      </td>
+      <!-- 7.B  -->
+    </tr>
+       <tr>
+      <td>15.Gebruiker bevestigt</td>
+      <!-- 8.A  -->
+      <td>
+        <div>
+          <div>16. Het systeem slaat de gegevens op en beëindigt het proces.</div>
+        </div>
+      </td>
+      <!-- 8.B  -->
+    </tr>
+    <tr>
+        <td colspan="2"><strong>Alternative flow 4</strong></td>
+    </tr>
+    <tr>
+        <td colspan="2">4.a <em>[Toets bestaat al]</em>
+            <br>
+            1.	Het systeem vraagt of bestaande toetsing wordt ge-update.
+            2.	Gebruiker bevestigd. 
+            3.	Het systeem maakt nieuwe toetsing met dezelfde naam maar met verhoogd versienummer.
+            <br>
+            <em>Usecase gaat verder bij main succes scenario punt 8.</em>
+        </td>
+    </tr>
+      <tr>
+        <td colspan="2">4.b <em>[Toets bestaat al]</em>
+            <br>
+           1.   Het systeem vraagt of bestaande toetsing wordt ge-update.
+           2.   Gebruiker geeft aan dat dit niet het geval is.
+             </br>
+            <em>Usecase gaat verder bij main succes scenario punt 4.</em>
+        </td>
+    </tr>
+       <tr>
+        <td colspan="2"><strong>Alternative flow 8+10</strong></td>
+    </tr>
+     <tr>
+        <td colspan="2">8+10.a <em>[Systeem kan niet overweg met bestandstype]</em>
+            <br>
+            1.	Het systeem geeft aan dat het bestandstype niet voldoet.
+            2.	Het systeem vraag de gebruiker een bestand aan te leveren dat wel voldoet.
+            3.	De gebruiker geeft een bestand van het juiste type. 
+            <br>
+            <em>Het systeem gaat verder met het main succes scenario</em>
+        </td>
+    </tr>
+      <tr>
+        <td colspan="2">8+10.b <em>[Systeem kan niet overweg met bestandstype]</em>
+            <br>
+            1.	Het systeem geeft aan dat het bestandstype niet voldoet.
+            2.	Het systeem vraag de gebruiker een bestand aan te leveren dat wel voldoet.
+            3.	De gebruiker geeft aan te willen stoppen met het proces
+            <br>
+            <em>Het systeem stop het proces zonder invoer te verwerken</em>
+        </td>
+    </tr>
+     <tr>
+        <td colspan="2"><strong>Alternative flow 15</strong></td>
+    </tr>
+    <tr>
+        <td colspan="2">15.a <em>[Gebruiker geeft aan dat invoer onjuist is]</em>
+            <br>
+            1.	Hey systeem vraagt welke invoer onjuist is.
+            2 .	Gebruiker geeft aan welke invoer onjuist is.
+            3.	Het systeem maakt nieuwe toetsing met dezelfde naam maar met verhoogd versienummer.
+            <br>
+            <em>Het systeem gaat naar de stap van het main succes scenario waarin de invoer opnieuw gedaan kan worden en vervolgt vanaf daar haar stappen.</em>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+<font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
+
+# **UC-14 Maak rubriek**
+
+<table>
+<td><strong>TODO!</Strong></td>
+</Table>
+
+<font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
+
 # **UC-15 Start uitvoering**
 
 <table>
     <tbody>
         <tr>
             <td><strong>ID</strong></td>
-            <td>&nbsp;UC-15</td>
+            <td>UC-15</td>
         </tr>
         <tr>
             <td><strong>Naam</strong></td>
-            <td>&nbsp;Start uitvoering</td>
+            <td>Start uitvoering</td>
         </tr>
         <tr>
             <td><strong>Omschrijving</strong></td>
-            <td>&nbsp;Een uitvoering maakt gebruik van een template. Hierbij worden de course weken ingepland in
+            <td>Een uitvoering maakt gebruik van een template. Hierbij worden de course weken ingepland in
                 lesweken. Hierbij wordt elke les en toetsing voorzien van docent en locatie. Een klas wordt toegewezen
                 aan de course waardoor de studenten inzage hebben in de course.</td>
         </tr>
         <tr>
             <td><strong>Scope</strong></td>
-            <td>&nbsp;ICDE-Tool</td>
+            <td>ICDE-Tool</td>
         </tr>
         <tr>
             <td><strong>Trigger</strong></td>
-            <td>&nbsp;Gebruikers Interactie</td>
+            <td>Gebruikers Interactie</td>
         </tr>
         <tr>
             <td><strong>Level</strong></td>
-            <td>&nbsp;User-Goal</td>
+            <td>User-Goal</td>
         </tr>
         <tr>
             <td><strong>Primary Actor</strong></td>
-            <td>&nbsp;Docent</td>
+            <td>Docent</td>
         </tr>
         <tr>
             <td><strong>Belangen &amp; belanghebbenden</strong></td>
@@ -834,11 +1138,11 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
         </tr>
         <tr>
             <td><strong>Succes definitie</strong></td>
-            <td>&nbsp;Er is een nieuwe course uitvoering waaraan een klas met studenten zit gekoppeld</td>
+            <td>Er is een nieuwe course uitvoering waaraan een klas met studenten zit gekoppeld</td>
         </tr>
         <tr>
             <td><strong>Requirements</strong></td>
-            <td>&nbsp;FR-30, 32, 33</td>
+            <td>FR-30, 32, 33</td>
         </tr>
         <tr>
             <td colspan="2"><strong>Main Success Scenario</strong></td>
@@ -852,51 +1156,51 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
                 <p>1. Gebruiker geeft aan dat er een nieuwe course uitvoering aangemaakt kan worden</p>
             </td>
             <!-- 1.A  -->
-            <td>&nbsp;</td>
+            <td></td>
             <!-- 1.B  -->
         </tr>
         <tr>
-            <td>&nbsp;</td>
+            <td></td>
             <!-- 2.A  -->
-            <td>&nbsp;2.&nbsp;Systeem vraagt om template en klas</td>
+            <td>2.Systeem vraagt om template en klas</td>
             <!-- 2.B  -->
         </tr>
         <tr>
-            <td>&nbsp;3.&nbsp;Gebruiker kiest een template en klas</td>
+            <td>3.Gebruiker kiest een template en klas</td>
             <!-- 3.A  -->
-            <td>&nbsp;</td>
+            <td></td>
             <!-- 3.B  -->
         </tr>
         <tr>
-            <td>&nbsp;</td>
+            <td></td>
             <!-- 4.A  -->
-            <td>&nbsp;4.&nbsp;Systeem vraagt om de lessen te voorzien van docent</td>
+            <td>4.Systeem vraagt om de lessen te voorzien van docent</td>
             <!-- 4.B  -->
         </tr>
         <tr>
-            <td>&nbsp;</td>
+            <td></td>
             <!-- 5.A  -->
-            <td>&nbsp;</td>
+            <td></td>
             <!-- 5.B  -->
         </tr>
         <tr>
-            <td>&nbsp;</td>
+            <td></td>
             <!-- 6.A  -->
-            <td>&nbsp;6. Systeem vraagt om de lessen te voorzien van locatie</td>
+            <td>6. Systeem vraagt om de lessen te voorzien van locatie</td>
             <!-- 6.B  -->
         </tr>
         <tr>
         <tr>
-            <td>&nbsp;</td>
+            <td></td>
             <!-- 7.A  -->
-            <td>&nbsp;</td>
+            <td></td>
             <!-- 7.B  -->
         </tr>
         <tr>
         <tr>
-            <td>&nbsp;</td>
+            <td></td>
             <!-- 8.A  -->
-            <td>&nbsp;8. Systeem mapped de course weken aan lesweken </td>
+            <td>8. Systeem mapped de course weken aan lesweken </td>
             <!-- 8.B  -->
         </tr>
         <tr>
@@ -937,19 +1241,19 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
         </tr>
         <tr style="height: 23px;">
             <td style="height: 23px;"><strong>Scope</strong></td>
-            <td style="height: 23px;">&nbsp;ICDE-Tool</td>
+            <td style="height: 23px;">ICDE-Tool</td>
         </tr>
         <tr style="height: 23px;">
             <td style="height: 23px;"><strong>Trigger</strong></td>
-            <td style="height: 23px;">&nbsp;Gebruikers Interactie</td>
+            <td style="height: 23px;">Gebruikers Interactie</td>
         </tr>
         <tr style="height: 23px;">
             <td style="height: 23px;"><strong>Level</strong></td>
-            <td style="height: 23px;">&nbsp;User-Goal</td>
+            <td style="height: 23px;">User-Goal</td>
         </tr>
         <tr style="height: 23px;">
             <td style="height: 23px;"><strong>Primary Actor</strong></td>
-            <td style="height: 23px;">&nbsp;Docent</td>
+            <td style="height: 23px;">Docent</td>
         </tr>
         <tr style="height: 43px;">
             <td style="height: 43px;"><strong>Belangen &amp; belanghebbenden</strong></td>
@@ -982,51 +1286,51 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
                 <p>1. Gebruiker navigeert naar een course template</p>
             </td>
             <!-- 1.A  -->
-            <td style="height: 53px;">&nbsp;</td>
+            <td style="height: 53px;"></td>
             <!-- 1.B  -->
         </tr>
         <tr style="height: 23px;">
-            <td style="height: 23px;">&nbsp;</td>
+            <td style="height: 23px;"></td>
             <!-- 2.A  -->
-            <td style="height: 23px;">&nbsp;2. Overzicht van de course wordt weergegeven</td>
+            <td style="height: 23px;">2. Overzicht van de course wordt weergegeven</td>
             <!-- 2.B  -->
         </tr>
         <tr style="height: 23px;">
-            <td style="height: 23px;">&nbsp;3. Gebruiker geeft aan dat de course template definitief gemaakt kan worden.
+            <td style="height: 23px;">3. Gebruiker geeft aan dat de course template definitief gemaakt kan worden.
             </td>
             <!-- 3.A  -->
-            <td style="height: 23px;">&nbsp;</td>
+            <td style="height: 23px;"></td>
             <!-- 3.B  -->
         </tr>
         <tr style="height: 23px;">
-            <td style="height: 23px;">&nbsp;</td>
+            <td style="height: 23px;"></td>
             <!-- 4.A  -->
-            <td style="height: 23px;">&nbsp;4. Systeem bepaald of de course EVL&rsquo;s bevat</td>
+            <td style="height: 23px;">4. Systeem bepaald of de course EVL&rsquo;s bevat</td>
             <!-- 4.B  -->
         </tr>
         <tr style="height: 23px;">
-            <td style="height: 23px;">&nbsp;</td>
+            <td style="height: 23px;"></td>
             <!-- 5.A  -->
-            <td style="height: 23px;">&nbsp;5. Systeem bepaald of de som van EC&rsquo;s overeenkomt met minimaal 30
+            <td style="height: 23px;">5. Systeem bepaald of de som van EC&rsquo;s overeenkomt met minimaal 30
                 EC&rsquo;s per semester (20 weken)</td>
             <!-- 5.B  -->
         </tr>
         <tr style="height: 23px;">
-            <td style="height: 23px;">&nbsp;</td>
+            <td style="height: 23px;"></td>
             <!-- 6.A  -->
-            <td style="height: 23px;">&nbsp;6. Systeem bepaald voor elk leeruitkomst of deze minimaal 1 leerdoel bevat
+            <td style="height: 23px;">6. Systeem bepaald voor elk leeruitkomst of deze minimaal 1 leerdoel bevat
             </td>
             <!-- 6.B  -->
         </tr>
         <tr style="height: 23px;">
-            <td style="height: 23px;">&nbsp;</td>
+            <td style="height: 23px;"></td>
             <!-- 7.A  -->
-            <td style="height: 23px;">&nbsp;7.&nbsp;Systeem bepaald voor elk leerdoel in de leeruitkomst of deze
+            <td style="height: 23px;">7.Systeem bepaald voor elk leerdoel in de leeruitkomst of deze
                 verbonden is aan een les en toetsing</td>
             <!-- 7.B  -->
         </tr>
         <tr style="height: 23px;">
-            <td style="height: 23px;">&nbsp;</td>
+            <td style="height: 23px;"></td>
             <!-- 8.A  -->
             <td style="height: 23px;">8. System persisteert de gegevens.</td>
             <!-- 8.B  -->
@@ -1035,7 +1339,7 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
             <td style="height: 23px;" colspan="2"><strong>Alternative flow A</strong></td>
         </tr>
         <tr style="height: 63px;">
-            <td style="height: 63px;" colspan="2">4.a/5.a/6.a/7.a&nbsp;<em>[Validatie mislukt]</em><br /> 1. Het systeem
+            <td style="height: 63px;" colspan="2">4.a/5.a/6.a/7.a<em>[Validatie mislukt]</em><br /> 1. Het systeem
                 geeft voor elke mislukte validatie de onderdelen weer die niet voldoen.</td>
         </tr>
     </tbody>
@@ -1049,7 +1353,7 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
   <tbody>
     <tr>
       <td><strong>ID</strong></td>
-      <td>&nbsp;UC-17</td>
+      <td>UC-17</td>
     </tr>
     <tr>
       <td><strong>Naam</strong></td>
@@ -1069,15 +1373,15 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
     </tr>
     <tr>
       <td><strong>Scope</strong></td>
-      <td>&nbsp;ICDE-Tool</td>
+      <td>ICDE-Tool</td>
     </tr>
     <tr>
       <td><strong>Trigger</strong></td>
-      <td>&nbsp;Gebruikers Interactie</td>
+      <td>Gebruikers Interactie</td>
     </tr>
     <tr>
       <td><strong>Level</strong></td>
-      <td>&nbsp;User-Goal</td>
+      <td>User-Goal</td>
     </tr>
     <tr>
       <td><strong>Primary Actor</strong></td>
@@ -1105,11 +1409,11 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
     </tr>
     <tr>
       <td><strong>Succes definitie</strong></td>
-      <td>&nbsp;</td>
+      <td></td>
     </tr>
     <tr>
       <td><strong>Requirements</strong></td>
-      <td>&nbsp;FR-1, FR-18</td>
+      <td>FR-1, FR-18</td>
     </tr>
     <tr>
       <td colspan="2"><strong>Main Success Scenario</strong></td>
@@ -1119,24 +1423,24 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
       <td><strong>System</strong></td>
     </tr>
     <tr>
-      <td>&nbsp;1. De docent geeft aan een planning op te willen stellen.
-        <div>&nbsp;</div>
+      <td>1. De docent geeft aan een planning op te willen stellen.
+        <div></div>
       </td>
       <!-- 1.A  -->
-      <td>&nbsp;</td>
+      <td></td>
       <!-- 1.B  -->
     </tr>
     <tr>
-      <td>&nbsp;</td>
+      <td></td>
       <!-- 2.A  -->
-      <td>&nbsp;2. Het systeem toont een lijst van alle course weken en vraagt de gebruiker lessen en/of tentamens toe
+      <td>2. Het systeem toont een lijst van alle course weken en vraagt de gebruiker lessen en/of tentamens toe
         te wijzen aan deze weken.</td>
       <!-- 2.B  -->
     </tr>
     <tr>
-      <td>&nbsp;3. De docent wijst alle lessen en tentamens toe aan een lesweek.</td>
+      <td>3. De docent wijst alle lessen en tentamens toe aan een lesweek.</td>
       <!-- 3.A  -->
-      <td>&nbsp;</td>
+      <td></td>
       <!-- 3.B  -->
     </tr>
     <tr>
@@ -1146,13 +1450,13 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
         </div>
       </td>
       <!-- 4.A  -->
-      <td>&nbsp;</td>
+      <td></td>
       <!-- 4.B  -->
     </tr>
     <tr>
-      <td>&nbsp;</td>
+      <td></td>
       <!-- 5.A  -->
-      <td>&nbsp;
+      <td>
         <div>
           <div>
             <div>5. Het systeem controleert of elke les en alle tentamens toegewezen zijn aan een week.</div>
@@ -1162,20 +1466,20 @@ Een klas volgt een course maar technisch gezet wordt er tijdens het toevoegen va
       <!-- 5.B  -->
     </tr>
     <tr>
-      <td>&nbsp;</td>
+      <td></td>
       <!-- 6.A  -->
       <td>6. Het systeem controleert of de tentamens voor een leerdoel ingepland zijn na alle lessen voor het gegeven
         gegeven lesdoel.</td>
       <!-- 6.B  -->
     </tr>
     <tr>
-      <td>&nbsp;</td>
+      <td></td>
       <!-- 7.A  -->
       <td>7. Het lesdoel wordt persistent opgeslagen.</td>
       <!-- 7.B  -->
     </tr>
     <tr>
-      <td>&nbsp;</td>
+      <td></td>
       <!-- 8.A  -->
       <td>8. Het systeem stelt de gebruiker op de hoogte van het feit dat de planning succesvol is opgeslagen.</td>
       <!-- 8.B  -->
@@ -1215,6 +1519,14 @@ sequenceDiagram
 ```
 
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
+# **UC-18 Exporteer informatie**
+
+<table>
+<td><strong>TODO!</Strong></td>
+</Table>
+
+
+<font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
 
 
 # **UC-19 Beheer Locaties**
@@ -1223,7 +1535,7 @@ sequenceDiagram
   <tbody>
     <tr>
       <td><strong>ID</strong></td>
-      <td>&nbsp;UC-19</td>
+      <td>UC-19</td>
     </tr>
     <tr>
       <td><strong>Naam</strong></td>
@@ -1240,19 +1552,19 @@ sequenceDiagram
     </tr>
     <tr>
       <td><strong>Scope</strong></td>
-      <td>&nbsp;ICDE-Tool</td>
+      <td>ICDE-Tool</td>
     </tr>
     <tr>
       <td><strong>Trigger</strong></td>
-      <td>&nbsp;Gebruikers Interactie</td>
+      <td>Gebruikers Interactie</td>
     </tr>
     <tr>
       <td><strong>Level</strong></td>
-      <td>&nbsp;User-Goal</td>
+      <td>User-Goal</td>
     </tr>
     <tr>
       <td><strong>Primary Actor</strong></td>
-      <td>&nbsp;Docent</td>
+      <td>Docent</td>
     </tr>
     <tr>
       <td><strong>Belangen &amp; belanghebbenden</strong></td>
@@ -1268,19 +1580,12 @@ sequenceDiagram
       </td>
     </tr>
     <tr>
-      <td><strong>Succes definitie</strong></td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
       <td><strong>Requirements</strong></td>
       <td>FR-33</td>
     </tr>
     <tr>
-      <td colspan="2"><strong>Main Success Scenario</strong></td>
-    </tr>
-    <tr>
       <td><strong>Create/Update:</strong></td>
-      <td>&nbsp;</td>
+      <td></td>
     </tr>
     <tr>
       <td><strong>Delete:</strong></td>
@@ -1289,7 +1594,7 @@ sequenceDiagram
     </tr>
   </tbody>
 </table>
-<div id="gtx-trans" style="position: absolute; left: 118px; top: 306px;">&nbsp;</div>
+<div id="gtx-trans" style="position: absolute; left: 118px; top: 306px;"></div>
 
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
 
@@ -1417,13 +1722,23 @@ sequenceDiagram
 
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
 
+# **UC-21 Ontwikkel beroepsproduct**
+
+<table>
+<td><strong>TODO!</Strong></td>
+</Table>
+
+
+
+<font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
+
 # **UC-22 Ontwikkel Les**
 
 <table>
   <tbody>
     <tr >
       <td ><strong>ID</strong></td>
-      <td >&nbsp;UC-22</td>
+      <td >UC-22</td>
     </tr>
     <tr >
       <td ><strong>Naam</strong></td>
@@ -1438,24 +1753,24 @@ sequenceDiagram
       <td >
         <p>Een les behandeld een of meerdere leerdoel(en). Ook kan een leerdoel over meerdere lessen uitgespreid worden.
           Een les bestaat uit verschillende onderwerpen en bevat leermateriaal.</p>
-        <p>&nbsp;Deze use-case is gebaseerd op het CRUD-template</p>
+        <p>Deze use-case is gebaseerd op het CRUD-template</p>
       </td>
     </tr>
     <tr >
       <td ><strong>Scope</strong></td>
-      <td >&nbsp;ICDE-Tool</td>
+      <td >ICDE-Tool</td>
     </tr>
     <tr >
       <td ><strong>Trigger</strong></td>
-      <td >&nbsp;Gebruikers Interactie</td>
+      <td >Gebruikers Interactie</td>
     </tr>
     <tr >
       <td ><strong>Level</strong></td>
-      <td >&nbsp;User-Goal</td>
+      <td >User-Goal</td>
     </tr>
     <tr >
       <td ><strong>Primary Actor</strong></td>
-      <td >&nbsp;Docent</td>
+      <td >Docent</td>
     </tr>
     <tr >
       <td ><strong>Belangen &amp; belanghebbenden</strong></td>
@@ -1472,7 +1787,7 @@ sequenceDiagram
     </tr>
     <tr >
       <td ><strong>Succes definitie</strong></td>
-      <td >&nbsp;</td>
+      <td ></td>
     </tr>
     <tr >
       <td ><strong>Requirements</strong></td>
@@ -1483,13 +1798,21 @@ sequenceDiagram
     </tr>
     <tr >
       <td ><strong>Create/Update:</strong></td>
-      <td >&nbsp;</td>
+      <td ></td>
     </tr>
     <tr >
       <td ><strong>Delete:</strong></td>
-      <td >&nbsp;</td>
+      <td ></td>
     </tr>
   </tbody>
 </table>
+
+<font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
+
+# **UC-23 Nieuwe Versie**
+
+<table>
+<td><strong>TODO!</Strong></td>
+</Table>
 
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>

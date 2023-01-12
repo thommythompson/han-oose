@@ -21,6 +21,8 @@ dotnet tool install --global dotnet-ef
 
 - Fork: als visuele git client.
 
+Om de UML diagrammen in de markdown te kunnen renderen worden mermaid (bierner.markdown-mermaid) en PlantUML (jebbs.plantuml) extensies gebruikt. Het settings.json bestand verwijst naar de default PlantUML render server beschikbaar op het internet, mocht je de diagrammen lokaal willen renderen dan kan je eenvoudig een render server draaien middels docker. Vergeet niet binnen de settings.json te verwijzen naar de lokale render server.
+
 ```bash
 # to run plantuml server locally:
 docker run -d -p 8888:8080 plantuml/plantuml-server
@@ -28,7 +30,7 @@ docker run -d -p 8888:8080 plantuml/plantuml-server
 
 ## Database
 
-De applicatie heeft een database nodig, deze kan je starten via docker, dit vereist wel dat je Docker desktop geinstalleerd hebt. Onderstaande het commando voor het starten van deze SQL container.
+De applicatie heeft een database nodig, deze kan je starten via docker, dit vereist wel dat je Docker desktop geïnstalleerd hebt. Onderstaande het commando voor het starten van deze SQL container.
 
 ```bash
 docker run --cap-add SYS_PTRACE -e 'ACCEPT_EULA=1' -e 'MSSQL_SA_PASSWORD=P@ssw0rd' -p 1433:1433 --name azuresqledge -d mcr.microsoft.com/azure-sql-edge -v icde-db:/var/opt/mssql
@@ -36,9 +38,9 @@ docker run --cap-add SYS_PTRACE -e 'ACCEPT_EULA=1' -e 'MSSQL_SA_PASSWORD=P@ssw0r
 
 Mocht je al een lokale database hebben draaien dan kan je deze natuurlijk ook gebruiken, zorg dat je de connection string aanpast in onderstaande appsettings template.
 
-## Appsettings 
+## Appsettings
 
-Gebruik onderstaande AppSettings om je `appsettings.development.json` te vullen bij het beginnen van ontwikkeling. Deze file dient niet binnen git gecommit te worden, dit omdat iedereen andere development waardes kan hebben en deze anders steeds overschreven worden door commits van anderen.
+Gebruik onderstaande appsettings om je `appsettings.development.json` te vullen bij het beginnen van ontwikkeling. Deze file dient niet binnen git gecommit te worden, dit omdat iedereen andere development waardes kan hebben en deze anders steeds overschreven worden door commits van anderen.
 
 ```json
 {

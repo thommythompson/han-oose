@@ -3,11 +3,10 @@
 # Technisch Ontwerp
 
 **Opdrachtgever:** De HAN - Hoge School Arnhem Nijmegen</br>
-**Datum**: 12-11-2022 </br>
-**Studenten**: Thomas Hofman (622438), Ricardo de Wijs ({studentnr})</br>
-**Versie**: v0.2 </br>
-**Klas**: {klascode} </br>
-**Locatie**: Arnhem
+**Datum**: 12-01-2023 </br>
+**Studenten**: Thomas Hofman (622438), Ricardo de Wijs (498412)</br>
+**Versie**: v1.0 </br>
+**Locatie**: Arnhem </br>
 **Docent**: John Gorter
 
 # Versiebeheer
@@ -23,6 +22,9 @@
 |v0.6|H5.3, H5.4, H5.2|Thomas Hofman|31-12-2022|
 |v0.7|H5.1, H5.1.1|Thomas Hofman|02-01-2023|
 |v0.8|H5.3.1, H5.4.1|Thomas Hofman|03-01-2023|
+|V0.9|H1, H1.1, H1.2, H1.3|Ricardo de Wijs|05-01-2023|
+|v0.10|H1.2, H1.3|Thomas Hofman|12-01-2023|
+|v1.0|Eerste versie|Thomas Hofman|12-01-2023|
 
 # Inhoudsopgave
 
@@ -31,78 +33,91 @@
     1.2. [Doelstelling](#12-doelstelling) </br>
     1.3. [Doelgroep](#13-doelgroep) </br>
 2. [Aanpak & Prioritering](#2-aanpak--prioritering) </br>
-3. [Architectuur](#3-architectuur) </br>
-    3.1. [Layering](#31-layers) </br>
-    3.2. [Distribution/Scalability](#32-distributionscalability) </br>
-    3.3. [Architectuur Patterns](#33-architectuur-patterns) </br>
-4. [Technische keuzes](#4-technische-keuzes)
-5. [Design](#5-design) </br>
-    5.1. [Api, Repository & Service Design](#51-api-repository--service-design) </br>
-        5.1.1. [Toelichting](#511-toelichting) </br>
-    5.2. [Domein Design](#52-domein-design) </br>
-        5.2.1. [Toelichting](#521-toelichting) </br>
-    5.3. [UC15 - Start uitvoering](#53-uc-15-start-uitvoering) </br>
-        5.3.1. [Toelichting](#531-toelichting) </br>
-    5.4. [UC-18 Exporteer Informatie](#54-uc-18-exporteer-informatie) </br>
-        5.4.1. [Toelichting](#541-toelichting) </br>
-6. [Overige](#6-overige) </br>
-    6.1. [Versiebeheer](#61-versiebeheer) </br>
-    6.2. [Build Management (CI/CD)](#62-build-management-cicd) </br>
-    6.3. [Unit-, Integratie- Tests](#63-unit--integratie--tests) </br>
-7. [Bronnen](#7-bronnen)
+3. [Techniek](#3-techniek) </br>
+4. [Architectuur](#4-architectuur) </br>
+    4.1. [Layering](#41-layers) </br>
+    4.2. [Distribution/Scalability](#42-distributionscalability) </br>
+    4.3. [Architectuur Patterns](#43-architectuur-patterns) </br>
+5. [Frameworks & Libraries](#5-frameworks--libraries)  </br>
+6. [Design](#6-design) </br>
+    6.1. [Api, Repository & Service Design](#61-api-repository--service-design) </br>
+        6.1.1. [Toelichting](#611-toelichting) </br>
+    6.2. [Domein Design](#62-domein-design) </br>
+        6.2.1. [Toelichting](#621-toelichting) </br>
+    6.3. [UC15 - Start uitvoering](#63-uc-15-start-uitvoering) </br>
+        6.3.1. [Toelichting](#631-toelichting) </br>
+    6.4. [UC-18 Exporteer Informatie](#64-uc-18-exporteer-informatie) </br>
+        6.4.1. [Toelichting](#641-toelichting) </br>
+7. [Overige](#7-overige) </br>
+    7.1. [Versiebeheer](#71-versiebeheer) </br>
+    7.2. [Build Management (CI/CD)](#72-build-management-cicd) </br>
+    7.3. [Unit-, Integratie- Tests](#73-unit--integratie--tests) </br>
+8. [Bronnen](#8-bronnen)
 
 # 1. Inleiding
 
 ## 1.1. Aanleiding
 
+Om het project technische te ondersteunen is na de eerste iteratie van het functionele ontwerp begonnen met het opstellen van dit technische ontwerp. Bij de oplevering van een technisch product bestaat het documentatie aspect ten aller tijden uit een technisch en een functioneel deel. Dit technische ontwerp waarborgt het technische deel van de projectdocumentatie. Bij het opstellen van dit document worden er rekening gehouden met de volgende zaken:
+
+1. De technische modellen zijn consistent met de code en met het FO
+2. De juiste UML modellen zijn toegepast
+3. De modellen en/of toelichting draagt bij en is geen onnodige document vulling
+
 ## 1.2. Doelstelling
+
+Het doel van het document is de vastlegging van de besluiten en de design beslissingen die gezamenlijk als technische ontwerp fungeren ter aanvulling op het functioneel ontwerp. Het technisch ontwerp specificeert hoe functionele aspecten beschreven in het functioneel ontwerp uiteindelijk technisch verwezenlijkt zullen worden. De applicatie zal aan de hand van het technisch ontwerp verwezenlijkt moeten kunnen worden, dit betekent dat het ontwerp zeer specifiek zal moeten zijn zodat er geen ruimte voor vrije interpretatie mogelijk is, de applicatie wordt ontwikkelt volgens de richtlijnen gesteld in dit document.
 
 ## 1.3. Doelgroep
 
-- Technische mensen
+De doelgroep is men die aan de applicatie werkt of bijdraagt aan het design van de applicatie. Dit document is niet relevant voor stakeholders maar voor diegene die technisch verstaan (bijvoorbeeld programmeurs en software architecten).
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
 # 2. Aanpak & Prioritering
 
-Het project zal iteratief opgeleverd worden wat betekent dat er steeds nieuwe functionaliteit toegevoegd word aan het project en dat er tussentijds werkende versies opgeleverd worden. Voordat er werkende versies opgeleverd kunnen worden die voor de klant testbaar zijn dient er een minimum viable product (MVP)ogezet te worden. In onderstaande staat beschreven volgens welke stappen dit MVP opgezet word:
+Het project zal iteratief opgeleverd worden wat betekent dat er steeds nieuwe functionaliteit toegevoegd word aan het project en dat er tussentijds werkende versies opgeleverd worden. Voordat er werkende versies opgeleverd kunnen worden die voor de klant testbaar zijn dient er een minimum viable product (MVP) opgezet te worden. In onderstaande staat beschreven volgens welke stappen dit MVP opgezet word:
 
-1. Eerst dient de domein laag, het core project, uitgewerkt te worden, attributen moeten bepaald worden en relaties tussen attributen moeten gedefineerd worden (middels attributen).
-2. Vervolgens dient voor ieder van deze domein entiteiten creatie logica aangebracht te worden. Iedere entiteit moet gecreeerd kunnen worden inclusief bijhorende afhankelijkheden. Belangrijk is dat entiteiten via de constructor aangemaakt worden zodat vereiste parameters/data afgedwongen kan worden. Essentieel is dat deze logica getest word middels unit testen.
-3. Nu de domein laag uitgewerkt is moet deze persistent opgeslagen kunnen worden. De service laag waarvan de presentatie laag (api) afhankelijk is op zijn beurt weer afhankelijk van een repository implementatie. Deze implementatie dient uitgewerkt te worden zodat alle domein data persistent opgeslagen kan worden. 
-4. Nu er een repository implementatie beschikbaar is kan de service laag uitgewerkt worden en vervolgens de presentatie laag uitgewerkt worden. 
+1. Eerst dient de domein laag, het core project, uitgewerkt te worden, entiteiten met behorende attributen moeten uit geprogrammeerd worden en relaties tussen entiteiten moeten gedefinieerd worden (middels attributen).
+2. Vervolgens dient voor ieder van deze domein entiteiten creatie logica aangebracht te worden. Iedere entiteit moet gecreëerd kunnen worden inclusief bijhorende afhankelijkheden. Belangrijk is dat entiteiten via de constructor aangemaakt worden zodat vereiste parameters/data afgedwongen kan worden. Essentieel is dat deze logica getest word middels unit testen.
+3. Nu de domein laag uitgewerkt is moet deze persistent opgeslagen kunnen worden. De service laag waarvan de presentatie laag (api) afhankelijk is op zijn beurt weer afhankelijk van een repository implementatie. Deze implementatie dient uitgewerkt te worden zodat alle domein data persistent opgeslagen kan worden.
+4. Nu er een repository implementatie beschikbaar is kan de service laag en daaropvolgend de presentatie laag uitgewerkt worden.
 
-Middels swagger is het mogelijk om via een grafisch web interface de api te testen, voldoende om toekomstige iteratief toegevoegde functionaliteit af te testen. In totaal zijn er 22 use cases in kaart gebracht, uit deze 22 use cases hebben wij 5 use cases als "complex" bestempelt, deze use cases zullen als eerst geimplementeerd worden aangezien het succes van het project valt of staat met de uitwerking van deze use cases. De complexe use cases zijn als volgt:
+Middels swagger is het mogelijk om via een grafisch web interface de api te testen, voldoende om toekomstige iteratief toegevoegde functionaliteit af te testen. In totaal zijn er 23 use cases in kaart gebracht, uit deze 23 use cases hebben wij 5 use cases als "complex" bestempelt, deze use cases zullen als eerst geïmplementeerd worden aangezien het succes van het project valt of staat met de uitwerking van deze use cases. De complexe use cases zijn als volgt:
 
-1. UC-2 Bekijk Beoordelingen
+1. UC-15 Start uitvoering
 2. UC-18 Exporteer informatie
-3. UC-15 Start uitvoering
-4. UC-16 Maak course definitief
-5. UC-20 Aanmelden
+3. UC-16 Maak course definitief
+4. UC-20 Aanmelden
+5. UC-2 Bekijk Beoordelingen
 
-Deze use cases dienen in bovenstaande volgorde opgeleverd te worden, de functionaliteit kan iteratief toegevoegd worden aan het bestaande MVP. Ook technisch ontwerp is onderdeel van onze iteratieve werkwijze om een grote voorafgaande documentatie effort te voorkomen, na mate het project vordert zal ook aan de overige use cases een prioriteit toegekend worden. 
+Deze use cases dienen in bovenstaande volgorde opgeleverd te worden, de functionaliteit kan iteratief toegevoegd worden aan het bestaande MVP. Ook het technisch ontwerp is onderdeel van onze iteratieve werkwijze om een grote voorafgaande documentatie effort te voorkomen, na mate het project vordert zal ook aan de overige use cases een prioriteit toegekend worden.
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
-# 3. Architectuur
+# 3. Techniek
 
-In onderstaande word de architectuur van de applicatie toegelicht, applicatie architectuur betreft het defineren van wat er in de applicatie zit en hoe deze componenten zich tot elkaar verhouden/met elkaar integreren. In een later hoofdstuk zal het design van deze componenten toegelicht worden.  
+In het SRS document word gesteld dat de applicatie beschikbaar moet zijn zolang de gebruiker een internet verbinding heeft (NFR-1), dit betekent dat op zijn minst de server zijde van de applicatie beschikbaar moet zijn via het wereld wijde web. Ook moet de applicatie beschikbaar zijn op laptops, tablets en smartphones (NFR-3) die voorzien zijn van een iOS, iPadOS, OSX, Windows of Android besturingssysteem versie niet ouder dan 2020 (NFR-8) zonder de installatie van additionele client software. Dit stuurt ons in de richting van een web applicatie, ieder toestel dat voldoet aan de in de requirements gestelde criteria is voorzien van een moderne browser. Een moderne browser maakt het ook mogelijk om recente Javascript frameworks en Web Assembly te gebruiken, moderne technieken als deze maken een web applicatie (Rich Web Application) tot een capabele kandidaat die niet onder doet voor traditionele client applicaties.
 
-# 3.1. Layers
+# 4. Architectuur
 
-In de achitectuur die binnen dit project gehanteerd staat het domein centraal, het domein bestaat uit verschillende entiteiten deze zijn gehuisvestigd in het `HICT.ICDETool.Core` project, het core project is de domein laag. De domeinlaag houd zich alleen bezig met domein logica, elke entiteit representeert een concept uit het domein model en bevat de benodigde methodes om de staat van het domein te wijzigen, dit is de domein logica. 
+In onderstaande word de architectuur van de applicatie toegelicht, applicatie architectuur betreft het definiëren van wat er in de applicatie zit en hoe deze componenten zich tot elkaar verhouden/met elkaar integreren. In een later hoofdstuk zal het design van deze componenten toegelicht worden.
 
-Afhankelijk van het core project is het `HICT.ICDETool.Service` project, het service project heeft interactie met het project middels services. De rol van de service laag is het verbinden van de domein laag met de technische lagen zoals de infrastructuur laag en eventuele andere externe diensten. Het verbinden met deze lagen/diensten gebeurd via interfaces, de service laag defineert de interfaces en is zich niet bewust van de implementatie. Het is aan de daadwerkelijke implementatie om zich te conformeren aan deze interface. Dit principe heet dependency injecten en voorkomt dat de service laag direct gekoppelt word aan een implementatie. Dit zal het anders namelijk maken om later te wijzigen van implementatie of een mock implementatie te gebruiken voor unit testen.
+# 4.1. Layers
 
-De infrastructuur laag houdt zich bezig met infrastructurele zaken en bevind zich in het `HICT.ICDETool.Infratructuur`, binnen deze applicatie betreft dit alleen de data persistentie. De infrastructuur laag bevat een repository implementatie die die repository interface gedefineerd in de service laag implementeert.
+In de architectuur die binnen dit project gehanteerd staat het domein centraal, het domein bestaat uit verschillende entiteiten, deze zijn gehuisvestigd in het `HICT.ICDETool.Core` project, het core project is de domein laag. De domeinlaag houd zich alleen bezig met domein logica, elke entiteit representeert een concept uit het domein model en bevat de benodigde methodes om de staat van het domein te wijzigen, dit is de domein logica.
 
-De service laag wordt geconsumeerd door de presentatie laag, in dit geval betreft dit een HTTP rest API, deze is gehuisvestigd in het `HICT.ICDETool.Api` project. Deze laag maakt het mogelijk voor eindgebruiker of externe systemen om data uit het systeem te consumeren en hier bewerkingen op uit te voeren. In dit geval middel HTTP rest calls. 
+Afhankelijk van het core project is het `HICT.ICDETool.Service` project, het service project heeft interactie met het project middels services. De rol van de service laag is het verbinden van de domein laag met de technische lagen zoals de infrastructuur laag en eventuele andere externe diensten. Het verbinden met deze lagen/diensten gebeurd via interfaces, de service laag definieert de interfaces en is zich niet bewust van de implementatie. Het is aan de daadwerkelijke implementatie om zich te conformeren aan deze interface. Dit principe heet dependency injection en voorkomt dat de service laag direct gekoppeld word aan een implementatie. Dit zal het anders namelijk moeilijker maken om later te wijzigen van implementatie of een mock implementatie te gebruiken voor unit testen.
 
-De tot projecten/lagen die tot nu toe ten spraken zijn gekomen zijn allemaal aanwezig aan de server zijde. Een eindgebruiker zal echter niet direct met de API communiceren en verwacht een gebruikers interface. Deze interface bevind zich in het `HICT.ICDETool.Web` project, dit project is afhankelijk van het `HICT.ICDETool.ApiClient` project. De ApiClient bevat de daadwerkelijke logica om met de api te communiceren het web project bevat slechts de logica voor de presentatie daarvan. Het api client project is afhankelijk van het `HICT.ICDETool.Service` project, dit project zal namelijk de daadwerkelijke data transfer objects (DTO's) bevatten. 
+De infrastructuur laag houdt zich bezig met infrastructurele zaken en bevind zich in het `HICT.ICDETool.Infrastructuur`, binnen deze applicatie betreft dit alleen de data persistentie. De infrastructuur laag bevat een repository implementatie die die repository interface gedefinieerd in de service laag implementeert.
 
-Dan resten nog de projecten `HICT.ICDETool.SharedKernel`, `HICT.ICDETool.Tests.Unit` en `HICT.ICDETool.Tests.Integratie`. Het shared kernel project bevat logica die overkoepelend is voor de gehele applicatie. Het doel van de test projecten is om geautomatiseerde testen te schrijven zodat het eenvoudig is om herhaaldelijk te testen of de applicatie nog steeds de verwachte uitkomst genereert. Unit testen zullen in dit geval gericht voornamelijk gericht zijn op de werking van de domein laag, deze testen zijn onafhankelijk en kunnen dus zonder de benodigdheid van externe services draaien. De integratie testen richten zich juist op de integratie met externe services, in dit geval zal de werking van de api client getest worden, de externe service waarvan deze afhankelijk is is het api project.
+De service laag wordt geconsumeerd door de presentatie laag, in dit geval betreft dit een HTTP rest API, deze is gehuisvestigd in het `HICT.ICDETool.Api` project. Deze laag maakt het mogelijk voor eindgebruiker of externe systemen om data uit het systeem te consumeren en hier bewerkingen op uit te voeren. In dit geval middel HTTP rest calls.
 
-Naar deze architectuur waarbij het domein centraal staat word verwezen als Clean Architecture. Clean Architecture is een vorm van Domain Centric design en is relatief toegankelijk. Er zijn andere vormen van Domain Centric design zoals Onion, Hexagonal en Domein Driven Design (DDD). Het gebruik van meerdere lagen maakt bepaalde aspecten van de applicatie herbruikbaar en bied richtlijnen in het onderverdelen van logica. 
+De projecten/lagen die tot nu toe ten spraken zijn gekomen zijn allemaal aanwezig aan de server zijde. Een eindgebruiker zal echter niet direct met de API communiceren en verwacht een gebruikers interface. Deze interface bevind zich in het `HICT.ICDETool.Web` project, dit project is afhankelijk van het `HICT.ICDETool.ApiClient` project. De ApiClient bevat de daadwerkelijke logica om met de api te communiceren het web project bevat slechts de logica voor de presentatie daarvan. Het api client project is afhankelijk van het `HICT.ICDETool.Service` project, dit project zal namelijk de daadwerkelijke data transfer objects (DTO's) bevatten.
+
+Dan resten nog de projecten `HICT.ICDETool.SharedKernel`, `HICT.ICDETool.Tests.Unit` en `HICT.ICDETool.Tests.Integratie`. Het shared kernel project bevat logica die overkoepelend is voor de gehele applicatie. Het doel van de test projecten is om geautomatiseerde testen te schrijven zodat het eenvoudig is om herhaaldelijk te testen of de applicatie nog steeds de verwachte uitkomst genereert. Unit testen zullen in dit geval voornamelijk gericht zijn op de werking van de domein laag, deze testen zijn onafhankelijk en kunnen dus zonder de bondigheid van externe services draaien. De integratie testen richten zich juist op de integratie met externe services, in dit geval zal de werking van de api client getest worden, de externe service waarvan deze afhankelijk is is het api project.
+
+Naar deze architectuur waarbij het domein centraal staat word verwezen als Clean Architecture. Clean Architecture is een vorm van Domain Centric design en is relatief toegankelijk. Er zijn andere vormen van Domain Centric design zoals Onion, Hexagonal en Domain Driven Design (DDD). Hierbij lijken de Onion en Hexagonal architecturen veel op de Clean architectuur. DDD richt zich voornamelijk op zeer complexe domeinen waar verhoudingsgewijs relatief weinig CRUD use cases en veel complexe domein logica van toepassing is. Wij hebben bevonden het domein waarop deze applicatie betrekking heeft niet complex genoeg is om DDD toe te passen en hebben daarom gekozen om gebruik te maken van de toegankelijke domain centric design vorm, Clean Architecture. Bijkomstig voordeel van het gebruik van meerdere lagen (zoals clean architecture dat vereist) is dat bepaalde aspecten van de applicatie herbruikbaar zijn en dienen de lagen als richtlijnen met betrekking tot het onderverdelen van logica (volgens de verantwoordelijkheden van de lagen zoals hierboven omschreven).
 
 ```raw
 .
@@ -128,49 +143,51 @@ Infrastructure *..> Services : IRepository
 
 ```
 
-## 3.2. Distribution/Scalability
+## 4.2. Distribution/Scalability
 
-De oplossing is gebaseerd op een client-server architectuur waarbij de client het web project is en de server side applicatie het api project is. De applicatie staat haar data persistent op in een relationele database. De web client word gedownload door de browser zodra men de webserver waar deze client op gehost word aanroept. Het voordeel van het gebruik van een aparte web client is dat niet voor iedere wijziging in de presentatie een http request vereist is. De web client kan een request doen naar de api server en vervolgens zelfstandig deze data presenteren in verschillende vormen, dit verminderd de load op de api server en ook op de daarbij horende database en verplaatst deze naar de client.
+De oplossing is gebaseerd op een client-server architectuur waarbij de client het web project is en de server side applicatie het api project is. De applicatie slaat haar data persistent op in een relationele database. De web client word gedownload door de browser zodra men de webserver waar deze client op gehost word aanroept. Het voordeel van het gebruik van een aparte web client is dat niet voor iedere wijziging in de presentatie een http request vereist is. De web client kan een request doen naar de api server en vervolgens zelfstandig deze data presenteren in verschillende vormen, dit verminderd de load op de api server en ook op de daarbij horende database en verplaatst deze naar de client.
 
-Er zijn dus 3 componenten die gehost dienen te worden, de web client moet aangeboden worden, de api dient beschikbaar te zijn en de api is afhankelijk van een database. Deze zijn ieders horizontaal (toevoegen van servers) als verticaal (toevoegen van resources) schaalbaar. Zo kan tegemoet gekomen worden aan de gestelde niet functionele requirements omtrent load en beschikbaarheid.
+Er zijn dus 3 componenten die gehost dienen te worden, de web client moet aangeboden worden, de api dient beschikbaar te zijn en de api is afhankelijk van een database. Deze zijn ieders horizontaal (toevoegen van servers) als verticaal (toevoegen van resources) schaalbaar. Zo kan tegemoet gekomen worden aan de gestelde niet functionele requirements omtrent load en beschikbaarheid (NFR-4, NFR-6).
 
-## 3.3. Architectuur Patterns
+Bijkomstig voordeel van deze architectuur is dat het vereist dat een API endpoint publiekelijk beschikbaar gesteld word. Dit maakt het mogelijk voor andere applicaties om met deze applicatie te integreren (NFR-13). Doordat de client ook afhankelijk is van de functionaliteit van deze API en niet alleen externe systemen zal deze api altijd voorzien zijn van alle functionaliteit, zo word voorkomen dat de API een afterthought word en achterloopt kwa functionaliteit.
 
-Binnen de applicatie word er gebruik gemaakt van een aantal  architectuur patterns, deze patterns hebben in grote impact op de structuur van de applicatie en worden in onderstaande toegelicht.
+## 4.3. Architectuur Patterns
 
-- Controller: Het Api project is een MVC project echter bevat het alleen controllers, iedere domein entiteit krijgt haar eigen controller. Middels URL routing word de request door de juiste controller opgevangen, de controller vraagt de service laag om de lees of schrijf bewerking uit te voeren en geeft vervolgens het resultaat (indien van toepassing) terug aan de eindgebruiker.
-- Data transfer objects (DTO's): Data transfer objects zijn objecten geoptimaliseerd voor data communicatie, zo kan een DTO meer data bevatten dan normaal voor een view benodigd zal zijn. Door een web client via een DTO meer van meer informatie te voorzien kan een client langer zonder communicatie met de api server.
+Binnen de applicatie word er gebruik gemaakt van een aantal architectuur patterns, deze patterns hebben een grote impact op de structuur van de applicatie en worden in onderstaande toegelicht.
+
+- Controller: Het Api project is een MVC project, echter bevat het alleen controllers, iedere domein entiteit krijgt haar eigen controller. Middels URL routing word de request door de juiste controller opgevangen, de controller vraagt de service laag om de lees of schrijf bewerking uit te voeren en geeft vervolgens het resultaat (indien van toepassing) terug aan de eindgebruiker.
+- Data transfer objects (DTO's): Data transfer objects zijn objecten geoptimaliseerd voor data communicatie, zo kan een DTO meer data bevatten dan normaal voor een enkele view benodigd zal zijn. Door een web client via een DTO van meer data te voorzien kan een client langer zonder communicatie met de api server ook bij het schakelen tussen views.
 - Repository: Voor toegang tot data word een repository gebruikt, een repository is een abstractie voor de data persistentie laag en is verantwoordelijk voor de afhandeling van alle taken omtrent deze persistentie. Zo kan de applicatie met persistente data interacteren alsof het onderdeel is van de applicatie zelf terwijl het afkomstig uit uit een externe service namelijk een RDBMS.
 - Specification: Het specification pattern maakt het mogelijk om database verzoeken vast te leggen in een aparte specificatie class. Deze class kan aan de repository meegegeven worden die vervolgens dit database verzoek uitvoert. Het gebruik van aparte specificatie classes maakt het mogelijk om data verzoeken onder te brengen in de domein laag en deze specificaties eenvoudig te herbruiken.
-- Dependency Injection: Dependency injection maakt het mogelijk een type service eenmalig te registreren bij het opstarten van de applicatie zodat deze @ runtime geinjecteert kunnen worden via de constructuctor van een class. Dit voorkomt dat je zelf deze classes moet instanteren, middels de registratie is de applicatie namelijk op de hoogte van hoe deze geinstantieert moet worden en kan dit @ runtime voor je doen.
-- Dependency Inversion: Dependency inversion keert een afhankelijkheid om door het gebruik van een interface. Dit doe je door een interface te specificeren voor de implementatie waarvan je onafhankelijk wilt zijn en de imlpementatie deze interface laat implementeren. Dit maakt het mogelijk om eenvoudig tussen implementaties te wisselen zo lang deze de gespcifieerde interface implementeren.
+- Dependency Injection: Dependency injection maakt het mogelijk een type service eenmalig te registreren bij het opstarten van de applicatie zodat deze @ runtime geïnjecteerd kunnen worden via de constructuctor van een class. Dit voorkomt dat je zelf deze classes moet instantieren, middels de registratie is de applicatie namelijk op de hoogte van hoe deze geinstantieert moet worden en kan dit @ runtime voor je doen.
+- Dependency Inversion: Dependency inversion keert een afhankelijkheid om door gebruik te maken van een interface. Dit doe je door een interface te specificeren voor de implementatie waarvan je onafhankelijk wilt zijn en de concrete implementatie zijde deze interface laat implementeren. Dit maakt het mogelijk om eenvoudig tussen implementaties te wisselen zo lang de oplossing zich aan de gespecificeerde interface conformeert.
 - Client-Server: Zoals eerder benoemd hanteert de applicatie een client-server architectuur. Dit verplaatst de load van het renderen van de html naar de client en verminderd (indien juist toegepast) de load naar de api server.
-- Data Binding: Bij data binding word een bepaald component in de grafische interface direct verbonden aan een data variabele. Wanneer de data variabele wijzigt zal het component zich opnieuw renderen. Dit voorkomt dat een pagina geheel moet herladen en creeert een dynamische web ervaring.
+- Data Binding: Bij data binding word een bepaald component in de grafische interface direct verbonden aan een variabele. Wanneer de variabele wijzigt zal het component zich opnieuw renderen. Dit voorkomt dat een pagina geheel moet herladen en creëert een dynamische web ervaring.
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
-## 4. Technische keuzes
+## 5. Frameworks & Libraries
 
-Het project zal geprogrammeerd worden in de laatste versie van C#, C# 10. C# is een "strongly typed" programmeer taal gebasseerd op het .NET framework. Er is voor deze programmeer taal gekozen omdat het team dat de opdracht zal uitvoeren het meest bekend is met deze programmeertaal. Voor C# zijn vele verschillende libraries beschikbaar, binnen C# heten deze NuGet packages, deze packages voorkomen dat veel voorkomende functionaliteit opnieuw ontworpen hoeft te worden en bevatten bestaande oplossingen die binnen je eigen applicatie te integreren zijn. In onderstaande worden deze packages en de keuze daarvoor toegelicht.
+Het project zal geprogrammeerd worden in de laatste versie van C#, C# 10. C# is een "strongly typed" programmeer taal gebaseerd op het .NET framework. Er is voor deze programmeer taal gekozen omdat het team dat de opdracht zal uitvoeren het meest bekend is met deze programmeertaal. Voor C# zijn vele verschillende libraries beschikbaar, binnen C# heten deze NuGet packages, deze packages voorkomen dat veel voorkomende functionaliteit opnieuw ontworpen hoeft te worden en bevatten bestaande oplossingen die binnen je eigen applicatie te integreren zijn. In onderstaande worden deze packages en de keuze daarvoor toegelicht.
 
-- Enitity Framework Core 6 SqlServer: Voor de persistentie van data maken wij gebruiken van een ORM framework. Alhoewel er alternatieven beschikbaar zijn is het meest gebruikte ORM framework voor C# Entity Framework (EF), dit ORM framework is ontwikkelt door Microsoft zelf. Het gebruik van een ORM framework voorkomt dat men zelf SQL queries moet schrijven voor het bewerken en ophalen van data in de database. Deze sql queries worden automatisch gegeneerd door EF wanneer aangegeven word dat de data gepersisteerd mag worden, dit gebeurd op basis van de gemaakte wijzigingen in de data sets die men gespecificeerd heeft. In dit geval hebben wij gekozen voor de SqlServer variant, deze package maakt het mogelijk om T-SQL queries te genereren voor Microsoft SQL Server en Azure SQL Edge. Wij kiezen in dit geval om bij dezelfde vendor (Microsoft) te blijven aangezien ervaring leert dat dit vaak zorgt voor de beste integratie.
+- Enitity Framework Core 6 SqlServer: In de requirement NFR-12 word gesteld dat data persistent moet worden opgeslagen, voor de persistentie van data maken wij gebruiken van een ORM framework. Alhoewel er alternatieven beschikbaar zijn is het meest gebruikte ORM framework voor C# Entity Framework (EF), dit ORM framework is ontwikkelt door Microsoft zelf. Het gebruik van een ORM framework voorkomt dat men zelf SQL queries moet schrijven voor het bewerken en ophalen van data in de database. Deze sql queries worden automatisch gegeneerd door EF wanneer aangegeven word dat de data gepersisteerd mag worden, dit gebeurd op basis van de gemaakte wijzigingen in de data sets die men gespecificeerd heeft. In dit geval hebben wij gekozen voor de SqlServer variant, deze package maakt het mogelijk om T-SQL queries te genereren voor Microsoft SQL Server en Azure SQL Edge. Wij kiezen in dit geval om bij dezelfde vendor (Microsoft) te blijven aangezien ervaring leert dat dit vaak zorgt voor de beste integratie.
 - Ardalis Specification: De Ardalis Specification fungeert als een wrapper om de Entity Framework repository. Deze wrapper maakt het mogelijk om queries uit te voeren middels specifications daarnaast accepteert de wrapper een generic parameter die naar een DbSet refereert, dit vereenvoudigd het maken van een generieke service aangezien de repository bijhorend bij de service nu als een generic gespecificeerd kan worden.
-- Microsoft MVC: Het Api project maakt gebruik van het Microsoft MVC framework. Dit framework bevat een groot scala aan functionaliteit, zo bevat het een gestandardiseerde oplossing voor dependency injection, maakt het ons mogelijk om controllers te gebruiken en bied het een configuration management oplossing aan die het mogelijk maakt de configuratie voor de applicatie via een extern bestand te beheren.
-- Identity: Identity is net als MVC een groot scala aan gebundelde functionaliteiten, deze functionaliteiten zijn allen gericht op authenticatie en authorisatie. Het identity framework ontwikkelt door Microsoft bied een gestandaardiseerde oplossing voor gebruikersauthenticatie en het inloggen, registreren en uitloggen van deze gebruikers. Ook bied het mogelijkheden tot role based access, het gebruik van claims en JWT token en zelf de mogelijkheid om te integreren met externe authenticatie providers via OAuth2. Een mooie bijkomstigheid is dat het naadloos integreert met Microsoft MVC.
+- Microsoft MVC: Het Api project maakt gebruik van het Microsoft MVC framework. Dit framework bevat een groot scala aan functionaliteit, zo bevat het een gestandaardiseerde oplossing voor dependency injection, maakt het ons mogelijk om controllers te gebruiken en bied het een configuration management oplossing aan die het mogelijk maakt de configuratie voor de applicatie via een extern bestand te beheren.
+- Identity: Identity is net als MVC een groot scala aan gebundelde functionaliteiten, deze functionaliteiten zijn allen gericht op authenticatie en autorisatie. Het identity framework ontwikkelt door Microsoft bied een gestandaardiseerde oplossing voor gebruikersauthenticatie en het inloggen, registreren en uitloggen van deze gebruikers. Ook bied het mogelijkheden tot role based access, het gebruik van claims en JWT token en zelf de mogelijkheid om te integreren met externe authenticatie providers via OAuth2. Dit komt goed uit aangezien requirement NFR-14 specificeert dat gebruikers moeten kunnen inloggen met hun bestaande HAN account, deze accounts zijn gehuisvestigd binnen Azure, een identity provider die OAuth2 ondersteund. Een mooie bijkomstigheid is dat het naadloos integreert met Microsoft MVC.
 - Swagger: Swagger stelt een grafische interface beschikbaar die gegenereerd word op basis van de bestaande controllers en hun bijhorende methoden. Zo maakt Swagger grafisch inzichtelijk wat een request precies aan parameters of body verwacht en wat het format is van de bijhorende response. Swagger stelt de gebruikers zelfs in staat om middels te grafische interface de api aan te roepen en dus te testen. 
-- AutoMapper: AutoMapper maakt het mogelijk om middels een vooraf gedefineerde mapping types te impliciet te casten. Dit is zeer handig bij het gebruik van request en response DTO waar de eigenschappen van een DTO en een entiteit op elkaar "gemapt" worden en voorkomt dat dat een zelfgemaakte implementatie benodigd is voor deze conversie.
-- Newtonsoft Json: Voorziet in het serialiseren van objecten naar JSON en het deseraliseren van JSON naar objecten. 
-- Blazor WASM: Blazor WASM is een web framework dat gebruikt maakt van web assembly. Blazor maakt het mogelijk om C# te compileren naar web assembly en deze code vervolgens uit te voeren in de browser van de eindgebruiker. Microsoft stuurt aan op het gebruik van Blazor Server en Blazor WASM als de nieuwe standaard voor web ontwikkeling binnen de Microsoft Suite. Gezien de mate waarin Microsoft het gebruik van Blazor stimuleert valt er te stellen dat dit voorlopig een toekomstbestendige oplossing is. De adoptatie van Blazor is eenvoudig voor een C# ontwikkelaar en voorkomt dat men de learning curve van een JavaScript framework als Angular, React of Vue moet ondergaan.
+- AutoMapper: AutoMapper maakt het mogelijk om middels een vooraf gedefinieerde mapping types te impliciet te casten. Dit is zeer handig bij het gebruik van request en response DTO waar de eigenschappen van een DTO en een entiteit op elkaar "gemapt" worden en voorkomt dat dat een zelfgemaakte implementatie benodigd is voor deze conversie.
+- Newtonsoft Json: Voorziet in het serialiseren van objecten naar JSON en het deserialiseren van JSON naar objecten.
+- Blazor WASM: Blazor WASM is een web framework dat gebruikt maakt van web assembly. Blazor maakt het mogelijk om C# te compileren naar web assembly en deze code vervolgens uit te voeren in de browser van de eindgebruiker. Microsoft stuurt aan op het gebruik van Blazor Server en Blazor WASM als de nieuwe standaard voor web ontwikkeling binnen de Microsoft Suite. Gezien de mate waarin Microsoft het gebruik van Blazor stimuleert valt er te stellen dat dit voorlopig een toekomstbestendige oplossing is. De adoptie van Blazor is eenvoudig voor een C# ontwikkelaar en voorkomt dat men de learning curve van een JavaScript framework als Angular, React of Vue moet ondergaan.
 - Blazor Local Storage: Maakte het mogelijk om de lokale browser opslag aan de client zijde te gebruiken. Deze opslag blijft bewaard zelf na het sluiten van de browser en maakt het bijvoorbeeld mogelijk om authenticatie tokens voor langer gebruik op te slaan zodat men zich niet steeds hoeft te authenticeren.
-- Blazor Authentication: Blazor Auhtentication maakt het mogelijk om gebruik te maken van de eigenschappen van een gebruikers identity binnen de gebruikers interface. Zo maakt het Blazor Authentication het mogelijk om gehele web pagina of bepaalde aspecten daarvan alleen beschikbaar te stellen aan geauthenticeerde gebruikers of gebruikers die een of meerdere specifieke rollen hebben.
+- Blazor Authentication: Blazor Authentication maakt het mogelijk om gebruik te maken van de eigenschappen van een gebruikers identity binnen de gebruikers interface. Zo maakt het Blazor Authentication het mogelijk om gehele web pagina of bepaalde aspecten daarvan alleen beschikbaar te stellen aan geauthenticeerde gebruikers of gebruikers die een of meerdere specifieke rollen hebben.
 - Bootstrap 5: Bootstrap 5 is een CSS framework en maakt het met relatief weinig effort en alleen HTML mogelijk om een mooie gebruikers interface te realiseren.
 - Flurl: Flurl is een wrapper om de standaard HttpClient die met C# geleverd word. De wrapper maakt gebruik van een fluent syntax voor request/url building wat resulteert in een stuk gebruikersvriendelijke manier van het maken van HTTP request. Daarnaast is Flurl ook unit testbaar, je kan exact testen op de headers, body en url die Flurl zal gebruiken voor haar requesten.
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
-# 5. Design
+# 6. Design
 
-## 5.1. Api, Repository & Service Design
+## 6.1. Api, Repository & Service Design
 
 ```mermaid
 classDiagram
@@ -253,17 +270,17 @@ class ICDEContext {
 ICDEContext --|> IdentityDbContext
 ```
 
-## 5.1.1 Toelichting
+## 6.1.1 Toelichting
 
 Binnen ons domein model zijn er veel entiteiten waarvoor create, read, update en delete (CRUD) acties uitgevoerd moeten worden. Deze implementaties zijn voor vrijwel alle entiteiten hetzelfde, om deze reden zijn er controller en service base classes gemaakt zodat deze zelfde implementatie net steeds voor iedere entiteit gecodeerd hoeft te worden, de constructie werkt als volgt:
 
-De BaseController ontvangt een aantal generics, de TEntity, TRequestDto en TReponseDto generic parameters die de controller ontvangt worden gebruikt om de response en request data types te bepalen en om de juiste entity service te betrekken, de IEntityService verwacht deze generic parameters namelijk ook.  
+De BaseController ontvangt een aantal generics, de TEntity, TRequestDto en TReponseDto generic parameters die de controller ontvangt worden gebruikt om de response en request data types te bepalen en om de juiste entity service te betrekken, de IEntityService verwacht deze generic parameters namelijk ook.
 
 De TRequestDto bevat alleen de attributen die schrijfbaar zijn en worden gebruik voor de create en update functionaliteit, deze dto bevat bijvoorbeeld geen id want deze word automatisch bepaald. De TRepsonseDto bevat alle attributen die als antwoord terug gegeven worden bij een create read of update verzoek, een delete verzoek geeft geen antwoord terug.
 
-De entity service vereist naast de eerder benoemde parameters ook een IRepository parameter, deze IRepository interface is afkomstig uit de Ardalis.Specifiction package en maar het mogelijk om middels generics een entity repository te specificeren, dit is essentieel wanneer je middels generics de repository voor een specifieke entiteit wil afdwingen. De entity service is verantwoordelijk voor het ophalen/muteren van de data en de mapping tussen de DTO's en de daadwerkelijke entiteit typen uit te voeren, hiervoor krijgt de entity service een AutoMapper (IMapper) mee in de constructor. 
+De entity service vereist naast de eerder benoemde parameters ook een IRepository parameter, deze IRepository interface is afkomstig uit de Ardalis.Specification package en maar het mogelijk om middels generics een entity repository te specificeren, dit is essentieel wanneer je middels generics de repository voor een specifieke entiteit wil afdwingen. De entity service is verantwoordelijk voor het ophalen/muteren van de data en de mapping tussen de DTO's en de daadwerkelijke entiteit typen uit te voeren, hiervoor krijgt de entity service een AutoMapper (IMapper) mee in de constructor.
 
-## 5.2. Domein Design
+## 6.2. Domein Design
 
 ```mermaid
 classDiagram
@@ -552,7 +569,7 @@ class Validator{
 
 ```
 
-### 5.2.1 Toelichting
+### 6.2.1 Toelichting
 
 Het class model dat de domein laag representeert is grote lijnen gelijk aan het domein model dat eerder opgesteld is in het functioneel ontwerp. Er zijn echter een aantal uitzonderingen gemaakt, deze wijzigingen komen voornamelijk voort uit nieuwe inzichten, behoefte aan technische eenvoudig of het conformeren aan technisch frameworks, de volgende wijzigingen zijn aangebracht ten opzichte van het originele domein model:
 
@@ -561,7 +578,7 @@ Het class model dat de domein laag representeert is grote lijnen gelijk aan het 
 - Aan het model zijn verschillende tijddefinities toegevoegd (Periode & Semester) deze tijddefinities fungeren als constanten, het zijn data types met vooraf gedefinieerde waardes.
 - Wanneer een constructor gedefinieerd word zal entity framework deze constructor gebruiken om de class te instantieren. Entity framework ondersteund alleen primitieve types in de constructor, om deze reden is er bij classes die een constructor met primitieve types bevatten een extra private constructor toegevoegd met alleen primitieve types. Entity framework zal deze constructor gebruiken achteraf de waardes van de andere attributen bepalen.
 
-## 5.3 UC-15 Start Uitvoering
+## 6.3 UC-15 Start Uitvoering
 
 ```mermaid
 sequenceDiagram
@@ -646,20 +663,20 @@ classDiagram
     TentamenUitvoering "1..*" o--> "1" CourseWeekUitvoering
 ```
 
-### 5.3.1. Toelichting
+### 6.3.1. Toelichting
 
-Deze use case richt zich op het starten van een vooraf ingerichte en als defintief bestempelde course binnen het domein ook wel course inrichting genoemd. Bij het starten van deze course zijn er een aantal entiteiten die geinstantieert moeten worden, een course inrichting bevat namelijk een planning bestaande uit weken met tentamen en lessen die in deze weken gepland zijn. Een inrichting kan meerdere malen (of helemaal niet) uitgevoerd worden en een uitvoering bevat data gerelateerd aan deze specifieke uitvoering.
+Deze use case richt zich op het starten van een vooraf ingerichte en als definitief bestempelde course binnen het domein ook wel course inrichting genoemd. Bij het starten van deze course zijn er een aantal entiteiten die geinstantieert moeten worden, een course inrichting bevat namelijk een planning bestaande uit weken met tentamen en lessen die in deze weken gepland zijn. Een inrichting kan meerdere malen (of helemaal niet) uitgevoerd worden en een uitvoering bevat data gerelateerd aan deze specifieke uitvoering.
 
-De methodes zijn toegewezen op basis van het creator en information expert pricipe, deze principes zijn onderdeel van de GRASP Patterns. Het information expert pricipe defineert dat een verantwoordelijk (methode) toegewezen moet worden aan de class die de informatie bezit om deze verantwoordelijkheid uit te voeren. Het creator principe defineert dat een class de verantwoordelijk moeten krijgen om een andere class aan te maken wanneer:
+De methodes zijn toegewezen op basis van het creator en information expert principe, deze principes zijn onderdeel van de GRASP Patterns. Het information expert principe definieert dat een verantwoordelijk (methode) toegewezen moet worden aan de class die de informatie bezit om deze verantwoordelijkheid uit te voeren. Het creator principe definieert dat een class de verantwoordelijk moeten krijgen om een andere class aan te maken wanneer:
 
 1. De aan te maken class onderdeel is van deze class.
 2. De aan te maken class gemonitord word door deze class.
 3. De aan te maken class nauw gebruikt word door deze class.
 4. De class van de informatie voorzien is om de aan te maken class te instantieren. (information expert)
 
-In dit geval gaat het om de creatie van child objecten, een course bevat een planning met weken, deze weken bevatten tentamens of lessen. In de constructor van het nieuwe object wordt de bijhorende inrichting als parameter meegegeven, vervolgens worden in de constructor methodes aangeroepen om de child object (indien deze er zijn) aan te maken. 
+In dit geval gaat het om de creatie van child objecten, een course bevat een planning met weken, deze weken bevatten tentamens of lessen. In de constructor van het nieuwe object wordt de bijhorende inrichting als parameter meegegeven, vervolgens worden in de constructor methodes aangeroepen om de child object (indien deze er zijn) aan te maken.
 
-Er is niet gekozen om gebruik te maken van een van de GoF patterns omdat dit niet benodigd was aangezien er geschikte kanditaten om de benodigde methodes aan toe te wijzen al aanwezig waren.
+Er is niet gekozen om gebruik te maken van een van de GoF patterns omdat dit niet benodigd was aangezien er geschikte kandidaten om de benodigde methodes aan toe te wijzen al aanwezig waren.
 
 ---
 :warning: **_NOTE:_**
@@ -669,7 +686,7 @@ Toelichten van gebruikte GoF patterns, SOLID principes & GRASP principes.
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
-## 5.4 UC-18 Exporteer Informatie
+## 6.4 UC-18 Exporteer Informatie
 
 ```mermaid
 sequenceDiagram
@@ -786,7 +803,7 @@ classDiagram
     <<Interface>> IExporterFactory
 ```
 
-### 5.4.1. Toelichting
+### 6.4.1. Toelichting
 
 Het doel van deze use case is om gebruiker in staat te stellen om lesmateriaal te exporteren in een csv, pdf of docx formaat. Deze export service is onder gebracht in een apart project zodat deze eventueel in andere oplossingen hergebruikt kan worden. Er is hier een combinatie van verschillende patronen gebruikt, deze zal ik in onderstaande toelichten.
 
@@ -807,9 +824,9 @@ De maakt gebruik van onderstaande architectuur en design patterns om tegemoet te
 - Strategy Pattern (GoF)
 - Template Method (GoF)
 
-# 6. Overige
+# 7. Overige
 
-## 6.1. Versiebeheer
+## 7.1. Versiebeheer
 
 De bron code word ondergebracht in Github, versie beheer word uitgevoerd door middel van Git. Binnen Git zal er gewerkt worden middels verschillende branches:
 
@@ -832,7 +849,7 @@ Men dient altijd te programmeren in een feature of een fix branch, deze feature 
     merge develop
 ```
 
-## 6.2. Build Management (CI/CD)
+## 7.2. Build Management (CI/CD)
 
 Door een pull request naar de master branch word een pipeline getriggerd, deze pipeline is ingericht in Github Actions en voert de volgende stappen uit.
 
@@ -840,23 +857,24 @@ Door een pull request naar de master branch word een pipeline getriggerd, deze p
 2. De api dockerfile word gebuild, deze docker file build de applicatie en verpakt deze vervolgens in een container die geupload word naar een docker hub registry.
 3. De web dockerfile word gebuild, deze docker file build de web applicatie, dit resulteert in een set statische files die vervolgens gekopieerd worden in de web root van een nginx container, deze nginx container word vervolgens geupload naar een docker hub repository.
 
-## 6.3. Unit-, Integratie- Tests
+## 7.3. Unit-, Integratie- Tests
 
-Het project bevat zowel unit als integratie testen, deze testen zijn ondergebracht in de projecten `HAN.ICDETool.Tests.Unit` en `HAN.ICDETool.Tests.Integration`. Zowel de unit als de integratie testen maken gebruik van het nUnit test framework. De unit testen zijn gericht op de domein functionaliteit en de integratie testen op de integratie tussen de api client en de api server, deze testen vereisen dus dat het api project gestart is. Om te verzekeren dat er data aanwezig om de api client mee te testen word de database bij het starten van de api server automatisch geseed met dummy data indien deze leeg is.
+De requirement NFR-10 vereist de aanwezigheid van minimaal 1 unit test per kern functionaliteit binnen het systeem. Het project bevat zowel unit als integratie testen, deze testen zijn ondergebracht in de projecten `HAN.ICDETool.Tests.Unit` en `HAN.ICDETool.Tests.Integration`. Zowel de unit als de integratie testen maken gebruik van het nUnit test framework. De unit testen zijn gericht op de domein functionaliteit en de integratie testen op de integratie tussen de api client en de api server, deze testen vereisen dus dat het api project gestart is. Om te verzekeren dat er data aanwezig om de api client mee te testen word de database bij het starten van de api server automatisch geseed met dummy data indien deze leeg is.
 
-## 6.4. Deployment
+## 7.4. Deployment
 
 De web en api containers dienen gehost te worden, zowel de web als de api container zal beschikbaar zijn voor HTTP verzoeken via TCP poort 80. Mocht HTTPS gewenst zijn dan dient dit opgelost te worden middels een reverse proxy die het geencrypte verkeer zal offloaden. In de root van de code repository staat een `docker-compose.yml`, dit bestand beschrijft hoe de omgeving gehost kan worden, uiteraard ben je niet verbonden aan docker en zijn de container ook onder te brengen in bijvoorbeeld Kubernetes.
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
-# 7. Bronnen
+# 8. Bronnen
 
 |APA Bronvermelding|
 |------------------|
-|{clean architecture}
-|{DDD}
-|{Pluralsight courses}
-|{refactoring guru}
+|Larman, C., & Kruchten, P. (2005). Applying UML and Patterns: An Introduction to Object-oriented Analysis and Design and Iterative Development. Prentice Hall.
+|Fowler, M. (2002). Patterns of Enterprise Application Architecture (1ste editie). Addison-Wesley Professional.
+|Domain-Driven Design Fundamentals. (z.d.). PluralSight. Geraadpleegd op 12 januari 2023, van https://app.pluralsight.com/library/courses/fundamentals-domain-driven-design/table-of-contents
+|Clean Architecture: Patterns, Practices, and Principles. (z.d.). PluralSight. Geraadpleegd op 12 januari 2023, van https://app.pluralsight.com/library/courses/clean-architecture-patterns-practices-principles/table-of-contents
+|Refactoring.Guru. (z.d.). Refactoring and Design Patterns. Geraadpleegd op 12 januari 2023, van https://refactoring.guru/
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>

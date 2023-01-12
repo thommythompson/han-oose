@@ -3,11 +3,10 @@
 # Questions & Answers
 
 **Opdrachtgever:** De HAN - Hoge School Arnhem Nijmegen</br>
-**Datum**: 12-11-2022 </br>
-**Studenten**: Thomas Hofman (622438), Ricardo de Wijs ({studentnr})</br>
-**Versie**: v0.9 </br>
-**Klas**: {klascode} </br>
-**Locatie**: Arnhem
+**Datum**: 12-01-2023 </br>
+**Studenten**: Thomas Hofman (622438), Ricardo de Wijs (498412)</br>
+**Versie**: v1.0 </br>
+**Locatie**: Arnhem </br>
 **Docent**: John Gorter
 
 # Versiebeheer
@@ -20,9 +19,10 @@
 |v0.4|Notuleren iteratie 1|Ricardo de Wijs|20-09-2022|
 |v0.5|Vragen iteratie 2|Thomas Hofman|23-09-2022|
 |v0.6|Additionele vragen iteratie 2|Ricardo de Wijs, Thomas Hofman, Marco van de Kolk|02-10-2022|
-|v0.7|Verwerken feeback iteratie 2|Thomas Hofman|07-10-2022|
+|v0.7|Verwerken feedback iteratie 2|Thomas Hofman|07-10-2022|
 |v0.8|Verwerken feedback klas|Thomas Hofman|14-10-2022|
 |v0.9|Converteren van docx naar markdown|Thomas Hofman|12-11-2022|
+|v1.0|Eerste versie|Thomas Hofman|12-01-2023|
 
 # Inhoudsopgave
 
@@ -31,10 +31,10 @@
     1.2. [Doelgroep](#12-doelgroep) </br>
 2. [Vragen iteratie 1](#2-vragen-iteratie-1) </br>
     2.1. [Vragen aan de stakeholders](#21-vragen-aan-de-stakeholders) </br>
-    2.2. [Vragen aan de opleidings coordinatoren](#22-vragen-aan-de-opleidings-coordinatoren) </br>
+    2.2. [Vragen aan de opleidingscoördinatoren](#22-vragen-aan-de-opleidings-coordinatoren) </br>
 3. [Vragen iteratie 2](#3-vragen-iteratie-2) </br>
     3.1. [Vragen aan de stakeholders](#31-vragen-aan-de-stakeholders) </br>
-    3.2. [Vragen aan de opleidings coordinatoren](#32-vragen-aan-de-opleidings-coordinatoren) </br>
+    3.2. [Vragen aan de opleidingscoördinatoren](#32-vragen-aan-de-opleidings-coordinatoren) </br>
 4. [Vragen iteratie 3](#4-vragen-iteratie-3) </br>
     4.1. [Vragen aan de stakeholders](#41-vragen-aan-de-stakeholders) </br>
 5. [Vragen iteratie 3](#5-vragen-iteratie-4) </br>
@@ -45,9 +45,9 @@
 
 Binnen dit document zijn de vragen en antwoorden vastgelegd die gesteld zijn aan de stakeholder van de casus ICDE of de coördinatoren van het vak I-OOSE.
 
-Het is mogelijk om naar de vragen de refereren middels de nummering, Q (Question) representeert een vraag, A (Assumption) representeert een aanname. 
+Het is mogelijk om naar de vragen te refereren middels de nummering, Q (Question) representeert een vraag, A (Assumption) representeert een aanname.
 
-Er zijn hier en daar ook vragen gesteld aan de coördinatoren van het vak I-OOSE, deze vragen zijn aangeduid met QC.
+Er zijn hier en daar ook vragen gesteld aan de coördinatoren van het vak I-OOSE, deze vragen hebben geen betrekking tot de inhoud van de casus en zijn aangeduid met QC (Question Coordinators).
 
 ## 1.1. Doelstelling
 
@@ -73,7 +73,7 @@ Stakeholders vanuit de HAN betrokken bij de casus ICDE en degene die de casus ui
 *Ronald: Docenten willen inzagen hebben in het systeem zodat zij de inhoud van de course kunnen bekijken. Ook leerlingen willen inzage in de course hebben zodat zij kunnen inzien waarop ze beoordeeld worden.*
 
 **Q1-4 – Wat zijn de belangen/doelen van deze actoren?** </br>
-*John: De engiste actoren binnen het systeem zijn een docent en een student. Een docent geeft een les, examineert een tentamen en geeft hier een beoordeling. Een student zit in een klas en volgt een course, neemt deel aan tentamen en ontvangt daarvoor beoordelingen, een student zal niet de beoordelingen van een andere student moeten zien of courses kunnen inzien die hij/zij niet volgt. Een docent heeft inzage in course inrichtingen en kan deze instantiëren en templates ontwikkelen. Een student volgt slechts een course.*
+*John: De enige actoren binnen het systeem zijn een docent en een student. Een docent geeft een les, examineert een tentamen en geeft hier een beoordeling. Een student zit in een klas en volgt een course, neemt deel aan tentamen en ontvangt daarvoor beoordelingen, een student zal niet de beoordelingen van een andere student moeten zien of courses kunnen inzien die hij/zij niet volgt. Een docent heeft inzage in course inrichtingen en kan deze instantiëren en templates ontwikkelen. Een student volgt slechts een course.*
 
 **Q1-5 – Vanaf waar moet het systeem te benaderen zijn?** </br>
 *Ronald: Een gebruiker moet de mogelijkheid hebben om vanaf remote locaties gebruik te maken van het systeem indien hij/zij een HAN-account heeft. Afhankelijk van functie krijg je bepaalde rechten. De tool moet grafisch zijn en bruikbaar zijn op laptop & smartphones.*
@@ -98,7 +98,7 @@ Stakeholders vanuit de HAN betrokken bij de casus ICDE en degene die de casus ui
 *Wellicht is het wel handig om zelfstudie uren en contacturen te kunnen verbinden aan lessen of tentamens zodat een roosteraar deze contacturen kan inplannen en een student zijn studielast kan inzien.*
 
 **Q1-11 - De Handmatige administratie was foutgevoelig; Tegen welke inconsistentie liep men aan?** </br>
-*Ronald: kopieer en plakken, teksten worden niet goed aangepast, foutgevoeligheid in cijfers en weging. Concreet; manuele fouten gerelateerd aan gebruikersinvoer. *
+*Ronald: kopieer en plakken, teksten worden niet goed aangepast, foutgevoeligheid in cijfers en weging. Concreet; manuele fouten gerelateerd aan gebruikersinvoer.*
 
 **Q1-12 – Hoe worden beroepsproducten beoordeeld?** </br>
 *Ronald: De beoordelingen van een beroepsproduct (BP) is een samenstelling van de beoordelingen van de rubrieken, aan elke rubriek wordt een weging gegeven, de totale weging moet 100% zijn. De beoordeling van een rubriek hoeft niet altijd 1 t/m 10 te zijn maar kan bijvoorbeeld ook 1 t/m 5 zijn. Per beoordelingscriteria moet een beschrijving toegevoegd die het mogelijk maakt objectief te beoordelen. Het is ook mogelijk om knock-out’s te markeren, per rubriek moet er ruimte zijn voor commentaar. Een tentamen kan eventueel voldoende afgerond worden of met een cijfer, een cijfer hoger dan een 5.5 komt neer op een voldoende. Aan tentamens onderling is ook een weging verbonden die geld tot op het EVL niveau. Het zal wenselijk zijn als de tool assisteert bij het beoordelen van beroepsproducten en dat ik als docent niet zelf de eindbeoordeling hoef te berekenen.*
@@ -204,44 +204,25 @@ Stakeholders vanuit de HAN betrokken bij de casus ICDE en degene die de casus ui
 
 ## 5.1. Vragen aan de stakeholders
 
----
-:warning: **_NOTE:_**
-Ons huidige domein model en de geinventariseerde functionele eisen zijn al zo omvangrijk dat wij onderstaande vragen niet gesteld hebben aan de stakeholder maar zelf aannamen gedaan hebben zodat wij voorkomen dat het domein en applicatie funtionaliteit ver buiten de grenzen treed van een MVP (Minimum Viable Product).
+**A4-1 - Kan een docent zelf een type beroepsproduct of schriftelijke toets toevoegen of staat dit statisch gedefinieerd in het systeem?** </br>
+*Aanname: statisch gedefinieerd binnen het systeem.*
 
----
-
-**Q4-1 - Kan een docent zelf een type beroepsproduct of schriftelijke toets toevoegen of staat dit statisch gedefinieerd in het systeem?** </br>
-*Aanname: statisch gedefineerd binnen het systeem.*
-
-**Q4-2 – Hoe speelt weging een rol in de beoordeling? In het geval dat de rubriek voor 10/100 punten weegt in de beroepsproduct en deze met een voldoende is beoordeeld krijgt men dan 10/100 punten? Indien dezelfde rubriek met een cijfer beoordeeld zal worden en men krijgt een 8 voor de rubriek betekent dat dan dat men 8/100 punten krijgt? Is de weging op basis van percentage en moet de totale weging van rubrieken voor een enkel beroepsproduct dus tot 100 komen?** </br>
+**A4-2 – Hoe speelt weging een rol in de beoordeling? In het geval dat de rubriek voor 10/100 punten weegt in de beroepsproduct en deze met een voldoende is beoordeeld krijgt men dan 10/100 punten? Indien dezelfde rubriek met een cijfer beoordeeld zal worden en men krijgt een 8 voor de rubriek betekent dat dan dat men 8/100 punten krijgt? Is de weging op basis van percentage en moet de totale weging van rubrieken voor een enkel beroepsproduct dus tot 100 komen?** </br>
 *Aanname: Dit is de correcte manier hoe weging werkt.*
 
-**Q4-3 – Zijn er verschillen tussen de course ontwikkeling voor voltijd en deeltijd?** </br>
+**A4-3 – Zijn er verschillen tussen de course ontwikkeling voor voltijd en deeltijd?** </br>
 *Aanname: Nee.*
 
-**Q4-4 – Moeten oudere versies van een course te instantiëren zijn, of kan je alleen de laatste versie instantiëren.** </br>
+**A4-4 – Moeten oudere versies van een course te instantiëren zijn, of kan je alleen de laatste versie instantiëren.** </br>
 *Aanname: Alleen de laatste versie.*
 
-**Q4-5 – In de casus wordt een ontwikkelaar beschreven als iemand die een semester ontwikkelt, betekent dit dat een course altijd een semester duurt? Of terwijl 30 studiepunten en 20 weken per course?** </br>
+**A4-5 – In de casus wordt een ontwikkelaar beschreven als iemand die een semester ontwikkelt, betekent dit dat een course altijd een semester duurt? Of terwijl 30 studiepunten en 20 weken per course?** </br>
 *Aanname: Dit kan zowel een semester zijn (2 perioden/een half jaar) als een enkele periode (kwart jaar)*
 
-**Q4-6 – Moet er rekening gehouden worden met herkansingen?** </br>
+**A4-6 – Moet er rekening gehouden worden met herkansingen?** </br>
 *Aanname: Niet voor het MVP.*
 
-**Q4-7 – Aan lessen en tentamen zijn zowel zelfstudie als contacturen verbonden, moeten wij hier een wekelijks limiet aan contact/zelfstudie uren toepassen?** </br>
+**A4-7 – Aan lessen en tentamen zijn zowel zelfstudie als contacturen verbonden, moeten wij hier een wekelijks limiet aan contact/zelfstudie uren toepassen?** </br>
 *Aanname: Nee, eventueel later mogelijk*
-
-<font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
-
-# 6. Bronnen
-
-|APA Bronvermelding|
-|------------------|
-{interview Ronald}
-{interview John 1}
-{interview John 2}
-{interview John 3}
-{interview John 4}
-{feedback klas 13-10-2022}
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>

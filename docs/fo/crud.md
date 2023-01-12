@@ -1,19 +1,13 @@
 [Terug](./index.md)
 
----
-:warning: **_NOTE:_**
-Nog valideren tegen over use case model dat in onderwijs online staat.
+<h1>CRUD Use Case Overview</h1>
 
----
+- [**Create**](#create)
+- [**Read**](#read)
+- [**Update**](#update)
+- [**Delete**](#delete)
 
-# CRUD Use Case Overview
-
-- [Create](#create)
-- [Read](#read)
-- [Update](#update)
-- [Delete](#delete)
-
-# **Create**
+## **Create**
 
 <table>
     <tbody>
@@ -111,7 +105,7 @@ Nog valideren tegen over use case model dat in onderwijs online staat.
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#crud-use-case-overview)]</font>
 
-# **Read**
+## **Read**
 
 <table>
     <tbody>
@@ -214,7 +208,7 @@ Nog valideren tegen over use case model dat in onderwijs online staat.
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#crud-use-case-overview)]</font>
 
-# **Update**
+## **Update**
 
 <table>
     <tbody>
@@ -344,7 +338,7 @@ Nog valideren tegen over use case model dat in onderwijs online staat.
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#crud-use-case-overview)]</font>
 
-# **Delete**
+## **Delete**
 
 <table>
     <tbody>
