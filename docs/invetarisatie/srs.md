@@ -1,19 +1,12 @@
 [Terug](/README.md)
 
----
-:warning: **_CRITERIA:_**
-alle functionele requirements volledig, eenduidig, begrijpelijk en testbaar beschreven
-
----
-
 # Software Requirement Specification
 
 **Opdrachtgever:** De HAN - Hoge School Arnhem Nijmegen</br>
-**Datum**: 12-11-2022 </br>
-**Studenten**: Thomas Hofman (622438), Ricardo de Wijs ({studentnr})</br>
+**Datum**: 12-01-2023 </br>
+**Studenten**: Thomas Hofman (622438), Ricardo de Wijs (498412)</br>
 **Versie**: v0.6 </br>
-**Klas**: {klascode} </br>
-**Locatie**: Arnhem
+**Locatie**: Arnhem </br>
 **Docent**: John Gorter
 
 # Versiebeheer
@@ -23,16 +16,17 @@ alle functionele requirements volledig, eenduidig, begrijpelijk en testbaar besc
 |v0.1|Document opzet & inleidingen|Thomas Hofman|16-09-2022|
 |v0.2|Functionele requirements opgezet|Ricardo de Wijs|28-09-2022|
 |v0.3|Niet functionele requirements toegevoegd|Thomas Hofman|29-09-2022|
-|v0.4|Refactoren van requirements naar smart|Thomas Hofman|14-10-2022|
+|v0.4|Herformuleren van requirements naar SMART|Thomas Hofman|14-10-2022|
 |v0.5|Requirements koppelen aan use cases|Ricardo de Wijs|15-10-2022|
 |v0.6|Converteren van docx naar markdown|Thomas Hofman|12-11-2022|
+|v1.0|Eerste versie|Thomas Hofman|12-01-2023|
 
 # Inhoudsopgave
 
 1. [Inleiding](#1-inleiding) </br>
     1.1. [Doelstelling](#11-doelstelling) </br>
     1.2. [Doelgroep](#12-doelgroep) </br>
-2. [Functional Requirements (SMART)](#2-functional-requirements-smart) </br>
+2. [Functional Requirements](#2-functional-requirements) </br>
 3. [Non-Functional Requirements (SMART)](#3-non-functional-requirements-smart) </br>
     3.1. [Usability](#31-usability) </br>
     3.2. [Reliability](#32-reliability) </br>
@@ -43,7 +37,7 @@ alle functionele requirements volledig, eenduidig, begrijpelijk en testbaar besc
 
 # 1. Inleiding
 
-Dit document betreft het software requirements specification document en voorziet in de vastlegging van de functionele en niet functionele eisen, dit is gedaan middels de SMART- methode (Specifiek, Meetbaar, Acceptabel, Realistisch, Tijdgebonden). Het SRS-document is een bijlage van zowel het technisch- als het functioneel- ontwerp. De functionele eisen voeden het functioneel ontwerp, het functioneel ontwerp en de non-functional requirements fungeren gezamenlijk als fundering voor het technisch ontwerp.
+Dit document betreft het software requirements specification document en voorziet in de vastlegging van de functionele en niet functionele eisen, de functionele eisen zijn vastgelegd als user stories, de niet functionele eisen zijn vastgelegd middels de SMART- methode (Specifiek, Meetbaar, Acceptabel, Realistisch, Tijdgebonden). Het SRS-document is een bijlage van zowel het technisch- als het functioneel- ontwerp. De functionele eisen voeden het functioneel ontwerp, het functioneel ontwerp en de non-functional requirements fungeren gezamenlijk als fundering voor het technisch ontwerp.
 
 ## 1.1. Doelstelling
 
@@ -55,40 +49,34 @@ Stakeholders vanuit de HAN betrokken bij de casus ICDE en degene die de casus ui
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
-# 2. Functional Requirements (SMART)
+# 2. Functional Requirements
 
-In onderstaande zijn de systeem features ofte wijl functional requirements omschreven.
-
----
-:warning: **_CRITERIA:_**
-alle functionele requirements volledig, eenduidig, begrijpelijk en testbaar beschreven voor een 10.
-
----
+In onderstaande zijn de systeem features ofte wijl functional requirements omschreven als user stories. Het user stories format dwingt af dat er context rondom de requirement geboden word door de wie, wat en waarom vragen te beantwoorden. Verbonden aan iedere requirement zijn een of meer vragen uit het "Questions & Answers" document en een of meer use cases waarin de requirement geïmplementeerd word.
 
 |FR-#|Requirement|Prio|Related Question|Related Use Case|
 |----|-----------|----|----------------|----------------|
 |1|Als docent wil ik een courses kunnen ontwikkelen zodat studenten deze courses kunnen volgen.|Must|1-2|1, 11, 10, 12, 13, 14, 17, 16|
-|2|Als docent wil ik de inhoud van een course kunnen bekijken zodat …|Must|1-3|5|
-|3|Als student wil ik de inhoud van een course kunnen bekijken zodat …|Must|1-3|5|
+|2|Als docent wil ik de inhoud van een course kunnen bekijken zodat ik relevant data van de course die ik geef kan achterhalen en vorderingen van studenten kan bijwerken.|Must|1-3|5|
+|3|Als student wil ik de inhoud van een course kunnen bekijken zodat ik relevant data van de course die ik volg kan achterhalen. |Must|1-3|5|
 |4|Als docent wil ik een studenten en klassen registratie kunnen bijhouden zodat ik middels een klas studenten aan een course kan koppelen.|Must|1-4|3,4|
 |5|Als docent wil ik kunnen inzien welke lessen ik moet geven zodat ik deze lessen kan voorbereiden.|Must|1-4|5, 6|
 |6|Als docent wil ik kunnen inzien welke tentamens ik moet examineren zodat ik weet bij welke tentamens ik aanwezig moet zijn. |Must|1-4|6|
 |7|Als docent wil ik beoordelingen voor door studenten gemaakte tentamen kunnen vastleggen zodat ik deze niet hoef te onthouden.|Must|1-4, 2-7|8|
-|8|Als student wil ik een course kunnen volgen zodat …|Must|1-4, 2-6, 2-7|2, 5, 6|
+|8|Als student wil ik een course kunnen volgen zodat ik inzage krijg in gerelateerde data en mijn vorderingen. |Must|1-4, 2-6, 2-7|2, 5, 6|
 |9|Als docent wil ik leeruitkomsten kunnen bepalen voor de course zodat duidelijk is wat de gewenste uitkomst van de course is.|Must|1-6|10|
 |10|Als docent wil ik leeruitkomsten kunnen groeperen in een EVL zodat een course met vele leeruitkomsten overzichtelijk blijft.|Should|1-6|11|
 |11|Als docent wil ik leerdoelen kunnen bepalen die bijdragen aan het behalen van een leeruitkomst zodat ik de inhoud van de course kan richten op het behalen van deze doelen.|Must|1-6|12|
 |12|Als docent wil ik tentamen in de vorm van schriftelijke toetsen en/of beroepsproducten kunnen toevoegen aan een course zodat ik de leerdoelen binnen de course kan aftoetsen.|Must|1-6, 3-1|13, 14, 21|
 |13|Als docent wil ik rubrieken met beoordelingscriteria kunnen bepalen voor een beroepsproduct zodat deze systematisch en objectief is na te kijken|Must|1-6|14|
-|14|Als docent wil ik rubrieken kunnen verbinden aan leerdoelen zodat er afgedwongen wordt dat een rubriek een leerdoel aftoets|Must|1-6|14|
+|14|Als docent wil ik rubrieken kunnen verbinden aan leerdoelen zodat er afgedwongen wordt dat een rubriek een leerdoel af toets|Must|1-6|14|
 |15|Als docent wil ik lessen kunnen verbinden aan leerdoelen zodat ik zeker weet dat er voor alle leerdoelen lessen gegeven worden|Must|1-6|22|
 |16|Als docent wil ik schriftelijke toetsen kunnen verbinden aan leerdoelen zodat er afgedwongen word dat een schriftelijke toets minimaal een leerdoel aftoetst.|Must|1-6|13|
 |17|Als docent kan ik zelf aangeven om wat van type tentamen het gaat zodat duidelijk is wat van soort tentamen men kan verwachten.|Should|1-8|13, 21|
 |18|Als docent kan ik aangeven in welke week van de course een les of tentamen plaats vind zodat duidelijk is wanneer de les of het tentamen plaats zal vinden.|Should|1-10|17|
 |19|Als docent kan ik zelfstudie uren en contact uren verbinden aan lessen en tentamens zodat de studielast inzichtelijk word.|Should|1-10|13, 21, 22|
 |20|Als docent wil ik dat invoer gecontroleerd wordt zodat menselijke invoerfouten voorkomen worden.|Must|1-11|\*|
-|21|Als docent wil ik een variabel aantal beoordelingscriteria kunnen toevoegen aan een rubriek, minimaal 2 en maximaal … zodat …|Must|1-12|14|
-|22|Als docent wil ik een weging kunnen specifiëren voor rubrieken zodat ik belangrijkere rubrieken zwaarder kan laten meetellen in de eindbeoordeling.|Should|1-12|14|
+|21|Als docent wil ik een variabel aantal beoordelingscriteria kunnen toevoegen aan een rubriek (minimaal 2 en maximaal 5) zodat deze rubrieken systematisch afgetoetst kunnen worden. |Must|1-12|14|
+|22|Als docent wil ik een weging kunnen specificeren voor rubrieken zodat ik belangrijkere rubrieken zwaarder kan laten meetellen in de eindbeoordeling.|Should|1-12|14|
 |23|Als docent wil ik de mogelijkheid hebben om per rubriek een knock-out grens te zetten zodat ik kan afdwingen dat studenten op bepaalde rubrieken een minimale score moeten behalen.|Should|1-12, 1-13|14|
 |24|Als docent wil ik commentaar/feedback kunnen toevoegen aan een beoordeling als zodat een student mijn onderbouwing voor de beoordeling kan inzien. |Should|1-13|8|
 |25|Als docent/student wil ik een course kunnen exporten zodat ik deze data kan delen met personen/systemen die binnen het systeem geen toegang hebben tot deze data, bijvoorbeeld roosteraars.|Could|1-15|18|
@@ -97,7 +85,7 @@ alle functionele requirements volledig, eenduidig, begrijpelijk en testbaar besc
 |28|Als docent wil ik alle beschikbare course templates kunnen inzien zodat ik eenvoudig een course kan starten gebaseerd op een van deze templates.|Must|2-4, 2-7|1|
 |29|Als docent wil ik een klas kunnen verbinden aan een opleidingsprofiel dat onderdanig is aan een opleiding zodat voor mij duidelijk is in welke context de klas de course volgt. En middels deze klas leerlingen als groep kunnen verbinden aan een course uitvoering.|Would|2-5|4|
 |30|Als docent wil ik de inrichting van een course template meerdere malen kunnen uitvoeren zodat de course data niet voor elke uitvoering opnieuw hoef in te voeren. |Must|2-6|15, 16|
-|31|Als docent wil ik de inrichting van een course kunnen hergebruiken als basis voor een nieuwere versie zodat ik niet alle inhoud opnieuw hoef aan te maken wanneer ik een soort gelijke course wil ontwikkelen.|Won’t|||
+|31|Als docent wil ik de inrichting van een course kunnen hergebruiken als basis voor een nieuwere versie zodat ik niet alle inhoud opnieuw hoef aan te maken wanneer ik een soort gelijke course wil ontwikkelen.|Won’t|2-3|23|
 |32|Als docent wil ik een course template kunnen uitvoeren zodat ik hier uitvoering gerelateerde data aan kan verbinden zoals een klas, les/tentamen locaties & docenten, beoordelingen en datums.|Must|2-6|15|
 |33|Als docent wil ik een locatie kunnen verbinden aan een tentamen en/of les zodat duidelijk is waar dit tentamen of deze les plaats zal vinden.|Should|2-8|15, 19|
 |34|Als docent wil ik dat er gecontroleerd wordt of aan elk leerdoel een les en tentamen (schriftelijke toets of beroepsproduct) verbonden is zodat ik zeker weet dat voor elke leerdoel les gegeven is en dat dit afgetoetst word.|Must|2-9|16|
@@ -114,67 +102,52 @@ alle functionele requirements volledig, eenduidig, begrijpelijk en testbaar besc
 
 # 3. Non-Functional Requirements (SMART)
 
-In onderstaande zijn de non-functional requirements omschreven, deze requirements zijn onderverdeeld in de categorieën volgens het FURPS+ model (Larman 2005, 5.4) Functional, Usability, Reliability, Performance en Supportability. 
-
----
-:warning: **_CRITERIA:_**
-alle non-functionele requirements volledig, eenduidig, begrijpelijk en testbaar beschreven voor een 10
-
----
+In onderstaande zijn de non-functional requirements omschreven, deze requirements zijn onderverdeeld in de categorieën volgens het FURPS+ model (Larman 2005) (Functional, Usability, Reliability, Performance, Supportability, Plus).
 
 ## 3.1. Usability
 
-|NFR-#|Requirement|Prio|Question|
-|-----|-----------|----|--------|
-|1|De tool voorzien zijn van goede help documentatie.|Should||
-|2|Als docent/student wil ik de applicatie kunnen gebruiken ongeacht mijn locatie zo lang ik een internetverbinding heb|Must||.
-|3|De tijdinvestering om de tool te leren gebruiken is minder dan twee werkdagen |Should||
-|4|Als docent/student wil ik de applicatie kunnen gebruiken op mijn laptop, tablet en smartphone.|Should||
+|NFR-#|Requirement|Prio|
+|-----|-----------|----|
+|1|Als docent/student wil ik de applicatie kunnen gebruiken ongeacht mijn locatie zo lang ik een internetverbinding heb.|Must|
+|2|Een gebruiker zal zonder voorkennis van het systeem binnen 15 minuten een course inrichting met een toets, en een les kunnen registeren. |Should|
+|3|Als docent/student wil ik de applicatie kunnen gebruiken op mijn laptop, tablet en smartphone zonder dat installatie van additionele software vereist is.|Should|
 
 ## 3.2. Reliability
 
-|NFR-#|Requirement|Prio|Question|
-|-----|-----------|----|--------|
-|4|Het systeem moet zonder fouten zijn taak uitvoeren in 80 procent van de use cases.|Would||
-|5|Het systeem moet 80 procent van de tijd beschikbaar zijn per maand gedurende werktijden (9-17).|Would||
+|NFR-#|Requirement|Prio|
+|-----|-----------|----|
+|4|Het systeem moet 95 procent van de tijd beschikbaar zijn per maand gedurende werktijden (9-17).|Would|
 
 ## 3.3. Performance
 
-|NFR-#|Requirement|Prio|Question|
-|-----|-----------|----|--------|
-|6|De reponse tijd voor de start pagina moet tot 10 users een reponse tijd hebben van 1 sec voor Chrome browser/client. (Inclusief rendering)|||
-|7|Het systeem moet kunnen schalen om gelijktijdige users van dienst te kunnen zijn. |Would||
-|8|De applicatie heeft minimaal 1-cpu en 200MB-memory nodig om 2-users te kunnen afhandelen|Must||
+|NFR-#|Requirement|Prio|
+|-----|-----------|----|
+|5|Weergaven van het systeem moeten laden binnen 1.5 seconden binnen een moderne browser/client met uitzondering van het eerste verzoek per sessie wanneer de applicatie belast word met 100 server verzoeken per seconden. |Must|
+|6|Het systeem moet zowel verticaal als horizontaal schaalbaar zijn om bij een toename van load extra resources te kunnen toekennen en een hogere beschikbaarheid te kunnen behalen. |Would|
+|7|De applicatie mag zonder gebruikers (idle) niet meer dan 1GB-ram en 1-cpu core vereisen. |Must|
 
 ## 3.4. Supportability
 
-|NFR-#|Requirement|Prio|Question|
-|-----|-----------|----|--------|
-|9|De applicatie moet volledig werken in Chrome browser vanaf versie 108.0.5359.124.|Must||
-|10|Het systeem moet van logging voorzien zijn zodat fouten getraceerd kunnen worden.|Would||
-|11|Het gebruik van unit-tests is een vereiste, alle kern functionaliteit dient te voorzien zijn unit-tests.|Must||
+|NFR-#|Requirement|Prio|
+|-----|-----------|----|
+|8|De functionaliteit van de applicatie moet identiek zijn zo lang de client voorzien is van een besturingssysteem versie die niet ouder is dan 2020.|Must|
+|9|Het systeem moet van logging voorzien zijn zodat fouten getraceerd kunnen worden.|Would|
+|10|Alle use cases dienen afgetest te worden met op zijn minst een unit test.|Must|
 
-## 3.5 Plus - Implementation
+## 3.5 Plus
 
-|NFR-#|Requirement|Prio|Question|
-|-----|-----------|----|--------|
-|11|De applicatie wordt ontwikkeld in C#.|Must||
-|12|Het systeem moet kunnen draaien op een AMD64 processor architectuur.|Must||
-|13|De data van de applicatie wordt persistent opgeslagen.|Must||
-
-## 3.5 Plus - Interface
-
-|NFR-#|Requirement|Prio|Question|
-|-----|-----------|----|--------|
-|14|Het systeem moet een interface beschikbaar stellen zodat andere software de mogelijkheid heeft met het systeem te integreren.|Would||
+|NFR-#|Requirement|Prio|
+|-----|-----------|----|
+|11|Het systeem moet kunnen draaien op een AMD64 processor architectuur.|Must|
+|12|De data van de applicatie wordt persistent opgeslagen.|Must|
+|13|Het systeem moet een interface beschikbaar stellen zodat andere software de mogelijkheid heeft met het systeem te integreren.|Must|
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
-
 
 # 4. Bronnen
 
 |APA Bronvermelding|
 |------------------|
-{larman}
+|Larman, C., & Kruchten, P. (2005). Applying UML and Patterns: An Introduction to Object-oriented Analysis and Design and Iterative Development. Prentice Hall.
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
