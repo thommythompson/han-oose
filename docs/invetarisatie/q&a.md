@@ -226,15 +226,3 @@ Stakeholders vanuit de HAN betrokken bij de casus ICDE en degene die de casus ui
 *Aanname: Nee, eventueel later mogelijk*
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
-
-# 6. Bronnen
-
-|Bronvermelding|
-|------------------|
-| Interview Stakeholder Ronald 20-09-2022
-| Interview Stakeholder John 27-09-2022
-| Interview Stakeholder John 07-10-2022
-| Interview Stakeholder John 17-10-2022
-| Feedback Tussentijdse Presentatie 13-10-2022
-
-<font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
