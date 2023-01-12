@@ -130,7 +130,7 @@ In onderstaande zijn de non-functional requirements omschreven, deze requirement
 
 |NFR-#|Requirement|Prio|
 |-----|-----------|----|
-|8|De functionaliteit van de applicatie moet identiek zijn zo lang de client voorzien is van een besturingssysteem versie die niet ouder is dan 2020.|Must|
+|8|De functionaliteit van de applicatie moet identiek zijn zo lang de client voorzien is van een iOS, iPadOS OSX, Windows of Android versie die niet ouder is dan 2020.|Must|
 |9|Het systeem moet van logging voorzien zijn zodat fouten getraceerd kunnen worden.|Would|
 |10|Alle use cases dienen afgetest te worden met op zijn minst een unit test.|Must|
 
@@ -141,6 +141,7 @@ In onderstaande zijn de non-functional requirements omschreven, deze requirement
 |11|Het systeem moet kunnen draaien op een AMD64 processor architectuur.|Must|
 |12|De data van de applicatie wordt persistent opgeslagen.|Must|
 |13|Het systeem moet een interface beschikbaar stellen zodat andere software de mogelijkheid heeft met het systeem te integreren.|Must|
+|14|Als gebruiker wil ik kunnen inloggen met mijn bestaande HAN account.|Should|
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
