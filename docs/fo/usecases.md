@@ -4,7 +4,7 @@
 
 ---
 :warning: **_NOTITIE:_**
-Niet alle use cases zijn uitgewerkt, de uitwerken van de niet uitgewerkte use cases waren toegewezen aan een collega student die het semester vroegtijdig heeft verlaten.
+Niet alle use cases zijn uitgewerkt, de uitwerking van de niet uitgewerkte use cases waren toegewezen aan een collega student die het semester vroegtijdig heeft verlaten.
 
 ---
 
@@ -1090,11 +1090,11 @@ Niet alle use cases zijn uitgewerkt, de uitwerken van de niet uitgewerkte use ca
   <tbody>
     <tr>
       <td><strong>ID</strong></td>
-      <td>&nbsp;UC-14</td>
+      <td>UC-14</td>
     </tr>
     <tr>
       <td><strong>Naam</strong></td>
-      <td>&nbsp;Maak rubrieken</td>
+      <td>Maak rubrieken</td>
     </tr>
     <tr>
       <td><strong>Omschrijving</strong></td>
@@ -1102,19 +1102,19 @@ Niet alle use cases zijn uitgewerkt, de uitwerken van de niet uitgewerkte use ca
     </tr>
     <tr>
       <td><strong>Scope</strong></td>
-      <td>&nbsp;ICDE-Tool</td>
+      <td>ICDE-Tool</td>
     </tr>
     <tr>
       <td><strong>Trigger</strong></td>
-      <td>&nbsp;Gebruikers Interactie</td>
+      <td>Gebruikers Interactie</td>
     </tr>
     <tr>
       <td><strong>Level</strong></td>
-      <td>&nbsp;User-Goal</td>
+      <td>User-Goal</td>
     </tr>
     <tr>
       <td><strong>Primary Actor</strong></td>
-      <td>&nbsp;Docent</td>
+      <td>Docent</td>
     </tr>
     <tr>
       <td><strong>Belangen &amp; belanghebbenden</strong></td>
@@ -1134,7 +1134,7 @@ Niet alle use cases zijn uitgewerkt, de uitwerken van de niet uitgewerkte use ca
     </tr>
     <tr>
       <td><strong>Requirements</strong></td>
-      <td>&nbsp;
+      <td>
         <div>
           <div>FR-13,21,22,23,39</div>
         </div>
@@ -1148,19 +1148,19 @@ Niet alle use cases zijn uitgewerkt, de uitwerken van de niet uitgewerkte use ca
       <td><strong>System</strong></td>
     </tr>
     <tr>
-      <td>&nbsp;
+      <td>
         <div>
           <div>1. Gebruiker start het aanmaken van een nieuwe rubriek</div>
         </div>
       </td>
       <!-- 1.A  -->
-      <td>&nbsp;</td>
+      <td></td>
       <!-- 1.B  -->
     </tr>
     <tr>
-      <td>&nbsp;</td>
+      <td></td>
       <!-- 2.A  -->
-      <td>&nbsp;
+      <td>
         <div>
           <div>2. Het systeem geeft de mogelijke leerdoelen.</div>
         </div>
@@ -1170,7 +1170,7 @@ Niet alle use cases zijn uitgewerkt, de uitwerken van de niet uitgewerkte use ca
     <tr>
       <td>3. Gebruiker kiest een leerdoel.</td>
       <!-- 3.A  -->
-      <td>&nbsp;
+      <td>
         <div>
           <div>4. het systeem vraag om een beoordelingsbeschrijving, een weging in %, een beoordelingstype, een knock-out criteria en een bijbehorend commentaar.</div>
         </div>
@@ -1180,7 +1180,7 @@ Niet alle use cases zijn uitgewerkt, de uitwerken van de niet uitgewerkte use ca
     <tr>
       <td>5. Gebruiker geeft de gevraagde informatie in</td>
       <!-- 4.A  -->
-      <td>&nbsp;
+      <td>
         <div>
           <div>6. Het systeem valideert invoer</div>
           <div>7. Het systeem toont de nieuwe rubriek in </div>
@@ -1192,7 +1192,7 @@ Niet alle use cases zijn uitgewerkt, de uitwerken van de niet uitgewerkte use ca
     <tr>
       <td>9. Gebruiker geeft aan geen nieuwe rubriek toe te willen voegen.</td>
       <!-- 5.A  -->
-      <td>&nbsp;
+      <td>
         <div>
           <div>10.Het systeem beëindigt het proces.</div>
         </div>
@@ -1686,48 +1686,48 @@ sequenceDiagram
   <tbody>
     <tr>
       <td><strong>ID</strong></td>
-      <td>&nbsp;UC-18</td>
+      <td>UC-18</td>
     </tr>
     <tr>
       <td><strong>Naam</strong></td>
-      <td>&nbsp;Exporteer informatie</td>
+      <td>Exporteer informatie</td>
     </tr>
     <tr>
       <td><strong>Omschrijving</strong></td>
-      <td>De usecase beschrijft het exporteren van course informatie</td>
+      <td>De usecase beschrijft het exporteren van lesmateriaal</td>
     </tr>
     <tr>
       <td><strong>Scope</strong></td>
-      <td>&nbsp;ICDE-Tool</td>
+      <td>ICDE-Tool</td>
     </tr>
     <tr>
       <td><strong>Trigger</strong></td>
-      <td>&nbsp;Gebruikers Interactie</td>
+      <td>Gebruikers Interactie</td>
     </tr>
     <tr>
       <td><strong>Level</strong></td>
-      <td>&nbsp;User-Goal</td>
+      <td>User-Goal</td>
     </tr>
     <tr>
       <td><strong>Primary Actor</strong></td>
-      <td>&nbsp;Docent</td>
+      <td>Student</td>
     </tr>
     <tr>
       <td><strong>Belangen &amp; belanghebbenden</strong></td>
-      <td>Docent & Student wil een course kunnen exporteren zodat deze data gedeeld kan worden met personen of systemen die geen toegang hebben tot dit systeem.</br>
+      <td>- Student: Wil het lesmateriaal bijhorend bij een les kunnen exporteren zodat deze data i offline beschikbaar is in het gewenste format.</br>
     </tr>
     <tr>
       <td><strong>Pre-Condities</strong></td>
-      <td>Authenticatie is afgehandeld; gebruiker is bevoegd om op het systeem in te loggen.</td>
+      <td>Authenticatie is afgehandeld; gebruiker is bevoegd om op het systeem in te loggen en volgt een course.</td>
     </tr>
     <tr>
       <td><strong>Succes definitie</strong></td>
-      <td>De gewenste course onderdelen zijn geëxporteerd
+      <td>Het lesmateriaal is beschikbaar in het gewenste format.
       </td>
     </tr>
     <tr>
       <td><strong>Requirements</strong></td>
-      <td>&nbsp;
+      <td>
         <div>
           <div>FR-25</div>
         </div>
@@ -1741,48 +1741,54 @@ sequenceDiagram
       <td><strong>System</strong></td>
     </tr>
     <tr>
-      <td>&nbsp;
-        <div>
-          <div>1. Gebruiker start het exporteren van course-informatie.
+      <td>
+        1. Gebruiker bepaald voor welke course en les men lesmateriaal wilt exporteren.
       </td>
       <!-- 1.A  -->
-      <td>&nbsp;</td>
+      <td></td>
       <!-- 1.B  -->
     </tr>
     <tr>
-      <td>&nbsp;</td>
+      <td>
+       2. Gebruik geeft aan het bijhorende lesmateriaal te willen exporteren.
+      </td>
       <!-- 2.A  -->
-      <td>&nbsp;
-        <div>
-          <div> 2. Het systeem toont de exporteerbare onderdelen. </br>
-                3. Het systeem vraag de gebruiker aan te geven welke onderdelen geëxporteerd moeten worden. 
-        </div>
-        </div>
+      <td>
       </td>     
       <!-- 2.B  -->
     </tr>
     <tr>
-      <td>4. Gebruiker geeft onderdelen aan</td>
-      <!-- 3.A  -->
-      <td>&nbsp;
-        <div>
-          <div>5. Het systeem exporteert de informatie. </br>
-               6. Het systeem geeft aan dat exporteren is gelukt.
-        </div>
-        </div>
+      <td>
+      </td>
+      <td>
+        3. Het systeem vraagt aan de gebruiker in welk format men wenst het lesmateriaal te exporteren. 
       </td>
       <!-- 3.B  -->
     </tr>
     <tr>
-      <td>7. Gebruiker bevestigd. </td>
+      <td>4. De gebruiker geeft het gewenste format aan. </td>
       <!-- 4.A  -->
-      <td>&nbsp;
-        <div>
-        8.Het systeem beëindigt het proces.
-        </div>
+      <td>
       </td>
       <!-- 4.B  -->
     </tr>
+    <tr>
+      <td></td>
+      <!-- 5.A  -->
+      <td>
+        5. Het systeem converteert het lesmateriaal naar het gewenste formaat.
+      </td>
+      <!-- 5.B  -->
+    </tr>
+    <tr>
+      <td></td>
+      <!-- 6.A  -->
+      <td>
+        6. Het systeem stelt het geconverteerde lesmateriaal beschikbaar aan aan de gebruiker.
+      </td>
+      <!-- 6.B  -->
+    </tr>
+
   </tbody>
 </table>
 
