@@ -27,11 +27,11 @@ Niet alle use cases zijn uitgewerkt, de uitwerken van de niet uitgewerkte use ca
 
 - [x] [UC-2 - Bekijken beoordelingen](#uc-2-bekijken-beoordelingen)
 - [x] [UC-13 - Ontwikkel toets](#uc-13-ontwikkel-toets)
-- [ ] [UC-14 - Maak rubriek](#uc-14-maak-rubriek)
+- [x] [UC-14 - Maak rubriek](#uc-14-maak-rubriek)
 - [x] [UC-15 - Start Uitvoering](#uc-15-start-uitvoering)
 - [x] [UC-16 - Maak course planning definitief](#uc-16-maak-course-template-definitief)
 - [x] [UC-17 - Maak Weekplanning](#uc-17---maak-weekplanning)
-- [ ] [UC-18 - Exporteer informatie](#uc-18-exporteer-informatie)
+- [x] [UC-18 - Exporteer informatie](#uc-18-exporteer-informatie)
 - [x] [UC-20 - Aanmelden](#uc-20-aanmelden)
 - [ ] [UC-21 - Ontwikkel beroepsproduct](#uc-21-ontwikkel-beroepsproduct)
 - [ ] [UC-22 - Ontwikkel Les](#uc-22-ontwikkel-les)
@@ -1087,8 +1087,169 @@ Niet alle use cases zijn uitgewerkt, de uitwerken van de niet uitgewerkte use ca
 # **UC-14 Maak rubriek**
 
 <table>
-<td><strong>TODO!</Strong></td>
-</Table>
+  <tbody>
+    <tr>
+      <td><strong>ID</strong></td>
+      <td>&nbsp;UC-14</td>
+    </tr>
+    <tr>
+      <td><strong>Naam</strong></td>
+      <td>&nbsp;Maak rubrieken</td>
+    </tr>
+    <tr>
+      <td><strong>Omschrijving</strong></td>
+      <td>Deze use case beschrijft hoe nieuwe rubrieken worden aangemaakt. De rubrieken horen bij een leerdoel. Elke rubriek krijgt een weging; de beoordeling van een rubriek kan 1 t/m 10 zijn maar kan hier ook van afwijken. Per beoordelingscriteria moet een beschrijving aanwezig zijn die het mogelijk maakt objectief te kunnen beoordelen. Binnen de rubrieken is het mogelijk om knock-outs te markeren en per rubriek moet er ruimte zijn voor commentaar.</td>
+    </tr>
+    <tr>
+      <td><strong>Scope</strong></td>
+      <td>&nbsp;ICDE-Tool</td>
+    </tr>
+    <tr>
+      <td><strong>Trigger</strong></td>
+      <td>&nbsp;Gebruikers Interactie</td>
+    </tr>
+    <tr>
+      <td><strong>Level</strong></td>
+      <td>&nbsp;User-Goal</td>
+    </tr>
+    <tr>
+      <td><strong>Primary Actor</strong></td>
+      <td>&nbsp;Docent</td>
+    </tr>
+    <tr>
+      <td><strong>Belangen &amp; belanghebbenden</strong></td>
+      <td>Docent: Wil een leerdoel voorzien van rubrieken zodat ze de beroepsproducten het leerdoel kunnen ondersteunen.</br>
+      Student: Wil deze rubrieken kunnen inzien zodat hij/zij weet wat er verwacht wordt.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Pre-Condities</strong></td>
+      <td>Authenticatie is afgehandeld; gebruiker is bevoegd om op het systeem in te loggen.</td>
+    </tr>
+    <tr>
+      <td><strong>Succes definitie</strong></td>
+      <td>-	Een is een rubriek aangemaakt voor het betreffende leerdoel. </br>
+          -De rubrieken bevatten een altijd een weging en/of een knock-out criteria.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Requirements</strong></td>
+      <td>&nbsp;
+        <div>
+          <div>FR-13,21,22,23,39</div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Main Success Scenario</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Actor</strong></td>
+      <td><strong>System</strong></td>
+    </tr>
+    <tr>
+      <td>&nbsp;
+        <div>
+          <div>1. Gebruiker start het aanmaken van een nieuwe rubriek</div>
+        </div>
+      </td>
+      <!-- 1.A  -->
+      <td>&nbsp;</td>
+      <!-- 1.B  -->
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <!-- 2.A  -->
+      <td>&nbsp;
+        <div>
+          <div>2. Het systeem geeft de mogelijke leerdoelen.</div>
+        </div>
+      </td>
+      <!-- 2.B  -->
+    </tr>
+    <tr>
+      <td>3. Gebruiker kiest een leerdoel.</td>
+      <!-- 3.A  -->
+      <td>&nbsp;
+        <div>
+          <div>4. het systeem vraag om een beoordelingsbeschrijving, een weging in %, een beoordelingstype, een knock-out criteria en een bijbehorend commentaar.</div>
+        </div>
+      </td>
+      <!-- 3.B  -->
+    </tr>
+    <tr>
+      <td>5. Gebruiker geeft de gevraagde informatie in</td>
+      <!-- 4.A  -->
+      <td>&nbsp;
+        <div>
+          <div>6. Het systeem valideert invoer</div>
+          <div>7. Het systeem toont de nieuwe rubriek in </div>
+          <div> 8. Het systeem vraagt of de gebruiker nog rubriek wil toevoegen.</div>
+        </div>
+      </td>
+      <!-- 4.B  -->
+    </tr>
+    <tr>
+      <td>9. Gebruiker geeft aan geen nieuwe rubriek toe te willen voegen.</td>
+      <!-- 5.A  -->
+      <td>&nbsp;
+        <div>
+          <div>10.Het systeem beëindigt het proces.</div>
+        </div>
+      </td>
+      <!-- 5.B  -->
+    <tr>
+        <td colspan="2"><strong>Alternative flow 2</strong></td>
+    </tr>
+    <tr>
+        <td colspan="2">2.a <em>[Geen beroepsproduct aanwezig]</em>
+            <br>
+           1.	Het systeem geeft aan dat er geen leerdoelen bestaan.
+           2.	Het systeem vraagt of de gebruiker een leerdoel wil toevoegen. 
+           3.	De gebruiker geeft aan een leerdoel toe te willen voegen
+            <br>
+            <em>UC-12 wordt gestart.</em>
+        </td>
+    </tr>
+      <tr>
+        <td colspan="2">2.b <em>[Geen leerdoel aanwezig]</em>
+            <br>
+        1.	Het systeem geeft aan dat er geen beroepsproducten bestaan.
+        2.	Het systeem vraagt of de gebruiker een leerdoel wil toevoegen. 
+        3.	De gebruiker geeft aan dit niet te willen
+        </br>
+            <em>U4.	Het systeem beëindigt het proces.</em>
+        </td>
+    </tr>
+       <tr>
+        <td colspan="2"><strong>Alternative flow 6</strong></td>
+    </tr>
+     <tr>
+        <td colspan="2">6.a <em>[Foutieve invoer]</em>
+        <br>
+        1.	Het systeem toont de foutieve invoer.
+        2.	Het systeem vraag de gebruiker de foutieve invoer te verbeteren.
+        3.	De gebruiker herstelt de invoer. 
+        4.	Het systeem valideert de invoer.
+        <br>
+            <em>Het systeem gaat verder bij stap 7</em>
+        </td>
+    </tr>
+      </tr>
+       <tr>
+        <td colspan="2"><strong>Alternative flow 8</strong></td>
+    </tr>
+      <tr>
+        <td colspan="2">8.a <em>[Nieuwe invoer]</em>
+            <br>
+            1.	De gebruiker geeft aan een nieuwe rubriek toe te willen voegen.
+            <br>
+            <em>Het systeem gaat verder bij stap 4.</em>
+        </td>
+    </tr>
+     
+  </tbody>
+</table>
 
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
 
@@ -1522,9 +1683,108 @@ sequenceDiagram
 # **UC-18 Exporteer informatie**
 
 <table>
-<td><strong>TODO!</Strong></td>
-</Table>
-
+  <tbody>
+    <tr>
+      <td><strong>ID</strong></td>
+      <td>&nbsp;UC-18</td>
+    </tr>
+    <tr>
+      <td><strong>Naam</strong></td>
+      <td>&nbsp;Exporteer informatie</td>
+    </tr>
+    <tr>
+      <td><strong>Omschrijving</strong></td>
+      <td>De usecase beschrijft het exporteren van course informatie</td>
+    </tr>
+    <tr>
+      <td><strong>Scope</strong></td>
+      <td>&nbsp;ICDE-Tool</td>
+    </tr>
+    <tr>
+      <td><strong>Trigger</strong></td>
+      <td>&nbsp;Gebruikers Interactie</td>
+    </tr>
+    <tr>
+      <td><strong>Level</strong></td>
+      <td>&nbsp;User-Goal</td>
+    </tr>
+    <tr>
+      <td><strong>Primary Actor</strong></td>
+      <td>&nbsp;Docent</td>
+    </tr>
+    <tr>
+      <td><strong>Belangen &amp; belanghebbenden</strong></td>
+      <td>Docent & Student wil een course kunnen exporteren zodat deze data gedeeld kan worden met personen of systemen die geen toegang hebben tot dit systeem.</br>
+    </tr>
+    <tr>
+      <td><strong>Pre-Condities</strong></td>
+      <td>Authenticatie is afgehandeld; gebruiker is bevoegd om op het systeem in te loggen.</td>
+    </tr>
+    <tr>
+      <td><strong>Succes definitie</strong></td>
+      <td>De gewenste course onderdelen zijn geëxporteerd
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Requirements</strong></td>
+      <td>&nbsp;
+        <div>
+          <div>FR-25</div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Main Success Scenario</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Actor</strong></td>
+      <td><strong>System</strong></td>
+    </tr>
+    <tr>
+      <td>&nbsp;
+        <div>
+          <div>1. Gebruiker start het exporteren van course-informatie.
+      </td>
+      <!-- 1.A  -->
+      <td>&nbsp;</td>
+      <!-- 1.B  -->
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <!-- 2.A  -->
+      <td>&nbsp;
+        <div>
+          <div> 2. Het systeem toont de exporteerbare onderdelen. </br>
+                3. Het systeem vraag de gebruiker aan te geven welke onderdelen geëxporteerd moeten worden. 
+        </div>
+        </div>
+      </td>     
+      <!-- 2.B  -->
+    </tr>
+    <tr>
+      <td>4. Gebruiker geeft onderdelen aan</td>
+      <!-- 3.A  -->
+      <td>&nbsp;
+        <div>
+          <div>5. Het systeem exporteert de informatie. </br>
+               6. Het systeem geeft aan dat exporteren is gelukt.
+        </div>
+        </div>
+      </td>
+      <!-- 3.B  -->
+    </tr>
+    <tr>
+      <td>7. Gebruiker bevestigd. </td>
+      <!-- 4.A  -->
+      <td>&nbsp;
+        <div>
+        8.Het systeem beëindigt het proces.
+        </div>
+      </td>
+      <!-- 4.B  -->
+    </tr>
+  </tbody>
+</table>
 
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
 
