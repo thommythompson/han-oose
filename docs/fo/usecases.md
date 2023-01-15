@@ -13,15 +13,16 @@ Niet alle use cases zijn uitgewerkt, de uitwerking van de niet uitgewerkte use c
 - [x] [UC-1 - Ontwikkel Course](#uc-1-ontwikkel-course)
 - [x] [UC-3 - Beheer Gebruikers](#uc-3-beheer-gebruikers)
 - [x] [UC-4 - Beheer Klassen](#uc-4-beheer-klassen)
-- [ ] [UC-5 - Vraag course info op](#uc-5-vraag-course-info-op)
+- [x] [UC-5 - Vraag course info op](#uc-5-vraag-course-info-op)
 - [x] [UC-6 - Vraag course planning op](#uc-6-vraag-courseplanning-op)
 - [x] [UC-7 - Beheer Opleidingen](#uc-7-beheer-opleidingen)
 - [x] [UC-8 - Geef beoordeling](#uc-8-geef-beoordeling)
 - [x] [UC-9 - Beheer Opleidingsprofielen](#uc-9-beheer-opleidingsprofielen)
 - [x] [UC-10 - Ontwikkel Leeruitkomst](#uc-10-ontwikkel-leeruitkomst)
-- [ ] [UC-11 - Ontwikkel EVL](#uc-11-ontwikkel-evl)
+- [x] [UC-11 - Ontwikkel EVL](#uc-11-ontwikkel-evl)
 - [x] [UC-12 - Ontwikkel Leerdoelen](#uc-12-ontwikkel-leerdoelen)
 - [x] [UC-19 - Beheer Locaties](#uc-19-beheer-locaties)
+- [x] [UC-22 - Ontwikkel Les](#uc-22-ontwikkel-les)
 
 ## Fully Dressed
 
@@ -34,8 +35,7 @@ Niet alle use cases zijn uitgewerkt, de uitwerking van de niet uitgewerkte use c
 - [x] [UC-18 - Exporteer informatie](#uc-18-exporteer-informatie)
 - [x] [UC-20 - Aanmelden](#uc-20-aanmelden)
 - [x] [UC-21 - Ontwikkel beroepsproduct](#uc-21-ontwikkel-beroepsproduct)
-- [ ] [UC-22 - Ontwikkel Les](#uc-22-ontwikkel-les)
-- [ ] [UC-23 - Nieuwe versie](#uc-23-nieuwe-versie)
+- [x] [UC-23 - Nieuwe versie](#uc-23-nieuwe-versie)
 
 # **UC-1 Ontwikkel Course**
 
@@ -380,8 +380,71 @@ Niet alle use cases zijn uitgewerkt, de uitwerking van de niet uitgewerkte use c
 # **UC-5 Vraag course info op**
 
 <table>
-<td><strong>TODO!</Strong></td>
-</Table>
+  <tbody>
+    <tr>
+      <td><strong>ID</strong></td>
+      <td>UC-5</td>
+    </tr>
+    <tr>
+      <td><strong>Naam</strong></td>
+      <td>Vraag course informatie op </td>
+    </tr>
+    <tr>
+      <td><strong>Omschrijving</strong></td>
+      <td>Deze use case is gebaseerd op het CRUD template, binnen deze use case worden alleen uitzonderingen of
+        specificiteit belicht.</td>
+    </tr>
+    <tr>
+      <td><strong>Scope</strong></td>
+      <td>ICDE-Tool</td>
+    </tr>
+    <tr>
+      <td><strong>Trigger</strong></td>
+      <td>Gebruikers Interactie</td>
+    </tr>
+    <tr>
+      <td><strong>Level</strong></td>
+      <td>User-Goal</td>
+    </tr>
+    <tr>
+      <td><strong>Primary Actor</strong></td>
+      <td>Docent / Student</td>
+    </tr>
+    <tr>
+      <td><strong>Belangen &amp; belanghebbenden</strong></td>
+      <td>
+        <div>Student: wil de course informatie kunnen inzien zodat hij/zij weet wat de inhoud van de course is en wat er verwacht wordt.
+        </div>
+        <div>
+        Docent: wil de course informatie kunnen inzien zodat hij/zij weet wanneer welke stof behandeld moet worden en wat de inhoud hiervan is.
+ &hellip;</div>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Pre-Condities</strong></td>
+      <td>
+        <div>- De docent/student is geauthentiseerd. (UC-20)</div>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Requirements</strong></td>
+      <td>
+        <div>
+          <div>FR-5,3,8,27,38 </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Read:</strong></td>
+      <td>
+        <div>
+          <div>De benodigde data is de course, het systeem toont de courseinformatie.
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
 # **UC-6 Vraag courseplanning op**
@@ -781,11 +844,76 @@ Niet alle use cases zijn uitgewerkt, de uitwerking van de niet uitgewerkte use c
 
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
 
-# **UC-11 Ontwikkel EVL**
+# **uc-11-ontwikkel-evl**
 
 <table>
-<td><strong>TODO!</Strong></td>
-</Table>
+  <tbody>
+    <tr>
+      <td><strong>ID</strong></td>
+      <td>UC-11</td>
+    </tr>
+    <tr>
+      <td><strong>Naam</strong></td>
+      <td>Ontwikkel EVL </td>
+    </tr>
+    <tr>
+      <td><strong>Omschrijving</strong></td>
+      <td>Deze use case is gebaseerd op het CRUD template, binnen deze use case worden alleen uitzonderingen of
+        specificiteit belicht.</td>
+    </tr>
+    <tr>
+      <td><strong>Scope</strong></td>
+      <td>ICDE-Tool</td>
+    </tr>
+    <tr>
+      <td><strong>Trigger</strong></td>
+      <td>Gebruikers Interactie</td>
+    </tr>
+    <tr>
+      <td><strong>Level</strong></td>
+      <td>User-Goal</td>
+    </tr>
+    <tr>
+      <td><strong>Primary Actor</strong></td>
+      <td>Docent</td>
+    </tr>
+    <tr>
+      <td><strong>Belangen &amp; belanghebbenden</strong></td>
+      <td>
+        <div>
+        Docent: Als docent wil ik leeruitkomsten kunnen groeperen in een EVL zodat een course met vele leeruitkomsten overzichtelijk blijft. hiervoor wil de docent een EVL kunnen aanmaken.
+ &hellip;</div>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Pre-Condities</strong></td>
+      <td>
+        <div>- De docent is geauthentiseerd. (UC-20)</div>
+        <div>- Er bestaat een course </div>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Requirements</strong></td>
+      <td>
+        <div>
+          <div>FR-1,10</div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Create:</strong></td>
+      <td>
+        <div>
+          <div> Een nieuw EVL wordt aangemaakt.
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
 
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
 
@@ -2128,20 +2256,19 @@ sequenceDiagram
     <tr>
         <td colspan="2">4.a <em>[Beroepsproduct bestaat al]</em>
             <br>
-            1.	Het systeem vraagt of bestaand beroepsproduct wordt ge-update.
-            2.	Gebruiker bevestigd. 
-            3.	Het systeem maakt nieuw beroepsproduct aan met dezelfde naam maar met verhoogd versienummer.
-            <br>
+            <div> 1.	Het systeem vraagt of bestaand beroepsproduct wordt ge-update. </div>
+            <div> 2.	Gebruiker bevestigd. </div> 
+            <div>3.	Het systeem maakt nieuw beroepsproduct aan met dezelfde naam maar met verhoogd versienummer. </div>
             <em>4.	Usecase gaat verder bij main succes scenario punt 8.</em>
         </td>
     </tr>
       <tr>
         <td colspan="2">4.b <em>[Beroepsproduct bestaat al]</em>
             <br>
-          1.	Het systeem vraagt of bestaande beroepsproduct wordt ge-update.
-          2.	Gebruiker geeft aan dat dit niet het geval is.
-            </br>
-            <em>Usecase gaat verder bij main succes scenario punt 4.</em>
+          <div>1.	Het systeem vraagt of bestaande beroepsproduct wordt ge-update. </div>
+          <div>2.	Gebruiker geeft aan dat dit niet het geval is.</div>
+          <br>
+            <em>3. Usecase gaat verder bij main succes scenario punt 4.</em>
         </td>
     </tr>  
   </tbody>
@@ -2229,7 +2356,7 @@ sequenceDiagram
 # **UC-23 Nieuwe Versie**
 
 <table>
-<td><strong>TODO!</Strong></td>
+<td><strong>TODO! ter voorbereiding voor eventuele nieuwe usecases.</Strong></td>
 </Table>
 
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
