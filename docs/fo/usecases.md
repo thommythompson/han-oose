@@ -33,7 +33,7 @@ Niet alle use cases zijn uitgewerkt, de uitwerking van de niet uitgewerkte use c
 - [x] [UC-17 - Maak Weekplanning](#uc-17---maak-weekplanning)
 - [x] [UC-18 - Exporteer informatie](#uc-18-exporteer-informatie)
 - [x] [UC-20 - Aanmelden](#uc-20-aanmelden)
-- [ ] [UC-21 - Ontwikkel beroepsproduct](#uc-21-ontwikkel-beroepsproduct)
+- [x] [UC-21 - Ontwikkel beroepsproduct](#uc-21-ontwikkel-beroepsproduct)
 - [ ] [UC-22 - Ontwikkel Les](#uc-22-ontwikkel-les)
 - [ ] [UC-23 - Nieuwe versie](#uc-23-nieuwe-versie)
 
@@ -1988,13 +1988,164 @@ sequenceDiagram
 
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
 
+
 # **UC-21 Ontwikkel beroepsproduct**
 
 <table>
-<td><strong>TODO!</Strong></td>
-</Table>
-
-
+  <tbody>
+    <tr>
+      <td><strong>ID</strong></td>
+      <td>&nbsp;UC-21</td>
+    </tr>
+    <tr>
+      <td><strong>Naam</strong></td>
+      <td>&nbsp;Ontwikkel beroepsproduct</td>
+    </tr>
+    <tr>
+      <td><strong>Omschrijving</strong></td>
+      <td>Een beroepsproduct wordt door een student opgeleverd om te bewijzen dat ze de opgedane kennis voldoende begrijpen. Het beroepsproduct kan bestaan in verschillende vormen en wordt door middel van rubrieken getoetst.</td>
+    </tr>
+    <tr>
+      <td><strong>Scope</strong></td>
+      <td>&nbsp;ICDE-Tool</td>
+    </tr>
+    <tr>
+      <td><strong>Trigger</strong></td>
+      <td>&nbsp;Gebruikers Interactie</td>
+    </tr>
+    <tr>
+      <td><strong>Level</strong></td>
+      <td>&nbsp;User-Goal</td>
+    </tr>
+    <tr>
+      <td><strong>Primary Actor</strong></td>
+      <td>&nbsp;Docent</td>
+    </tr>
+    <tr>
+      <td><strong>Belangen &amp; belanghebbenden</strong></td>
+      <td>Docent: wil een beroepsproduct kunnen opstellen en hieraan de juiste rubrieken koppelen.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Pre-Condities</strong></td>
+      <td>Authenticatie is afgehandeld; gebruiker is bevoegd om op het systeem in te loggen.</td>
+    </tr>
+    <tr>
+      <td><strong>Succes definitie</strong></td>
+      <td>Er is een nieuw beroepsproduct gemaakt binnen het systeem.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Requirements</strong></td>
+      <td>&nbsp;
+        <div>
+          <div>FR-12,14 </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Main Success Scenario</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Actor</strong></td>
+      <td><strong>System</strong></td>
+    </tr>
+    <tr>
+      <td>&nbsp;
+        <div>
+          <div>1. Gebruiker start het toevoegen van nieuwe toetsing</div>
+        </div>
+      </td>
+      <!-- 1.A  -->
+      <td>&nbsp;</td>
+      <!-- 1.B  -->
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <!-- 2.A  -->
+      <td>&nbsp;
+        <div>
+          <div>2. het systeem vraag wat voor typen toets het gaat.</div>
+        </div>
+      </td>
+      <!-- 2.B  -->
+    </tr>
+    <tr>
+      <td>3. Gebruiker geeft een type.</td>
+      <!-- 3.A  -->
+      <td>&nbsp;
+        <div>
+          <div>4. Het systeem vraagt om een beroepsproduct titel.</div>
+        </div>
+      </td>
+      <!-- 3.B  -->
+    </tr>
+    <tr>
+      <td>5. Gebruiker geeft een titel.</td>
+      <!-- 4.A  -->
+      <td>&nbsp;
+        <div>
+          <div>6. Het systeem controleert of er al een beroepsproduct bestaat met deze titel.</div>
+          <div>7. Het systeem voegt een versienummer toe</div>
+          <div>8. het systeem vraag gebruiker om een beroepsproduct beschrijving.</div>
+        </div>
+      </td>
+      <!-- 4.B  -->
+    </tr>
+    <tr>
+      <td>9. Gebruiker geeft een omschrijving</td>
+      <!-- 5.A  -->
+      <td>&nbsp;
+        <div>
+          <div>10. Het systeem vraag gebruiker om de gewenste rubrieken toe te voegen aan het beroepsproduct.</div>
+        </div>
+      </td>
+      <!-- 5.B  -->
+    <tr>
+    <tr>
+      <td>11. Gebruiker geeft aan welke rubrieken toegevoegd mogen worden </td>
+      <!-- 6.A  -->
+      <td>&nbsp;
+        <div>
+          <div>12.Het systeem voegt de rubrieken toe.</div>
+        </div>
+      </td>
+      <!-- b.B  -->
+    <tr>
+    <tr>
+      <td>13.Gebruiker geeft aan dat het beroepsproduct gereed is.</td>
+      <!-- 7.A  -->
+      <td>&nbsp;
+        <div>
+          <div>14. Het systeem slaat de gegevens op en beëindigd het proces.</div>
+        </div>
+      </td>
+      <!-- 7.B  -->
+    </tr>
+    <tr>
+        <td colspan="2"><strong>Alternative flow 4</strong></td>
+    </tr>
+    <tr>
+        <td colspan="2">4.a <em>[Beroepsproduct bestaat al]</em>
+            <br>
+            1.	Het systeem vraagt of bestaand beroepsproduct wordt ge-update.
+            2.	Gebruiker bevestigd. 
+            3.	Het systeem maakt nieuw beroepsproduct aan met dezelfde naam maar met verhoogd versienummer.
+            <br>
+            <em>4.	Usecase gaat verder bij main succes scenario punt 8.</em>
+        </td>
+    </tr>
+      <tr>
+        <td colspan="2">4.b <em>[Beroepsproduct bestaat al]</em>
+            <br>
+          1.	Het systeem vraagt of bestaande beroepsproduct wordt ge-update.
+          2.	Gebruiker geeft aan dat dit niet het geval is.
+            </br>
+            <em>Usecase gaat verder bij main succes scenario punt 4.</em>
+        </td>
+    </tr>  
+  </tbody>
+</table>
 
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
 
