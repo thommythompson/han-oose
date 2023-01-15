@@ -4,7 +4,7 @@
 
 ---
 :warning: **_NOTITIE:_**
-Niet alle use cases zijn uitgewerkt, de uitwerken van de niet uitgewerkte use cases waren toegewezen aan een collega student die het semester vroegtijdig heeft verlaten.
+Niet alle use cases zijn uitgewerkt, de uitwerking van de niet uitgewerkte use cases waren toegewezen aan een collega student die het semester vroegtijdig heeft verlaten.
 
 ---
 
@@ -27,13 +27,13 @@ Niet alle use cases zijn uitgewerkt, de uitwerken van de niet uitgewerkte use ca
 
 - [x] [UC-2 - Bekijken beoordelingen](#uc-2-bekijken-beoordelingen)
 - [x] [UC-13 - Ontwikkel toets](#uc-13-ontwikkel-toets)
-- [ ] [UC-14 - Maak rubriek](#uc-14-maak-rubriek)
+- [x] [UC-14 - Maak rubriek](#uc-14-maak-rubriek)
 - [x] [UC-15 - Start Uitvoering](#uc-15-start-uitvoering)
 - [x] [UC-16 - Maak course planning definitief](#uc-16-maak-course-template-definitief)
 - [x] [UC-17 - Maak Weekplanning](#uc-17---maak-weekplanning)
-- [ ] [UC-18 - Exporteer informatie](#uc-18-exporteer-informatie)
+- [x] [UC-18 - Exporteer informatie](#uc-18-exporteer-informatie)
 - [x] [UC-20 - Aanmelden](#uc-20-aanmelden)
-- [ ] [UC-21 - Ontwikkel beroepsproduct](#uc-21-ontwikkel-beroepsproduct)
+- [x] [UC-21 - Ontwikkel beroepsproduct](#uc-21-ontwikkel-beroepsproduct)
 - [ ] [UC-22 - Ontwikkel Les](#uc-22-ontwikkel-les)
 - [ ] [UC-23 - Nieuwe versie](#uc-23-nieuwe-versie)
 
@@ -1087,8 +1087,169 @@ Niet alle use cases zijn uitgewerkt, de uitwerken van de niet uitgewerkte use ca
 # **UC-14 Maak rubriek**
 
 <table>
-<td><strong>TODO!</Strong></td>
-</Table>
+  <tbody>
+    <tr>
+      <td><strong>ID</strong></td>
+      <td>UC-14</td>
+    </tr>
+    <tr>
+      <td><strong>Naam</strong></td>
+      <td>Maak rubrieken</td>
+    </tr>
+    <tr>
+      <td><strong>Omschrijving</strong></td>
+      <td>Deze use case beschrijft hoe nieuwe rubrieken worden aangemaakt. De rubrieken horen bij een leerdoel. Elke rubriek krijgt een weging; de beoordeling van een rubriek kan 1 t/m 10 zijn maar kan hier ook van afwijken. Per beoordelingscriteria moet een beschrijving aanwezig zijn die het mogelijk maakt objectief te kunnen beoordelen. Binnen de rubrieken is het mogelijk om knock-outs te markeren en per rubriek moet er ruimte zijn voor commentaar.</td>
+    </tr>
+    <tr>
+      <td><strong>Scope</strong></td>
+      <td>ICDE-Tool</td>
+    </tr>
+    <tr>
+      <td><strong>Trigger</strong></td>
+      <td>Gebruikers Interactie</td>
+    </tr>
+    <tr>
+      <td><strong>Level</strong></td>
+      <td>User-Goal</td>
+    </tr>
+    <tr>
+      <td><strong>Primary Actor</strong></td>
+      <td>Docent</td>
+    </tr>
+    <tr>
+      <td><strong>Belangen &amp; belanghebbenden</strong></td>
+      <td>Docent: Wil een leerdoel voorzien van rubrieken zodat ze de beroepsproducten het leerdoel kunnen ondersteunen.</br>
+      Student: Wil deze rubrieken kunnen inzien zodat hij/zij weet wat er verwacht wordt.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Pre-Condities</strong></td>
+      <td>Authenticatie is afgehandeld; gebruiker is bevoegd om op het systeem in te loggen.</td>
+    </tr>
+    <tr>
+      <td><strong>Succes definitie</strong></td>
+      <td>-	Een is een rubriek aangemaakt voor het betreffende leerdoel. </br>
+          -De rubrieken bevatten een altijd een weging en/of een knock-out criteria.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Requirements</strong></td>
+      <td>
+        <div>
+          <div>FR-13,21,22,23,39</div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Main Success Scenario</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Actor</strong></td>
+      <td><strong>System</strong></td>
+    </tr>
+    <tr>
+      <td>
+        <div>
+          <div>1. Gebruiker start het aanmaken van een nieuwe rubriek</div>
+        </div>
+      </td>
+      <!-- 1.A  -->
+      <td></td>
+      <!-- 1.B  -->
+    </tr>
+    <tr>
+      <td></td>
+      <!-- 2.A  -->
+      <td>
+        <div>
+          <div>2. Het systeem geeft de mogelijke leerdoelen.</div>
+        </div>
+      </td>
+      <!-- 2.B  -->
+    </tr>
+    <tr>
+      <td>3. Gebruiker kiest een leerdoel.</td>
+      <!-- 3.A  -->
+      <td>
+        <div>
+          <div>4. het systeem vraag om een beoordelingsbeschrijving, een weging in %, een beoordelingstype, een knock-out criteria en een bijbehorend commentaar.</div>
+        </div>
+      </td>
+      <!-- 3.B  -->
+    </tr>
+    <tr>
+      <td>5. Gebruiker geeft de gevraagde informatie in</td>
+      <!-- 4.A  -->
+      <td>
+        <div>
+          <div>6. Het systeem valideert invoer</div>
+          <div>7. Het systeem toont de nieuwe rubriek in </div>
+          <div> 8. Het systeem vraagt of de gebruiker nog rubriek wil toevoegen.</div>
+        </div>
+      </td>
+      <!-- 4.B  -->
+    </tr>
+    <tr>
+      <td>9. Gebruiker geeft aan geen nieuwe rubriek toe te willen voegen.</td>
+      <!-- 5.A  -->
+      <td>
+        <div>
+          <div>10.Het systeem beëindigt het proces.</div>
+        </div>
+      </td>
+      <!-- 5.B  -->
+    <tr>
+        <td colspan="2"><strong>Alternative flow 2</strong></td>
+    </tr>
+    <tr>
+        <td colspan="2">2.a <em>[Geen beroepsproduct aanwezig]</em>
+            <br>
+           1.	Het systeem geeft aan dat er geen leerdoelen bestaan.
+           2.	Het systeem vraagt of de gebruiker een leerdoel wil toevoegen. 
+           3.	De gebruiker geeft aan een leerdoel toe te willen voegen
+            <br>
+            <em>UC-12 wordt gestart.</em>
+        </td>
+    </tr>
+      <tr>
+        <td colspan="2">2.b <em>[Geen leerdoel aanwezig]</em>
+            <br>
+        1.	Het systeem geeft aan dat er geen beroepsproducten bestaan.
+        2.	Het systeem vraagt of de gebruiker een leerdoel wil toevoegen. 
+        3.	De gebruiker geeft aan dit niet te willen
+        </br>
+            <em>U4.	Het systeem beëindigt het proces.</em>
+        </td>
+    </tr>
+       <tr>
+        <td colspan="2"><strong>Alternative flow 6</strong></td>
+    </tr>
+     <tr>
+        <td colspan="2">6.a <em>[Foutieve invoer]</em>
+        <br>
+        1.	Het systeem toont de foutieve invoer.
+        2.	Het systeem vraag de gebruiker de foutieve invoer te verbeteren.
+        3.	De gebruiker herstelt de invoer. 
+        4.	Het systeem valideert de invoer.
+        <br>
+            <em>Het systeem gaat verder bij stap 7</em>
+        </td>
+    </tr>
+      </tr>
+       <tr>
+        <td colspan="2"><strong>Alternative flow 8</strong></td>
+    </tr>
+      <tr>
+        <td colspan="2">8.a <em>[Nieuwe invoer]</em>
+            <br>
+            1.	De gebruiker geeft aan een nieuwe rubriek toe te willen voegen.
+            <br>
+            <em>Het systeem gaat verder bij stap 4.</em>
+        </td>
+    </tr>
+     
+  </tbody>
+</table>
 
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
 
@@ -1522,9 +1683,114 @@ sequenceDiagram
 # **UC-18 Exporteer informatie**
 
 <table>
-<td><strong>TODO!</Strong></td>
-</Table>
+  <tbody>
+    <tr>
+      <td><strong>ID</strong></td>
+      <td>UC-18</td>
+    </tr>
+    <tr>
+      <td><strong>Naam</strong></td>
+      <td>Exporteer informatie</td>
+    </tr>
+    <tr>
+      <td><strong>Omschrijving</strong></td>
+      <td>De usecase beschrijft het exporteren van lesmateriaal</td>
+    </tr>
+    <tr>
+      <td><strong>Scope</strong></td>
+      <td>ICDE-Tool</td>
+    </tr>
+    <tr>
+      <td><strong>Trigger</strong></td>
+      <td>Gebruikers Interactie</td>
+    </tr>
+    <tr>
+      <td><strong>Level</strong></td>
+      <td>User-Goal</td>
+    </tr>
+    <tr>
+      <td><strong>Primary Actor</strong></td>
+      <td>Student</td>
+    </tr>
+    <tr>
+      <td><strong>Belangen &amp; belanghebbenden</strong></td>
+      <td>- Student: Wil het lesmateriaal bijhorend bij een les kunnen exporteren zodat deze data i offline beschikbaar is in het gewenste format.</br>
+    </tr>
+    <tr>
+      <td><strong>Pre-Condities</strong></td>
+      <td>Authenticatie is afgehandeld; gebruiker is bevoegd om op het systeem in te loggen en volgt een course.</td>
+    </tr>
+    <tr>
+      <td><strong>Succes definitie</strong></td>
+      <td>Het lesmateriaal is beschikbaar in het gewenste format.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Requirements</strong></td>
+      <td>
+        <div>
+          <div>FR-25</div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Main Success Scenario</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Actor</strong></td>
+      <td><strong>System</strong></td>
+    </tr>
+    <tr>
+      <td>
+        1. Gebruiker bepaald voor welke course en les men lesmateriaal wilt exporteren.
+      </td>
+      <!-- 1.A  -->
+      <td></td>
+      <!-- 1.B  -->
+    </tr>
+    <tr>
+      <td>
+       2. Gebruik geeft aan het bijhorende lesmateriaal te willen exporteren.
+      </td>
+      <!-- 2.A  -->
+      <td>
+      </td>     
+      <!-- 2.B  -->
+    </tr>
+    <tr>
+      <td>
+      </td>
+      <td>
+        3. Het systeem vraagt aan de gebruiker in welk format men wenst het lesmateriaal te exporteren. 
+      </td>
+      <!-- 3.B  -->
+    </tr>
+    <tr>
+      <td>4. De gebruiker geeft het gewenste format aan. </td>
+      <!-- 4.A  -->
+      <td>
+      </td>
+      <!-- 4.B  -->
+    </tr>
+    <tr>
+      <td></td>
+      <!-- 5.A  -->
+      <td>
+        5. Het systeem converteert het lesmateriaal naar het gewenste formaat.
+      </td>
+      <!-- 5.B  -->
+    </tr>
+    <tr>
+      <td></td>
+      <!-- 6.A  -->
+      <td>
+        6. Het systeem stelt het geconverteerde lesmateriaal beschikbaar aan aan de gebruiker.
+      </td>
+      <!-- 6.B  -->
+    </tr>
 
+  </tbody>
+</table>
 
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
 
@@ -1722,13 +1988,164 @@ sequenceDiagram
 
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
 
+
 # **UC-21 Ontwikkel beroepsproduct**
 
 <table>
-<td><strong>TODO!</Strong></td>
-</Table>
-
-
+  <tbody>
+    <tr>
+      <td><strong>ID</strong></td>
+      <td>&nbsp;UC-21</td>
+    </tr>
+    <tr>
+      <td><strong>Naam</strong></td>
+      <td>&nbsp;Ontwikkel beroepsproduct</td>
+    </tr>
+    <tr>
+      <td><strong>Omschrijving</strong></td>
+      <td>Een beroepsproduct wordt door een student opgeleverd om te bewijzen dat ze de opgedane kennis voldoende begrijpen. Het beroepsproduct kan bestaan in verschillende vormen en wordt door middel van rubrieken getoetst.</td>
+    </tr>
+    <tr>
+      <td><strong>Scope</strong></td>
+      <td>&nbsp;ICDE-Tool</td>
+    </tr>
+    <tr>
+      <td><strong>Trigger</strong></td>
+      <td>&nbsp;Gebruikers Interactie</td>
+    </tr>
+    <tr>
+      <td><strong>Level</strong></td>
+      <td>&nbsp;User-Goal</td>
+    </tr>
+    <tr>
+      <td><strong>Primary Actor</strong></td>
+      <td>&nbsp;Docent</td>
+    </tr>
+    <tr>
+      <td><strong>Belangen &amp; belanghebbenden</strong></td>
+      <td>Docent: wil een beroepsproduct kunnen opstellen en hieraan de juiste rubrieken koppelen.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Pre-Condities</strong></td>
+      <td>Authenticatie is afgehandeld; gebruiker is bevoegd om op het systeem in te loggen.</td>
+    </tr>
+    <tr>
+      <td><strong>Succes definitie</strong></td>
+      <td>Er is een nieuw beroepsproduct gemaakt binnen het systeem.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Requirements</strong></td>
+      <td>&nbsp;
+        <div>
+          <div>FR-12,14 </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Main Success Scenario</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Actor</strong></td>
+      <td><strong>System</strong></td>
+    </tr>
+    <tr>
+      <td>&nbsp;
+        <div>
+          <div>1. Gebruiker start het toevoegen van nieuwe toetsing</div>
+        </div>
+      </td>
+      <!-- 1.A  -->
+      <td>&nbsp;</td>
+      <!-- 1.B  -->
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <!-- 2.A  -->
+      <td>&nbsp;
+        <div>
+          <div>2. het systeem vraag wat voor typen toets het gaat.</div>
+        </div>
+      </td>
+      <!-- 2.B  -->
+    </tr>
+    <tr>
+      <td>3. Gebruiker geeft een type.</td>
+      <!-- 3.A  -->
+      <td>&nbsp;
+        <div>
+          <div>4. Het systeem vraagt om een beroepsproduct titel.</div>
+        </div>
+      </td>
+      <!-- 3.B  -->
+    </tr>
+    <tr>
+      <td>5. Gebruiker geeft een titel.</td>
+      <!-- 4.A  -->
+      <td>&nbsp;
+        <div>
+          <div>6. Het systeem controleert of er al een beroepsproduct bestaat met deze titel.</div>
+          <div>7. Het systeem voegt een versienummer toe</div>
+          <div>8. het systeem vraag gebruiker om een beroepsproduct beschrijving.</div>
+        </div>
+      </td>
+      <!-- 4.B  -->
+    </tr>
+    <tr>
+      <td>9. Gebruiker geeft een omschrijving</td>
+      <!-- 5.A  -->
+      <td>&nbsp;
+        <div>
+          <div>10. Het systeem vraag gebruiker om de gewenste rubrieken toe te voegen aan het beroepsproduct.</div>
+        </div>
+      </td>
+      <!-- 5.B  -->
+    <tr>
+    <tr>
+      <td>11. Gebruiker geeft aan welke rubrieken toegevoegd mogen worden </td>
+      <!-- 6.A  -->
+      <td>&nbsp;
+        <div>
+          <div>12.Het systeem voegt de rubrieken toe.</div>
+        </div>
+      </td>
+      <!-- b.B  -->
+    <tr>
+    <tr>
+      <td>13.Gebruiker geeft aan dat het beroepsproduct gereed is.</td>
+      <!-- 7.A  -->
+      <td>&nbsp;
+        <div>
+          <div>14. Het systeem slaat de gegevens op en beëindigd het proces.</div>
+        </div>
+      </td>
+      <!-- 7.B  -->
+    </tr>
+    <tr>
+        <td colspan="2"><strong>Alternative flow 4</strong></td>
+    </tr>
+    <tr>
+        <td colspan="2">4.a <em>[Beroepsproduct bestaat al]</em>
+            <br>
+            1.	Het systeem vraagt of bestaand beroepsproduct wordt ge-update.
+            2.	Gebruiker bevestigd. 
+            3.	Het systeem maakt nieuw beroepsproduct aan met dezelfde naam maar met verhoogd versienummer.
+            <br>
+            <em>4.	Usecase gaat verder bij main succes scenario punt 8.</em>
+        </td>
+    </tr>
+      <tr>
+        <td colspan="2">4.b <em>[Beroepsproduct bestaat al]</em>
+            <br>
+          1.	Het systeem vraagt of bestaande beroepsproduct wordt ge-update.
+          2.	Gebruiker geeft aan dat dit niet het geval is.
+            </br>
+            <em>Usecase gaat verder bij main succes scenario punt 4.</em>
+        </td>
+    </tr>  
+  </tbody>
+</table>
 
 <font size="1">[:point_up_2: [Overview](#use-case-overview)]</font>
 

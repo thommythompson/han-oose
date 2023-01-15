@@ -79,7 +79,7 @@ In onderstaande zijn de systeem features ofte wijl functional requirements omsch
 |22|Als docent wil ik een weging kunnen specificeren voor rubrieken zodat ik belangrijkere rubrieken zwaarder kan laten meetellen in de eindbeoordeling.|Should|1-12|14|
 |23|Als docent wil ik de mogelijkheid hebben om per rubriek een knock-out grens te zetten zodat ik kan afdwingen dat studenten op bepaalde rubrieken een minimale score moeten behalen.|Should|1-12, 1-13|14|
 |24|Als docent wil ik commentaar/feedback kunnen toevoegen aan een beoordeling als zodat een student mijn onderbouwing voor de beoordeling kan inzien. |Should|1-13|8|
-|25|Als docent/student wil ik een course kunnen exporten zodat ik deze data kan delen met personen/systemen die binnen het systeem geen toegang hebben tot deze data, bijvoorbeeld roosteraars.|Could|1-15|18|
+|25|Als docent/student wil ik een lesmateriaal kunnen exporten naar meerdere formaten zodat ik deze data offline kan consumeren in een format naar keuze.|Could|1-15|18|
 |26|Als docent wil ik samen aan een course kunnen werken zodat ik de course niet in mijn eentje hoef te ontwikkelen.|Must|2-1, 2-2|\*|
 |27|Als docent wil ik oudere versies van een course kunnen blijven inzien zodat de course inhoud van uitvoeringen gebaseerd op oudere versies van de course inzichtelijk blijven.|Must|2-3|1, 5|
 |28|Als docent wil ik alle beschikbare course templates kunnen inzien zodat ik eenvoudig een course kan starten gebaseerd op een van deze templates.|Must|2-4, 2-7|1|

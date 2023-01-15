@@ -32,7 +32,7 @@
 2. [Functionele omschrijving](#2-functionele-omschrijving) </br>
     2.1. [Systeemfunctie](#21-systeemfunctie) </br>
 3. [Use Cases](#3-use-cases) </br>
-    3.1. [Scope](#31-scope) </br>
+    3.1. [Systeem grens](#31-systeem-grens) </br>
     3.2. [Crud Identificatie](#32-crud-use-cases) </br>
     3.3. [Use Cases](#33-use-cases) </br>
     3.4. [Use Case Diagram](#34-use-case-diagram) </br>
@@ -71,13 +71,25 @@ De voornaamste gebruikers van het systeem zullen docenten en studenten zijn. Doc
 
 # 3. Use Cases
 
-Binnen het hoofdstuk use cases zullen wij ons richten op het identificeren en vastleggen van use cases. Het in kaart brengen doen wij volgens de Larman (Larman, 2005) methode, deze begint met het het vaststellen van de scope. Vervolgens zullen wij over gaan tot de daadwerkelijke use case identificatie, dit doen wij middels de “User-Goal” en “Event Analysis” methoden. De data bronnen waarop wij deze technieken zullen toepassen zijn de "Questions & Answers" en "Software Requirements Specification" documenten.
+Binnen het hoofdstuk use cases zullen wij ons richten op het identificeren en vastleggen van use cases. Het in kaart brengen doen wij volgens de Larman (Larman, 2005) methode, deze begint met het het vaststellen van de systeem grens. Vervolgens zullen wij over gaan tot de daadwerkelijke use case identificatie, dit doen wij middels de “User-Goal” en “Event Analysis” methoden. De data bronnen waarop wij deze technieken zullen toepassen zijn de "Questions & Answers" en "Software Requirements Specification" documenten.
 
 De in kaart gebrachte use cases worden waar nodig uitgewerkt tot een daadwerkelijke tekstuele use case, ofte wijl een use case in fully dressed format. Vervolgens sluiten wij dit hoofdstuk af met een use case diagram, een visuele weergave van hoe de use cases zich tot elkaar verhouden.
 
-## 3.1. Scope
+## 3.1. Systeem grens
 
-**TODO!**
+De focus van het systeem ligt rond het methodisch ontwerpen van courses die studenten zullen volgens. Met methodisch word gedoeld op een vaste structuur en handhaving van logica en door de HAN gedefinieerde eisen omtrent het ontwikkelen van courses. Denk hierbij aan hoeveel lessen mogen er per week gegeven worden, hoeveel studiepunten moet men kunnen halen, hoe lang mag een course duren en worden alle leerdoelen afgetoetst? De inrichting van de course zal ook moeten voorzien in een objectieve beoordelingswijze voor beroepsproducten.
+
+Ontwikkelde courses (inrichtingen) kunnen ook binnen het systeem geinstantieerd worden (uitvoeringen). Voer uitvoeringen richt het systeem zich op een aantal specifieke aspecten:
+
+- Het toewijzen van docent aan lessen of tentamen.
+- Het toewijzen van locaties aan lessen of tentamen.
+- Het toewijzen van studenten aan opleidingsprofielen.
+- Het toewijzen van studenten aan course uitvoeringen.
+- Het assisteren van docenten in het objectief beoordelen van beroepsproducten gemaakt door studenten.
+
+Het systeem handhaaft een vaste structuur bij courses die ontwikkelt worden binnen "De HAN", voorziet in het bijhouden van resource allocatie, het bijhouden van beoordelingen en geeft studenten inzage in course informatie en lesmateriaal.
+
+Bovenstaande schets een kader van wat er binnen het systeem zal (kunnen) vallen. Functionaliteiten die niet binnen dit kader vallen zoals bijvoorbeeld concrete planning, zullen gehuisvestigd moeten worden in een ander systeem. Ook diensten waarmee het systeem zal integreren (bijvoorbeeld externe authenticatie providers) vallen niet binnen de systeem grens. Mocht het gewenst zijn het kader uit te breiden zal er in overleg met de stakeholder een nieuwe systeem grens gedefinieerd moeten worden.
 
 ## 3.2. Crud Use Cases
 
