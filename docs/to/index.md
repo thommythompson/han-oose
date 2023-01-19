@@ -676,7 +676,20 @@ De methodes zijn toegewezen op basis van het creator en information expert princ
 
 In dit geval gaat het om de creatie van child objecten, een course bevat een planning met weken, deze weken bevatten tentamens of lessen. In de constructor van het nieuwe object wordt de bijhorende inrichting als parameter meegegeven, vervolgens worden in de constructor methodes aangeroepen om de child object (indien deze er zijn) aan te maken.
 
+
+------geen GOF?-------
+
 Er is niet gekozen om gebruik te maken van een van de GoF patterns omdat dit niet benodigd was aangezien er geschikte kandidaten om de benodigde methodes aan toe te wijzen al aanwezig waren.
+
+
+------------------------
+
+Toegepaste Patterns: (dit zou een alternatief kunnen zijn?)
+
+1. Creational: Builder; tijdens het instantieren van een course worden er nieuwe objecten gecrieerd. De klasse courseweekuitvoering is verwantwoordelijk voor deze actie. De varriatie bij het starten van de uitvoering zit op dit niveau in de aantallen en niet in het soort subclasse dat geinstantiieerd word. 
+2. Creational: Factory Method; Tijdens het instantieren van de subclassen wordt er op basis van het type tentamenuitvoering (schriftelijke toets of beroeps product) bepaald welke classe gecrieerd wordt.
+
+Er is geen alternatief pattern wat dit probleem in deze situatie oplost.
 
 ---
 :warning: **_NOTE:_**
