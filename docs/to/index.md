@@ -25,6 +25,7 @@
 |V0.9|H1, H1.1, H1.2, H1.3|Ricardo de Wijs|05-01-2023|
 |v0.10|H1.2, H1.3|Thomas Hofman|12-01-2023|
 |v1.0|Eerste versie|Thomas Hofman|12-01-2023|
+|V1.1|Toevoegen van Design alternativen| Ricardo de Wijs|22-01-2023
 
 # Inhoudsopgave
 
@@ -675,27 +676,74 @@ De methodes zijn toegewezen op basis van het creator en information expert princ
 4. De class van de informatie voorzien is om de aan te maken class te instantieren. (information expert)
 
 In dit geval gaat het om de creatie van child objecten, een course bevat een planning met weken, deze weken bevatten tentamens of lessen. In de constructor van het nieuwe object wordt de bijhorende inrichting als parameter meegegeven, vervolgens worden in de constructor methodes aangeroepen om de child object (indien deze er zijn) aan te maken.
-
-
-------geen GOF?-------
-
 Er is niet gekozen om gebruik te maken van een van de GoF patterns omdat dit niet benodigd was aangezien er geschikte kandidaten om de benodigde methodes aan toe te wijzen al aanwezig waren.
 
+Alternatieve Pattern:
 
-------------------------
+creational: Builder
 
-Toegepaste Patterns: (dit zou een alternatief kunnen zijn?)
+Builder pattern bestaat uit vier paricipanten:
+1. Een interface die de build methode implementeert.
+2. Een ContreteBuilder klasse; deze bevat de bouwinstructies
+3. Een Director in ons geval zou dit CourseUitvoerking klasse kunnen zijn. deze gebruikt de builder interface.
+4. Het product, representatie van de complexe objecten onder constructie, inclusief classes en bestandsdelen om het uiteindelijke eindresultaat te bouwen.
 
-1. Creational: Builder; tijdens het instantieren van een course worden er nieuwe objecten gecrieerd. De klasse courseweekuitvoering is verwantwoordelijk voor deze actie. De varriatie bij het starten van de uitvoering zit op dit niveau in de aantallen en niet in het soort subclasse dat geinstantiieerd word. 
-2. Creational: Factory Method; Tijdens het instantieren van de subclassen wordt er op basis van het type tentamenuitvoering (schriftelijke toets of beroeps product) bepaald welke classe gecrieerd wordt.
+## Sequence bij gebruik van een builder
 
-Er is geen alternatief pattern wat dit probleem in deze situatie oplost.
+```mermaid
+sequenceDiagram
+    autonumber
+   
+    CourseInrichting -->>CourseBuilder:new
+    activate CourseBuilder
+   
+    CourseInrichting -->> CourseUitvoering:new
+    activate CourseUitvoering
+    CourseUitvoering ->> CourseBuilder: BuildCourseUitvoering(this, date)
+ 
+   
+    CourseBuilder->>DateOnly: StartDate = GetMondayOfThisWeek()
+    CourseBuilder->>CourseBuilder: creeerWeekUitvoeringen()
+    
+    loop week in CourseInrichting.Planning.Weken
+        CourseBuilder->>CourseWeekUitvoering: weekUitvoering = CourseWeekUitvoering(week, StartDate)
 
----
-:warning: **_NOTE:_**
-Toelichten van gebruikte GoF patterns, SOLID principes & GRASP principes.
+        activate CourseWeekUitvoering
 
----
+        CourseWeekUitvoering->>CourseWeekUitvoering: creeerTentamen()
+        loop schriftelijkeToets in CourseWeekInrichting.SchriftelijkeToets
+            CourseWeekUitvoering ->> TentamenUitvoering: tentamenUitvoering = TentamenUitvoering(schriftelijkeToets)
+            CourseWeekUitvoering->>CourseWeekUitvoering: _tentamen.Add(tentamenUitvoering)
+        end
+        loop beroepsProduct in CourseWeekInrichting.Beroepsproduct
+            CourseWeekUitvoering ->> TentamenUitvoering: tentamenUitvoering = TentamenUitvoering(beroepsProduct)
+            CourseWeekUitvoering->>CourseWeekUitvoering: _tentamen.Add(tentamenUitvoering)
+        end
+
+        CourseWeekUitvoering->>CourseWeekUitvoering: creeerLessen()
+        loop les in CourseWeekInrichting.Lessen
+            CourseWeekUitvoering->>LesUitvoering: lesUitvoering = new LesUitvoering(les);
+            CourseWeekUitvoering->>CourseWeekUitvoering: _les.Add(lesUitvoering)
+        end
+
+        CourseBuilder ->>CourseBuilder: Weken.Add(weekUitvoering)
+        CourseUitvoering ->> CourseBuilder: GetResult(CourseWeekUitvoering)
+    
+       
+        deactivate CourseUitvoering
+        deactivate CourseBuilder
+
+    end
+    deactivate CourseWeekUitvoering
+    
+```
+
+In dit geval zorgt het toevoegen van een Builder patern voor extra complexiteit. De consequenties van het gebruik van dit patern zouden moet zijn dat:
+1. Het builden middels een simpele interface plaats kan vinden.
+2. Er isolatie plaatsvind tussen het presenteren en het construeren.
+3. Je meer controle hebt over het bouwen.  
+
+De geïmplementeerde opzet raakt deze punten en maakt de builder in deze situatie overbodig.
 
 <font size="1">[:point_up_2: [Inhoudsopgave](#inhoudsopgave)]</font>
 
@@ -836,6 +884,13 @@ De maakt gebruik van onderstaande architectuur en design patterns om tegemoet te
 - Factory Method (GoF)
 - Strategy Pattern (GoF)
 - Template Method (GoF)
+
+Alternatief:
+
+Builder: 
+
+Ook hier zou een Builder pattern toegepast kunnen worden. Het nadeel hiervan is dat er een duplicatie van code(recepten) ontstaat. Het ophalen van informatie geschiet altijd op dezelfde manier maar het bouwen van het eindproduct in dit geval de export verschilt. De huidige Factory Method implementatie voorziet in het uniform maken van wat er gebeuren moet (alles op dezelfde manier). Dit in combinatie met het Strategy patern resulteert ook in een nieuw product. Hierbij is alles wat op dezelfde manier gebeurt een enkele keer uit geprogrammeerd. Hoewel de Builder een alternatief is, zal deze suggestie niet de meest voor de hand liggende zijn.
+
 
 # 7. Overige
 
